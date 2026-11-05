@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muslim Companion (Rafiq Al-Muslim) — MVP Preview</title>
-  <!-- Google Fonts -->
+  <title>Muslim Companion (Rafiq Al-Muslim) — MVP</title>
+  <!-- Google Fonts: Premium Quran & UI Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -19,22 +19,25 @@
         extend: {
           colors: {
             emerald: {
-              900: '#06281E',
-              800: '#0A3B2D',
-              700: '#0E4E3C',
-              600: '#14664F',
+              950: '#031D15',
+              900: '#072E22',
+              800: '#0B3E2F',
+              700: '#0F533F',
+              600: '#146E53',
             },
             gold: {
-              400: '#E4C686',
+              300: '#F1DC9F',
+              400: '#E4C780',
               500: '#C5A059',
-              600: '#A9833D',
+              600: '#A47E35',
             },
-            sand: '#F9F8F5',
+            sand: '#FAF8F5',
             charcoal: '#111815',
           },
           fontFamily: {
             sans: ['Plus Jakarta Sans', 'sans-serif'],
-            quran: ['Amiri', 'serif'],
+            quran: ['Amiri Quran', 'Scheherazade New', 'Amiri', 'serif'],
+            arabic: ['Noto Naskh Arabic', 'Scheherazade New', 'sans-serif'],
           }
         }
       }
@@ -42,61 +45,78 @@
   </script>
   <style>
     /* Custom scrollbar for mobile frame */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.18); border-radius: 4px; }
     .gold-gradient {
-      background: linear-gradient(135deg, #DFBE7B 0%, #C5A059 50%, #9F772D 100%);
+      background: linear-gradient(135deg, #F3DFAB 0%, #C5A059 50%, #9E772E 100%);
     }
     .emerald-gradient {
-      background: linear-gradient(160deg, #0A3B2D 0%, #06281E 100%);
+      background: linear-gradient(160deg, #0B3E2F 0%, #041E16 100%);
+    }
+    .font-quran-text {
+      font-family: 'Amiri Quran', 'Scheherazade New', 'Amiri', serif;
+      line-height: 2.3;
+      word-spacing: 3px;
+      letter-spacing: 0;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "cv01", "cv02", "kern", "liga";
+    }
+    .ayah-marker {
+      font-family: 'Amiri Quran', 'Scheherazade New', serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #C5A059;
+      margin: 0 4px;
+      font-size: 1.1em;
     }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 flex items-center justify-center min-h-screen p-2 sm:p-6 font-sans antialiased select-none">
+<body class="bg-slate-950 text-slate-100 flex items-center justify-center min-h-screen p-2 sm:p-6 font-sans antialiased select-none">
 
   <!-- Desktop Presentation Wrapper -->
-  <div class="flex flex-col lg:flex-row items-center justify-center gap-6 max-w-4xl w-full mx-auto">
+  <div class="flex flex-col lg:flex-row items-center justify-center gap-8 max-w-5xl w-full mx-auto">
     
     <!-- Left Column: Upwork Pitch Info & Highlights -->
     <div class="flex-1 space-y-4 text-left max-w-md">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        FLUTTERFLOW MVP PREVIEW READY
+        FLUTTERFLOW MVP • PHASE 1 READY
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
         Muslim Companion <br>
-        <span class="text-gold-400 font-quran text-3xl font-normal">رفيق المسلم</span>
+        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
       </h1>
-      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-        High-performance, minimal mobile prototype built strictly according to Phase 1 specs. Zero AI-slop, clean 1-word navigation, authentic datasets, and real-time sensor logic.
+      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+        Production-ready mobile architecture built for iOS & Android. Zero AI-slop, clean 1-word navigation, crystal-clear Uthmani scripture, and real-time sensor math.
       </p>
 
-      <div class="grid grid-cols-2 gap-3 text-xs">
-        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-          <p class="text-slate-400 font-medium">Design System</p>
-          <p class="text-white font-bold mt-0.5">Deep Emerald & Gold</p>
+      <div class="grid grid-cols-2 gap-2.5 text-xs">
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Typography</p>
+          <p class="text-white font-bold mt-0.5">Amiri Quran & Naskh</p>
         </div>
-        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-          <p class="text-slate-400 font-medium">Navigation</p>
-          <p class="text-white font-bold mt-0.5">1-Word Minimalist</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Qibla Precision</p>
+          <p class="text-white font-bold mt-0.5">Smooth Sensor & Haptics</p>
         </div>
-        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-          <p class="text-slate-400 font-medium">Localization</p>
-          <p class="text-white font-bold mt-0.5">English & Arabic (RTL)</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Storage Cost</p>
+          <p class="text-white font-bold mt-0.5">$0 Local Bundled Data</p>
         </div>
-        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
-          <p class="text-slate-400 font-medium">Delivery</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Delivery</p>
           <p class="text-white font-bold mt-0.5">FlutterFlow Handover</p>
         </div>
       </div>
 
-      <!-- Quick Interactive Controls -->
-      <div class="pt-2 flex flex-wrap items-center gap-3">
-        <button id="langToggleBtn" onclick="toggleLang()" class="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-2">
-          <i data-lucide="globe" class="w-4 h-4"></i> Switch to Arabic (RTL)
+      <!-- Quick Interactive Presentation Controls -->
+      <div class="pt-2 flex flex-wrap items-center gap-2.5">
+        <button id="langToggleBtn" onclick="toggleLang()" class="px-3.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i> Switch to Arabic (RTL)
         </button>
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition flex items-center gap-2">
-          <i data-lucide="moon" class="w-4 h-4"></i> Dark / Light
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5">
+          <i data-lucide="moon" class="w-3.5 h-3.5"></i> Dark / Light
         </button>
       </div>
     </div>
@@ -117,7 +137,7 @@
       </div>
 
       <!-- Phone Device Frame -->
-      <div id="deviceContainer" class="relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300">
+      <div id="deviceContainer" class="relative w-[360px] h-[705px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300">
         
         <!-- iOS Dynamic Island -->
         <div id="iosDynamicIsland" class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-50 flex items-center justify-center transition-all duration-200">
@@ -130,7 +150,7 @@
         </div>
 
         <!-- Device Screen Frame -->
-        <div id="deviceScreen" class="w-full h-full bg-[#F9F8F5] text-charcoal rounded-[38px] overflow-hidden flex flex-col relative transition-all duration-200">
+        <div id="deviceScreen" class="w-full h-full bg-[#FAF8F5] text-charcoal rounded-[38px] overflow-hidden flex flex-col relative transition-all duration-200">
           
           <!-- Status Bar -->
           <div id="statusBarContainer" class="pt-3 px-5 pb-1 flex items-center justify-between text-[11px] font-bold text-slate-600 dark:text-slate-400 z-40">
@@ -152,280 +172,281 @@
             </div>
           </div>
 
-        <!-- Scrollable Main Content Area -->
-        <div id="appBody" class="flex-1 overflow-y-auto px-3.5 pt-1 pb-16 space-y-3">
+          <!-- Scrollable Main Content Area -->
+          <div id="appBody" class="flex-1 overflow-y-auto px-3.5 pt-1 pb-16 space-y-3">
 
-          <!-- TAB 1: PRAYERS (DEFAULT) -->
-          <div id="tab-prayers" class="tab-content space-y-4">
-            
-            <!-- Header: City & Date -->
-            <div class="flex items-center justify-between pt-1">
-              <div>
-                <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-400">
-                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
-                  <span id="cityNameLabel">Makkah, Saudi Arabia</span>
-                </div>
-                <p id="hijriDateLabel" class="text-[11px] text-slate-500 font-medium">18 Shawwal 1447 AH</p>
-              </div>
-              <button onclick="changeCity()" class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
-                City
-              </button>
-            </div>
-
-            <!-- Hero Countdown Card -->
-            <div class="emerald-gradient text-white rounded-2xl p-5 shadow-lg relative overflow-hidden">
-              <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-emerald-600/10 pointer-events-none"></div>
+            <!-- TAB 1: PRAYERS (DEFAULT) -->
+            <div id="tab-prayers" class="tab-content space-y-3.5">
               
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-[10px] font-extrabold uppercase tracking-widest">
-                  Next Prayer
-                </span>
-                <span id="heroPrayerTime" class="text-xs font-semibold text-slate-300">12:21 PM</span>
-              </div>
-
-              <div class="mt-3 flex items-baseline justify-between">
+              <!-- Header: City & Date -->
+              <div class="flex items-center justify-between pt-1">
                 <div>
-                  <h2 id="heroPrayerName" class="text-2xl font-extrabold tracking-tight">Dhuhr</h2>
-                  <p class="text-slate-300 text-xs mt-0.5">Countdown</p>
+                  <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-900 dark:text-emerald-400">
+                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i>
+                    <span id="cityNameLabel">Makkah, Saudi Arabia</span>
+                  </div>
+                  <p id="hijriDateLabel" class="text-[11px] text-slate-500 font-medium">18 Shawwal 1447 AH</p>
                 </div>
-                <div id="countdownTimer" class="text-2xl font-mono font-bold text-gold-400 tracking-wider">
-                  02:14:32
+                <div class="flex items-center gap-1">
+                  <button onclick="playAdhanPreview()" title="Preview Adhan" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30 flex items-center gap-1">
+                    <i data-lucide="volume-2" class="w-3 h-3"></i> Adhan
+                  </button>
+                  <button onclick="changeCity()" class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300">
+                    City
+                  </button>
                 </div>
               </div>
-            </div>
 
-            <!-- Daily Prayer List -->
-            <div class="space-y-2">
-              <div class="flex items-center justify-between px-1">
-                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Today</span>
-                <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Auto (Umm al-Qura)</span>
-              </div>
-
-              <div id="prayerCardsList" class="space-y-1.5">
-                <!-- Generated by JS -->
-              </div>
-            </div>
-
-            <!-- Daily Hadith Card -->
-            <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-[11px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider">Hadith</span>
-                <span class="text-[10px] text-slate-400 font-semibold">Sahih al-Bukhari 1</span>
-              </div>
-              <p class="font-quran text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed">
-                إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
-              </p>
-              <p class="text-xs text-slate-600 dark:text-slate-300 leading-normal">
-                "Actions are judged by intentions, and every person will be rewarded according to their intention."
-              </p>
-            </div>
-          </div>
-
-          <!-- TAB 2: QIBLA -->
-          <div id="tab-qibla" class="tab-content hidden space-y-5 text-center pt-2">
-            <div>
-              <h2 class="text-lg font-bold text-slate-900 dark:text-white">Qibla</h2>
-              <p class="text-xs text-slate-500">Rotate phone towards Makkah</p>
-            </div>
-
-            <!-- Compass Dial Frame -->
-            <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
-              
-              <!-- Outer Ring -->
-              <div id="compassOuterRing" class="w-64 h-64 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center shadow-lg transition-all duration-300">
+              <!-- Hero Countdown Card -->
+              <div class="emerald-gradient text-white rounded-2xl p-4 shadow-md relative overflow-hidden border border-emerald-700/40">
+                <div class="absolute -right-8 -bottom-8 w-32 h-32 rounded-full bg-emerald-600/15 pointer-events-none"></div>
                 
-                <!-- Rotating Compass Dial -->
-                <div id="compassDial" class="w-56 h-56 rounded-full border border-dashed border-slate-300 dark:border-slate-600 relative transition-transform duration-150 ease-out flex items-center justify-center">
-                  
-                  <span class="absolute top-2 text-xs font-bold text-red-500">N</span>
-                  <span class="absolute bottom-2 text-xs font-bold text-slate-400">S</span>
-                  <span class="absolute right-2 text-xs font-bold text-slate-400">E</span>
-                  <span class="absolute left-2 text-xs font-bold text-slate-400">W</span>
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-[9px] font-extrabold uppercase tracking-widest border border-gold-500/30">
+                    Next Prayer
+                  </span>
+                  <span id="heroPrayerTime" class="text-xs font-semibold text-slate-200">12:21 PM</span>
+                </div>
 
-                  <!-- Kaaba Indicator Needle -->
-                  <div id="qiblaNeedle" class="absolute top-4 flex flex-col items-center">
-                    <div class="w-8 h-8 rounded-full bg-emerald-800 text-gold-400 flex items-center justify-center shadow-md">
-                      <i data-lucide="navigation" class="w-4 h-4 fill-current"></i>
-                    </div>
+                <div class="mt-2.5 flex items-baseline justify-between">
+                  <div>
+                    <h2 id="heroPrayerName" class="text-2xl font-extrabold tracking-tight">Dhuhr</h2>
+                    <p class="text-slate-300 text-[11px] mt-0.5">Countdown</p>
+                  </div>
+                  <div id="countdownTimer" class="text-2xl font-mono font-bold text-gold-400 tracking-wider">
+                    02:14:32
                   </div>
                 </div>
+              </div>
 
-                <!-- Center Hub -->
-                <div class="absolute w-24 h-24 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center shadow-inner">
-                  <span id="compassDegrees" class="text-xl font-extrabold text-slate-800 dark:text-white">294°</span>
-                  <span id="compassStatus" class="text-[9px] font-bold tracking-widest text-slate-400">TURN</span>
+              <!-- Daily Prayer List -->
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between px-1">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Timetable</span>
+                  <span class="text-[10px] font-semibold text-emerald-800 dark:text-emerald-400">Auto (Umm al-Qura)</span>
+                </div>
+
+                <div id="prayerCardsList" class="space-y-1.5">
+                  <!-- Generated by JS -->
                 </div>
               </div>
-            </div>
 
-            <!-- Interactive Rotate Slider -->
-            <div class="px-6 space-y-1">
-              <label class="text-[11px] font-semibold text-slate-400">Simulate Device Heading</label>
-              <input id="headingSlider" type="range" min="0" max="360" value="180" oninput="updateCompass(this.value)" class="w-full accent-emerald-700">
-              <div class="flex justify-between text-[10px] text-slate-400">
-                <span>0°</span>
-                <span class="font-bold text-emerald-600">Align at 294°</span>
-                <span>360°</span>
+              <!-- Daily Hadith Card -->
+              <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-3.5 border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1">
+                    <i data-lucide="book-marked" class="w-3 h-3 text-gold-500"></i> Daily Hadith
+                  </span>
+                  <span class="text-[10px] text-slate-400 font-semibold">Sahih al-Bukhari 1</span>
+                </div>
+                <p class="font-arabic text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed">
+                  إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
+                </p>
+                <p class="text-xs text-slate-600 dark:text-slate-300 leading-normal">
+                  "Actions are judged by intentions, and every person will be rewarded according to their intention."
+                </p>
               </div>
             </div>
 
-            <p id="alignmentBanner" class="text-xs font-bold text-slate-500 py-1">
-              Rotate slider to 294° to test Kaaba alignment
-            </p>
-          </div>
-
-          <!-- TAB 3: QURAN -->
-          <div id="tab-quran" class="tab-content hidden space-y-3 pt-2">
-            <div class="flex items-center justify-between">
+            <!-- TAB 2: QIBLA -->
+            <div id="tab-qibla" class="tab-content hidden space-y-4 text-center pt-2">
               <div>
-                <h2 class="text-lg font-bold text-slate-900 dark:text-white">Quran</h2>
-                <p class="text-xs text-slate-500">114 Surahs with translation</p>
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">Qibla</h2>
+                <p class="text-xs text-slate-500">Makkah Bearing: <span class="font-bold text-emerald-700 dark:text-emerald-400">294° WNW</span> • 3,420 km</p>
               </div>
-              <span class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
-                Surah 1: Al-Fatihah
-              </span>
+
+              <!-- Compass Dial Frame -->
+              <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
+                
+                <!-- Outer Ring -->
+                <div id="compassOuterRing" class="w-64 h-64 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center shadow-lg transition-all duration-300">
+                  
+                  <!-- Rotating Compass Dial -->
+                  <div id="compassDial" class="w-56 h-56 rounded-full border border-dashed border-slate-300 dark:border-slate-600 relative transition-transform duration-150 ease-out flex items-center justify-center">
+                    
+                    <span class="absolute top-2 text-xs font-bold text-red-500">N</span>
+                    <span class="absolute bottom-2 text-xs font-bold text-slate-400">S</span>
+                    <span class="absolute right-2 text-xs font-bold text-slate-400">E</span>
+                    <span class="absolute left-2 text-xs font-bold text-slate-400">W</span>
+
+                    <!-- Kaaba Indicator Needle -->
+                    <div id="qiblaNeedle" class="absolute top-3 flex flex-col items-center">
+                      <div class="w-8 h-8 rounded-full bg-emerald-900 text-gold-400 flex items-center justify-center shadow-md border border-gold-500/50">
+                        <i data-lucide="navigation" class="w-4 h-4 fill-current"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Center Hub -->
+                  <div class="absolute w-24 h-24 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center shadow-inner">
+                    <span id="compassDegrees" class="text-xl font-extrabold text-slate-800 dark:text-white">294°</span>
+                    <span id="compassStatus" class="text-[9px] font-bold tracking-widest text-slate-400">TURN</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Rotate Slider -->
+              <div class="px-5 space-y-1">
+                <label class="text-[11px] font-semibold text-slate-400">Simulate Phone Heading Sensor</label>
+                <input id="headingSlider" type="range" min="0" max="360" value="180" oninput="updateCompass(this.value)" class="w-full accent-emerald-700">
+                <div class="flex justify-between text-[10px] text-slate-400">
+                  <span>0° (North)</span>
+                  <span class="font-bold text-emerald-600">Align at 294°</span>
+                  <span>360°</span>
+                </div>
+              </div>
+
+              <p id="alignmentBanner" class="text-xs font-bold text-slate-500 py-0.5">
+                Rotate slider to 294° to test Kaaba alignment
+              </p>
             </div>
 
-            <!-- Surah Reader Card -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-4">
-              <div class="text-center pb-2 border-b border-slate-100 dark:border-slate-700">
-                <h3 class="font-quran text-2xl font-bold text-emerald-900 dark:text-emerald-300">سُورَةُ الفَاتِحَةِ</h3>
-                <p class="text-xs text-slate-400 mt-1">The Opening • 7 Verses • Meccan</p>
+            <!-- TAB 3: QURAN (PREMIUM READER) -->
+            <div id="tab-quran" class="tab-content hidden space-y-3 pt-1">
+              
+              <!-- Surah Selector & Reader Controls Bar -->
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">Quran</h2>
+                  <p class="text-[11px] text-slate-500">Uthmani Arabic & English</p>
+                </div>
+
+                <!-- Font Size Zoom Controls -->
+                <div class="flex items-center gap-1 bg-slate-200 dark:bg-slate-800 p-0.5 rounded-lg text-xs font-bold">
+                  <button onclick="changeFontSize(-2)" class="px-2 py-0.5 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300">A-</button>
+                  <button onclick="changeFontSize(2)" class="px-2 py-0.5 rounded bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300">A+</button>
+                  <button onclick="toggleAudioRecitation()" id="reciteAudioBtn" class="px-2 py-0.5 rounded bg-emerald-800 text-white flex items-center gap-1">
+                    <i data-lucide="volume-2" class="w-3 h-3"></i> Recite
+                  </button>
+                </div>
+              </div>
+
+              <!-- Surah Navigation Pills -->
+              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs">
+                <button onclick="loadSurah('fatihah')" id="surah-pill-fatihah" class="px-3 py-1 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">1. Al-Fatihah</button>
+                <button onclick="loadSurah('ikhlas')" id="surah-pill-ikhlas" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">112. Al-Ikhlas</button>
+                <button onclick="loadSurah('falaq')" id="surah-pill-falaq" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">113. Al-Falaq</button>
+                <button onclick="loadSurah('nas')" id="surah-pill-nas" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">114. An-Nas</button>
+                <button onclick="loadSurah('mulk')" id="surah-pill-mulk" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">67. Al-Mulk</button>
+              </div>
+
+              <!-- Surah Banner Card -->
+              <div class="emerald-gradient text-white rounded-2xl p-3.5 text-center relative overflow-hidden border border-emerald-700/50 shadow-sm">
+                <div class="flex items-center justify-between text-[10px] text-gold-300 uppercase font-semibold">
+                  <span id="surahMetaType">Meccan</span>
+                  <span id="surahMetaVerses">7 Verses</span>
+                </div>
+                <h3 id="surahHeaderTitleAr" class="font-arabic text-2xl font-bold mt-1 text-gold-400">سُورَةُ الفَاتِحَةِ</h3>
+                <p id="surahHeaderTitleEn" class="text-xs text-slate-200 font-medium">The Opening</p>
+                
+                <div class="mt-2.5 pt-2 border-t border-emerald-800/80">
+                  <p class="font-quran-text text-lg text-gold-300 leading-normal">
+                    بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+                  </p>
+                </div>
               </div>
 
               <!-- Verses Container -->
-              <div class="space-y-3.5 text-right">
-                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">1</span>
-                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
-                  </div>
-                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
-                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
-                  </p>
-                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
-                    In the name of Allah, the Entirely Merciful, the Especially Merciful.
-                  </p>
-                </div>
-
-                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">2</span>
-                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
-                  </div>
-                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
-                    الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
-                  </p>
-                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
-                    [All] praise is [due] to Allah, Lord of the worlds.
-                  </p>
-                </div>
-
-                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">3</span>
-                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
-                  </div>
-                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
-                    الرَّحْمَٰنِ الرَّحِيمِ
-                  </p>
-                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
-                    The Entirely Merciful, the Especially Merciful.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- TAB 4: ADHKAR -->
-          <div id="tab-adhkar" class="tab-content hidden space-y-3 pt-2">
-            <div class="flex items-center justify-between">
-              <div>
-                <h2 class="text-lg font-bold text-slate-900 dark:text-white">Adhkar</h2>
-                <p class="text-xs text-slate-500">Hisn al-Muslim Remembrance</p>
-              </div>
-              <div class="inline-flex rounded-lg bg-slate-200 dark:bg-slate-800 p-0.5 text-[11px] font-bold">
-                <button id="adhkarMornBtn" onclick="setAdhkarMode('morning')" class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 text-emerald-800 dark:text-white shadow-xs">Morning</button>
-                <button id="adhkarEveBtn" onclick="setAdhkarMode('evening')" class="px-2.5 py-1 rounded-md text-slate-500">Evening</button>
+              <div id="quranVersesList" class="space-y-2.5">
+                <!-- Rendered dynamically by JS with Amiri Quran font -->
               </div>
             </div>
 
-            <div id="adhkarItemsList" class="space-y-2">
-              <!-- Rendered via JS -->
+            <!-- TAB 4: ADHKAR (INTERACTIVE COUNTERS) -->
+            <div id="tab-adhkar" class="tab-content hidden space-y-3 pt-1">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white">Adhkar</h2>
+                  <p class="text-[11px] text-slate-500">Hisn al-Muslim Remembrance</p>
+                </div>
+                <div class="inline-flex rounded-lg bg-slate-200 dark:bg-slate-800 p-0.5 text-[11px] font-bold">
+                  <button id="adhkarMornBtn" onclick="setAdhkarMode('morning')" class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 text-emerald-800 dark:text-white shadow-xs">Morning</button>
+                  <button id="adhkarEveBtn" onclick="setAdhkarMode('evening')" class="px-2.5 py-1 rounded-md text-slate-500">Evening</button>
+                </div>
+              </div>
+
+              <div id="adhkarItemsList" class="space-y-2">
+                <!-- Rendered via JS with interactive counts -->
+              </div>
             </div>
+
+            <!-- TAB 5: TASBEEH (TACTILE AUDIO COUNTER) -->
+            <div id="tab-tasbeeh" class="tab-content hidden space-y-3.5 pt-1 text-center">
+              <div class="flex items-center justify-between px-1">
+                <div>
+                  <h2 class="text-base font-bold text-slate-900 dark:text-white text-left">Tasbeeh</h2>
+                  <p class="text-[11px] text-slate-500 text-left">Digital dhikr with haptic sound</p>
+                </div>
+                <button onclick="toggleTasbeehSound()" id="soundToggleBtn" class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center gap-1">
+                  <i data-lucide="volume-2" class="w-3 h-3"></i> Sound: ON
+                </button>
+              </div>
+
+              <!-- Dhikr Selector Pills -->
+              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs">
+                <button onclick="setTasbeehDhikr(0)" id="dhikr-pill-0" class="px-3 py-1.5 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">SubhanAllah</button>
+                <button onclick="setTasbeehDhikr(1)" id="dhikr-pill-1" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Alhamdulillah</button>
+                <button onclick="setTasbeehDhikr(2)" id="dhikr-pill-2" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Allahu Akbar</button>
+                <button onclick="setTasbeehDhikr(3)" id="dhikr-pill-3" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Astaghfirullah</button>
+              </div>
+
+              <!-- Current Arabic Phrase in Crystal Clear Calligraphy -->
+              <div class="py-1">
+                <h3 id="currentDhikrAr" class="font-arabic text-2xl font-bold text-emerald-950 dark:text-emerald-300">سُبْحَانَ اللَّهِ</h3>
+              </div>
+
+              <!-- Giant Interactive Tap Dial -->
+              <div class="relative w-56 h-56 mx-auto">
+                <button onclick="incrementTasbeeh()" class="w-full h-full rounded-full bg-white dark:bg-slate-800 border-4 border-gold-500/40 shadow-xl flex flex-col items-center justify-center active:scale-95 transition-transform duration-75">
+                  <span id="tasbeehCount" class="text-5xl font-extrabold text-slate-900 dark:text-white font-sans tracking-tight">0</span>
+                  <span id="tasbeehTargetLabel" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Target 33</span>
+                  <span id="tasbeehLapsLabel" class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 mt-1">Lap 1</span>
+                </button>
+              </div>
+
+              <!-- Target Controls Bar -->
+              <div class="flex items-center justify-center gap-2 pt-1">
+                <button onclick="setTasbeehTarget(33)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">33</button>
+                <button onclick="setTasbeehTarget(99)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">99</button>
+                <button onclick="setTasbeehTarget(100)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">100</button>
+                <button onclick="resetTasbeeh()" class="px-3 py-1 text-xs font-bold rounded-lg bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Reset</button>
+              </div>
+            </div>
+
           </div>
 
-          <!-- TAB 5: TASBEEH -->
-          <div id="tab-tasbeeh" class="tab-content hidden space-y-4 pt-2 text-center">
-            <div>
-              <h2 class="text-lg font-bold text-slate-900 dark:text-white">Tasbeeh</h2>
-              <p class="text-xs text-slate-500">Digital dhikr counter</p>
-            </div>
+          <!-- Bottom Navigation Bar (Strict 1-Word Professional Labels) -->
+          <div class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 flex items-center justify-around z-50">
+            <button onclick="switchTab('prayers')" id="nav-prayers" class="flex flex-col items-center gap-1 text-emerald-800 dark:text-emerald-400 font-bold transition">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+              <span class="text-[10px]">Prayers</span>
+            </button>
+            <button onclick="switchTab('qibla')" id="nav-qibla" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+              <span class="text-[10px]">Qibla</span>
+            </button>
+            <button onclick="switchTab('quran')" id="nav-quran" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+              <span class="text-[10px]">Quran</span>
+            </button>
+            <button onclick="switchTab('adhkar')" id="nav-adhkar" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+              <span class="text-[10px]">Adhkar</span>
+            </button>
+            <button onclick="switchTab('tasbeeh')" id="nav-tasbeeh" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+              <i data-lucide="circle-dot" class="w-5 h-5"></i>
+              <span class="text-[10px]">Tasbeeh</span>
+            </button>
+          </div>
 
-            <!-- Dhikr Selector Pills -->
-            <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs">
-              <button onclick="setTasbeehDhikr(0)" id="dhikr-pill-0" class="px-3 py-1.5 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">SubhanAllah</button>
-              <button onclick="setTasbeehDhikr(1)" id="dhikr-pill-1" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Alhamdulillah</button>
-              <button onclick="setTasbeehDhikr(2)" id="dhikr-pill-2" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Allahu Akbar</button>
-            </div>
-
-            <!-- Current Arabic Phrase -->
-            <div class="py-1">
-              <h3 id="currentDhikrAr" class="font-quran text-2xl font-bold text-emerald-900 dark:text-emerald-300">سُبْحَانَ اللَّهِ</h3>
-            </div>
-
-            <!-- Giant Tap Dial -->
-            <div class="relative w-56 h-56 mx-auto">
-              <button onclick="incrementTasbeeh()" class="w-full h-full rounded-full bg-white dark:bg-slate-800 border-4 border-gold-500/40 shadow-xl flex flex-col items-center justify-center active:scale-95 transition-transform duration-75">
-                <span id="tasbeehCount" class="text-5xl font-extrabold text-slate-900 dark:text-white font-sans tracking-tight">0</span>
-                <span id="tasbeehTargetLabel" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Target 33</span>
-                <span id="tasbeehLapsLabel" class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 mt-1">Lap 1</span>
-              </button>
-            </div>
-
-            <!-- Control Bar -->
-            <div class="flex items-center justify-center gap-2 pt-2">
-              <button onclick="setTasbeehTarget(33)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">33</button>
-              <button onclick="setTasbeehTarget(99)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">99</button>
-              <button onclick="setTasbeehTarget(100)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">100</button>
-              <button onclick="resetTasbeeh()" class="px-3 py-1 text-xs font-bold rounded-lg bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Reset</button>
-            </div>
+          <!-- Device Home Indicator Bar -->
+          <div class="absolute bottom-1 left-0 right-0 flex justify-center pointer-events-none z-50">
+            <div id="iosHomeBar" class="w-28 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
+            <div id="androidNavLine" class="hidden w-16 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
           </div>
 
         </div>
-
-        <!-- Bottom Navigation Bar (Strict 1-Word Professional Labels) -->
-        <div class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 flex items-center justify-around z-50">
-          <button onclick="switchTab('prayers')" id="nav-prayers" class="flex flex-col items-center gap-1 text-emerald-800 dark:text-emerald-400 font-bold transition">
-            <i data-lucide="clock" class="w-5 h-5"></i>
-            <span class="text-[10px]">Prayers</span>
-          </button>
-          <button onclick="switchTab('qibla')" id="nav-qibla" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
-            <i data-lucide="compass" class="w-5 h-5"></i>
-            <span class="text-[10px]">Qibla</span>
-          </button>
-          <button onclick="switchTab('quran')" id="nav-quran" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
-            <span class="text-[10px]">Quran</span>
-          </button>
-          <button onclick="switchTab('adhkar')" id="nav-adhkar" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
-            <i data-lucide="sparkles" class="w-5 h-5"></i>
-            <span class="text-[10px]">Adhkar</span>
-          </button>
-          <button onclick="switchTab('tasbeeh')" id="nav-tasbeeh" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
-            <i data-lucide="circle-dot" class="w-5 h-5"></i>
-            <span class="text-[10px]">Tasbeeh</span>
-          </button>
-        </div>
-
-        <!-- Device Home Indicator Bar -->
-        <div class="absolute bottom-1 left-0 right-0 flex justify-center pointer-events-none z-50">
-          <div id="iosHomeBar" class="w-28 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
-          <div id="androidNavLine" class="hidden w-16 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
-        </div>
-
       </div>
-    </div>
     </div>
   </div>
 
@@ -435,11 +456,53 @@
     let isArabic = false;
     let isDark = false;
     let currentCityIndex = 0;
+    let quranFontSize = 20; // Default px
+    let isTasbeehSoundOn = true;
+
+    // Web Audio Synthesizer (for realistic tactile click)
+    let audioCtx = null;
+    function playClickSound() {
+      if (!isTasbeehSoundOn) return;
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.04);
+        gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+      } catch (e) {}
+    }
+
+    function playAdhanPreview() {
+      try {
+        if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(440, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(660, audioCtx.currentTime + 0.5);
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.8);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.9);
+      } catch (e) {}
+      alert("🔊 Adhan Notification Alert: 'Allahu Akbar, Allahu Akbar' (Audio preview triggered)");
+    }
+
     const cities = [
       { name: "Makkah, Saudi Arabia", qibla: 0, fajr: "04:58", sunrise: "06:18", dhuhr: "12:21", asr: "15:43", maghrib: "18:24", isha: "19:54" },
       { name: "London, UK", qibla: 119, fajr: "05:12", sunrise: "07:05", dhuhr: "11:58", asr: "14:14", maghrib: "16:48", isha: "18:32" },
       { name: "Karachi, Pakistan", qibla: 265, fajr: "05:22", sunrise: "06:40", dhuhr: "12:15", asr: "15:28", maghrib: "17:49", isha: "19:07" },
-      { name: "New York, USA", qibla: 58, fajr: "05:35", sunrise: "06:44", dhuhr: "11:47", asr: "14:32", maghrib: "16:51", isha: "18:01" }
+      { name: "New York, USA", qibla: 58, fajr: "05:35", sunrise: "06:44", dhuhr: "11:47", asr: "14:32", maghrib: "16:51", isha: "18:01" },
+      { name: "Dubai, UAE", qibla: 261, fajr: "05:08", sunrise: "06:26", dhuhr: "12:12", asr: "15:31", maghrib: "17:58", isha: "19:28" }
     ];
 
     const prayerNames = [
@@ -451,6 +514,81 @@
       { id: "Isha", name: "Isha", ar: "العشاء" },
     ];
 
+    // Surahs Data with High-Legibility Uthmani Arabic
+    const surahsData = {
+      fatihah: {
+        number: 1,
+        titleAr: "سُورَةُ الفَاتِحَةِ",
+        titleEn: "The Opening",
+        type: "Meccan",
+        versesCount: 7,
+        verses: [
+          { id: 1, ar: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", en: "In the name of Allah, the Entirely Merciful, the Especially Merciful." },
+          { id: 2, ar: "ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ", en: "[All] praise is [due] to Allah, Lord of the worlds." },
+          { id: 3, ar: "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", en: "The Entirely Merciful, the Especially Merciful." },
+          { id: 4, ar: "مَٰلِكِ يَوْمِ ٱلدِّينِ", en: "Sovereign of the Day of Recompense." },
+          { id: 5, ar: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", en: "It is You we worship and You we ask for help." },
+          { id: 6, ar: "ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ", en: "Guide us to the straight path." },
+          { id: 7, ar: "صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ", en: "The path of those upon whom You have bestowed favor, not of those who have evoked anger or are astray." }
+        ]
+      },
+      ikhlas: {
+        number: 112,
+        titleAr: "سُورَةُ الإِخْلَاصِ",
+        titleEn: "The Sincerity",
+        type: "Meccan",
+        versesCount: 4,
+        verses: [
+          { id: 1, ar: "قُلْ هُوَ ٱللَّهُ أَحَدٌ", en: "Say, \"He is Allah, [who is] One,\"" },
+          { id: 2, ar: "ٱللَّهُ ٱلصَّمَدُ", en: "Allah, the Eternal Refuge." },
+          { id: 3, ar: "لَمْ يَلِدْ وَلَمْ يُولَدْ", en: "He neither begets nor is born," },
+          { id: 4, ar: "وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ", en: "Nor is there to Him any equivalent." }
+        ]
+      },
+      falaq: {
+        number: 113,
+        titleAr: "سُورَةُ الفَلَقِ",
+        titleEn: "The Daybreak",
+        type: "Meccan",
+        versesCount: 5,
+        verses: [
+          { id: 1, ar: "قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ", en: "Say, \"I seek refuge in the Lord of daybreak\"" },
+          { id: 2, ar: "مِن شَرِّ مَا خَلَقَ", en: "From the evil of that which He created" },
+          { id: 3, ar: "وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ", en: "And from the evil of darkness when it settles" },
+          { id: 4, ar: "وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ", en: "And from the evil of the blowers in knots" },
+          { id: 5, ar: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ", en: "And from the evil of an envier when he envies." }
+        ]
+      },
+      nas: {
+        number: 114,
+        titleAr: "سُورَةُ النَّاسِ",
+        titleEn: "Mankind",
+        type: "Meccan",
+        versesCount: 6,
+        verses: [
+          { id: 1, ar: "قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ", en: "Say, \"I seek refuge in the Lord of mankind,\"" },
+          { id: 2, ar: "مَلِكِ ٱلنَّاسِ", en: "The Sovereign of mankind," },
+          { id: 3, ar: "إِلَٰهِ ٱلنَّاسِ", en: "The God of mankind," },
+          { id: 4, ar: "مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ", en: "From the evil of the retreating whisperer -" },
+          { id: 5, ar: "ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ", en: "Who whispers into the breasts of mankind -" },
+          { id: 6, ar: "مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ", en: "From among the jinn and mankind." }
+        ]
+      },
+      mulk: {
+        number: 67,
+        titleAr: "سُورَةُ المُلْكِ",
+        titleEn: "The Sovereignty",
+        type: "Meccan",
+        versesCount: 30,
+        verses: [
+          { id: 1, ar: "تَبَٰرَكَ ٱلَّذِى بِيَدِهِ ٱلْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَىْءٍۢ قَدِيرٌ", en: "Blessed is He in whose hand is dominion, and He is over all things competent -" },
+          { id: 2, ar: "ٱلَّذِى خَلَقَ ٱلْمَوْتَ وَٱلْحَيَوٰةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًۭا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْغَفُورُ", en: "Who created death and life to test you as to which is best in deed." },
+          { id: 3, ar: "ٱلَّذِى خَلَقَ سَبْعَ سَمَٰوَٰتٍۢ طِبَاقًۭا ۖ مَّا تَرَىٰ فِى خَلْقِ ٱلرَّحْمَٰنِ مِن تَفَٰوُتٍۢ", en: "Who created seven heavens in layers. You do not see in the creation of the Most Merciful any inconsistency." }
+        ]
+      }
+    };
+    let currentSurahKey = 'fatihah';
+
     let tasbeehCount = 0;
     let tasbeehTarget = 33;
     let tasbeehLaps = 1;
@@ -458,18 +596,21 @@
     const tasbeehPhrases = [
       { en: "SubhanAllah", ar: "سُبْحَانَ اللَّهِ" },
       { en: "Alhamdulillah", ar: "الْحَمْدُ لِلَّهِ" },
-      { en: "Allahu Akbar", ar: "اللَّهُ أَكْبَرُ" }
+      { en: "Allahu Akbar", ar: "اللَّهُ أَكْبَرُ" },
+      { en: "Astaghfirullah", ar: "أَسْتَغْفِرُ اللَّهَ" }
     ];
 
     const adhkarData = {
       morning: [
-        { id: 1, ar: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the morning and sovereignty belongs to Allah.", count: 1, done: false },
-        { id: 2, ar: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا", en: "O Allah, by You we enter the morning and the evening.", count: 1, done: false },
-        { id: 3, ar: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ", en: "In the Name of Allah with Whose Name nothing can cause harm.", count: 3, done: false }
+        { id: 1, ar: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the morning and sovereignty belongs to Allah.", target: 1, current: 1, done: false },
+        { id: 2, ar: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا", en: "O Allah, by You we enter the morning and the evening, and by You we live.", target: 1, current: 1, done: false },
+        { id: 3, ar: "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ", en: "Glory and praise be to Allah by the count of His creation and His pleasure.", target: 3, current: 3, done: false },
+        { id: 4, ar: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلاَ فِي السَّمَاءِ", en: "In the Name of Allah with Whose Name nothing can cause harm.", target: 3, current: 3, done: false }
       ],
       evening: [
-        { id: 4, ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the evening and sovereignty belongs to Allah.", count: 1, done: false },
-        { id: 5, ar: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", en: "I seek refuge in the perfect words of Allah from evil.", count: 3, done: false }
+        { id: 5, ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the evening and sovereignty belongs to Allah.", target: 1, current: 1, done: false },
+        { id: 6, ar: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", en: "I seek refuge in the perfect words of Allah from the evil of what He created.", target: 3, current: 3, done: false },
+        { id: 7, ar: "اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا", en: "O Allah, by You we enter the evening, and by You we live.", target: 1, current: 1, done: false }
       ]
     };
     let currentAdhkarMode = 'morning';
@@ -477,6 +618,7 @@
     // Initialize
     function init() {
       renderPrayerCards();
+      loadSurah('fatihah');
       renderAdhkar();
       lucide.createIcons();
       startCountdown();
@@ -493,7 +635,7 @@
         const isNext = p.id === "Dhuhr";
 
         const card = document.createElement("div");
-        card.className = `flex items-center justify-between p-3 rounded-xl border transition ${
+        card.className = `flex items-center justify-between p-2.5 rounded-xl border transition ${
           isNext 
             ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700/60 font-bold" 
             : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60"
@@ -506,7 +648,7 @@
               <span class="text-xs ${isNext ? 'text-emerald-900 dark:text-emerald-300 font-extrabold' : 'text-slate-700 dark:text-slate-300 font-semibold'}">
                 ${isArabic ? p.ar : p.name}
               </span>
-              ${isNext ? '<span class="ml-1 text-[9px] uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold">Upcoming</span>' : ''}
+              ${isNext ? '<span class="ml-1 text-[8px] uppercase px-1.5 py-0.2 rounded bg-emerald-600 text-white font-bold">Upcoming</span>' : ''}
             </div>
           </div>
           <span class="text-xs font-mono font-bold ${isNext ? 'text-emerald-800 dark:text-emerald-400' : 'text-slate-500'}">
@@ -515,6 +657,83 @@
         `;
         container.appendChild(card);
       });
+    }
+
+    // Load Surah
+    function loadSurah(surahKey) {
+      currentSurahKey = surahKey;
+      const s = surahsData[surahKey];
+      
+      document.getElementById("surahMetaType").innerText = s.type;
+      document.getElementById("surahMetaVerses").innerText = `${s.versesCount} Verses`;
+      document.getElementById("surahHeaderTitleAr").innerText = s.titleAr;
+      document.getElementById("surahHeaderTitleEn").innerText = s.titleEn;
+
+      // Update pills
+      ['fatihah', 'ikhlas', 'falaq', 'nas', 'mulk'].forEach(k => {
+        const pill = document.getElementById(`surah-pill-${k}`);
+        if (!pill) return;
+        if (k === surahKey) {
+          pill.className = "px-3 py-1 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0";
+        } else {
+          pill.className = "px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0";
+        }
+      });
+
+      renderQuranVerses();
+    }
+
+    // Render Verses with Amiri Quran Font & Crisp Tashkeel
+    function renderQuranVerses() {
+      const s = surahsData[currentSurahKey];
+      const container = document.getElementById("quranVersesList");
+      container.innerHTML = "";
+
+      s.verses.forEach(v => {
+        const card = document.createElement("div");
+        card.className = "p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-1.5";
+        card.innerHTML = `
+          <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-700/60">
+            <span class="w-5 h-5 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 text-[10px] font-bold flex items-center justify-center font-sans border border-gold-500/30">
+              ${v.id}
+            </span>
+            <button onclick="playClickSound()" class="text-slate-400 hover:text-emerald-700">
+              <i data-lucide="play" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+          <p class="font-quran-text text-right text-emerald-950 dark:text-white font-normal" style="font-size: ${quranFontSize}px;">
+            ${v.ar} <span class="ayah-marker">﴿${toArabicDigits(v.id)}﴾</span>
+          </p>
+          <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed pt-1">
+            ${v.en}
+          </p>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function toArabicDigits(num) {
+      const arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+      return String(num).split('').map(d => arabicNumerals[parseInt(d)]).join('');
+    }
+
+    function changeFontSize(delta) {
+      quranFontSize = Math.max(16, Math.min(28, quranFontSize + delta));
+      renderQuranVerses();
+    }
+
+    function toggleAudioRecitation() {
+      playClickSound();
+      const btn = document.getElementById("reciteAudioBtn");
+      if (btn.innerText.includes("Recite")) {
+        btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 animate-spin"></i> Playing`;
+        btn.classList.add("bg-gold-600");
+      } else {
+        btn.innerHTML = `<i data-lucide="volume-2" class="w-3 h-3"></i> Recite`;
+        btn.classList.remove("bg-gold-600");
+      }
+      lucide.createIcons();
     }
 
     // Switch Tab
@@ -555,6 +774,7 @@
         statusText.className = "text-[9px] font-extrabold tracking-widest text-emerald-500 animate-pulse";
         outerRing.classList.add("ring-4", "ring-emerald-400/50", "border-emerald-500");
         banner.innerHTML = `<span class="text-emerald-600 font-bold">✓ Aligned with Makkah!</span>`;
+        playClickSound();
       } else {
         statusText.innerText = diff < 20 ? "CLOSE" : "TURN";
         statusText.className = "text-[9px] font-bold tracking-widest text-slate-400";
@@ -565,6 +785,7 @@
 
     // Tasbeeh
     function incrementTasbeeh() {
+      playClickSound();
       tasbeehCount++;
       if (tasbeehCount >= tasbeehTarget) {
         tasbeehCount = 0;
@@ -575,6 +796,7 @@
     }
 
     function resetTasbeeh() {
+      playClickSound();
       tasbeehCount = 0;
       tasbeehLaps = 1;
       document.getElementById("tasbeehCount").innerText = 0;
@@ -582,20 +804,30 @@
     }
 
     function setTasbeehTarget(val) {
+      playClickSound();
       tasbeehTarget = val;
       tasbeehCount = 0;
       document.getElementById("tasbeehCount").innerText = 0;
       document.getElementById("tasbeehTargetLabel").innerText = `Target ${val}`;
     }
 
+    function toggleTasbeehSound() {
+      isTasbeehSoundOn = !isTasbeehSoundOn;
+      const btn = document.getElementById("soundToggleBtn");
+      btn.innerHTML = `<i data-lucide="${isTasbeehSoundOn ? 'volume-2' : 'volume-x'}" class="w-3 h-3"></i> Sound: ${isTasbeehSoundOn ? 'ON' : 'OFF'}`;
+      lucide.createIcons();
+    }
+
     function setTasbeehDhikr(idx) {
+      playClickSound();
       selectedDhikrIdx = idx;
       tasbeehCount = 0;
       document.getElementById("tasbeehCount").innerText = 0;
       document.getElementById("currentDhikrAr").innerText = tasbeehPhrases[idx].ar;
 
-      [0, 1, 2].forEach(i => {
+      [0, 1, 2, 3].forEach(i => {
         const pill = document.getElementById(`dhikr-pill-${i}`);
+        if (!pill) return;
         if (i === idx) {
           pill.className = "px-3 py-1.5 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0";
         } else {
@@ -628,13 +860,13 @@
         const card = document.createElement("div");
         card.className = `p-3 rounded-xl border transition ${item.done ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60'}`;
         card.innerHTML = `
-          <div class="flex items-start justify-between gap-3">
+          <div class="flex items-start justify-between gap-2.5">
             <div class="flex-1 space-y-1 text-right">
-              <p class="font-quran text-base font-bold text-emerald-950 dark:text-emerald-200 leading-relaxed">${item.ar}</p>
+              <p class="font-arabic text-base font-bold text-emerald-950 dark:text-emerald-100 leading-relaxed">${item.ar}</p>
               <p class="text-left text-xs text-slate-600 dark:text-slate-300">${item.en}</p>
             </div>
-            <button onclick="toggleAdhkar(${index})" class="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border ${item.done ? 'bg-emerald-700 border-emerald-700 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400'}">
-              <i data-lucide="${item.done ? 'check' : 'circle'}" class="w-4 h-4"></i>
+            <button onclick="decrementAdhkar(${index})" class="px-2.5 py-1 rounded-lg flex-shrink-0 flex items-center gap-1 font-bold text-xs border ${item.done ? 'bg-emerald-700 border-emerald-700 text-white' : 'bg-gold-500/10 border-gold-500/30 text-gold-600 dark:text-gold-400'}">
+              ${item.done ? '✓ Done' : `${item.current}x`}
             </button>
           </div>
         `;
@@ -643,13 +875,21 @@
       lucide.createIcons();
     }
 
-    function toggleAdhkar(idx) {
-      adhkarData[currentAdhkarMode][idx].done = !adhkarData[currentAdhkarMode][idx].done;
+    function decrementAdhkar(idx) {
+      playClickSound();
+      const item = adhkarData[currentAdhkarMode][idx];
+      if (item.current > 1) {
+        item.current--;
+      } else {
+        item.done = !item.done;
+        if (!item.done) item.current = item.target;
+      }
       renderAdhkar();
     }
 
     // City toggle
     function changeCity() {
+      playClickSound();
       currentCityIndex = (currentCityIndex + 1) % cities.length;
       document.getElementById("cityNameLabel").innerText = cities[currentCityIndex].name;
       renderPrayerCards();
@@ -663,10 +903,10 @@
 
       if (isArabic) {
         screen.setAttribute("dir", "rtl");
-        btn.innerHTML = `<i data-lucide="globe" class="w-4 h-4"></i> Switch to English (LTR)`;
+        btn.innerHTML = `<i data-lucide="globe" class="w-3.5 h-3.5"></i> Switch to English (LTR)`;
       } else {
         screen.setAttribute("dir", "ltr");
-        btn.innerHTML = `<i data-lucide="globe" class="w-4 h-4"></i> Switch to Arabic (RTL)`;
+        btn.innerHTML = `<i data-lucide="globe" class="w-3.5 h-3.5"></i> Switch to Arabic (RTL)`;
       }
       renderPrayerCards();
       lucide.createIcons();
@@ -677,11 +917,11 @@
       isDark = !isDark;
       const screen = document.getElementById("deviceScreen");
       if (isDark) {
-        screen.classList.add("dark", "bg-[#0D1513]");
-        screen.classList.remove("bg-[#F9F8F5]");
+        screen.classList.add("dark", "bg-[#0A1612]");
+        screen.classList.remove("bg-[#FAF8F5]");
       } else {
-        screen.classList.remove("dark", "bg-[#0D1513]");
-        screen.classList.add("bg-[#F9F8F5]");
+        screen.classList.remove("dark", "bg-[#0A1612]");
+        screen.classList.add("bg-[#FAF8F5]");
       }
     }
 
@@ -704,7 +944,7 @@
         iosBtn.className = "px-4 py-1.5 rounded-full bg-blue-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm";
         androidBtn.className = "px-4 py-1.5 rounded-full text-slate-400 hover:text-white font-medium transition-all duration-200 flex items-center gap-1.5";
         
-        container.className = "relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300";
+        container.className = "relative w-[360px] h-[705px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300";
         screen.className = screen.className.replace(/rounded-\[[^\]]+\]/, "rounded-[38px]");
         
         dynamicIsland.classList.remove("hidden");
@@ -720,7 +960,7 @@
         androidBtn.className = "px-4 py-1.5 rounded-full bg-emerald-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm";
         iosBtn.className = "px-4 py-1.5 rounded-full text-slate-400 hover:text-white font-medium transition-all duration-200 flex items-center gap-1.5";
         
-        container.className = "relative w-[355px] h-[705px] bg-slate-900 rounded-[34px] p-2 shadow-2xl border-2 border-slate-600 transition-all duration-300";
+        container.className = "relative w-[355px] h-[710px] bg-slate-900 rounded-[34px] p-2 shadow-2xl border-2 border-slate-600 transition-all duration-300";
         screen.className = screen.className.replace(/rounded-\[[^\]]+\]/, "rounded-[26px]");
         
         dynamicIsland.classList.add("hidden");
