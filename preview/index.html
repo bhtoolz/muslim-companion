@@ -543,6 +543,47 @@
 
           </div>
 
+          <!-- Floating Bottom Mini Audio Player (YouTube Music / Spotify Style) -->
+          <div id="miniAudioPlayer" class="hidden absolute bottom-[68px] left-3 right-3 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-md rounded-2xl border border-gold-500/40 shadow-2xl z-40 overflow-hidden transition-all duration-300">
+            <!-- Top Animated Progress Line -->
+            <div class="w-full bg-slate-800/80 h-1 relative">
+              <div id="miniPlayerProgress" class="h-full bg-gradient-to-r from-emerald-500 via-gold-400 to-gold-500 w-0 transition-all duration-150"></div>
+            </div>
+            
+            <div class="px-3 py-2 flex items-center justify-between gap-2.5">
+              <!-- Left: Disc Artwork & Details (Click to jump to Ayah) -->
+              <div onclick="jumpToCurrentRecitingAyah()" class="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer">
+                <div class="w-9 h-9 rounded-xl bg-emerald-950 border border-gold-500/40 flex items-center justify-center flex-shrink-0 relative overflow-hidden shadow-inner">
+                  <img src="assets/reciter_artwork.png" onerror="this.src='preview/reciter_artwork.png'" class="w-full h-full object-cover" alt="Reciter">
+                  <div class="absolute inset-0 bg-gold-500/10 animate-pulse"></div>
+                </div>
+                <div class="min-w-0">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                    <h4 id="miniPlayerTitle" class="text-xs font-bold text-white truncate">Ayah 1 • Surah Al-Fatihah</h4>
+                  </div>
+                  <p id="miniPlayerSubtitle" class="text-[10px] text-gold-400/90 truncate">Sheikh Mishary Rashid Alafasy</p>
+                </div>
+              </div>
+
+              <!-- Right: Media Player Action Controls -->
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <button onclick="playPreviousAyahAudio()" title="Previous Ayah" class="p-1.5 text-slate-300 hover:text-white transition active:scale-95">
+                  <i data-lucide="skip-back" class="w-4 h-4"></i>
+                </button>
+                <button onclick="toggleMiniPlayerPlayPause()" id="miniPlayerPlayBtn" title="Play / Pause" class="w-8 h-8 rounded-full bg-gold-500 hover:bg-gold-400 text-slate-950 flex items-center justify-center transition shadow-md shadow-gold-500/20 active:scale-95">
+                  <i data-lucide="pause" class="w-4 h-4 fill-current"></i>
+                </button>
+                <button onclick="playNextAyahAudio()" title="Next Ayah" class="p-1.5 text-slate-300 hover:text-white transition active:scale-95">
+                  <i data-lucide="skip-forward" class="w-4 h-4"></i>
+                </button>
+                <button onclick="stopAyahAudio(); hideMiniPlayer();" title="Close" class="p-1 text-slate-400 hover:text-red-400 transition ml-0.5">
+                  <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
           <!-- Bottom Navigation Bar (Strict 1-Word Clean Islamic Navigation) -->
           <div class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 flex items-center justify-around z-40 select-none">
             <button onclick="switchTab('prayers')" id="nav-prayers" class="flex flex-col items-center gap-1 text-emerald-800 dark:text-emerald-400 font-bold transition">
@@ -1325,22 +1366,45 @@
       highlightActiveAyah(index);
       updatePlayIcons(index, true);
 
+      const s = surahsData[currentSurahKey];
       const sStr = String(surahNum).padStart(3, '0');
       const aStr = String(verseId).padStart(3, '0');
       const audioUrl = `https://everyayah.com/data/Alafasy_128kbps/${sStr}${aStr}.mp3`;
 
       currentAyahAudio = new Audio(audioUrl);
 
-      currentAyahAudio.play().then(() => {
-        showToast("Reciting", `Surah ${surahsData[currentSurahKey].titleEn} • Ayah ${verseId} (Mishary Alafasy)`);
+      // Track progress & notify Android system lockscreen & in-app mini player
+      currentAyahAudio.ontimeupdate = () => {
+        if (currentAyahAudio && currentAyahAudio.duration && !isNaN(currentAyahAudio.duration)) {
+          const pct = Math.min(100, Math.max(0, (currentAyahAudio.currentTime / currentAyahAudio.duration) * 100));
+          const prog = document.getElementById("miniPlayerProgress");
+          if (prog) prog.style.width = pct + "%";
 
-        // Real Android / Mobile MediaSession Notification in Status Bar & Lock Screen
+          // YouTube Music style live scrub position in Android notification drawer
+          if ('mediaSession' in navigator && 'setPositionState' in navigator.mediaSession) {
+            try {
+              navigator.mediaSession.setPositionState({
+                duration: currentAyahAudio.duration,
+                playbackRate: currentAyahAudio.playbackRate || 1.0,
+                position: currentAyahAudio.currentTime || 0
+              });
+            } catch (e) {}
+          }
+        }
+      };
+
+      currentAyahAudio.play().then(() => {
+        showMiniPlayer(s.titleEn, verseId);
+
+        // Real Android / Mobile MediaSession Notification in Status Bar & Lock Screen (YouTube Music Style)
         if ('mediaSession' in navigator) {
           navigator.mediaSession.metadata = new MediaMetadata({
-            title: `Ayah ${verseId} • Surah ${surahsData[currentSurahKey].titleEn}`,
+            title: `Ayah ${verseId} • Surah ${s.titleEn}`,
             artist: 'Sheikh Mishary Rashid Alafasy',
-            album: `Muslim Companion (${surahsData[currentSurahKey].titleAr})`,
+            album: `The Noble Qur'an (${s.titleAr})`,
             artwork: [
+              { src: 'assets/reciter_artwork.png', sizes: '512x512', type: 'image/png' },
+              { src: 'preview/reciter_artwork.png', sizes: '512x512', type: 'image/png' },
               { src: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=512&q=80', sizes: '512x512', type: 'image/jpeg' }
             ]
           });
@@ -1351,6 +1415,7 @@
               currentAyahAudio.play();
               navigator.mediaSession.playbackState = 'playing';
               updatePlayIcons(activePlayingIndex, true);
+              updateMiniPlayerPlayBtn(true);
             }
           });
           navigator.mediaSession.setActionHandler('pause', () => {
@@ -1358,17 +1423,33 @@
               currentAyahAudio.pause();
               navigator.mediaSession.playbackState = 'paused';
               updatePlayIcons(activePlayingIndex, false);
+              updateMiniPlayerPlayBtn(false);
             }
           });
           navigator.mediaSession.setActionHandler('previoustrack', () => {
-            if (index > 0) {
-              playAyahAudio(surahNum, surahsData[currentSurahKey].verses[index - 1].id, index - 1, onComplete);
-            }
+            playPreviousAyahAudio();
           });
           navigator.mediaSession.setActionHandler('nexttrack', () => {
-            if (index + 1 < surahsData[currentSurahKey].verses.length) {
-              playAyahAudio(surahNum, surahsData[currentSurahKey].verses[index + 1].id, index + 1, onComplete);
+            playNextAyahAudio();
+          });
+          navigator.mediaSession.setActionHandler('seekto', (details) => {
+            if (currentAyahAudio && details.seekTime) {
+              currentAyahAudio.currentTime = details.seekTime;
             }
+          });
+          navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+            if (currentAyahAudio) {
+              currentAyahAudio.currentTime = Math.max(0, currentAyahAudio.currentTime - (details.seekOffset || 5));
+            }
+          });
+          navigator.mediaSession.setActionHandler('seekforward', (details) => {
+            if (currentAyahAudio) {
+              currentAyahAudio.currentTime = Math.min(currentAyahAudio.duration, currentAyahAudio.currentTime + (details.seekOffset || 5));
+            }
+          });
+          navigator.mediaSession.setActionHandler('stop', () => {
+            stopAyahAudio();
+            hideMiniPlayer();
           });
         }
       }).catch(err => {
@@ -1382,6 +1463,7 @@
         if (onComplete) {
           onComplete();
         } else {
+          hideMiniPlayer();
           document.querySelectorAll('.ayah-card').forEach(c => {
             c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
           });
@@ -1394,8 +1476,76 @@
       currentAyahAudio.onerror = () => {
         updatePlayIcons(index, false);
         activePlayingIndex = null;
+        hideMiniPlayer();
         if (onComplete) onComplete();
       };
+    }
+
+    function showMiniPlayer(surahTitle, verseId) {
+      const player = document.getElementById("miniAudioPlayer");
+      if (!player) return;
+      player.classList.remove("hidden");
+      const titleEl = document.getElementById("miniPlayerTitle");
+      if (titleEl) titleEl.innerText = `Ayah ${verseId} • Surah ${surahTitle}`;
+      updateMiniPlayerPlayBtn(true);
+      lucide.createIcons();
+    }
+
+    function hideMiniPlayer() {
+      const player = document.getElementById("miniAudioPlayer");
+      if (player) player.classList.add("hidden");
+      const prog = document.getElementById("miniPlayerProgress");
+      if (prog) prog.style.width = "0%";
+    }
+
+    function updateMiniPlayerPlayBtn(isPlaying) {
+      const btn = document.getElementById("miniPlayerPlayBtn");
+      if (btn) {
+        btn.innerHTML = `<i data-lucide="${isPlaying ? 'pause' : 'play'}" class="w-4 h-4 fill-current"></i>`;
+        lucide.createIcons();
+      }
+    }
+
+    function toggleMiniPlayerPlayPause() {
+      if (!currentAyahAudio) {
+        if (activePlayingIndex !== null) {
+          playSingleAyahAudio(activePlayingIndex);
+        } else {
+          playSingleAyahAudio(0);
+        }
+        return;
+      }
+      if (currentAyahAudio.paused) {
+        currentAyahAudio.play();
+        updatePlayIcons(activePlayingIndex, true);
+        updateMiniPlayerPlayBtn(true);
+        if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'playing';
+      } else {
+        currentAyahAudio.pause();
+        updatePlayIcons(activePlayingIndex, false);
+        updateMiniPlayerPlayBtn(false);
+        if ('mediaSession' in navigator) navigator.mediaSession.playbackState = 'paused';
+      }
+    }
+
+    function playPreviousAyahAudio() {
+      if (activePlayingIndex !== null && activePlayingIndex > 0) {
+        playSingleAyahAudio(activePlayingIndex - 1);
+      }
+    }
+
+    function playNextAyahAudio() {
+      const s = surahsData[currentSurahKey];
+      if (activePlayingIndex !== null && activePlayingIndex + 1 < s.verses.length) {
+        playSingleAyahAudio(activePlayingIndex + 1);
+      }
+    }
+
+    function jumpToCurrentRecitingAyah() {
+      switchTab('quran');
+      if (activePlayingIndex !== null) {
+        highlightActiveAyah(activePlayingIndex);
+      }
     }
 
     function updatePlayIcons(playingIdx, isPlaying) {
@@ -1416,6 +1566,7 @@
       }
       activePlayingIndex = null;
       updatePlayIcons(-1, false);
+      updateMiniPlayerPlayBtn(false);
       if ('mediaSession' in navigator) {
         navigator.mediaSession.playbackState = 'paused';
       }
