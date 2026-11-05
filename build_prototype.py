@@ -98,22 +98,11 @@ html_content = r'''<!DOCTYPE html>
 </head>
 <body class="h-full flex flex-col items-center justify-start py-4 px-2 sm:px-6 overflow-x-hidden">
 
-  <!-- Desktop Presentation Layout: Clean Symmetrical Showcase -->
-  <div class="w-full max-w-3xl flex flex-col items-center justify-center my-auto py-2">
+  <!-- Desktop Presentation Layout: Left Phone Screen, Right Vertically Centered Content -->
+  <div class="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 my-auto py-4">
     
-    <!-- Top Branding & Status Header (Centered above Phone) -->
-    <div class="text-center space-y-1.5 mb-3.5">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        FLUTTERFLOW READY • PHASE 1 MVP
-      </div>
-      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2.5">
-        Muslim Companion <span class="text-gold-400 font-arabic text-2xl font-normal">رفيق المسلم</span>
-      </h1>
-    </div>
-
-    <!-- Center Hero: Interactive Phone Device Frame -->
-    <div class="flex flex-col items-center gap-2.5 flex-shrink-0 w-full">
+    <!-- LEFT COLUMN: Interactive Phone Device Frame -->
+    <div class="flex flex-col items-center gap-2.5 flex-shrink-0">
       
       <!-- OS Platform Switcher Pill (iOS vs Android) -->
       <div class="inline-flex items-center p-1 rounded-full bg-slate-900 border border-slate-800 shadow-xl text-xs font-semibold">
@@ -608,38 +597,46 @@ html_content = r'''<!DOCTYPE html>
       </div>
     </div>
 
-    <!-- Bottom Center: Architecture Info & Presentation Controls (Neatly Centered Under Phone) -->
-    <div class="mt-7 space-y-3.5 text-center max-w-xl w-full flex flex-col items-center">
+    <!-- RIGHT COLUMN: Content (Vertically Centered With Phone) -->
+    <div class="flex-1 max-w-md w-full space-y-4 text-left my-auto self-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        FLUTTERFLOW READY • PHASE 1 MVP
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        Muslim Companion <br>
+        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
+      </h1>
       <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
         Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
       </p>
 
-      <!-- Architecture Badges in 4 Columns -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full text-center text-xs">
-        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[10px]">Framework</p>
-          <p class="text-white font-bold text-xs mt-0.5">FlutterFlow & Dart</p>
+      <!-- Architecture Badges -->
+      <div class="grid grid-cols-2 gap-2.5 text-xs pt-1">
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Framework</p>
+          <p class="text-white font-bold mt-0.5">FlutterFlow & Dart</p>
         </div>
-        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[10px]">Sensor Math</p>
-          <p class="text-white font-bold text-xs mt-0.5">Spherical Qibla Trig</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Sensor Math</p>
+          <p class="text-white font-bold mt-0.5">Spherical Qibla Trig</p>
         </div>
-        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[10px]">Database Cost</p>
-          <p class="text-white font-bold text-xs mt-0.5">$0 Offline Bundled</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Database Cost</p>
+          <p class="text-white font-bold mt-0.5">$0 Offline Bundled</p>
         </div>
-        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[10px]">Handoff Format</p>
-          <p class="text-white font-bold text-xs mt-0.5">Custom Widgets</p>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Handoff Format</p>
+          <p class="text-white font-bold mt-0.5">Custom Widgets/Actions</p>
         </div>
       </div>
 
       <!-- Quick Interactive Presentation Controls -->
-      <div class="pt-1 flex flex-wrap items-center justify-center gap-2.5">
-        <button id="langToggleBtn" onclick="toggleLang()" class="px-3.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+      <div class="pt-2 flex flex-wrap items-center gap-2.5">
+        <button id="langToggleBtn" onclick="toggleLang()" class="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
           <i data-lucide="globe" class="w-3.5 h-3.5"></i> <span id="langBtnText">Switch to Arabic (RTL)</span>
         </button>
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
           <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
         </button>
       </div>
