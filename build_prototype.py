@@ -101,7 +101,53 @@ html_content = r'''<!DOCTYPE html>
   <!-- Desktop Presentation Layout: Left Phone Screen, Right Vertically Centered Content -->
   <div class="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 my-auto py-4">
     
-    <!-- LEFT COLUMN: Interactive Phone Device Frame -->
+    <!-- LEFT COLUMN: Content (Vertically Centered With Phone) -->
+    <div class="flex-1 max-w-md w-full space-y-4 text-left my-auto self-center">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        FLUTTERFLOW READY • PHASE 1 MVP
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+        Muslim Companion <br>
+        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
+      </h1>
+      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+        Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
+      </p>
+
+      <!-- Architecture Badges -->
+      <div class="grid grid-cols-2 gap-2.5 text-xs pt-1">
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Framework</p>
+          <p class="text-white font-bold mt-0.5">FlutterFlow & Dart</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Sensor Math</p>
+          <p class="text-white font-bold mt-0.5">Spherical Qibla Trig</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Database Cost</p>
+          <p class="text-white font-bold mt-0.5">$0 Offline Bundled</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[11px]">Handoff Format</p>
+          <p class="text-white font-bold mt-0.5">Custom Widgets/Actions</p>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Presentation Controls -->
+      <div class="pt-2 flex flex-wrap items-center gap-2.5">
+        <button id="langToggleBtn" onclick="toggleLang()" class="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i> <span id="langBtnText">Switch to Arabic (RTL)</span>
+        </button>
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
+          <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
+        </button>
+      </div>
+    </div>
+
+
+    <!-- RIGHT COLUMN: Interactive Phone Device Frame -->
     <div class="flex flex-col items-center gap-2.5 flex-shrink-0">
       
       <!-- OS Platform Switcher Pill (iOS vs Android) -->
@@ -594,51 +640,6 @@ html_content = r'''<!DOCTYPE html>
           </div>
 
         </div>
-      </div>
-    </div>
-
-    <!-- RIGHT COLUMN: Content (Vertically Centered With Phone) -->
-    <div class="flex-1 max-w-md w-full space-y-4 text-left my-auto self-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        FLUTTERFLOW READY • PHASE 1 MVP
-      </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-        Muslim Companion <br>
-        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
-      </h1>
-      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-        Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
-      </p>
-
-      <!-- Architecture Badges -->
-      <div class="grid grid-cols-2 gap-2.5 text-xs pt-1">
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Framework</p>
-          <p class="text-white font-bold mt-0.5">FlutterFlow & Dart</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Sensor Math</p>
-          <p class="text-white font-bold mt-0.5">Spherical Qibla Trig</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Database Cost</p>
-          <p class="text-white font-bold mt-0.5">$0 Offline Bundled</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Handoff Format</p>
-          <p class="text-white font-bold mt-0.5">Custom Widgets/Actions</p>
-        </div>
-      </div>
-
-      <!-- Quick Interactive Presentation Controls -->
-      <div class="pt-2 flex flex-wrap items-center gap-2.5">
-        <button id="langToggleBtn" onclick="toggleLang()" class="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
-          <i data-lucide="globe" class="w-3.5 h-3.5"></i> <span id="langBtnText">Switch to Arabic (RTL)</span>
-        </button>
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
-          <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
-        </button>
       </div>
     </div>
 
@@ -1338,12 +1339,12 @@ html_content = r'''<!DOCTYPE html>
         type: "Meccan",
         versesCount: 6,
         verses: [
-          { id: 1, ar: "قُلْ يَٰٓأَيُّهَا ٱلْكَٰفِرُونَ", tr: "Qul yaaa-ayyuhal-kaafiroon", en: "Say, "O disbelievers,"" },
-          { id: 2, ar: "لَآ أَعْبُدُ مَا تَعْبُدُونَ", tr: "Laaa a'budu maa ta'budoon", en: ""I do not worship what you worship."" },
-          { id: 3, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: ""Nor are you worshippers of what I worship."" },
-          { id: 4, ar: "وَلَآ أَنَا۠ عَابِدٌۭ مَّا عَبَدتُّمْ", tr: "Wa laaa ana 'aabidum-maa 'abattum", en: ""Nor will I be a worshipper of what you worship."" },
-          { id: 5, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: ""Nor will you be worshippers of what I worship."" },
-          { id: 6, ar: "لَكُمْ دِينُكُمْ وَلِىَ دِينِ", tr: "Lakum deenukum wa liya deen", en: ""For you is your religion, and for me is my religion."" }
+          { id: 1, ar: "قُلْ يَٰٓأَيُّهَا ٱلْكَٰفِرُونَ", tr: "Qul yaaa-ayyuhal-kaafiroon", en: "Say, 'O disbelievers,'" },
+          { id: 2, ar: "لَآ أَعْبُدُ مَا تَعْبُدُونَ", tr: "Laaa a'budu maa ta'budoon", en: "'I do not worship what you worship.'" },
+          { id: 3, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: "'Nor are you worshippers of what I worship.'" },
+          { id: 4, ar: "وَلَآ أَنَا۠ عَابِدٌۭ مَّا عَبَدتُّمْ", tr: "Wa laaa ana 'aabidum-maa 'abattum", en: "'Nor will I be a worshipper of what you worship.'" },
+          { id: 5, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: "'Nor will you be worshippers of what I worship.'" },
+          { id: 6, ar: "لَكُمْ دِينُكُمْ وَلِىَ دِينِ", tr: "Lakum deenukum wa liya deen", en: "'For you is your religion, and for me is my religion.'" }
         ]
       },
       nasr: {
