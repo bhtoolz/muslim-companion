@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="google" content="notranslate">
   <title>Muslim Companion (Rafiq Al-Muslim) — Phase 1 MVP</title>
   
   <!-- Tailwind CSS CDN -->
@@ -315,7 +316,7 @@
                     </button>
                   </div>
                 </div>
-                <p id="hadithMatnAr" class="font-arabic text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed">
+                <p id="hadithMatnAr" class="notranslate font-arabic text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed" translate="no" lang="ar" dir="rtl">
                   إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
                 </p>
                 <p id="hadithMatnEn" class="text-xs text-slate-600 dark:text-slate-300 leading-normal">
@@ -430,11 +431,11 @@
                   <span id="surahMetaType">Meccan</span>
                   <span id="surahMetaVerses">7 Verses</span>
                 </div>
-                <h3 id="surahHeaderTitleAr" class="font-arabic text-2xl font-bold mt-1 text-gold-400">سُورَةُ الفَاتِحَةِ</h3>
+                <h3 id="surahHeaderTitleAr" class="notranslate font-arabic text-2xl font-bold mt-1 text-gold-400" translate="no" lang="ar" dir="rtl">سُورَةُ الفَاتِحَةِ</h3>
                 <p id="surahHeaderTitleEn" class="text-xs text-slate-200 font-medium">The Opening</p>
                 
                 <div class="mt-2.5 pt-2 border-t border-emerald-800/80">
-                  <p class="font-quran-text text-lg text-gold-300 leading-normal">
+                  <p class="notranslate font-quran-text text-lg text-gold-300 leading-normal" translate="no" lang="ar" dir="rtl">
                     بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
                   </p>
                 </div>
@@ -505,7 +506,7 @@
 
               <!-- Current Arabic Phrase in Crystal Clear Calligraphy -->
               <div class="py-1">
-                <h3 id="currentDhikrAr" class="font-arabic text-2xl font-bold text-emerald-950 dark:text-emerald-300">سُبْحَانَ اللَّهِ</h3>
+                <h3 id="currentDhikrAr" class="notranslate font-arabic text-2xl font-bold text-emerald-950 dark:text-emerald-300" translate="no" lang="ar" dir="rtl">سُبْحَانَ اللَّهِ</h3>
               </div>
 
               <!-- Giant Interactive Tap Dial with Dynamic SVG Progress Arc -->
@@ -1247,8 +1248,8 @@
               </button>
             </div>
           </div>
-          <p class="font-quran-text text-right text-emerald-950 dark:text-white font-normal" style="font-size: ${quranFontSize}px;">
-            ${v.ar} <span class="ayah-marker">﴿${toArabicDigits(v.id)}﴾</span>
+          <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-normal" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px;">
+            ${v.ar} <span class="ayah-marker notranslate" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
           </p>
           ${showTransliteration && v.tr ? `<p class="text-left text-[11px] text-emerald-800 dark:text-emerald-400/90 font-mono italic leading-tight pt-0.5">${v.tr}</p>` : ''}
           <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed pt-0.5">
@@ -1482,7 +1483,7 @@
                 ${item.done ? '✓ Completed' : `${item.current}x`}
               </button>
             </div>
-            <p class="font-arabic text-right text-base font-bold text-emerald-950 dark:text-emerald-100 leading-relaxed">${item.ar}</p>
+            <p class="notranslate font-arabic text-right text-base font-bold text-emerald-950 dark:text-emerald-100 leading-relaxed" translate="no" lang="ar" dir="rtl">${item.ar}</p>
             ${showTransliteration && item.tr ? `<p class="text-left text-[11px] text-emerald-800 dark:text-emerald-400/90 font-mono italic leading-tight">${item.tr}</p>` : ''}
             <p class="text-left text-xs text-slate-600 dark:text-slate-300 leading-normal">${item.en}</p>
           </div>
