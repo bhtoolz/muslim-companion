@@ -61,10 +61,13 @@
       font-family: 'Cairo', sans-serif;
     }
     .font-quran-text {
-      font-family: "Amiri Quran", "Scheherazade New", serif;
-      line-height: 2.3;
-      letter-spacing: 0.01em;
+      font-family: 'Scheherazade New', 'Amiri Quran', 'Amiri', serif;
+      font-weight: 600;
+      line-height: 2.35;
+      letter-spacing: 0.15px;
       word-spacing: 0.12em;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
     .emerald-gradient {
       background: linear-gradient(135deg, #0B3E2F 0%, #072C21 100%);
@@ -317,10 +320,10 @@
                     </button>
                   </div>
                 </div>
-                <p id="hadithMatnAr" class="notranslate font-arabic text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed" translate="no" lang="ar" dir="rtl">
+                <p id="hadithMatnAr" class="notranslate font-arabic text-right text-[19px] text-emerald-950 dark:text-emerald-100 font-bold leading-[2.2]" translate="no" lang="ar" dir="rtl">
                   إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
                 </p>
-                <p id="hadithMatnEn" class="text-xs text-slate-600 dark:text-slate-300 leading-normal">
+                <p id="hadithMatnEn" class="text-[14px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal">
                   "Actions are judged by intentions, and every person will be rewarded according to their intention."
                 </p>
                 <div class="pt-1 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-[10px] text-slate-400">
@@ -416,8 +419,11 @@
                 </div>
               </div>
 
-              <!-- Surah Navigation Pills (14 Surahs & Daily Ayat) -->
-              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
+              <!-- Surah Navigation Pills with 114 Index & Quick Daily Shortcuts -->
+              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar items-center">
+                <button onclick="openSurahIndexModal()" class="px-3.5 py-1 rounded-full font-bold bg-gold-500 hover:bg-gold-400 text-slate-950 flex items-center gap-1.5 shadow-xs flex-shrink-0 active:scale-95 transition">
+                  <i data-lucide="book-open" class="w-3.5 h-3.5 fill-current"></i> All 114 Surahs
+                </button>
                 <button onclick="loadSurah('fatihah')" id="surah-pill-fatihah" class="px-3 py-1 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">1. Al-Fatihah</button>
                 <button onclick="loadSurah('kursi')" id="surah-pill-kursi" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">2:255 Ayat al-Kursi</button>
                 <button onclick="loadSurah('qadr')" id="surah-pill-qadr" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">97. Al-Qadr</button>
@@ -434,8 +440,13 @@
                 <button onclick="loadSurah('mulk')" id="surah-pill-mulk" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">67. Al-Mulk</button>
               </div>
 
-              <!-- Surah Banner Card -->
-              <div class="emerald-gradient text-white rounded-2xl p-3.5 text-center relative overflow-hidden border border-emerald-700/50 shadow-sm">
+              <!-- Surah Banner Card (Clickable to browse 114 Index) -->
+              <div onclick="openSurahIndexModal()" title="Click to browse all 114 Surahs" class="emerald-gradient text-white rounded-2xl p-3.5 text-center relative overflow-hidden border border-emerald-700/50 shadow-sm cursor-pointer group hover:border-gold-500/50 transition">
+                <div class="absolute top-1.5 right-2 opacity-70 group-hover:opacity-100 transition">
+                  <span class="text-[9px] font-bold bg-emerald-950/80 border border-emerald-600/40 text-gold-300 px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+                    Index ▾
+                  </span>
+                </div>
                 <div class="flex items-center justify-between text-[10px] text-gold-300 uppercase font-semibold">
                   <span id="surahMetaType">Meccan</span>
                   <span id="surahMetaVerses">7 Verses</span>
@@ -647,7 +658,7 @@
     let isArabic = false;
     let isDark = false;
     let currentCityIndex = 0;
-    let quranFontSize = 20; // Default px
+    let quranFontSize = 25; // Default px
     let showTransliteration = true;
     let isTasbeehSoundOn = true;
     let bookmarkedVerses = {};
@@ -1407,11 +1418,11 @@
               </button>
             </div>
           </div>
-          <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-normal" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px;">
-            ${v.ar} <span class="ayah-marker notranslate" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
+          <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-semibold select-text" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px; line-height: 2.35;">
+            ${v.ar} <span class="ayah-marker notranslate font-sans font-bold text-gold-600 dark:text-gold-400" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
           </p>
-          ${showTransliteration && v.tr ? `<p class="text-left text-[11px] text-emerald-800 dark:text-emerald-400/90 font-mono italic leading-tight pt-0.5">${v.tr}</p>` : ''}
-          <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed pt-0.5">
+          ${showTransliteration && v.tr ? `<p class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-1 select-text">${v.tr}</p>` : ''}
+          <p class="text-left text-[14px] text-slate-700 dark:text-slate-200 font-sans leading-relaxed pt-1 select-text font-normal">
             ${v.en}
           </p>
         `;
@@ -1427,7 +1438,7 @@
 
     function changeFontSize(delta) {
       playClickSound();
-      quranFontSize = Math.max(16, Math.min(30, quranFontSize + delta));
+      quranFontSize = Math.max(18, Math.min(36, quranFontSize + delta));
       renderQuranVerses();
       saveState();
     }
@@ -1799,9 +1810,9 @@
                 ${item.done ? '✓ Completed' : `${item.current}x`}
               </button>
             </div>
-            <p class="notranslate font-arabic text-right text-base font-bold text-emerald-950 dark:text-emerald-100 leading-relaxed" translate="no" lang="ar" dir="rtl">${item.ar}</p>
-            ${showTransliteration && item.tr ? `<p class="text-left text-[11px] text-emerald-800 dark:text-emerald-400/90 font-mono italic leading-tight">${item.tr}</p>` : ''}
-            <p class="text-left text-xs text-slate-600 dark:text-slate-300 leading-normal">${item.en}</p>
+            <p class="notranslate font-arabic text-right text-[19px] font-bold text-emerald-950 dark:text-emerald-100 leading-[2.2]" translate="no" lang="ar" dir="rtl">${item.ar}</p>
+            ${showTransliteration && item.tr ? `<p class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-0.5">${item.tr}</p>` : ''}
+            <p class="text-left text-[14px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal pt-0.5">${item.en}</p>
           </div>
         `;
         container.appendChild(card);
@@ -2219,6 +2230,213 @@
           currentCityIndex = matchedIdx;
         }
       } catch (e) {}
+    }
+
+    
+    // Complete 114 Surahs Directory with verified Uthmani calligraphy & metadata
+    const all114Surahs = [{"number": 1, "titleAr": "سُورَةُ ٱلْفَاتِحَةِ", "titleEn": "Al-Faatiha", "meaningEn": "The Opening", "versesCount": 7, "type": "Meccan"}, {"number": 2, "titleAr": "سُورَةُ البَقَرَةِ", "titleEn": "Al-Baqara", "meaningEn": "The Cow", "versesCount": 286, "type": "Medinan"}, {"number": 3, "titleAr": "سُورَةُ آلِ عِمۡرَانَ", "titleEn": "Aal-i-Imraan", "meaningEn": "The Family of Imraan", "versesCount": 200, "type": "Medinan"}, {"number": 4, "titleAr": "سُورَةُ النِّسَاءِ", "titleEn": "An-Nisaa", "meaningEn": "The Women", "versesCount": 176, "type": "Medinan"}, {"number": 5, "titleAr": "سُورَةُ المَائـِدَةِ", "titleEn": "Al-Maaida", "meaningEn": "The Table", "versesCount": 120, "type": "Medinan"}, {"number": 6, "titleAr": "سُورَةُ الأَنۡعَامِ", "titleEn": "Al-An'aam", "meaningEn": "The Cattle", "versesCount": 165, "type": "Meccan"}, {"number": 7, "titleAr": "سُورَةُ الأَعۡرَافِ", "titleEn": "Al-A'raaf", "meaningEn": "The Heights", "versesCount": 206, "type": "Meccan"}, {"number": 8, "titleAr": "سُورَةُ الأَنفَالِ", "titleEn": "Al-Anfaal", "meaningEn": "The Spoils of War", "versesCount": 75, "type": "Medinan"}, {"number": 9, "titleAr": "سُورَةُ التَّوۡبَةِ", "titleEn": "At-Tawba", "meaningEn": "The Repentance", "versesCount": 129, "type": "Medinan"}, {"number": 10, "titleAr": "سُورَةُ يُونُسَ", "titleEn": "Yunus", "meaningEn": "Jonas", "versesCount": 109, "type": "Meccan"}, {"number": 11, "titleAr": "سُورَةُ هُودٍ", "titleEn": "Hud", "meaningEn": "Hud", "versesCount": 123, "type": "Meccan"}, {"number": 12, "titleAr": "سُورَةُ يُوسُفَ", "titleEn": "Yusuf", "meaningEn": "Joseph", "versesCount": 111, "type": "Meccan"}, {"number": 13, "titleAr": "سُورَةُ الرَّعۡدِ", "titleEn": "Ar-Ra'd", "meaningEn": "The Thunder", "versesCount": 43, "type": "Medinan"}, {"number": 14, "titleAr": "سُورَةُ إِبۡرَاهِيمَ", "titleEn": "Ibrahim", "meaningEn": "Abraham", "versesCount": 52, "type": "Meccan"}, {"number": 15, "titleAr": "سُورَةُ الحِجۡرِ", "titleEn": "Al-Hijr", "meaningEn": "The Rock", "versesCount": 99, "type": "Meccan"}, {"number": 16, "titleAr": "سُورَةُ النَّحۡلِ", "titleEn": "An-Nahl", "meaningEn": "The Bee", "versesCount": 128, "type": "Meccan"}, {"number": 17, "titleAr": "سُورَةُ الإِسۡرَاءِ", "titleEn": "Al-Israa", "meaningEn": "The Night Journey", "versesCount": 111, "type": "Meccan"}, {"number": 18, "titleAr": "سُورَةُ الكَهۡفِ", "titleEn": "Al-Kahf", "meaningEn": "The Cave", "versesCount": 110, "type": "Meccan"}, {"number": 19, "titleAr": "سُورَةُ مَرۡيَمَ", "titleEn": "Maryam", "meaningEn": "Mary", "versesCount": 98, "type": "Meccan"}, {"number": 20, "titleAr": "سُورَةُ طه", "titleEn": "Taa-Haa", "meaningEn": "Taa-Haa", "versesCount": 135, "type": "Meccan"}, {"number": 21, "titleAr": "سُورَةُ الأَنبِيَاءِ", "titleEn": "Al-Anbiyaa", "meaningEn": "The Prophets", "versesCount": 112, "type": "Meccan"}, {"number": 22, "titleAr": "سُورَةُ الحَجِّ", "titleEn": "Al-Hajj", "meaningEn": "The Pilgrimage", "versesCount": 78, "type": "Medinan"}, {"number": 23, "titleAr": "سُورَةُ المُؤۡمِنُونَ", "titleEn": "Al-Muminoon", "meaningEn": "The Believers", "versesCount": 118, "type": "Meccan"}, {"number": 24, "titleAr": "سُورَةُ النُّورِ", "titleEn": "An-Noor", "meaningEn": "The Light", "versesCount": 64, "type": "Medinan"}, {"number": 25, "titleAr": "سُورَةُ الفُرۡقَانِ", "titleEn": "Al-Furqaan", "meaningEn": "The Criterion", "versesCount": 77, "type": "Meccan"}, {"number": 26, "titleAr": "سُورَةُ الشُّعَرَاءِ", "titleEn": "Ash-Shu'araa", "meaningEn": "The Poets", "versesCount": 227, "type": "Meccan"}, {"number": 27, "titleAr": "سُورَةُ النَّمۡلِ", "titleEn": "An-Naml", "meaningEn": "The Ant", "versesCount": 93, "type": "Meccan"}, {"number": 28, "titleAr": "سُورَةُ القَصَصِ", "titleEn": "Al-Qasas", "meaningEn": "The Stories", "versesCount": 88, "type": "Meccan"}, {"number": 29, "titleAr": "سُورَةُ العَنكَبُوتِ", "titleEn": "Al-Ankaboot", "meaningEn": "The Spider", "versesCount": 69, "type": "Meccan"}, {"number": 30, "titleAr": "سُورَةُ الرُّومِ", "titleEn": "Ar-Room", "meaningEn": "The Romans", "versesCount": 60, "type": "Meccan"}, {"number": 31, "titleAr": "سُورَةُ لُقۡمَانَ", "titleEn": "Luqman", "meaningEn": "Luqman", "versesCount": 34, "type": "Meccan"}, {"number": 32, "titleAr": "سُورَةُ السَّجۡدَةِ", "titleEn": "As-Sajda", "meaningEn": "The Prostration", "versesCount": 30, "type": "Meccan"}, {"number": 33, "titleAr": "سُورَةُ الأَحۡزَابِ", "titleEn": "Al-Ahzaab", "meaningEn": "The Clans", "versesCount": 73, "type": "Medinan"}, {"number": 34, "titleAr": "سُورَةُ سَبَإٍ", "titleEn": "Saba", "meaningEn": "Sheba", "versesCount": 54, "type": "Meccan"}, {"number": 35, "titleAr": "سُورَةُ فَاطِرٍ", "titleEn": "Faatir", "meaningEn": "The Originator", "versesCount": 45, "type": "Meccan"}, {"number": 36, "titleAr": "سُورَةُ يسٓ", "titleEn": "Yaseen", "meaningEn": "Yaseen", "versesCount": 83, "type": "Meccan"}, {"number": 37, "titleAr": "سُورَةُ الصَّافَّاتِ", "titleEn": "As-Saaffaat", "meaningEn": "Those drawn up in Ranks", "versesCount": 182, "type": "Meccan"}, {"number": 38, "titleAr": "سُورَةُ صٓ", "titleEn": "Saad", "meaningEn": "The letter Saad", "versesCount": 88, "type": "Meccan"}, {"number": 39, "titleAr": "سُورَةُ الزُّمَرِ", "titleEn": "Az-Zumar", "meaningEn": "The Groups", "versesCount": 75, "type": "Meccan"}, {"number": 40, "titleAr": "سُورَةُ غَافِرٍ", "titleEn": "Ghafir", "meaningEn": "The Forgiver", "versesCount": 85, "type": "Meccan"}, {"number": 41, "titleAr": "سُورَةُ فُصِّلَتۡ", "titleEn": "Fussilat", "meaningEn": "Explained in detail", "versesCount": 54, "type": "Meccan"}, {"number": 42, "titleAr": "سُورَةُ الشُّورَىٰ", "titleEn": "Ash-Shura", "meaningEn": "Consultation", "versesCount": 53, "type": "Meccan"}, {"number": 43, "titleAr": "سُورَةُ الزُّخۡرُفِ", "titleEn": "Az-Zukhruf", "meaningEn": "Ornaments of gold", "versesCount": 89, "type": "Meccan"}, {"number": 44, "titleAr": "سُورَةُ الدُّخَانِ", "titleEn": "Ad-Dukhaan", "meaningEn": "The Smoke", "versesCount": 59, "type": "Meccan"}, {"number": 45, "titleAr": "سُورَةُ الجَاثِيَةِ", "titleEn": "Al-Jaathiya", "meaningEn": "Crouching", "versesCount": 37, "type": "Meccan"}, {"number": 46, "titleAr": "سُورَةُ الأَحۡقَافِ", "titleEn": "Al-Ahqaf", "meaningEn": "The Dunes", "versesCount": 35, "type": "Meccan"}, {"number": 47, "titleAr": "سُورَةُ مُحَمَّدٍ", "titleEn": "Muhammad", "meaningEn": "Muhammad", "versesCount": 38, "type": "Medinan"}, {"number": 48, "titleAr": "سُورَةُ الفَتۡحِ", "titleEn": "Al-Fath", "meaningEn": "The Victory", "versesCount": 29, "type": "Medinan"}, {"number": 49, "titleAr": "سُورَةُ الحُجُرَاتِ", "titleEn": "Al-Hujuraat", "meaningEn": "The Inner Apartments", "versesCount": 18, "type": "Medinan"}, {"number": 50, "titleAr": "سُورَةُ قٓ", "titleEn": "Qaaf", "meaningEn": "The letter Qaaf", "versesCount": 45, "type": "Meccan"}, {"number": 51, "titleAr": "سُورَةُ الذَّارِيَاتِ", "titleEn": "Adh-Dhaariyat", "meaningEn": "The Winnowing Winds", "versesCount": 60, "type": "Meccan"}, {"number": 52, "titleAr": "سُورَةُ الطُّورِ", "titleEn": "At-Tur", "meaningEn": "The Mount", "versesCount": 49, "type": "Meccan"}, {"number": 53, "titleAr": "سُورَةُ النَّجۡمِ", "titleEn": "An-Najm", "meaningEn": "The Star", "versesCount": 62, "type": "Meccan"}, {"number": 54, "titleAr": "سُورَةُ القَمَرِ", "titleEn": "Al-Qamar", "meaningEn": "The Moon", "versesCount": 55, "type": "Meccan"}, {"number": 55, "titleAr": "سُورَةُ الرَّحۡمَٰن", "titleEn": "Ar-Rahmaan", "meaningEn": "The Beneficent", "versesCount": 78, "type": "Medinan"}, {"number": 56, "titleAr": "سُورَةُ الوَاقِعَةِ", "titleEn": "Al-Waaqia", "meaningEn": "The Inevitable", "versesCount": 96, "type": "Meccan"}, {"number": 57, "titleAr": "سُورَةُ الحَدِيدِ", "titleEn": "Al-Hadid", "meaningEn": "The Iron", "versesCount": 29, "type": "Medinan"}, {"number": 58, "titleAr": "سُورَةُ المُجَادلَةِ", "titleEn": "Al-Mujaadila", "meaningEn": "The Pleading Woman", "versesCount": 22, "type": "Medinan"}, {"number": 59, "titleAr": "سُورَةُ الحَشۡرِ", "titleEn": "Al-Hashr", "meaningEn": "The Exile", "versesCount": 24, "type": "Medinan"}, {"number": 60, "titleAr": "سُورَةُ المُمۡتَحنَةِ", "titleEn": "Al-Mumtahana", "meaningEn": "She that is to be examined", "versesCount": 13, "type": "Medinan"}, {"number": 61, "titleAr": "سُورَةُ الصَّفِّ", "titleEn": "As-Saff", "meaningEn": "The Ranks", "versesCount": 14, "type": "Medinan"}, {"number": 62, "titleAr": "سُورَةُ الجُمُعَةِ", "titleEn": "Al-Jumu'a", "meaningEn": "Friday", "versesCount": 11, "type": "Medinan"}, {"number": 63, "titleAr": "سُورَةُ المُنَافِقُونَ", "titleEn": "Al-Munaafiqoon", "meaningEn": "The Hypocrites", "versesCount": 11, "type": "Medinan"}, {"number": 64, "titleAr": "سُورَةُ التَّغَابُنِ", "titleEn": "At-Taghaabun", "meaningEn": "Mutual Disillusion", "versesCount": 18, "type": "Medinan"}, {"number": 65, "titleAr": "سُورَةُ الطَّلَاقِ", "titleEn": "At-Talaaq", "meaningEn": "Divorce", "versesCount": 12, "type": "Medinan"}, {"number": 66, "titleAr": "سُورَةُ التَّحۡرِيمِ", "titleEn": "At-Tahrim", "meaningEn": "The Prohibition", "versesCount": 12, "type": "Medinan"}, {"number": 67, "titleAr": "سُورَةُ المُلۡكِ", "titleEn": "Al-Mulk", "meaningEn": "The Sovereignty", "versesCount": 30, "type": "Meccan"}, {"number": 68, "titleAr": "سُورَةُ القَلَمِ", "titleEn": "Al-Qalam", "meaningEn": "The Pen", "versesCount": 52, "type": "Meccan"}, {"number": 69, "titleAr": "سُورَةُ الحَاقَّةِ", "titleEn": "Al-Haaqqa", "meaningEn": "The Reality", "versesCount": 52, "type": "Meccan"}, {"number": 70, "titleAr": "سُورَةُ المَعَارِجِ", "titleEn": "Al-Ma'aarij", "meaningEn": "The Ascending Stairways", "versesCount": 44, "type": "Meccan"}, {"number": 71, "titleAr": "سُورَةُ نُوحٍ", "titleEn": "Nooh", "meaningEn": "Noah", "versesCount": 28, "type": "Meccan"}, {"number": 72, "titleAr": "سُورَةُ الجِنِّ", "titleEn": "Al-Jinn", "meaningEn": "The Jinn", "versesCount": 28, "type": "Meccan"}, {"number": 73, "titleAr": "سُورَةُ المُزَّمِّلِ", "titleEn": "Al-Muzzammil", "meaningEn": "The Enshrouded One", "versesCount": 20, "type": "Meccan"}, {"number": 74, "titleAr": "سُورَةُ المُدَّثِّرِ", "titleEn": "Al-Muddaththir", "meaningEn": "The Cloaked One", "versesCount": 56, "type": "Meccan"}, {"number": 75, "titleAr": "سُورَةُ القِيَامَةِ", "titleEn": "Al-Qiyaama", "meaningEn": "The Resurrection", "versesCount": 40, "type": "Meccan"}, {"number": 76, "titleAr": "سُورَةُ الإِنسَانِ", "titleEn": "Al-Insaan", "meaningEn": "Man", "versesCount": 31, "type": "Medinan"}, {"number": 77, "titleAr": "سُورَةُ المُرۡسَلَاتِ", "titleEn": "Al-Mursalaat", "meaningEn": "The Emissaries", "versesCount": 50, "type": "Meccan"}, {"number": 78, "titleAr": "سُورَةُ النَّبَإِ", "titleEn": "An-Naba", "meaningEn": "The Announcement", "versesCount": 40, "type": "Meccan"}, {"number": 79, "titleAr": "سُورَةُ النَّازِعَاتِ", "titleEn": "An-Naazi'aat", "meaningEn": "Those who drag forth", "versesCount": 46, "type": "Meccan"}, {"number": 80, "titleAr": "سُورَةُ عَبَسَ", "titleEn": "Abasa", "meaningEn": "He frowned", "versesCount": 42, "type": "Meccan"}, {"number": 81, "titleAr": "سُورَةُ التَّكۡوِيرِ", "titleEn": "At-Takwir", "meaningEn": "The Overthrowing", "versesCount": 29, "type": "Meccan"}, {"number": 82, "titleAr": "سُورَةُ الانفِطَارِ", "titleEn": "Al-Infitaar", "meaningEn": "The Cleaving", "versesCount": 19, "type": "Meccan"}, {"number": 83, "titleAr": "سُورَةُ المُطَفِّفِينَ", "titleEn": "Al-Mutaffifin", "meaningEn": "Defrauding", "versesCount": 36, "type": "Meccan"}, {"number": 84, "titleAr": "سُورَةُ الانشِقَاقِ", "titleEn": "Al-Inshiqaaq", "meaningEn": "The Splitting Open", "versesCount": 25, "type": "Meccan"}, {"number": 85, "titleAr": "سُورَةُ البُرُوجِ", "titleEn": "Al-Burooj", "meaningEn": "The Constellations", "versesCount": 22, "type": "Meccan"}, {"number": 86, "titleAr": "سُورَةُ الطَّارِقِ", "titleEn": "At-Taariq", "meaningEn": "The Morning Star", "versesCount": 17, "type": "Meccan"}, {"number": 87, "titleAr": "سُورَةُ الأَعۡلَىٰ", "titleEn": "Al-A'laa", "meaningEn": "The Most High", "versesCount": 19, "type": "Meccan"}, {"number": 88, "titleAr": "سُورَةُ الغَاشِيَةِ", "titleEn": "Al-Ghaashiya", "meaningEn": "The Overwhelming", "versesCount": 26, "type": "Meccan"}, {"number": 89, "titleAr": "سُورَةُ الفَجۡرِ", "titleEn": "Al-Fajr", "meaningEn": "The Dawn", "versesCount": 30, "type": "Meccan"}, {"number": 90, "titleAr": "سُورَةُ البَلَدِ", "titleEn": "Al-Balad", "meaningEn": "The City", "versesCount": 20, "type": "Meccan"}, {"number": 91, "titleAr": "سُورَةُ الشَّمۡسِ", "titleEn": "Ash-Shams", "meaningEn": "The Sun", "versesCount": 15, "type": "Meccan"}, {"number": 92, "titleAr": "سُورَةُ اللَّيۡلِ", "titleEn": "Al-Lail", "meaningEn": "The Night", "versesCount": 21, "type": "Meccan"}, {"number": 93, "titleAr": "سُورَةُ الضُّحَىٰ", "titleEn": "Ad-Dhuhaa", "meaningEn": "The Morning Hours", "versesCount": 11, "type": "Meccan"}, {"number": 94, "titleAr": "سُورَةُ الشَّرۡحِ", "titleEn": "Ash-Sharh", "meaningEn": "The Consolation", "versesCount": 8, "type": "Meccan"}, {"number": 95, "titleAr": "سُورَةُ التِّينِ", "titleEn": "At-Tin", "meaningEn": "The Fig", "versesCount": 8, "type": "Meccan"}, {"number": 96, "titleAr": "سُورَةُ العَلَقِ", "titleEn": "Al-Alaq", "meaningEn": "The Clot", "versesCount": 19, "type": "Meccan"}, {"number": 97, "titleAr": "سُورَةُ القَدۡرِ", "titleEn": "Al-Qadr", "meaningEn": "The Power, Fate", "versesCount": 5, "type": "Meccan"}, {"number": 98, "titleAr": "سُورَةُ البَيِّنَةِ", "titleEn": "Al-Bayyina", "meaningEn": "The Evidence", "versesCount": 8, "type": "Medinan"}, {"number": 99, "titleAr": "سُورَةُ الزَّلۡزَلَةِ", "titleEn": "Az-Zalzala", "meaningEn": "The Earthquake", "versesCount": 8, "type": "Medinan"}, {"number": 100, "titleAr": "سُورَةُ العَادِيَاتِ", "titleEn": "Al-Aadiyaat", "meaningEn": "The Chargers", "versesCount": 11, "type": "Meccan"}, {"number": 101, "titleAr": "سُورَةُ القَارِعَةِ", "titleEn": "Al-Qaari'a", "meaningEn": "The Calamity", "versesCount": 11, "type": "Meccan"}, {"number": 102, "titleAr": "سُورَةُ التَّكَاثُرِ", "titleEn": "At-Takaathur", "meaningEn": "Competition", "versesCount": 8, "type": "Meccan"}, {"number": 103, "titleAr": "سُورَةُ العَصۡرِ", "titleEn": "Al-Asr", "meaningEn": "The Declining Day, Epoch", "versesCount": 3, "type": "Meccan"}, {"number": 104, "titleAr": "سُورَةُ الهُمَزَةِ", "titleEn": "Al-Humaza", "meaningEn": "The Traducer", "versesCount": 9, "type": "Meccan"}, {"number": 105, "titleAr": "سُورَةُ الفِيلِ", "titleEn": "Al-Fil", "meaningEn": "The Elephant", "versesCount": 5, "type": "Meccan"}, {"number": 106, "titleAr": "سُورَةُ قُرَيۡشٍ", "titleEn": "Quraish", "meaningEn": "Quraysh", "versesCount": 4, "type": "Meccan"}, {"number": 107, "titleAr": "سُورَةُ المَاعُونِ", "titleEn": "Al-Maa'un", "meaningEn": "Almsgiving", "versesCount": 7, "type": "Meccan"}, {"number": 108, "titleAr": "سُورَةُ الكَوۡثَرِ", "titleEn": "Al-Kawthar", "meaningEn": "Abundance", "versesCount": 3, "type": "Meccan"}, {"number": 109, "titleAr": "سُورَةُ الكَافِرُونَ", "titleEn": "Al-Kaafiroon", "meaningEn": "The Disbelievers", "versesCount": 6, "type": "Meccan"}, {"number": 110, "titleAr": "سُورَةُ النَّصۡرِ", "titleEn": "An-Nasr", "meaningEn": "Divine Support", "versesCount": 3, "type": "Medinan"}, {"number": 111, "titleAr": "سُورَةُ المَسَدِ", "titleEn": "Al-Masad", "meaningEn": "The Palm Fibre", "versesCount": 5, "type": "Meccan"}, {"number": 112, "titleAr": "سُورَةُ الإِخۡلَاصِ", "titleEn": "Al-Ikhlaas", "meaningEn": "Sincerity", "versesCount": 4, "type": "Meccan"}, {"number": 113, "titleAr": "سُورَةُ الفَلَقِ", "titleEn": "Al-Falaq", "meaningEn": "The Dawn", "versesCount": 5, "type": "Meccan"}, {"number": 114, "titleAr": "سُورَةُ النَّاسِ", "titleEn": "An-Naas", "meaningEn": "Mankind", "versesCount": 6, "type": "Meccan"}];
+    let currentSurahFilter = 'all';
+
+    function openSurahIndexModal() {
+      playClickSound();
+      const modal = document.getElementById("surahIndexModal");
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      renderSurahIndexList();
+      const input = document.getElementById("surahSearchInput");
+      if (input) {
+        input.value = "";
+        setTimeout(() => input.focus(), 100);
+      }
+      lucide.createIcons();
+    }
+
+    function closeSurahIndexModal() {
+      playClickSound();
+      const modal = document.getElementById("surahIndexModal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    function setSurahFilter(filter) {
+      playClickSound();
+      currentSurahFilter = filter;
+      const allBtn = document.getElementById("surahFilterAll");
+      const mecBtn = document.getElementById("surahFilterMeccan");
+      const medBtn = document.getElementById("surahFilterMedinan");
+      
+      [allBtn, mecBtn, medBtn].forEach(b => {
+        if (b) {
+          b.className = "px-2.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 transition";
+        }
+      });
+
+      if (filter === 'all' && allBtn) allBtn.className = "px-2.5 py-0.5 rounded-full bg-emerald-800 text-white font-bold transition";
+      if (filter === 'meccan' && mecBtn) mecBtn.className = "px-2.5 py-0.5 rounded-full bg-emerald-800 text-white font-bold transition";
+      if (filter === 'medinan' && medBtn) medBtn.className = "px-2.5 py-0.5 rounded-full bg-emerald-800 text-white font-bold transition";
+      
+      const q = document.getElementById("surahSearchInput") ? document.getElementById("surahSearchInput").value : "";
+      filterSurahsList(q);
+    }
+
+    function filterSurahsList(query) {
+      renderSurahIndexList(query);
+    }
+
+    function renderSurahIndexList(query = "") {
+      const container = document.getElementById("surahIndexCardsContainer");
+      if (!container) return;
+      container.innerHTML = "";
+      
+      const q = query.trim().toLowerCase();
+      const filtered = all114Surahs.filter(s => {
+        if (currentSurahFilter === 'meccan' && s.type.toLowerCase() !== 'meccan') return false;
+        if (currentSurahFilter === 'medinan' && s.type.toLowerCase() !== 'medinan') return false;
+        if (!q) return true;
+        return (
+          String(s.number).includes(q) ||
+          s.titleEn.toLowerCase().includes(q) ||
+          s.meaningEn.toLowerCase().includes(q) ||
+          s.titleAr.includes(q)
+        );
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="p-6 text-center text-xs text-slate-400">No Surah found matching "${query}"</div>`;
+        return;
+      }
+
+      filtered.forEach(s => {
+        const isCurrent = (surahsData[currentSurahKey] && surahsData[currentSurahKey].number === s.number);
+        const card = document.createElement("div");
+        card.className = `flex items-center justify-between p-2.5 rounded-xl border transition cursor-pointer active:scale-[0.99] ${
+          isCurrent 
+            ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-600 shadow-xs" 
+            : "bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700/60 border-slate-200/80 dark:border-slate-700/70"
+        }`;
+        card.onclick = () => selectSurahFromIndex(s.number);
+
+        card.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-7 h-7 rounded-lg bg-gold-500/15 border border-gold-500/30 text-gold-600 dark:text-gold-400 font-bold text-xs flex items-center justify-center font-sans flex-shrink-0">
+              ${s.number}
+            </div>
+            <div class="min-w-0">
+              <h4 class="text-xs font-bold text-slate-800 dark:text-white truncate flex items-center gap-1.5">
+                ${s.titleEn}
+                <span class="text-[9px] font-normal px-1.5 py-0.2 rounded ${s.type === 'Meccan' ? 'bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300' : 'bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-300'}">
+                  ${s.type}
+                </span>
+              </h4>
+              <p class="text-[10px] text-slate-400 truncate">${s.meaningEn} • ${s.versesCount} Verses</p>
+            </div>
+          </div>
+          <div class="text-right flex-shrink-0 pl-2">
+            <p class="notranslate font-arabic text-base font-bold text-emerald-950 dark:text-emerald-200" translate="no" lang="ar" dir="rtl">
+              ${s.titleAr}
+            </p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    // Map of prebundled Surah numbers to keys
+    const surahNumToKey = {
+      1: 'fatihah',
+      97: 'qadr',
+      103: 'asr',
+      105: 'fil',
+      106: 'quraysh',
+      107: 'maun',
+      108: 'kawthar',
+      109: 'kafirun',
+      110: 'nasr',
+      112: 'ikhlas',
+      113: 'falaq',
+      114: 'nas',
+      67: 'mulk'
+    };
+
+    async function selectSurahFromIndex(surahNum) {
+      closeSurahIndexModal();
+      
+      // If prebundled, load immediately offline
+      if (surahNumToKey[surahNum] && surahsData[surahNumToKey[surahNum]]) {
+        loadSurah(surahNumToKey[surahNum]);
+        return;
+      }
+
+      const cacheKey = 'surah_dynamic_' + surahNum;
+      if (surahsData[cacheKey]) {
+        loadSurah(cacheKey);
+        return;
+      }
+
+      // Check localStorage cache
+      try {
+        const cachedRaw = localStorage.getItem('quran_cache_' + surahNum);
+        if (cachedRaw) {
+          const cachedSurah = JSON.parse(cachedRaw);
+          surahsData[cacheKey] = cachedSurah;
+          loadSurah(cacheKey);
+          return;
+        }
+      } catch (e) {}
+
+      // Show sleek loading state
+      const sInfo = all114Surahs.find(x => x.number === surahNum);
+      if (sInfo) {
+        document.getElementById("surahMetaType").innerText = sInfo.type;
+        document.getElementById("surahMetaVerses").innerText = `${sInfo.versesCount} Verses`;
+        document.getElementById("surahHeaderTitleAr").innerText = sInfo.titleAr;
+        document.getElementById("surahHeaderTitleEn").innerText = sInfo.titleEn;
+      }
+      const container = document.getElementById("quranVersesList");
+      container.innerHTML = `
+        <div class="p-10 text-center space-y-3">
+          <div class="w-8 h-8 mx-auto border-2 border-gold-500 border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-xs font-bold text-emerald-800 dark:text-emerald-400">Loading Surah ${sInfo ? sInfo.titleEn : surahNum} in Uthmani Script...</p>
+          <p class="text-[10px] text-slate-400">Direct from Holy Quran High-Speed CDN</p>
+        </div>
+      `;
+
+      try {
+        const resp = await fetch(`https://api.alquran.cloud/v1/surah/${surahNum}/editions/quran-uthmani,en.sahih`);
+        const json = await resp.json();
+        const uthmani = json.data[0];
+        const english = json.data[1];
+
+        const verses = uthmani.ayahs.map((a, idx) => ({
+          id: a.numberInSurah,
+          ar: a.text,
+          tr: "",
+          en: english.ayahs[idx] ? english.ayahs[idx].text : ""
+        }));
+
+        const dynamicSurah = {
+          number: surahNum,
+          titleAr: uthmani.name,
+          titleEn: uthmani.englishName,
+          type: uthmani.revelationType,
+          versesCount: uthmani.numberOfAyahs,
+          verses: verses
+        };
+
+        surahsData[cacheKey] = dynamicSurah;
+        try {
+          localStorage.setItem('quran_cache_' + surahNum, JSON.stringify(dynamicSurah));
+        } catch(e) {}
+
+        loadSurah(cacheKey);
+      } catch (err) {
+        container.innerHTML = `
+          <div class="p-6 text-center text-xs text-red-500 bg-red-50 dark:bg-red-950/40 rounded-xl space-y-2">
+            <p>Could not fetch Surah offline. Please check your internet connection or choose from pre-bundled Surahs.</p>
+            <button onclick="selectSurahFromIndex(${surahNum})" class="px-3 py-1 bg-red-600 text-white rounded-lg text-xs font-bold">Retry</button>
+          </div>
+        `;
+      }
     }
 
     function init() {
