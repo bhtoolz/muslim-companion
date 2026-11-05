@@ -446,7 +446,7 @@ html_content = r'''<!DOCTYPE html>
               </div>
 
               <!-- Verses Container -->
-              <div id="quranVersesList" class="space-y-2.5">
+              <div id="quranVersesList" class="space-y-2.5 pb-28">
                 <!-- Rendered dynamically by JS with Amiri Quran font -->
               </div>
             </div>
@@ -1337,6 +1337,44 @@ html_content = r'''<!DOCTYPE html>
 
       currentAyahAudio.play().then(() => {
         showToast("Reciting", `Surah ${surahsData[currentSurahKey].titleEn} • Ayah ${verseId} (Mishary Alafasy)`);
+
+        // Real Android / Mobile MediaSession Notification in Status Bar & Lock Screen
+        if ('mediaSession' in navigator) {
+          navigator.mediaSession.metadata = new MediaMetadata({
+            title: `Ayah ${verseId} • Surah ${surahsData[currentSurahKey].titleEn}`,
+            artist: 'Sheikh Mishary Rashid Alafasy',
+            album: `Muslim Companion (${surahsData[currentSurahKey].titleAr})`,
+            artwork: [
+              { src: 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=512&q=80', sizes: '512x512', type: 'image/jpeg' }
+            ]
+          });
+          navigator.mediaSession.playbackState = 'playing';
+
+          navigator.mediaSession.setActionHandler('play', () => {
+            if (currentAyahAudio) {
+              currentAyahAudio.play();
+              navigator.mediaSession.playbackState = 'playing';
+              updatePlayIcons(activePlayingIndex, true);
+            }
+          });
+          navigator.mediaSession.setActionHandler('pause', () => {
+            if (currentAyahAudio) {
+              currentAyahAudio.pause();
+              navigator.mediaSession.playbackState = 'paused';
+              updatePlayIcons(activePlayingIndex, false);
+            }
+          });
+          navigator.mediaSession.setActionHandler('previoustrack', () => {
+            if (index > 0) {
+              playAyahAudio(surahNum, surahsData[currentSurahKey].verses[index - 1].id, index - 1, onComplete);
+            }
+          });
+          navigator.mediaSession.setActionHandler('nexttrack', () => {
+            if (index + 1 < surahsData[currentSurahKey].verses.length) {
+              playAyahAudio(surahNum, surahsData[currentSurahKey].verses[index + 1].id, index + 1, onComplete);
+            }
+          });
+        }
       }).catch(err => {
         playChimeSound();
         if (onComplete) onComplete();
@@ -1351,6 +1389,9 @@ html_content = r'''<!DOCTYPE html>
           document.querySelectorAll('.ayah-card').forEach(c => {
             c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
           });
+          if ('mediaSession' in navigator) {
+            navigator.mediaSession.playbackState = 'none';
+          }
         }
       };
 
@@ -1379,6 +1420,9 @@ html_content = r'''<!DOCTYPE html>
       }
       activePlayingIndex = null;
       updatePlayIcons(-1, false);
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = 'paused';
+      }
     }
 
     function toggleAudioRecitation() {
@@ -1422,6 +1466,9 @@ html_content = r'''<!DOCTYPE html>
       document.querySelectorAll('.ayah-card').forEach(c => {
         c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
       });
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = 'none';
+      }
       lucide.createIcons();
     }
 
@@ -1429,7 +1476,7 @@ html_content = r'''<!DOCTYPE html>
       document.querySelectorAll('.ayah-card').forEach((c, i) => {
         if (i === idx) {
           c.classList.add("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
-          c.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          c.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
           c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
         }
