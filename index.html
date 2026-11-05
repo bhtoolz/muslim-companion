@@ -81,14 +81,14 @@
     <div class="flex-1 space-y-4 text-left max-w-md">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        FLUTTERFLOW SUITE • PRODUCTION ARCHITECTURE
+        FLUTTERFLOW • iOS & ANDROID
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
         Muslim Companion <br>
         <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
       </h1>
       <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-        An all-in-one, distraction-free Islamic companion designed for modern iOS & Android devices. Features hardware-calibrated Qibla compass with haptics, precision prayer calculations, authentic Hisn al-Muslim supplications, and crystal-clear Uthmani Quran typography—built with modular FlutterFlow architecture ready for immediate client handover.
+        A complete Islamic companion app for daily prayers, Qibla compass, Quran reading, and morning/evening adhkar. Built natively in FlutterFlow with local data storage so there are zero recurring server costs.
       </p>
 
       <div class="grid grid-cols-2 gap-2.5 text-xs">
@@ -178,21 +178,20 @@
             <!-- TAB 1: PRAYERS (DEFAULT) -->
             <div id="tab-prayers" class="tab-content space-y-3.5">
               
-              <!-- Header: City & Date -->
-              <div class="flex items-center justify-between pt-1">
-                <div>
-                  <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-900 dark:text-emerald-400">
-                    <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-500"></i>
-                    <span id="cityNameLabel">Makkah, Saudi Arabia</span>
-                  </div>
-                  <p id="hijriDateLabel" class="text-[11px] text-slate-500 font-medium">18 Shawwal 1447 AH</p>
-                </div>
-                <div class="flex items-center gap-1">
-                  <button onclick="playAdhanPreview()" title="Preview Adhan" class="px-2 py-1 text-[10px] font-bold rounded-lg bg-gold-500/15 text-gold-600 dark:text-gold-400 border border-gold-500/30 flex items-center gap-1">
-                    <i data-lucide="volume-2" class="w-3 h-3"></i> Adhan
-                  </button>
-                  <button onclick="changeCity()" class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-900 dark:text-emerald-300">
-                    City
+              <!-- Native Header: Clean Location Pill & Notification Bell -->
+              <div class="flex items-center justify-between pt-1 px-0.5">
+                <!-- Location Pill with Chevron -->
+                <button onclick="changeCity()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-200/70 dark:bg-slate-800 border border-slate-300/50 dark:border-slate-700/60 text-slate-800 dark:text-slate-100 text-xs font-bold hover:bg-slate-300/60 transition active:scale-95 shadow-xs">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
+                  <span id="cityNameLabel">Makkah</span>
+                  <i data-lucide="chevron-down" class="w-3 h-3 text-slate-400"></i>
+                </button>
+
+                <!-- Hijri Date & Notification Alert Bell -->
+                <div class="flex items-center gap-2">
+                  <span id="hijriDateLabel" class="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">18 Shawwal 1447</span>
+                  <button onclick="playAdhanPreview()" title="Prayer Notification Alert" class="w-7 h-7 rounded-full bg-slate-200/70 dark:bg-slate-800 border border-slate-300/50 dark:border-slate-700/60 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-emerald-600 active:scale-90 transition">
+                    <i data-lucide="bell" class="w-3.5 h-3.5"></i>
                   </button>
                 </div>
               </div>
@@ -903,8 +902,9 @@
     function changeCity() {
       playClickSound();
       currentCityIndex = (currentCityIndex + 1) % cities.length;
-      document.getElementById("cityNameLabel").innerText = cities[currentCityIndex].name;
+      document.getElementById("cityNameLabel").innerText = cities[currentCityIndex].name.split(',')[0];
       renderPrayerCards();
+      lucide.createIcons();
     }
 
     // Language toggle (RTL)
