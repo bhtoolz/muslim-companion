@@ -102,25 +102,55 @@
     </div>
 
     <!-- Right Column: Interactive Phone Device Mockup -->
-    <div class="relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 flex-shrink-0">
+    <div class="flex flex-col items-center gap-3 flex-shrink-0">
       
-      <!-- Dynamic Island / Speaker Notch -->
-      <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-50 flex items-center justify-center">
-        <div class="w-2 h-2 rounded-full bg-slate-900 border border-slate-800 mr-1.5"></div>
+      <!-- OS Platform Switcher Pill (iOS vs Android) -->
+      <div class="inline-flex items-center p-1 rounded-full bg-slate-950 border border-slate-800 shadow-xl text-xs font-semibold">
+        <button id="osIosBtn" onclick="setOS('ios')" class="px-4 py-1.5 rounded-full bg-blue-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.99-6.3-9.77-11.14-20.94-14.52-33.51-3.38-12.57-5.07-24.16-5.07-34.78 0-14.28 3.59-25.96 10.77-35.04 7.18-9.08 16.31-13.73 27.4-13.95 5.23 0 10.63 1.25 16.2 3.75 5.58 2.5 9.38 3.82 11.41 3.96 1.74-.27 5.76-1.68 12.06-4.23 6.3-2.55 11.75-3.69 16.36-3.43 14.5.98 25.4 6.32 32.7 16.03-12.83 7.82-19.14 18.39-18.92 31.7.22 10.54 4.3 19.34 12.24 26.4 4.13 3.69 8.8 6.41 14.01 8.15-2.83 8.25-6.52 16.66-11.08 25.23zM119.22 31.84c0-7.28 2.66-14.12 7.99-20.52 5.33-6.4 11.85-10.43 19.57-12.09.22 1.09.33 2.18.33 3.26 0 7.39-2.77 14.34-8.32 20.85-5.55 6.51-12.16 10.37-19.82 11.58-.11-1.09-.16-2.12-.16-3.08z"/></svg>
+          iPhone (iOS)
+        </button>
+        <button id="osAndroidBtn" onclick="setOS('android')" class="px-4 py-1.5 rounded-full text-slate-400 hover:text-white font-medium transition-all duration-200 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.414 13.8533 8.0833 12 8.0833c-1.8533 0-3.5902.3307-5.1368.8664L4.8409 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+          Android
+        </button>
       </div>
 
-      <!-- Device Screen Frame -->
-      <div id="deviceScreen" class="w-full h-full bg-[#F9F8F5] text-charcoal rounded-[38px] overflow-hidden flex flex-col relative transition-colors duration-200">
+      <!-- Phone Device Frame -->
+      <div id="deviceContainer" class="relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300">
         
-        <!-- Status Bar -->
-        <div class="pt-3 px-5 pb-1 flex items-center justify-between text-[11px] font-bold text-slate-600 dark:text-slate-400 z-40">
-          <span id="statusBarClock">09:41</span>
-          <div class="flex items-center gap-1.5">
-            <i data-lucide="signal" class="w-3.5 h-3.5"></i>
-            <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
-            <i data-lucide="battery" class="w-4 h-4"></i>
-          </div>
+        <!-- iOS Dynamic Island -->
+        <div id="iosDynamicIsland" class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-50 flex items-center justify-center transition-all duration-200">
+          <div class="w-2 h-2 rounded-full bg-slate-900 border border-slate-800 mr-1.5"></div>
         </div>
+
+        <!-- Android Punch-hole Camera -->
+        <div id="androidCameraDot" class="hidden absolute top-4 left-1/2 -translate-x-1/2 w-3.5 h-3.5 bg-black rounded-full z-50 border border-slate-900 shadow-inner">
+          <div class="w-1.5 h-1.5 rounded-full bg-slate-950 m-auto mt-0.5"></div>
+        </div>
+
+        <!-- Device Screen Frame -->
+        <div id="deviceScreen" class="w-full h-full bg-[#F9F8F5] text-charcoal rounded-[38px] overflow-hidden flex flex-col relative transition-all duration-200">
+          
+          <!-- Status Bar -->
+          <div id="statusBarContainer" class="pt-3 px-5 pb-1 flex items-center justify-between text-[11px] font-bold text-slate-600 dark:text-slate-400 z-40">
+            <span id="statusBarClock">09:41</span>
+            <!-- iOS Icons -->
+            <div id="statusBarIosIcons" class="flex items-center gap-1.5">
+              <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+              <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+              <i data-lucide="battery" class="w-4 h-4"></i>
+            </div>
+            <!-- Android Icons -->
+            <div id="statusBarAndroidIcons" class="hidden flex items-center gap-1.5 text-[10px]">
+              <span class="font-mono text-[9px] px-1 py-0.2 bg-slate-200 dark:bg-slate-700 rounded font-bold">5G</span>
+              <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+              <div class="flex items-center gap-0.5">
+                <span class="text-[9px]">98%</span>
+                <i data-lucide="battery-charging" class="w-3.5 h-3.5"></i>
+              </div>
+            </div>
+          </div>
 
         <!-- Scrollable Main Content Area -->
         <div id="appBody" class="flex-1 overflow-y-auto px-3.5 pt-1 pb-16 space-y-3">
@@ -388,12 +418,20 @@
           </button>
         </div>
 
+        <!-- Device Home Indicator Bar -->
+        <div class="absolute bottom-1 left-0 right-0 flex justify-center pointer-events-none z-50">
+          <div id="iosHomeBar" class="w-28 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
+          <div id="androidNavLine" class="hidden w-16 h-1 bg-slate-400/60 dark:bg-slate-500/60 rounded-full"></div>
+        </div>
+
       </div>
+    </div>
     </div>
   </div>
 
   <script>
     // State
+    let currentOS = 'ios';
     let isArabic = false;
     let isDark = false;
     let currentCityIndex = 0;
@@ -645,6 +683,57 @@
         screen.classList.remove("dark", "bg-[#0D1513]");
         screen.classList.add("bg-[#F9F8F5]");
       }
+    }
+
+    // OS Switcher (iOS vs Android)
+    function setOS(os) {
+      currentOS = os;
+      const iosBtn = document.getElementById("osIosBtn");
+      const androidBtn = document.getElementById("osAndroidBtn");
+      const container = document.getElementById("deviceContainer");
+      const screen = document.getElementById("deviceScreen");
+      const dynamicIsland = document.getElementById("iosDynamicIsland");
+      const cameraDot = document.getElementById("androidCameraDot");
+      const iosIcons = document.getElementById("statusBarIosIcons");
+      const androidIcons = document.getElementById("statusBarAndroidIcons");
+      const clock = document.getElementById("statusBarClock");
+      const iosBar = document.getElementById("iosHomeBar");
+      const androidBar = document.getElementById("androidNavLine");
+
+      if (os === 'ios') {
+        iosBtn.className = "px-4 py-1.5 rounded-full bg-blue-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm";
+        androidBtn.className = "px-4 py-1.5 rounded-full text-slate-400 hover:text-white font-medium transition-all duration-200 flex items-center gap-1.5";
+        
+        container.className = "relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 transition-all duration-300";
+        screen.className = screen.className.replace(/rounded-\[[^\]]+\]/, "rounded-[38px]");
+        
+        dynamicIsland.classList.remove("hidden");
+        cameraDot.classList.add("hidden");
+        
+        iosIcons.classList.remove("hidden");
+        androidIcons.classList.add("hidden");
+        clock.innerText = "09:41";
+
+        iosBar.classList.remove("hidden");
+        androidBar.classList.add("hidden");
+      } else {
+        androidBtn.className = "px-4 py-1.5 rounded-full bg-emerald-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm";
+        iosBtn.className = "px-4 py-1.5 rounded-full text-slate-400 hover:text-white font-medium transition-all duration-200 flex items-center gap-1.5";
+        
+        container.className = "relative w-[355px] h-[705px] bg-slate-900 rounded-[34px] p-2 shadow-2xl border-2 border-slate-600 transition-all duration-300";
+        screen.className = screen.className.replace(/rounded-\[[^\]]+\]/, "rounded-[26px]");
+        
+        dynamicIsland.classList.add("hidden");
+        cameraDot.classList.remove("hidden");
+        
+        iosIcons.classList.add("hidden");
+        androidIcons.classList.remove("hidden");
+        clock.innerText = "9:41 AM";
+
+        iosBar.classList.add("hidden");
+        androidBar.classList.remove("hidden");
+      }
+      lucide.createIcons();
     }
 
     // Countdown Timer Loop
