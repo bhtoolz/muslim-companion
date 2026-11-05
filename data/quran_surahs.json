@@ -1,0 +1,57 @@
+{
+  "surahs": [
+    {"number": 1, "name": "Al-Fatihah", "arabic": "الفاتحة", "meaning": "The Opening", "verses": 7, "type": "Meccan"},
+    {"number": 2, "name": "Al-Baqarah", "arabic": "البقرة", "meaning": "The Cow", "verses": 286, "type": "Medinan"},
+    {"number": 3, "name": "Ali 'Imran", "arabic": "آل عمران", "meaning": "Family of Imran", "verses": 200, "type": "Medinan"},
+    {"number": 4, "name": "An-Nisa", "arabic": "النساء", "meaning": "The Women", "verses": 176, "type": "Medinan"},
+    {"number": 18, "name": "Al-Kahf", "arabic": "الكهف", "meaning": "The Cave", "verses": 110, "type": "Meccan"},
+    {"number": 36, "name": "Ya-Sin", "arabic": "يس", "meaning": "Ya-Sin", "verses": 83, "type": "Meccan"},
+    {"number": 55, "name": "Ar-Rahman", "arabic": "الرحمن", "meaning": "The Beneficent", "verses": 78, "type": "Medinan"},
+    {"number": 56, "name": "Al-Waqi'ah", "arabic": "الواقعة", "meaning": "The Inevitable", "verses": 96, "type": "Meccan"},
+    {"number": 67, "name": "Al-Mulk", "arabic": "الملك", "meaning": "The Sovereignty", "verses": 30, "type": "Meccan"},
+    {"number": 112, "name": "Al-Ikhlas", "arabic": "الإخلاص", "meaning": "The Sincerity", "verses": 4, "type": "Meccan"},
+    {"number": 113, "name": "Al-Falaq", "arabic": "الفلق", "meaning": "The Daybreak", "verses": 5, "type": "Meccan"},
+    {"number": 114, "name": "An-Nas", "arabic": "الناس", "meaning": "Mankind", "verses": 6, "type": "Meccan"}
+  ],
+  "sample_reader": {
+    "surah_number": 1,
+    "name": "Al-Fatihah",
+    "verses": [
+      {
+        "id": 1,
+        "arabic": "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+        "translation": "In the name of Allah, the Entirely Merciful, the Especially Merciful."
+      },
+      {
+        "id": 2,
+        "arabic": "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ",
+        "translation": "[All] praise is [due] to Allah, Lord of the worlds."
+      },
+      {
+        "id": 3,
+        "arabic": "الرَّحْمَٰنِ الرَّحِيمِ",
+        "translation": "The Entirely Merciful, the Especially Merciful."
+      },
+      {
+        "id": 4,
+        "arabic": "مَالِكِ يَوْمِ الدِّينِ",
+        "translation": "Sovereign of the Day of Recompense."
+      },
+      {
+        "id": 5,
+        "arabic": "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ",
+        "translation": "It is You we worship and You we ask for help."
+      },
+      {
+        "id": 6,
+        "arabic": "اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ",
+        "translation": "Guide us to the straight path."
+      },
+      {
+        "id": 7,
+        "arabic": "صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ",
+        "translation": "The path of those upon whom You have bestowed favor, not of those who have evoked [Your] anger or of those who are astray."
+      }
+    ]
+  }
+}

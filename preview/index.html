@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muslim Companion (Rafiq Al-Muslim) — MVP Preview</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            emerald: {
+              900: '#06281E',
+              800: '#0A3B2D',
+              700: '#0E4E3C',
+              600: '#14664F',
+            },
+            gold: {
+              400: '#E4C686',
+              500: '#C5A059',
+              600: '#A9833D',
+            },
+            sand: '#F9F8F5',
+            charcoal: '#111815',
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            quran: ['Amiri', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom scrollbar for mobile frame */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .gold-gradient {
+      background: linear-gradient(135deg, #DFBE7B 0%, #C5A059 50%, #9F772D 100%);
+    }
+    .emerald-gradient {
+      background: linear-gradient(160deg, #0A3B2D 0%, #06281E 100%);
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 flex items-center justify-center min-h-screen p-2 sm:p-6 font-sans antialiased select-none">
+
+  <!-- Desktop Presentation Wrapper -->
+  <div class="flex flex-col lg:flex-row items-center justify-center gap-6 max-w-4xl w-full mx-auto">
+    
+    <!-- Left Column: Upwork Pitch Info & Highlights -->
+    <div class="flex-1 space-y-4 text-left max-w-md">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-900/60 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        FLUTTERFLOW MVP PREVIEW READY
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">
+        Muslim Companion <br>
+        <span class="text-gold-400 font-quran text-3xl font-normal">رفيق المسلم</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+        High-performance, minimal mobile prototype built strictly according to Phase 1 specs. Zero AI-slop, clean 1-word navigation, authentic datasets, and real-time sensor logic.
+      </p>
+
+      <div class="grid grid-cols-2 gap-3 text-xs">
+        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+          <p class="text-slate-400 font-medium">Design System</p>
+          <p class="text-white font-bold mt-0.5">Deep Emerald & Gold</p>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+          <p class="text-slate-400 font-medium">Navigation</p>
+          <p class="text-white font-bold mt-0.5">1-Word Minimalist</p>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+          <p class="text-slate-400 font-medium">Localization</p>
+          <p class="text-white font-bold mt-0.5">English & Arabic (RTL)</p>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700/60">
+          <p class="text-slate-400 font-medium">Delivery</p>
+          <p class="text-white font-bold mt-0.5">FlutterFlow Handover</p>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Controls -->
+      <div class="pt-2 flex flex-wrap items-center gap-3">
+        <button id="langToggleBtn" onclick="toggleLang()" class="px-4 py-2 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-2">
+          <i data-lucide="globe" class="w-4 h-4"></i> Switch to Arabic (RTL)
+        </button>
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs font-bold transition flex items-center gap-2">
+          <i data-lucide="moon" class="w-4 h-4"></i> Dark / Light
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Phone Device Mockup -->
+    <div class="relative w-[360px] h-[700px] bg-black rounded-[46px] p-2.5 shadow-2xl border-4 border-slate-700 flex-shrink-0">
+      
+      <!-- Dynamic Island / Speaker Notch -->
+      <div class="absolute top-5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-50 flex items-center justify-center">
+        <div class="w-2 h-2 rounded-full bg-slate-900 border border-slate-800 mr-1.5"></div>
+      </div>
+
+      <!-- Device Screen Frame -->
+      <div id="deviceScreen" class="w-full h-full bg-[#F9F8F5] text-charcoal rounded-[38px] overflow-hidden flex flex-col relative transition-colors duration-200">
+        
+        <!-- Status Bar -->
+        <div class="pt-3 px-5 pb-1 flex items-center justify-between text-[11px] font-bold text-slate-600 dark:text-slate-400 z-40">
+          <span id="statusBarClock">09:41</span>
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="signal" class="w-3.5 h-3.5"></i>
+            <i data-lucide="wifi" class="w-3.5 h-3.5"></i>
+            <i data-lucide="battery" class="w-4 h-4"></i>
+          </div>
+        </div>
+
+        <!-- Scrollable Main Content Area -->
+        <div id="appBody" class="flex-1 overflow-y-auto px-3.5 pt-1 pb-16 space-y-3">
+
+          <!-- TAB 1: PRAYERS (DEFAULT) -->
+          <div id="tab-prayers" class="tab-content space-y-4">
+            
+            <!-- Header: City & Date -->
+            <div class="flex items-center justify-between pt-1">
+              <div>
+                <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-800 dark:text-emerald-400">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+                  <span id="cityNameLabel">Makkah, Saudi Arabia</span>
+                </div>
+                <p id="hijriDateLabel" class="text-[11px] text-slate-500 font-medium">18 Shawwal 1447 AH</p>
+              </div>
+              <button onclick="changeCity()" class="px-2.5 py-1 text-[11px] font-bold rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                City
+              </button>
+            </div>
+
+            <!-- Hero Countdown Card -->
+            <div class="emerald-gradient text-white rounded-2xl p-5 shadow-lg relative overflow-hidden">
+              <div class="absolute -right-6 -bottom-6 w-32 h-32 rounded-full bg-emerald-600/10 pointer-events-none"></div>
+              
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-full bg-gold-500/20 text-gold-400 text-[10px] font-extrabold uppercase tracking-widest">
+                  Next Prayer
+                </span>
+                <span id="heroPrayerTime" class="text-xs font-semibold text-slate-300">12:21 PM</span>
+              </div>
+
+              <div class="mt-3 flex items-baseline justify-between">
+                <div>
+                  <h2 id="heroPrayerName" class="text-2xl font-extrabold tracking-tight">Dhuhr</h2>
+                  <p class="text-slate-300 text-xs mt-0.5">Countdown</p>
+                </div>
+                <div id="countdownTimer" class="text-2xl font-mono font-bold text-gold-400 tracking-wider">
+                  02:14:32
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily Prayer List -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between px-1">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Today</span>
+                <span class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400">Auto (Umm al-Qura)</span>
+              </div>
+
+              <div id="prayerCardsList" class="space-y-1.5">
+                <!-- Generated by JS -->
+              </div>
+            </div>
+
+            <!-- Daily Hadith Card -->
+            <div class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[11px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider">Hadith</span>
+                <span class="text-[10px] text-slate-400 font-semibold">Sahih al-Bukhari 1</span>
+              </div>
+              <p class="font-quran text-right text-base text-emerald-950 dark:text-emerald-100 font-bold leading-relaxed">
+                إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى
+              </p>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-normal">
+                "Actions are judged by intentions, and every person will be rewarded according to their intention."
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 2: QIBLA -->
+          <div id="tab-qibla" class="tab-content hidden space-y-5 text-center pt-2">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">Qibla</h2>
+              <p class="text-xs text-slate-500">Rotate phone towards Makkah</p>
+            </div>
+
+            <!-- Compass Dial Frame -->
+            <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
+              
+              <!-- Outer Ring -->
+              <div id="compassOuterRing" class="w-64 h-64 rounded-full border-2 border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-center shadow-lg transition-all duration-300">
+                
+                <!-- Rotating Compass Dial -->
+                <div id="compassDial" class="w-56 h-56 rounded-full border border-dashed border-slate-300 dark:border-slate-600 relative transition-transform duration-150 ease-out flex items-center justify-center">
+                  
+                  <span class="absolute top-2 text-xs font-bold text-red-500">N</span>
+                  <span class="absolute bottom-2 text-xs font-bold text-slate-400">S</span>
+                  <span class="absolute right-2 text-xs font-bold text-slate-400">E</span>
+                  <span class="absolute left-2 text-xs font-bold text-slate-400">W</span>
+
+                  <!-- Kaaba Indicator Needle -->
+                  <div id="qiblaNeedle" class="absolute top-4 flex flex-col items-center">
+                    <div class="w-8 h-8 rounded-full bg-emerald-800 text-gold-400 flex items-center justify-center shadow-md">
+                      <i data-lucide="navigation" class="w-4 h-4 fill-current"></i>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Center Hub -->
+                <div class="absolute w-24 h-24 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center shadow-inner">
+                  <span id="compassDegrees" class="text-xl font-extrabold text-slate-800 dark:text-white">294°</span>
+                  <span id="compassStatus" class="text-[9px] font-bold tracking-widest text-slate-400">TURN</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Rotate Slider -->
+            <div class="px-6 space-y-1">
+              <label class="text-[11px] font-semibold text-slate-400">Simulate Device Heading</label>
+              <input id="headingSlider" type="range" min="0" max="360" value="180" oninput="updateCompass(this.value)" class="w-full accent-emerald-700">
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>0°</span>
+                <span class="font-bold text-emerald-600">Align at 294°</span>
+                <span>360°</span>
+              </div>
+            </div>
+
+            <p id="alignmentBanner" class="text-xs font-bold text-slate-500 py-1">
+              Rotate slider to 294° to test Kaaba alignment
+            </p>
+          </div>
+
+          <!-- TAB 3: QURAN -->
+          <div id="tab-quran" class="tab-content hidden space-y-3 pt-2">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">Quran</h2>
+                <p class="text-xs text-slate-500">114 Surahs with translation</p>
+              </div>
+              <span class="px-2.5 py-1 text-[10px] font-bold rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300">
+                Surah 1: Al-Fatihah
+              </span>
+            </div>
+
+            <!-- Surah Reader Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-4">
+              <div class="text-center pb-2 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-quran text-2xl font-bold text-emerald-900 dark:text-emerald-300">سُورَةُ الفَاتِحَةِ</h3>
+                <p class="text-xs text-slate-400 mt-1">The Opening • 7 Verses • Meccan</p>
+              </div>
+
+              <!-- Verses Container -->
+              <div class="space-y-3.5 text-right">
+                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">1</span>
+                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
+                  </div>
+                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                  </p>
+                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
+                    In the name of Allah, the Entirely Merciful, the Especially Merciful.
+                  </p>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">2</span>
+                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
+                  </div>
+                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
+                    الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ
+                  </p>
+                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
+                    [All] praise is [due] to Allah, Lord of the worlds.
+                  </p>
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div class="flex items-center justify-between mb-1">
+                    <span class="w-5 h-5 rounded-full bg-gold-500/20 text-gold-600 text-[10px] font-bold flex items-center justify-center">3</span>
+                    <button class="text-slate-400 hover:text-emerald-700"><i data-lucide="play" class="w-3.5 h-3.5"></i></button>
+                  </div>
+                  <p class="font-quran text-xl text-slate-800 dark:text-white font-bold leading-loose">
+                    الرَّحْمَٰنِ الرَّحِيمِ
+                  </p>
+                  <p class="text-left text-xs text-slate-600 dark:text-slate-300 font-sans">
+                    The Entirely Merciful, the Especially Merciful.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: ADHKAR -->
+          <div id="tab-adhkar" class="tab-content hidden space-y-3 pt-2">
+            <div class="flex items-center justify-between">
+              <div>
+                <h2 class="text-lg font-bold text-slate-900 dark:text-white">Adhkar</h2>
+                <p class="text-xs text-slate-500">Hisn al-Muslim Remembrance</p>
+              </div>
+              <div class="inline-flex rounded-lg bg-slate-200 dark:bg-slate-800 p-0.5 text-[11px] font-bold">
+                <button id="adhkarMornBtn" onclick="setAdhkarMode('morning')" class="px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 text-emerald-800 dark:text-white shadow-xs">Morning</button>
+                <button id="adhkarEveBtn" onclick="setAdhkarMode('evening')" class="px-2.5 py-1 rounded-md text-slate-500">Evening</button>
+              </div>
+            </div>
+
+            <div id="adhkarItemsList" class="space-y-2">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- TAB 5: TASBEEH -->
+          <div id="tab-tasbeeh" class="tab-content hidden space-y-4 pt-2 text-center">
+            <div>
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">Tasbeeh</h2>
+              <p class="text-xs text-slate-500">Digital dhikr counter</p>
+            </div>
+
+            <!-- Dhikr Selector Pills -->
+            <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs">
+              <button onclick="setTasbeehDhikr(0)" id="dhikr-pill-0" class="px-3 py-1.5 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">SubhanAllah</button>
+              <button onclick="setTasbeehDhikr(1)" id="dhikr-pill-1" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Alhamdulillah</button>
+              <button onclick="setTasbeehDhikr(2)" id="dhikr-pill-2" class="px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">Allahu Akbar</button>
+            </div>
+
+            <!-- Current Arabic Phrase -->
+            <div class="py-1">
+              <h3 id="currentDhikrAr" class="font-quran text-2xl font-bold text-emerald-900 dark:text-emerald-300">سُبْحَانَ اللَّهِ</h3>
+            </div>
+
+            <!-- Giant Tap Dial -->
+            <div class="relative w-56 h-56 mx-auto">
+              <button onclick="incrementTasbeeh()" class="w-full h-full rounded-full bg-white dark:bg-slate-800 border-4 border-gold-500/40 shadow-xl flex flex-col items-center justify-center active:scale-95 transition-transform duration-75">
+                <span id="tasbeehCount" class="text-5xl font-extrabold text-slate-900 dark:text-white font-sans tracking-tight">0</span>
+                <span id="tasbeehTargetLabel" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-1">Target 33</span>
+                <span id="tasbeehLapsLabel" class="text-[10px] font-semibold text-emerald-700 dark:text-emerald-400 mt-1">Lap 1</span>
+              </button>
+            </div>
+
+            <!-- Control Bar -->
+            <div class="flex items-center justify-center gap-2 pt-2">
+              <button onclick="setTasbeehTarget(33)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">33</button>
+              <button onclick="setTasbeehTarget(99)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">99</button>
+              <button onclick="setTasbeehTarget(100)" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">100</button>
+              <button onclick="resetTasbeeh()" class="px-3 py-1 text-xs font-bold rounded-lg bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Reset</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Navigation Bar (Strict 1-Word Professional Labels) -->
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200/80 dark:border-slate-800 px-2 flex items-center justify-around z-50">
+          <button onclick="switchTab('prayers')" id="nav-prayers" class="flex flex-col items-center gap-1 text-emerald-800 dark:text-emerald-400 font-bold transition">
+            <i data-lucide="clock" class="w-5 h-5"></i>
+            <span class="text-[10px]">Prayers</span>
+          </button>
+          <button onclick="switchTab('qibla')" id="nav-qibla" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+            <i data-lucide="compass" class="w-5 h-5"></i>
+            <span class="text-[10px]">Qibla</span>
+          </button>
+          <button onclick="switchTab('quran')" id="nav-quran" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+            <span class="text-[10px]">Quran</span>
+          </button>
+          <button onclick="switchTab('adhkar')" id="nav-adhkar" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+            <span class="text-[10px]">Adhkar</span>
+          </button>
+          <button onclick="switchTab('tasbeeh')" id="nav-tasbeeh" class="flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition">
+            <i data-lucide="circle-dot" class="w-5 h-5"></i>
+            <span class="text-[10px]">Tasbeeh</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    let isArabic = false;
+    let isDark = false;
+    let currentCityIndex = 0;
+    const cities = [
+      { name: "Makkah, Saudi Arabia", qibla: 0, fajr: "04:58", sunrise: "06:18", dhuhr: "12:21", asr: "15:43", maghrib: "18:24", isha: "19:54" },
+      { name: "London, UK", qibla: 119, fajr: "05:12", sunrise: "07:05", dhuhr: "11:58", asr: "14:14", maghrib: "16:48", isha: "18:32" },
+      { name: "Karachi, Pakistan", qibla: 265, fajr: "05:22", sunrise: "06:40", dhuhr: "12:15", asr: "15:28", maghrib: "17:49", isha: "19:07" },
+      { name: "New York, USA", qibla: 58, fajr: "05:35", sunrise: "06:44", dhuhr: "11:47", asr: "14:32", maghrib: "16:51", isha: "18:01" }
+    ];
+
+    const prayerNames = [
+      { id: "Fajr", name: "Fajr", ar: "الفجر" },
+      { id: "Sunrise", name: "Sunrise", ar: "الشروق" },
+      { id: "Dhuhr", name: "Dhuhr", ar: "الظهر" },
+      { id: "Asr", name: "Asr", ar: "العصر" },
+      { id: "Maghrib", name: "Maghrib", ar: "المغرب" },
+      { id: "Isha", name: "Isha", ar: "العشاء" },
+    ];
+
+    let tasbeehCount = 0;
+    let tasbeehTarget = 33;
+    let tasbeehLaps = 1;
+    let selectedDhikrIdx = 0;
+    const tasbeehPhrases = [
+      { en: "SubhanAllah", ar: "سُبْحَانَ اللَّهِ" },
+      { en: "Alhamdulillah", ar: "الْحَمْدُ لِلَّهِ" },
+      { en: "Allahu Akbar", ar: "اللَّهُ أَكْبَرُ" }
+    ];
+
+    const adhkarData = {
+      morning: [
+        { id: 1, ar: "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the morning and sovereignty belongs to Allah.", count: 1, done: false },
+        { id: 2, ar: "اللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا", en: "O Allah, by You we enter the morning and the evening.", count: 1, done: false },
+        { id: 3, ar: "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ", en: "In the Name of Allah with Whose Name nothing can cause harm.", count: 3, done: false }
+      ],
+      evening: [
+        { id: 4, ar: "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ", en: "We have reached the evening and sovereignty belongs to Allah.", count: 1, done: false },
+        { id: 5, ar: "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ", en: "I seek refuge in the perfect words of Allah from evil.", count: 3, done: false }
+      ]
+    };
+    let currentAdhkarMode = 'morning';
+
+    // Initialize
+    function init() {
+      renderPrayerCards();
+      renderAdhkar();
+      lucide.createIcons();
+      startCountdown();
+    }
+
+    // Render Prayers
+    function renderPrayerCards() {
+      const city = cities[currentCityIndex];
+      const container = document.getElementById("prayerCardsList");
+      container.innerHTML = "";
+
+      prayerNames.forEach(p => {
+        const time = city[p.id.toLowerCase()];
+        const isNext = p.id === "Dhuhr";
+
+        const card = document.createElement("div");
+        card.className = `flex items-center justify-between p-3 rounded-xl border transition ${
+          isNext 
+            ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700/60 font-bold" 
+            : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60"
+        }`;
+
+        card.innerHTML = `
+          <div class="flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full ${isNext ? 'bg-emerald-600 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}"></span>
+            <div>
+              <span class="text-xs ${isNext ? 'text-emerald-900 dark:text-emerald-300 font-extrabold' : 'text-slate-700 dark:text-slate-300 font-semibold'}">
+                ${isArabic ? p.ar : p.name}
+              </span>
+              ${isNext ? '<span class="ml-1 text-[9px] uppercase px-1.5 py-0.5 rounded bg-emerald-600 text-white font-bold">Upcoming</span>' : ''}
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold ${isNext ? 'text-emerald-800 dark:text-emerald-400' : 'text-slate-500'}">
+            ${time}
+          </span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Switch Tab
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+      const tabs = ['prayers', 'qibla', 'quran', 'adhkar', 'tasbeeh'];
+      tabs.forEach(t => {
+        const btn = document.getElementById(`nav-${t}`);
+        if (t === tabId) {
+          btn.className = "flex flex-col items-center gap-1 text-emerald-800 dark:text-emerald-400 font-bold transition";
+        } else {
+          btn.className = "flex flex-col items-center gap-1 text-slate-400 hover:text-slate-600 transition";
+        }
+      });
+      lucide.createIcons();
+    }
+
+    // Compass Simulation
+    function updateCompass(val) {
+      const heading = parseInt(val);
+      const qiblaTarget = 294; // Target Kaaba bearing
+      const dial = document.getElementById("compassDial");
+      const degText = document.getElementById("compassDegrees");
+      const statusText = document.getElementById("compassStatus");
+      const outerRing = document.getElementById("compassOuterRing");
+      const banner = document.getElementById("alignmentBanner");
+
+      degText.innerText = `${heading}°`;
+      dial.style.transform = `rotate(${-heading}deg)`;
+
+      const diff = Math.abs(heading - qiblaTarget);
+      const isAligned = diff < 4;
+
+      if (isAligned) {
+        statusText.innerText = "ALIGNED";
+        statusText.className = "text-[9px] font-extrabold tracking-widest text-emerald-500 animate-pulse";
+        outerRing.classList.add("ring-4", "ring-emerald-400/50", "border-emerald-500");
+        banner.innerHTML = `<span class="text-emerald-600 font-bold">✓ Aligned with Makkah!</span>`;
+      } else {
+        statusText.innerText = diff < 20 ? "CLOSE" : "TURN";
+        statusText.className = "text-[9px] font-bold tracking-widest text-slate-400";
+        outerRing.classList.remove("ring-4", "ring-emerald-400/50", "border-emerald-500");
+        banner.innerText = `Rotate slider to 294° to test Kaaba alignment (${diff}° off)`;
+      }
+    }
+
+    // Tasbeeh
+    function incrementTasbeeh() {
+      tasbeehCount++;
+      if (tasbeehCount >= tasbeehTarget) {
+        tasbeehCount = 0;
+        tasbeehLaps++;
+      }
+      document.getElementById("tasbeehCount").innerText = tasbeehCount;
+      document.getElementById("tasbeehLapsLabel").innerText = `Lap ${tasbeehLaps}`;
+    }
+
+    function resetTasbeeh() {
+      tasbeehCount = 0;
+      tasbeehLaps = 1;
+      document.getElementById("tasbeehCount").innerText = 0;
+      document.getElementById("tasbeehLapsLabel").innerText = "Lap 1";
+    }
+
+    function setTasbeehTarget(val) {
+      tasbeehTarget = val;
+      tasbeehCount = 0;
+      document.getElementById("tasbeehCount").innerText = 0;
+      document.getElementById("tasbeehTargetLabel").innerText = `Target ${val}`;
+    }
+
+    function setTasbeehDhikr(idx) {
+      selectedDhikrIdx = idx;
+      tasbeehCount = 0;
+      document.getElementById("tasbeehCount").innerText = 0;
+      document.getElementById("currentDhikrAr").innerText = tasbeehPhrases[idx].ar;
+
+      [0, 1, 2].forEach(i => {
+        const pill = document.getElementById(`dhikr-pill-${i}`);
+        if (i === idx) {
+          pill.className = "px-3 py-1.5 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0";
+        } else {
+          pill.className = "px-3 py-1.5 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0";
+        }
+      });
+    }
+
+    // Adhkar
+    function setAdhkarMode(mode) {
+      currentAdhkarMode = mode;
+      const morn = document.getElementById("adhkarMornBtn");
+      const eve = document.getElementById("adhkarEveBtn");
+      if (mode === 'morning') {
+        morn.className = "px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 text-emerald-800 dark:text-white shadow-xs";
+        eve.className = "px-2.5 py-1 rounded-md text-slate-500";
+      } else {
+        eve.className = "px-2.5 py-1 rounded-md bg-white dark:bg-slate-700 text-emerald-800 dark:text-white shadow-xs";
+        morn.className = "px-2.5 py-1 rounded-md text-slate-500";
+      }
+      renderAdhkar();
+    }
+
+    function renderAdhkar() {
+      const list = adhkarData[currentAdhkarMode];
+      const container = document.getElementById("adhkarItemsList");
+      container.innerHTML = "";
+
+      list.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = `p-3 rounded-xl border transition ${item.done ? 'bg-emerald-50/50 dark:bg-emerald-950/20 border-emerald-300' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60'}`;
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex-1 space-y-1 text-right">
+              <p class="font-quran text-base font-bold text-emerald-950 dark:text-emerald-200 leading-relaxed">${item.ar}</p>
+              <p class="text-left text-xs text-slate-600 dark:text-slate-300">${item.en}</p>
+            </div>
+            <button onclick="toggleAdhkar(${index})" class="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center border ${item.done ? 'bg-emerald-700 border-emerald-700 text-white' : 'border-slate-300 dark:border-slate-600 text-slate-400'}">
+              <i data-lucide="${item.done ? 'check' : 'circle'}" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function toggleAdhkar(idx) {
+      adhkarData[currentAdhkarMode][idx].done = !adhkarData[currentAdhkarMode][idx].done;
+      renderAdhkar();
+    }
+
+    // City toggle
+    function changeCity() {
+      currentCityIndex = (currentCityIndex + 1) % cities.length;
+      document.getElementById("cityNameLabel").innerText = cities[currentCityIndex].name;
+      renderPrayerCards();
+    }
+
+    // Language toggle (RTL)
+    function toggleLang() {
+      isArabic = !isArabic;
+      const screen = document.getElementById("deviceScreen");
+      const btn = document.getElementById("langToggleBtn");
+
+      if (isArabic) {
+        screen.setAttribute("dir", "rtl");
+        btn.innerHTML = `<i data-lucide="globe" class="w-4 h-4"></i> Switch to English (LTR)`;
+      } else {
+        screen.setAttribute("dir", "ltr");
+        btn.innerHTML = `<i data-lucide="globe" class="w-4 h-4"></i> Switch to Arabic (RTL)`;
+      }
+      renderPrayerCards();
+      lucide.createIcons();
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+      isDark = !isDark;
+      const screen = document.getElementById("deviceScreen");
+      if (isDark) {
+        screen.classList.add("dark", "bg-[#0D1513]");
+        screen.classList.remove("bg-[#F9F8F5]");
+      } else {
+        screen.classList.remove("dark", "bg-[#0D1513]");
+        screen.classList.add("bg-[#F9F8F5]");
+      }
+    }
+
+    // Countdown Timer Loop
+    function startCountdown() {
+      let seconds = 8072; // 02:14:32
+      setInterval(() => {
+        if (seconds > 0) seconds--;
+        const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        document.getElementById("countdownTimer").innerText = `${h}:${m}:${s}`;
+      }, 1000);
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
