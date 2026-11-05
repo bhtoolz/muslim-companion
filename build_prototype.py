@@ -17,7 +17,7 @@ html_content = r'''<!DOCTYPE html>
   <!-- Premium Islamic Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -39,8 +39,9 @@ html_content = r'''<!DOCTYPE html>
             midnight: '#0A1612',
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             arabic: ['Amiri', 'serif'],
+            'arabic-ui': ['Cairo', 'sans-serif'],
             quran: ['"Amiri Quran"', '"Scheherazade New"', 'serif'],
           }
         }
@@ -57,7 +58,10 @@ html_content = r'''<!DOCTYPE html>
     body {
       background-color: #030806;
       color: #E2E8F0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-arabic-ui {
+      font-family: 'Cairo', sans-serif;
     }
     .font-quran-text {
       font-family: "Amiri Quran", "Scheherazade New", serif;
@@ -1612,8 +1616,10 @@ html_content = r'''<!DOCTYPE html>
 
       if (isArabic) {
         screen.setAttribute("dir", "rtl");
+        screen.classList.add("font-arabic-ui");
       } else {
         screen.setAttribute("dir", "ltr");
+        screen.classList.remove("font-arabic-ui");
       }
 
       btnText.innerText = dict.langBtn;
