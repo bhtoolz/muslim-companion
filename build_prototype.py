@@ -1203,6 +1203,7 @@ html_content = r'''<!DOCTYPE html>
     let currentSurahKey = 'fatihah';
 
     function loadSurah(surahKey) {
+      stopFullSurahRecitation();
       currentSurahKey = surahKey;
       const s = surahsData[surahKey];
       
@@ -1231,6 +1232,7 @@ html_content = r'''<!DOCTYPE html>
 
       s.verses.forEach((v, index) => {
         const isBookmarked = bookmarkedVerses[`${currentSurahKey}_${v.id}`];
+        const isPlayingThis = activePlayingIndex === index;
         const card = document.createElement("div");
         card.id = `ayah-card-${index}`;
         card.className = "ayah-card p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-1.5 transition-all duration-300";
@@ -1244,8 +1246,8 @@ html_content = r'''<!DOCTYPE html>
               <button onclick="toggleBookmark('${currentSurahKey}', ${v.id})" title="Bookmark" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition">
                 <i data-lucide="bookmark" class="w-3.5 h-3.5 ${isBookmarked ? 'text-gold-500 fill-current' : 'text-slate-400'}"></i>
               </button>
-              <button onclick="playVerseAudioTone(${index})" title="Play" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-emerald-700">
-                <i data-lucide="play" class="w-3.5 h-3.5"></i>
+              <button onclick="playSingleAyahAudio(${index})" id="ayah-play-btn-${index}" title="Play Audio Recitation" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-emerald-700">
+                <i data-lucide="${isPlayingThis ? 'pause' : 'play'}" class="w-3.5 h-3.5 ${isPlayingThis ? 'text-gold-500 fill-current' : ''}"></i>
               </button>
             </div>
           </div>
@@ -1301,42 +1303,124 @@ html_content = r'''<!DOCTYPE html>
       saveState();
     }
 
-    function playVerseAudioTone(index) {
-      highlightActiveAyah(index);
-      playClickSound();
+    // Real Audio Recitation Engine (Mishary Rashid Alafasy via EveryAyah CDN)
+    let currentAyahAudio = null;
+    let isRecitingFullSurah = false;
+    let activePlayingIndex = null;
+
+    function playSingleAyahAudio(index) {
+      const s = surahsData[currentSurahKey];
+      const v = s.verses[index];
+
+      if (activePlayingIndex === index && currentAyahAudio && !currentAyahAudio.paused) {
+        stopAyahAudio();
+        return;
+      }
+
+      stopAyahAudio();
+      playAyahAudio(s.number, v.id, index);
     }
 
-    // Audio Recitation Simulation
-    let recitationInterval = null;
-    let recitingVerseIdx = 0;
+    function playAyahAudio(surahNum, verseId, index, onComplete = null) {
+      stopAyahAudio();
+
+      activePlayingIndex = index;
+      highlightActiveAyah(index);
+      updatePlayIcons(index, true);
+
+      const sStr = String(surahNum).padStart(3, '0');
+      const aStr = String(verseId).padStart(3, '0');
+      const audioUrl = `https://everyayah.com/data/Alafasy_128kbps/${sStr}${aStr}.mp3`;
+
+      currentAyahAudio = new Audio(audioUrl);
+
+      currentAyahAudio.play().then(() => {
+        showToast("Reciting", `Surah ${surahsData[currentSurahKey].titleEn} • Ayah ${verseId} (Mishary Alafasy)`);
+      }).catch(err => {
+        playChimeSound();
+        if (onComplete) onComplete();
+      });
+
+      currentAyahAudio.onended = () => {
+        updatePlayIcons(index, false);
+        activePlayingIndex = null;
+        if (onComplete) {
+          onComplete();
+        } else {
+          document.querySelectorAll('.ayah-card').forEach(c => {
+            c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
+          });
+        }
+      };
+
+      currentAyahAudio.onerror = () => {
+        updatePlayIcons(index, false);
+        activePlayingIndex = null;
+        if (onComplete) onComplete();
+      };
+    }
+
+    function updatePlayIcons(playingIdx, isPlaying) {
+      document.querySelectorAll('[id^="ayah-play-btn-"]').forEach((btn, idx) => {
+        if (idx === playingIdx && isPlaying) {
+          btn.innerHTML = `<i data-lucide="pause" class="w-3.5 h-3.5 text-gold-500 fill-current animate-pulse"></i>`;
+        } else {
+          btn.innerHTML = `<i data-lucide="play" class="w-3.5 h-3.5"></i>`;
+        }
+      });
+      lucide.createIcons();
+    }
+
+    function stopAyahAudio() {
+      if (currentAyahAudio) {
+        currentAyahAudio.pause();
+        currentAyahAudio = null;
+      }
+      activePlayingIndex = null;
+      updatePlayIcons(-1, false);
+    }
 
     function toggleAudioRecitation() {
       playClickSound();
       const btn = document.getElementById("reciteAudioBtn");
       const s = surahsData[currentSurahKey];
 
-      if (recitationInterval) {
-        clearInterval(recitationInterval);
-        recitationInterval = null;
+      if (isRecitingFullSurah) {
+        stopFullSurahRecitation();
+      } else {
+        isRecitingFullSurah = true;
+        btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 animate-pulse"></i> Pause`;
+        btn.classList.add("bg-gold-600");
+        playNextSequentialVerse(0);
+      }
+      lucide.createIcons();
+    }
+
+    function playNextSequentialVerse(idx) {
+      const s = surahsData[currentSurahKey];
+      if (!isRecitingFullSurah || idx >= s.verses.length) {
+        stopFullSurahRecitation();
+        return;
+      }
+      const v = s.verses[idx];
+      playAyahAudio(s.number, v.id, idx, () => {
+        if (isRecitingFullSurah) {
+          playNextSequentialVerse(idx + 1);
+        }
+      });
+    }
+
+    function stopFullSurahRecitation() {
+      isRecitingFullSurah = false;
+      stopAyahAudio();
+      const btn = document.getElementById("reciteAudioBtn");
+      if (btn) {
         btn.innerHTML = `<i data-lucide="volume-2" class="w-3 h-3"></i> Recite`;
         btn.classList.remove("bg-gold-600");
-        document.querySelectorAll('.ayah-card').forEach(c => {
-          c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
-        });
-      } else {
-        btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 animate-pulse"></i> Playing`;
-        btn.classList.add("bg-gold-600");
-        recitingVerseIdx = 0;
-        highlightActiveAyah(recitingVerseIdx);
-
-        recitationInterval = setInterval(() => {
-          recitingVerseIdx++;
-          if (recitingVerseIdx >= s.verses.length) {
-            recitingVerseIdx = 0;
-          }
-          highlightActiveAyah(recitingVerseIdx);
-        }, 3200);
       }
+      document.querySelectorAll('.ayah-card').forEach(c => {
+        c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
+      });
       lucide.createIcons();
     }
 
