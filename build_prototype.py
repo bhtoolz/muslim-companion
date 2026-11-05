@@ -1709,10 +1709,17 @@ html_content = r'''<!DOCTYPE html>
       lucide.createIcons();
     }
 
-    // State Persistence
+    // State Persistence (Professional Date-Aware Session Storage)
     function saveState() {
       try {
+        const todayStr = new Date().toISOString().slice(0, 10);
+        const adhkarProgress = {
+          morning: adhkarData.morning.map(i => ({ id: i.id, current: i.current, done: i.done })),
+          evening: adhkarData.evening.map(i => ({ id: i.id, current: i.current, done: i.done }))
+        };
+
         const state = {
+          lastActiveDate: todayStr,
           currentCityIndex,
           tasbeehCount,
           tasbeehLaps,
@@ -1724,6 +1731,7 @@ html_content = r'''<!DOCTYPE html>
           showTransliteration,
           bookmarkedVerses,
           prayerAlerts,
+          adhkarProgress,
           isDark,
           isArabic,
           currentOS
@@ -1737,17 +1745,45 @@ html_content = r'''<!DOCTYPE html>
         const raw = localStorage.getItem("muslim_companion_v2_state");
         if (!raw) return;
         const s = JSON.parse(raw);
+        const todayStr = new Date().toISOString().slice(0, 10);
+        const isSameDay = s.lastActiveDate === todayStr;
+
+        // Permanent Settings (Never reset)
         if (s.currentCityIndex !== undefined) currentCityIndex = Math.min(s.currentCityIndex, cities.length - 1);
-        if (s.tasbeehCount !== undefined) tasbeehCount = s.tasbeehCount;
-        if (s.tasbeehLaps !== undefined) tasbeehLaps = s.tasbeehLaps;
         if (s.tasbeehTarget !== undefined) tasbeehTarget = s.tasbeehTarget;
-        if (s.tasbeehDailyTotal !== undefined) tasbeehDailyTotal = s.tasbeehDailyTotal;
         if (s.selectedDhikrIdx !== undefined) selectedDhikrIdx = s.selectedDhikrIdx;
         if (s.isTasbeehSoundOn !== undefined) isTasbeehSoundOn = s.isTasbeehSoundOn;
         if (s.quranFontSize !== undefined) quranFontSize = s.quranFontSize;
         if (s.showTransliteration !== undefined) showTransliteration = s.showTransliteration;
         if (s.bookmarkedVerses !== undefined) bookmarkedVerses = s.bookmarkedVerses;
         if (s.prayerAlerts !== undefined) prayerAlerts = s.prayerAlerts;
+        if (s.isDark) toggleTheme();
+        if (s.isArabic) toggleLang();
+
+        // Daily Progress (Preserved if same day, fresh reset if new day tomorrow)
+        if (isSameDay) {
+          if (s.tasbeehCount !== undefined) tasbeehCount = s.tasbeehCount;
+          if (s.tasbeehLaps !== undefined) tasbeehLaps = s.tasbeehLaps;
+          if (s.tasbeehDailyTotal !== undefined) tasbeehDailyTotal = s.tasbeehDailyTotal;
+
+          if (s.adhkarProgress) {
+            ['morning', 'evening'].forEach(mode => {
+              if (s.adhkarProgress[mode]) {
+                s.adhkarProgress[mode].forEach(savedItem => {
+                  const target = adhkarData[mode].find(i => i.id === savedItem.id);
+                  if (target) {
+                    target.current = savedItem.current;
+                    target.done = savedItem.done;
+                  }
+                });
+              }
+            });
+          }
+        } else {
+          // New day: Start fresh 0 for daily Adhkar & daily beads, keep lifetime settings!
+          tasbeehCount = 0;
+          tasbeehLaps = 1;
+        }
       } catch (e) {}
     }
 
