@@ -18,14 +18,20 @@
 
 ---
 
-## 2. Typography Rules
+## 2. Typography Rules (3-Tier Professional Stack)
 
-* **English (UI & Translations):** `Plus Jakarta Sans` or `Inter`
-  * Heading: SemiBold / Bold (w600 / w700), tight letter spacing (-0.02em).
-  * Body: Regular / Medium (w400 / w500).
-* **Arabic (Scripture, Dhikr & Hadith):** `Amiri` or `Scheherazade New`
-  * Line height: minimum `1.8` to avoid vowel/diacritic clipping.
-  * Weight: Bold (`w700`) for headers, Regular (`w400`) for verse text.
+1. **Sacred Islamic Text (Quran, Hadith, Adhkar):**
+   * **Font Stack:** `Amiri Quran` / `Scheherazade New` (`font-quran-text`)
+   * **Line height:** `2.3` standard to guarantee Tashkeel/Harakat vowels never overlap.
+   * **Numbers:** Traditional Arabic gilded end markers `﴿١﴾`.
+
+2. **Arabic UI (Navigation, Buttons, Headers, Badges):**
+   * **Font Stack:** `Cairo` (`font-arabic-ui`)
+   * **Characteristics:** Modern, crisp, geometric sans-serif that remains razor-sharp at small mobile icon label sizes (10px–13px).
+
+3. **English UI & High-Contrast Numerals:**
+   * **Font Stack:** `Plus Jakarta Sans` (`font-sans`)
+   * **Characteristics:** Premium editorial sans-serif. Numbers in countdown timer (`02:14:32`) and prayer cards render with balanced optical spacing.
 
 ---
 
