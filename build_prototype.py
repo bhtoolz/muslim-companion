@@ -98,59 +98,25 @@ html_content = r'''<!DOCTYPE html>
 </head>
 <body class="h-full flex flex-col items-center justify-start py-4 px-2 sm:px-6 overflow-x-hidden">
 
-  <!-- Desktop Presentation Layout -->
-  <div class="w-full max-w-5xl flex flex-col lg:flex-row items-center lg:items-start justify-center gap-6 my-auto">
+  <!-- Desktop Presentation Layout: Clean Symmetrical Showcase -->
+  <div class="w-full max-w-3xl flex flex-col items-center justify-center my-auto py-2">
     
-    <!-- Left Column: Architecture Info & Presentation Controls -->
-    <div class="flex-1 space-y-3.5 text-left max-w-md w-full">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
+    <!-- Top Branding & Status Header (Centered above Phone) -->
+    <div class="text-center space-y-1.5 mb-3.5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         FLUTTERFLOW READY • PHASE 1 MVP
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-        Muslim Companion <br>
-        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
+      <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white flex items-center justify-center gap-2.5">
+        Muslim Companion <span class="text-gold-400 font-arabic text-2xl font-normal">رفيق المسلم</span>
       </h1>
-      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-        Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
-      </p>
-
-      <!-- Architecture Badges -->
-      <div class="grid grid-cols-2 gap-2 text-xs">
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Framework</p>
-          <p class="text-white font-bold mt-0.5">FlutterFlow & Dart</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Sensor Math</p>
-          <p class="text-white font-bold mt-0.5">Spherical Qibla Trig</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Database Cost</p>
-          <p class="text-white font-bold mt-0.5">$0 Offline Bundled</p>
-        </div>
-        <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Handoff Format</p>
-          <p class="text-white font-bold mt-0.5">Custom Widgets/Actions</p>
-        </div>
-      </div>
-
-      <!-- Quick Interactive Presentation Controls -->
-      <div class="pt-2 flex flex-wrap items-center gap-2">
-        <button id="langToggleBtn" onclick="toggleLang()" class="px-3.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
-          <i data-lucide="globe" class="w-3.5 h-3.5"></i> <span id="langBtnText">Switch to Arabic (RTL)</span>
-        </button>
-        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
-          <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
-        </button>
-      </div>
     </div>
 
-    <!-- Right Column: Interactive Phone Device Frame -->
-    <div class="flex flex-col items-center gap-2.5 flex-shrink-0">
+    <!-- Center Hero: Interactive Phone Device Frame -->
+    <div class="flex flex-col items-center gap-2.5 flex-shrink-0 w-full">
       
       <!-- OS Platform Switcher Pill (iOS vs Android) -->
-      <div class="inline-flex items-center p-1 rounded-full bg-slate-950 border border-slate-800 shadow-xl text-xs font-semibold">
+      <div class="inline-flex items-center p-1 rounded-full bg-slate-900 border border-slate-800 shadow-xl text-xs font-semibold">
         <button id="osIosBtn" onclick="setOS('ios')" class="px-4 py-1.5 rounded-full bg-blue-600 text-white font-bold transition-all duration-200 flex items-center gap-1.5 shadow-sm">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 170 170"><path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.7-3.04-7.58-7.7-11.64-13.99-6.3-9.77-11.14-20.94-14.52-33.51-3.38-12.57-5.07-24.16-5.07-34.78 0-14.28 3.59-25.96 10.77-35.04 7.18-9.08 16.31-13.73 27.4-13.95 5.23 0 10.63 1.25 16.2 3.75 5.58 2.5 9.38 3.82 11.41 3.96 1.74-.27 5.76-1.68 12.06-4.23 6.3-2.55 11.75-3.69 16.36-3.43 14.5.98 25.4 6.32 32.7 16.03-12.83 7.82-19.14 18.39-18.92 31.7.22 10.54 4.3 19.34 12.24 26.4 4.13 3.69 8.8 6.41 14.01 8.15-2.83 8.25-6.52 16.66-11.08 25.23zM119.22 31.84c0-7.28 2.66-14.12 7.99-20.52 5.33-6.4 11.85-10.43 19.57-12.09.22 1.09.33 2.18.33 3.26 0 7.39-2.77 14.34-8.32 20.85-5.55 6.51-12.16 10.37-19.82 11.58-.11-1.09-.16-2.12-.16-3.08z"/></svg>
           iPhone (iOS)
@@ -419,10 +385,18 @@ html_content = r'''<!DOCTYPE html>
                 </div>
               </div>
 
-              <!-- Surah Navigation Pills -->
-              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs">
+              <!-- Surah Navigation Pills (14 Surahs & Daily Ayat) -->
+              <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar">
                 <button onclick="loadSurah('fatihah')" id="surah-pill-fatihah" class="px-3 py-1 rounded-full font-bold bg-emerald-800 text-white flex-shrink-0">1. Al-Fatihah</button>
                 <button onclick="loadSurah('kursi')" id="surah-pill-kursi" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">2:255 Ayat al-Kursi</button>
+                <button onclick="loadSurah('qadr')" id="surah-pill-qadr" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">97. Al-Qadr</button>
+                <button onclick="loadSurah('asr')" id="surah-pill-asr" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">103. Al-Asr</button>
+                <button onclick="loadSurah('fil')" id="surah-pill-fil" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">105. Al-Fil</button>
+                <button onclick="loadSurah('quraysh')" id="surah-pill-quraysh" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">106. Quraysh</button>
+                <button onclick="loadSurah('maun')" id="surah-pill-maun" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">107. Al-Ma'un</button>
+                <button onclick="loadSurah('kawthar')" id="surah-pill-kawthar" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">108. Al-Kawthar</button>
+                <button onclick="loadSurah('kafirun')" id="surah-pill-kafirun" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">109. Al-Kafirun</button>
+                <button onclick="loadSurah('nasr')" id="surah-pill-nasr" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">110. An-Nasr</button>
                 <button onclick="loadSurah('ikhlas')" id="surah-pill-ikhlas" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">112. Al-Ikhlas</button>
                 <button onclick="loadSurah('falaq')" id="surah-pill-falaq" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">113. Al-Falaq</button>
                 <button onclick="loadSurah('nas')" id="surah-pill-nas" class="px-3 py-1 rounded-full font-medium bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 flex-shrink-0">114. An-Nas</button>
@@ -549,9 +523,9 @@ html_content = r'''<!DOCTYPE html>
 
           <!-- Floating Bottom Mini Audio Player (YouTube Music / Spotify Style) -->
           <div id="miniAudioPlayer" class="hidden absolute bottom-[68px] left-3 right-3 bg-slate-900/95 dark:bg-slate-950/95 backdrop-blur-md rounded-2xl border border-gold-500/40 shadow-2xl z-40 overflow-hidden transition-all duration-300">
-            <!-- Top Animated Progress Line -->
-            <div class="w-full bg-slate-800/80 h-1 relative">
-              <div id="miniPlayerProgress" class="h-full bg-gradient-to-r from-emerald-500 via-gold-400 to-gold-500 w-0 transition-all duration-150"></div>
+            <!-- Top Ultra-thin 2px Solid Gold Progress Line -->
+            <div class="w-full bg-white/10 h-0.5 relative">
+              <div id="miniPlayerProgress" class="h-full bg-gold-500 w-0 transition-all duration-150 shadow-[0_0_8px_rgba(230,179,37,0.8)]"></div>
             </div>
             
             <div class="px-3 py-2 flex items-center justify-between gap-2.5">
@@ -633,6 +607,44 @@ html_content = r'''<!DOCTYPE html>
         </div>
       </div>
     </div>
+
+    <!-- Bottom Center: Architecture Info & Presentation Controls (Neatly Centered Under Phone) -->
+    <div class="mt-7 space-y-3.5 text-center max-w-xl w-full flex flex-col items-center">
+      <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+        Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
+      </p>
+
+      <!-- Architecture Badges in 4 Columns -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full text-center text-xs">
+        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[10px]">Framework</p>
+          <p class="text-white font-bold text-xs mt-0.5">FlutterFlow & Dart</p>
+        </div>
+        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[10px]">Sensor Math</p>
+          <p class="text-white font-bold text-xs mt-0.5">Spherical Qibla Trig</p>
+        </div>
+        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[10px]">Database Cost</p>
+          <p class="text-white font-bold text-xs mt-0.5">$0 Offline Bundled</p>
+        </div>
+        <div class="p-2 rounded-xl bg-slate-900/90 border border-slate-800">
+          <p class="text-slate-400 font-medium text-[10px]">Handoff Format</p>
+          <p class="text-white font-bold text-xs mt-0.5">Custom Widgets</p>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Presentation Controls -->
+      <div class="pt-1 flex flex-wrap items-center justify-center gap-2.5">
+        <button id="langToggleBtn" onclick="toggleLang()" class="px-3.5 py-1.5 rounded-lg bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95">
+          <i data-lucide="globe" class="w-3.5 h-3.5"></i> <span id="langBtnText">Switch to Arabic (RTL)</span>
+        </button>
+        <button id="themeToggleBtn" onclick="toggleTheme()" class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 text-xs font-bold transition flex items-center gap-1.5 active:scale-95">
+          <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
+        </button>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -1240,6 +1252,114 @@ html_content = r'''<!DOCTYPE html>
           { id: 2, ar: "ٱلَّذِى خَلَقَ ٱلْمَوْتَ وَٱلْحَيَوٰةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًۭا ۚ وَهُوَ ٱلْعَزِيزُ ٱلْغَفُورُ", tr: "Allazee khalaqal-mawta wal-hayaata liyabluwakum ayyukum ahsanu 'amalaa", en: "Who created death and life to test you as to which is best in deed." },
           { id: 3, ar: "ٱلَّذِى خَلَقَ سَبْعَ سَمَٰوَٰتٍۢ طِبَاقًۭا ۖ مَّا تَرَىٰ فِى خَلْقِ ٱلرَّحْمَٰنِ مِن تَفَٰوُتٍۢ", tr: "Allazee khalaqa sab'a samaawaatin tibaaqan", en: "Who created seven heavens in layers. You do not see in the creation of the Most Merciful any inconsistency." }
         ]
+      },
+      qadr: {
+        number: 97,
+        titleAr: "سُورَةُ القَدْرِ",
+        titleEn: "The Night of Decree",
+        type: "Meccan",
+        versesCount: 5,
+        verses: [
+          { id: 1, ar: "إِنَّآ أَنزَلْنَٰهُ فِى لَيْلَةِ ٱلْقَدْرِ", tr: "Innaaa anzalnaahu fee laylatil-qadr", en: "Indeed, We sent the Qur'an down during the Night of Decree." },
+          { id: 2, ar: "وَمَآ أَدْرَىٰكَ مَا لَيْلَةُ ٱلْقَدْرِ", tr: "Wa maaa adraaka maa laylatul-qadr", en: "And what can make you know what is the Night of Decree?" },
+          { id: 3, ar: "لَيْلَةُ ٱلْقَدْرِ خَيْرٌۭ مِّنْ أَلْفِ شَهْرٍۢ", tr: "Laylatul-qadri khayrum-min alfi shahr", en: "The Night of Decree is better than a thousand months." },
+          { id: 4, ar: "تَنَزَّلُ ٱلْمَلَٰٓئِكَةُ وَٱلرُّوحُ فِيهَا بِإِذْنِ رَبِّهِم مِّن كُلِّ أَمْرٍۢ", tr: "Tanazzalul-malaaa'ikatu war-roohu feehaa bi-izni Rabbihim min kulli amr", en: "The angels and the Spirit descend therein by permission of their Lord for every matter." },
+          { id: 5, ar: "سَلَٰمٌ هِىَ حَتَّىٰ مَطْلَعِ ٱلْفَجْرِ", tr: "Salaamun hiya hattaa matla'il-fajr", en: "Peace it is until the emergence of dawn." }
+        ]
+      },
+      asr: {
+        number: 103,
+        titleAr: "سُورَةُ العَصْرِ",
+        titleEn: "The Declining Day",
+        type: "Meccan",
+        versesCount: 3,
+        verses: [
+          { id: 1, ar: "وَٱلْعَصْرِ", tr: "Wal-'asr", en: "By time," },
+          { id: 2, ar: "إِنَّ ٱلْإِنسَٰنَ لَفِى خُسْرٍ", tr: "Innal-insaana lafee khusr", en: "Indeed, mankind is in loss," },
+          { id: 3, ar: "إِلَّا ٱلَّذِينَ ءَامَنُوا۟ وَعَمِلُوا۟ ٱلصَّٰلِحَٰتِ وَتَوَاصَوْا۟ بِٱلْحَقِّ وَتَوَاصَوْا۟ بِٱلصَّبْرِ", tr: "Illal-lazeena aamanoo wa 'amilus-saalihaati wa tawaasaw bil-haqqi wa tawaasaw bis-sabr", en: "Except for those who have believed and done righteous deeds and advised each other to truth and patience." }
+        ]
+      },
+      fil: {
+        number: 105,
+        titleAr: "سُورَةُ الفِيلِ",
+        titleEn: "The Elephant",
+        type: "Meccan",
+        versesCount: 5,
+        verses: [
+          { id: 1, ar: "أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِأَصْحَٰبِ ٱلْفِيلِ", tr: "Alam tara kayfa fa'ala Rabbuka bi-as-haabil-feel", en: "Have you not considered how your Lord dealt with the companions of the elephant?" },
+          { id: 2, ar: "أَلَمْ يَجْعَلْ كَيْدَهُمْ فِى تَضْلِيلٍۢ", tr: "Alam yaj'al kaydahum fee tadleel", en: "Did He not make their plan into misguidance?" },
+          { id: 3, ar: "وَأَرْسَلَ عَلَيْهِمْ طَيْرًا أَبَابِيلَ", tr: "Wa arsala 'alayhim tayran abaabeel", en: "And He sent against them birds in flocks," },
+          { id: 4, ar: "تَرْمِيهِم بِحِجَارَةٍۢ مِّن سِجِّيلٍۢ", tr: "Tarmeehim bi-hijaaratim-min sijjeel", en: "Striking them with stones of hard clay," },
+          { id: 5, ar: "فَجَعَلَهُمْ كَعَصْفٍۢ مَّأْكُولٍۭ", tr: "Faja'alahum ka'asfim-ma'kool", en: "And He made them like eaten straw." }
+        ]
+      },
+      quraysh: {
+        number: 106,
+        titleAr: "سُورَةُ قُرَيْشٍ",
+        titleEn: "Quraysh",
+        type: "Meccan",
+        versesCount: 4,
+        verses: [
+          { id: 1, ar: "لِإِيلَٰفِ قُرَيْشٍ", tr: "Li-eelaafi Quraysh", en: "For the accustomed security of the Quraysh -" },
+          { id: 2, ar: "إِۦلَٰفِهِمْ رِحْلَةَ ٱلشِّتَآءِ وَٱلصَّيْفِ", tr: "Eelaafihim rihlatash-shitaaa'i was-sayf", en: "Their accustomed security [in] the caravan of winter and summer -" },
+          { id: 3, ar: "فَلْيَعْبُدُوا۟ رَبَّ هَٰذَا ٱلْبَيْتِ", tr: "Falya'budoo Rabba haazal-Bayt", en: "Let them worship the Lord of this House," },
+          { id: 4, ar: "ٱلَّذِىٓ أَطْعَمَهُم مِّن جُوعٍۢ وَءَامَنَهُم مِّنْ خَوْفٍۭ", tr: "Allazeee at'amahum min joo'inw-wa aamanahum min khawf", en: "Who has fed them, [saving them] from hunger and made them safe, from fear." }
+        ]
+      },
+      maun: {
+        number: 107,
+        titleAr: "سُورَةُ المَاعُونِ",
+        titleEn: "The Small Kindnesses",
+        type: "Meccan",
+        versesCount: 7,
+        verses: [
+          { id: 1, ar: "أَرَءَيْتَ ٱلَّذِى يُكَذِّبُ بِٱلدِّينِ", tr: "Ara'aytal-lazee yukazzibu bid-deen", en: "Have you seen the one who denies the Recompense?" },
+          { id: 2, ar: "فَذَٰلِكَ ٱلَّذِى يَدُعُّ ٱلْيَتِيمَ", tr: "Fazalikal-lazee yadu''ul-yateem", en: "For that is the one who drives away the orphan," },
+          { id: 3, ar: "وَلَا يَحُضُّ عَلَىٰ طَعَامِ ٱلْمِسْكِينِ", tr: "Wa laa yahuddu 'alaa ta'aamil-miskeen", en: "And does not encourage the feeding of the poor." },
+          { id: 4, ar: "فَوَيْلٌۭ لِّلْمُصَلِّينَ", tr: "Fawaylul-lilmussalleen", en: "So woe to those who pray," },
+          { id: 5, ar: "ٱلَّذِينَ هُمْ عَن صَلَاتِهِمْ سَاهُونَ", tr: "Allazeena hum 'an salaatihim saahoon", en: "[But] who are heedless of their prayer -" },
+          { id: 6, ar: "ٱلَّذِينَ هُمْ يُرَآءُونَ", tr: "Allazeena hum yuraaa'oon", en: "Those who make a show [of their deeds]" },
+          { id: 7, ar: "وَيَمْنَعُونَ ٱلْمَاعُونَ", tr: "Wa yamna'oonal-maa'oon", en: "And withhold simple assistance." }
+        ]
+      },
+      kawthar: {
+        number: 108,
+        titleAr: "سُورَةُ الكَوْثَرِ",
+        titleEn: "The Abundance",
+        type: "Meccan",
+        versesCount: 3,
+        verses: [
+          { id: 1, ar: "إِنَّآ أَعْطَيْنَٰكَ ٱلْكَوْثَرَ", tr: "Innaaa a'tainaakal-kawthar", en: "Indeed, We have granted you, [O Muhammad], al-Kawthar." },
+          { id: 2, ar: "فَصَلِّ لِرَبِّكَ وَٱنْحَرْ", tr: "Fasalli li-Rabbika wanhar", en: "So pray to your Lord and sacrifice [to Him alone]." },
+          { id: 3, ar: "إِنَّ شَانِئَكَ هُوَ ٱلْأَبْتَرُ", tr: "Inna shaani'aka huwal-abtar", en: "Indeed, your enemy is the one cut off." }
+        ]
+      },
+      kafirun: {
+        number: 109,
+        titleAr: "سُورَةُ الكَافِرُونَ",
+        titleEn: "The Disbelievers",
+        type: "Meccan",
+        versesCount: 6,
+        verses: [
+          { id: 1, ar: "قُلْ يَٰٓأَيُّهَا ٱلْكَٰفِرُونَ", tr: "Qul yaaa-ayyuhal-kaafiroon", en: "Say, "O disbelievers,"" },
+          { id: 2, ar: "لَآ أَعْبُدُ مَا تَعْبُدُونَ", tr: "Laaa a'budu maa ta'budoon", en: ""I do not worship what you worship."" },
+          { id: 3, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: ""Nor are you worshippers of what I worship."" },
+          { id: 4, ar: "وَلَآ أَنَا۠ عَابِدٌۭ مَّا عَبَدتُّمْ", tr: "Wa laaa ana 'aabidum-maa 'abattum", en: ""Nor will I be a worshipper of what you worship."" },
+          { id: 5, ar: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", tr: "Wa laaa antum 'aabidoona maaa a'bud", en: ""Nor will you be worshippers of what I worship."" },
+          { id: 6, ar: "لَكُمْ دِينُكُمْ وَلِىَ دِينِ", tr: "Lakum deenukum wa liya deen", en: ""For you is your religion, and for me is my religion."" }
+        ]
+      },
+      nasr: {
+        number: 110,
+        titleAr: "سُورَةُ النَّصْرِ",
+        titleEn: "The Divine Support",
+        type: "Medinan",
+        versesCount: 3,
+        verses: [
+          { id: 1, ar: "إِذَا جَآءَ نَصْرُ ٱللَّهِ وَٱلْفَتْحُ", tr: "Izaa jaaa'a nasrul-laahi wal-fath", en: "When the victory of Allah has come and the conquest," },
+          { id: 2, ar: "وَرَأَيْتَ ٱلنَّاسَ يَدْخُلُونَ فِى دِينِ ٱللَّهِ أَفْوَاجًا", tr: "Wa ra'aitan-naasa yadkhuloona fee deenil-laahi afwaajaa", en: "And you see the people entering into the religion of Allah in multitudes," },
+          { id: 3, ar: "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ۚ إِنَّهُۥ كَانَ تَوَّابًۢا", tr: "Fasabbih bihamdi Rabbika wastaghfirh; innahoo kaana tawwaabaa", en: "Then exalt with praise of your Lord and ask forgiveness of Him. Indeed, He is ever Accepting of repentance." }
+        ]
       }
     };
     let currentSurahKey = 'fatihah';
@@ -1254,7 +1374,7 @@ html_content = r'''<!DOCTYPE html>
       document.getElementById("surahHeaderTitleAr").innerText = s.titleAr;
       document.getElementById("surahHeaderTitleEn").innerText = s.titleEn;
 
-      ['fatihah', 'kursi', 'ikhlas', 'falaq', 'nas', 'mulk'].forEach(k => {
+      Object.keys(surahsData).forEach(k => {
         const pill = document.getElementById(`surah-pill-${k}`);
         if (!pill) return;
         if (k === surahKey) {
