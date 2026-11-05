@@ -1745,7 +1745,45 @@ html_content = r'''<!DOCTYPE html>
       } catch (e) {}
     }
 
+    function autoDetectUserTimezone() {
+      try {
+        const raw = localStorage.getItem("muslim_companion_v2_state");
+        if (raw) {
+          const s = JSON.parse(raw);
+          if (s.currentCityIndex !== undefined) return; // User already chose a specific city manually
+        }
+        
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        let matchedIdx = -1;
+        
+        if (tz.includes("Karachi") || tz.includes("Pakistan") || tz.includes("Islamabad") || tz.includes("Lahore") || tz.includes("Asia/Karachi")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Karachi"));
+        } else if (tz.includes("London") || tz.includes("Europe/London") || tz.includes("Dublin") || tz.includes("Lisbon")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("London"));
+        } else if (tz.includes("New_York") || tz.includes("Eastern") || tz.includes("Detroit") || tz.includes("Indiana")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("New York"));
+        } else if (tz.includes("Dubai") || tz.includes("Muscat") || tz.includes("Abu_Dhabi") || tz.includes("Asia/Dubai")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Dubai"));
+        } else if (tz.includes("Cairo") || tz.includes("Africa/Cairo")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Cairo"));
+        } else if (tz.includes("Istanbul") || tz.includes("Europe/Istanbul")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Istanbul"));
+        } else if (tz.includes("Riyadh") || tz.includes("Asia/Riyadh") || tz.includes("Kuwait") || tz.includes("Qatar")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Makkah"));
+        } else if (tz.includes("Toronto") || tz.includes("Montreal") || tz.includes("America/Toronto")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Toronto"));
+        } else if (tz.includes("Jerusalem") || tz.includes("Gaza") || tz.includes("Hebron")) {
+          matchedIdx = cities.findIndex(c => c.name.includes("Jerusalem"));
+        }
+
+        if (matchedIdx !== -1) {
+          currentCityIndex = matchedIdx;
+        }
+      } catch (e) {}
+    }
+
     function init() {
+      autoDetectUserTimezone();
       loadSavedState();
       applyActiveCity();
       renderHadith();
@@ -1754,6 +1792,14 @@ html_content = r'''<!DOCTYPE html>
       updateTasbeehRing();
       lucide.createIcons();
       startCountdown();
+
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions.query({ name: 'geolocation' }).then(result => {
+          if (result.state === 'granted') {
+            detectLocationGPS();
+          }
+        }).catch(() => {});
+      }
     }
 
     window.onload = init;
