@@ -8,7 +8,7 @@ html_content = r'''<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="google" content="notranslate">
-  <title>Muslim Companion (Rafiq Al-Muslim) — Phase 1 MVP</title>
+  <title>Muslim Companion (Rafiq Al-Muslim) — Islamic Mobile App</title>
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -21,7 +21,7 @@ html_content = r'''<!DOCTYPE html>
   <!-- Premium Islamic & Modern Typography (5 Arabic + 4 UI Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Scheherazade+New:wght@400;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -45,7 +45,7 @@ html_content = r'''<!DOCTYPE html>
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
             arabic: ['Amiri', 'serif'],
-            'arabic-ui': ['Cairo', 'sans-serif'],
+            'arabic-ui': ['"Tajawal"', '"IBM Plex Sans Arabic"', '"Almarai"', 'system-ui', 'sans-serif'],
             quran: ['"Amiri Quran"', '"Scheherazade New"', 'serif'],
           }
         }
@@ -62,7 +62,7 @@ html_content = r'''<!DOCTYPE html>
     /* Dynamic Typography CSS Variables */
     :root {
       --font-quran: 'Scheherazade New', 'Amiri Quran', 'Amiri', serif;
-      --font-arabic-general: 'Amiri', 'Scheherazade New', 'Cairo', serif;
+      --font-arabic-general: 'Tajawal', 'Amiri', 'Scheherazade New', sans-serif;
       --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     }
     body {
@@ -76,7 +76,8 @@ html_content = r'''<!DOCTYPE html>
       text-rendering: optimizeLegibility;
     }
     .font-arabic-ui {
-      font-family: 'Cairo', var(--font-ui);
+      font-family: 'Tajawal', 'IBM Plex Sans Arabic', 'Almarai', system-ui, -apple-system, sans-serif !important;
+      letter-spacing: -0.01em;
     }
     .font-quran-text {
       font-family: var(--font-quran);
@@ -123,42 +124,44 @@ html_content = r'''<!DOCTYPE html>
     }
   </style>
 </head>
-<body class="h-full flex flex-col items-center justify-start py-4 px-2 sm:px-6 overflow-x-hidden">
+<body class="min-h-screen bg-[#030806] text-slate-200 antialiased selection:bg-emerald-800 selection:text-white flex flex-col items-center justify-start py-6 px-3 sm:px-6 overflow-x-hidden">
 
   <!-- Desktop Presentation Layout: Left Phone Screen, Right Vertically Centered Content -->
-  <div class="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 my-auto py-4">
+  <div id="heroSection" class="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-14 py-4 min-h-[730px]">
     
     <!-- LEFT COLUMN: Content (Vertically Centered With Phone) -->
     <div class="flex-1 max-w-md w-full space-y-4 text-left my-auto self-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/90 border border-emerald-700/50 text-emerald-300 text-xs font-semibold tracking-wide shadow-sm">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/50 text-xs font-medium tracking-wide shadow-xs">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        FLUTTERFLOW READY • PHASE 1 MVP
+        <span class="text-emerald-300 font-semibold">Islamic Daily Companion</span>
+        <span class="text-emerald-600/80">•</span>
+        <span class="text-slate-300 font-normal">Crafted for iOS & Android</span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
-        Muslim Companion <br>
-        <span class="text-gold-400 font-arabic text-3xl font-normal">رفيق المسلم</span>
+      <h1 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold tracking-tight text-white flex flex-wrap items-center gap-3 leading-tight">
+        <span>Muslim Companion</span>
+        <span class="text-gold-400 font-arabic text-2xl sm:text-3xl font-normal select-none">رفيق المسلم</span>
       </h1>
       <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-        Production-ready mobile architecture for iOS & Android. Dual-mode GPS/city timetable, spherical trigonometry Qibla compass, Uthmani Quran reader, authentic Hisn al-Muslim Adhkar, tactile Tasbeeh, and daily Sahih Hadith.
+        An authentic, beautifully crafted Islamic companion designed for daily spiritual devotion. Features precise prayer times, Uthmani Quran with audio recitation, authentic Hisn al-Muslim Adhkar, live Qibla compass, tactile Tasbeeh, and daily Sahih Hadith.
       </p>
 
-      <!-- Architecture Badges -->
+      <!-- Core Modules Quick Badges -->
       <div class="grid grid-cols-2 gap-2.5 text-xs pt-1">
         <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Framework</p>
-          <p class="text-white font-bold mt-0.5">FlutterFlow & Dart</p>
+          <p class="text-emerald-400 font-semibold text-[10px] uppercase tracking-wider">Holy Quran</p>
+          <p class="text-white font-bold mt-0.5">114 Surahs & Recitation</p>
         </div>
         <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Sensor Math</p>
-          <p class="text-white font-bold mt-0.5">Spherical Qibla Trig</p>
+          <p class="text-gold-400 font-semibold text-[10px] uppercase tracking-wider">Prayer & Adhan</p>
+          <p class="text-white font-bold mt-0.5">Accurate Daily Timetable</p>
         </div>
         <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Database Cost</p>
-          <p class="text-white font-bold mt-0.5">$0 Offline Bundled</p>
+          <p class="text-emerald-400 font-semibold text-[10px] uppercase tracking-wider">Duas & Adhkar</p>
+          <p class="text-white font-bold mt-0.5">Authentic Hisn al-Muslim</p>
         </div>
         <div class="p-2.5 rounded-xl bg-slate-900/90 border border-slate-800">
-          <p class="text-slate-400 font-medium text-[11px]">Handoff Format</p>
-          <p class="text-white font-bold mt-0.5">Custom Widgets/Actions</p>
+          <p class="text-gold-400 font-semibold text-[10px] uppercase tracking-wider">Hijri & Fasting</p>
+          <p class="text-white font-bold mt-0.5">Calendar & Sunnah Tracker</p>
         </div>
       </div>
 
@@ -247,7 +250,7 @@ html_content = r'''<!DOCTYPE html>
               <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-800">
                 <div class="flex items-center gap-2">
                   <i data-lucide="map-pin" class="w-4 h-4 text-emerald-600"></i>
-                  <h3 id="modalTitle" class="text-sm font-bold text-slate-900 dark:text-white">Select Location</h3>
+                  <h3 id="cityModalTitle" class="text-sm font-bold text-slate-900 dark:text-white">Select Location</h3>
                 </div>
                 <button onclick="closeCityModal()" class="w-6 h-6 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-500 hover:text-slate-900 dark:hover:text-white">✕</button>
               </div>
@@ -280,10 +283,10 @@ html_content = r'''<!DOCTYPE html>
                   <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
                 </div>
                 <div>
-                  <h3 class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                  <h3 id="dirModalTitle" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                     Quran & Duas Directory <span class="font-arabic text-sm text-gold-500 font-normal">فهرس السور والأدعية</span>
                   </h3>
-                  <p class="text-[10px] text-slate-400">114 Surahs, Daily Duas & Special Verses</p>
+                  <p id="dirModalSub" class="text-[10px] text-slate-400">114 Surahs, Daily Duas & Special Verses</p>
                 </div>
               </div>
               <button onclick="closeSurahIndexModal()" class="w-7 h-7 rounded-full bg-slate-200/80 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white transition active:scale-90">
@@ -332,7 +335,7 @@ html_content = r'''<!DOCTYPE html>
                   <i data-lucide="bookmark" class="w-4 h-4 fill-current"></i>
                 </div>
                 <div>
-                  <h3 class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                  <h3 id="bmModalTitle" class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                     Saved Ayahs <span class="font-arabic text-sm text-gold-500 font-normal">الآيات المحفوظة</span>
                   </h3>
                   <p class="text-[10px] text-slate-400" id="bookmarksCountSub">0 verses bookmarked</p>
@@ -358,7 +361,7 @@ html_content = r'''<!DOCTYPE html>
                   <i data-lucide="sliders" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h3 class="text-xs font-bold text-slate-900 dark:text-white">Settings</h3>
+                  <h3 id="settingsModalTitle" class="text-xs font-bold text-slate-900 dark:text-white">Settings</h3>
                 </div>
               </div>
               <button onclick="closeSettingsModal()" class="w-7 h-7 rounded-full bg-slate-200/80 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800 dark:hover:text-white transition active:scale-90">
@@ -388,8 +391,8 @@ html_content = r'''<!DOCTYPE html>
               <!-- SECTION 1: QURAN RECITERS -->
               <div id="settingsSectionReciters" class="space-y-1.5">
                 <div class="flex items-center justify-between pb-0.5">
-                  <h4 class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
-                    <i data-lucide="headphones" class="w-3.5 h-3.5 text-gold-500"></i> Reciter
+                  <h4 id="lblSettingsReciterHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="headphones" class="w-3.5 h-3.5 text-gold-500"></i> <span id="lblSettingsReciterText">Reciter</span>
                   </h4>
                   <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold" id="activeReciterBadge">Alafasy</span>
                 </div>
@@ -401,8 +404,8 @@ html_content = r'''<!DOCTYPE html>
               <!-- SECTION 2: ADHAN & NOTIFICATION TONES -->
               <div id="settingsSectionAdhans" class="hidden space-y-1.5">
                 <div class="flex items-center justify-between pb-0.5">
-                  <h4 class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
-                    <i data-lucide="bell" class="w-3.5 h-3.5 text-gold-500"></i> Adhan Tone
+                  <h4 id="lblSettingsAdhanHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="bell" class="w-3.5 h-3.5 text-gold-500"></i> <span id="lblSettingsAdhanText">Adhan Tone</span>
                   </h4>
                   <span class="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold" id="activeAdhanBadge">Makkah</span>
                 </div>
@@ -417,18 +420,18 @@ html_content = r'''<!DOCTYPE html>
                 <!-- Asr Madhab -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblAsrMethodTitle" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="sun" class="w-3.5 h-3.5 text-gold-500"></i> Asr Method
                     </span>
                     <span class="text-[10px] font-bold text-emerald-700 dark:text-emerald-400" id="currentMadhabLabel">Hanafi</span>
                   </div>
-                  <p class="text-[10px] text-slate-400">Hanafi (later Asr) or Standard (Shafi'i, Maliki, Hanbali)</p>
+                  <p id="lblAsrMethodSub" class="text-[10px] text-slate-400">Hanafi (later Asr) or Standard (Shafi'i, Maliki, Hanbali)</p>
                   <div class="grid grid-cols-2 gap-2 pt-0.5">
                     <button onclick="setJuristicMethod('hanafi')" id="btnMadhabHanafi" class="py-2 px-2.5 rounded-lg border text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-95 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-900 dark:text-emerald-200">
-                      <span>Hanafi</span> <span class="font-arabic font-normal text-slate-400 text-[10px]">(حنفي)</span>
+                      <span id="txtMadhabHanafi">Hanafi</span> <span class="font-arabic font-normal text-slate-400 text-[10px]">(حنفي)</span>
                     </button>
                     <button onclick="setJuristicMethod('standard')" id="btnMadhabStandard" class="py-2 px-2.5 rounded-lg border text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-95 bg-white dark:bg-slate-700 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-300">
-                      <span>Standard</span> <span class="font-arabic font-normal text-slate-400 text-[10px]">(شافعي)</span>
+                      <span id="txtMadhabStandard">Standard</span> <span class="font-arabic font-normal text-slate-400 text-[10px]">(شافعي)</span>
                     </button>
                   </div>
                 </div>
@@ -436,12 +439,12 @@ html_content = r'''<!DOCTYPE html>
                 <!-- Hijri Date Manual Adjustment -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblHijriAdjTitle" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="moon" class="w-3.5 h-3.5 text-gold-500"></i> Hijri Date Adjustment
                     </span>
                     <span class="whitespace-nowrap text-[10px] font-bold text-gold-600 dark:text-gold-400" id="currentHijriOffsetLabel">0 Days</span>
                   </div>
-                  <p class="text-[10px] text-slate-400">Adjust ±1 or 2 days for local moon sighting</p>
+                  <p id="lblHijriAdjSub" class="text-[10px] text-slate-400">Adjust ±1 or 2 days for local moon sighting</p>
                   <div class="flex items-center justify-between gap-1 pt-0.5 text-[11px] font-bold">
                     <button onclick="setHijriOffset(-2)" id="btnHijriM2" class="flex-1 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300">-2</button>
                     <button onclick="setHijriOffset(-1)" id="btnHijriM1" class="flex-1 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-300">-1</button>
@@ -453,12 +456,12 @@ html_content = r'''<!DOCTYPE html>
 
                 <!-- Calculation Fiqh Authority -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
-                  <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                  <span id="lblAuthorityTitle" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                     <i data-lucide="book" class="w-3.5 h-3.5 text-gold-500"></i> Calculation Authority
                   </span>
                   <div class="p-2 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 flex items-center justify-between">
-                    <span>Univ. of Islamic Sciences, Karachi</span>
-                    <span class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-400 font-bold">Auto</span>
+                    <span id="lblAuthorityName">Univ. of Islamic Sciences, Karachi</span>
+                    <span id="lblAuthorityStandard" class="px-1.5 py-0.5 rounded text-[9px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-400 font-bold">Auto</span>
                   </div>
                 </div>
               </div>
@@ -468,12 +471,12 @@ html_content = r'''<!DOCTYPE html>
                 <!-- Quran Arabic Font Size Slider with Reset Button -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblSettingsFontSizeTitle" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="type" class="w-3.5 h-3.5 text-gold-500"></i> Arabic Font Size
                     </span>
                     <div class="flex items-center gap-2">
                       <span class="text-xs font-bold text-emerald-700 dark:text-emerald-400" id="lblSettingsFontSize">24px</span>
-                      <button onclick="resetArabicFontSize()" title="Reset to default font size (24px)" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-750 text-slate-500 hover:text-emerald-700 dark:text-slate-400 dark:hover:text-emerald-300 transition active:scale-95 border border-slate-200/60 dark:border-slate-700/60">
+                      <button id="btnResetFontSize" onclick="resetArabicFontSize()" title="Reset to default font size (24px)" class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-750 text-slate-500 hover:text-emerald-700 dark:text-slate-400 dark:hover:text-emerald-300 transition active:scale-95 border border-slate-200/60 dark:border-slate-700/60">
                         Reset
                       </button>
                     </div>
@@ -490,101 +493,26 @@ html_content = r'''<!DOCTYPE html>
                 <!-- Premium Arabic Script Selector (5 Famous Authentic Typefaces) -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblSettingsArabicScriptHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="feather" class="w-3.5 h-3.5 text-gold-500"></i> Arabic Script <span class="font-arabic text-gold-600 dark:text-gold-400 font-normal text-xs">خط المصحف</span>
                     </span>
                     <span id="activeArabicFontBadge" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300/40">Scheherazade</span>
                   </div>
                   <div class="space-y-1.5 pt-0.5" id="arabicFontOptionsContainer">
-                    <!-- 1. Scheherazade New -->
-                    <button onclick="setArabicFont('scheherazade')" id="fontBtn-scheherazade" class="w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs">
-                      <div>
-                        <p class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                          <span>Scheherazade New</span>
-                          <span class="text-[9px] px-1.5 py-0.2 rounded bg-gold-500/20 text-gold-700 dark:text-gold-400 font-semibold">Recommended</span>
-                        </p>
-                        <p class="text-[10px] text-slate-400">Traditional Quranic Naskh</p>
-                      </div>
-                      <span class="font-scheherazade text-base text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ</span>
-                    </button>
-
-                    <!-- 2. Amiri Quran -->
-                    <button onclick="setArabicFont('amiri-quran')" id="fontBtn-amiri-quran" class="w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <div>
-                        <p class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                          <span>Amiri Quran</span>
-                          <span class="text-[9px] px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-750 text-slate-600 dark:text-slate-300 font-medium">Bulaq</span>
-                        </p>
-                        <p class="text-[10px] text-slate-400">Authentic 1924 Cairo Mushaf</p>
-                      </div>
-                      <span class="font-amiri-quran text-base text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ</span>
-                    </button>
-
-                    <!-- 3. Noto Naskh Arabic -->
-                    <button onclick="setArabicFont('noto-naskh')" id="fontBtn-noto-naskh" class="w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <div>
-                        <p class="text-xs font-bold text-slate-900 dark:text-white">Noto Naskh Arabic</p>
-                        <p class="text-[10px] text-slate-400">Madinah Standard Typography</p>
-                      </div>
-                      <span class="font-noto-naskh text-base text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ</span>
-                    </button>
-
-                    <!-- 4. Cairo -->
-                    <button onclick="setArabicFont('cairo')" id="fontBtn-cairo" class="w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <div>
-                        <p class="text-xs font-bold text-slate-900 dark:text-white">Cairo</p>
-                        <p class="text-[10px] text-slate-400">Modern Geometric Kufi</p>
-                      </div>
-                      <span class="font-cairo text-sm text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ</span>
-                    </button>
-
-                    <!-- 5. Almarai -->
-                    <button onclick="setArabicFont('almarai')" id="fontBtn-almarai" class="w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <div>
-                        <p class="text-xs font-bold text-slate-900 dark:text-white">Almarai</p>
-                        <p class="text-[10px] text-slate-400">Contemporary Clean Sans</p>
-                      </div>
-                      <span class="font-almarai text-sm text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ</span>
-                    </button>
+                    <!-- Injected dynamically by renderArabicFontCards() -->
                   </div>
                 </div>
 
                 <!-- App Interface UI Font (4 Famous Acclaimed Typefaces) -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblSettingsUIFontHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i> App Interface Font
                     </span>
                     <span id="activeUIFontBadge" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300/40">Plus Jakarta</span>
                   </div>
                   <div class="grid grid-cols-2 gap-2 pt-0.5" id="uiFontOptionsContainer">
-                    <!-- 1. Plus Jakarta Sans -->
-                    <button onclick="setUIFont('plus-jakarta')" id="uiFontBtn-plus-jakarta" class="p-2.5 rounded-xl border text-left transition active:scale-95 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white font-plus-jakarta">Plus Jakarta</p>
-                      <p class="text-[9px] text-slate-400">Modern Geometric</p>
-                      <p class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 mt-1 font-plus-jakarta">Aa 123</p>
-                    </button>
-
-                    <!-- 2. Inter -->
-                    <button onclick="setUIFont('inter')" id="uiFontBtn-inter" class="p-2.5 rounded-xl border text-left transition active:scale-95 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white font-inter">Inter</p>
-                      <p class="text-[9px] text-slate-400">Interface Standard</p>
-                      <p class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 mt-1 font-inter">Aa 123</p>
-                    </button>
-
-                    <!-- 3. Outfit -->
-                    <button onclick="setUIFont('outfit')" id="uiFontBtn-outfit" class="p-2.5 rounded-xl border text-left transition active:scale-95 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white font-outfit">Outfit</p>
-                      <p class="text-[9px] text-slate-400">Luxury Display</p>
-                      <p class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 mt-1 font-outfit">Aa 123</p>
-                    </button>
-
-                    <!-- 4. Lexend -->
-                    <button onclick="setUIFont('lexend')" id="uiFontBtn-lexend" class="p-2.5 rounded-xl border text-left transition active:scale-95 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white font-lexend">Lexend</p>
-                      <p class="text-[9px] text-slate-400">Reading Fluency</p>
-                      <p class="text-[11px] font-semibold text-slate-700 dark:text-slate-300 mt-1 font-lexend">Aa 123</p>
-                    </button>
+                    <!-- Injected dynamically by renderUIFontCards() -->
                   </div>
                 </div>
 
@@ -593,8 +521,8 @@ html_content = r'''<!DOCTYPE html>
                   <!-- Translation Toggle -->
                   <div class="flex items-center justify-between">
                     <div>
-                      <h5 class="text-xs font-bold text-slate-800 dark:text-white">English Translation</h5>
-                      <p class="text-[10px] text-slate-400">Sahih International</p>
+                      <h5 id="lblSettingTranslationTitle" class="text-xs font-bold text-slate-800 dark:text-white">English Translation</h5>
+                      <p id="lblSettingTranslationSub" class="text-[10px] text-slate-400">Sahih International</p>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" id="chkShowTranslation" checked onchange="toggleTranslationSetting(this.checked)" class="sr-only peer">
@@ -605,8 +533,8 @@ html_content = r'''<!DOCTYPE html>
                   <!-- Transliteration Toggle -->
                   <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700/60 pt-2">
                     <div>
-                      <h5 class="text-xs font-bold text-slate-800 dark:text-white">Roman Transliteration</h5>
-                      <p class="text-[10px] text-slate-400">Phonetic reading</p>
+                      <h5 id="lblSettingTranslitTitle" class="text-xs font-bold text-slate-800 dark:text-white">Roman Transliteration</h5>
+                      <p id="lblSettingTranslitSub" class="text-[10px] text-slate-400">Phonetic reading</p>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" id="chkShowTranslit" checked onchange="toggleTranslitSetting(this.checked)" class="sr-only peer">
@@ -617,8 +545,8 @@ html_content = r'''<!DOCTYPE html>
                   <!-- Haptic Touch Feedback Toggle -->
                   <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-700/60 pt-2">
                     <div>
-                      <h5 class="text-xs font-bold text-slate-800 dark:text-white">Haptic Vibration</h5>
-                      <p class="text-[10px] text-slate-400">Vibrate on tap</p>
+                      <h5 id="lblSettingHapticTitle" class="text-xs font-bold text-slate-800 dark:text-white">Haptic Vibration</h5>
+                      <p id="lblSettingHapticSub" class="text-[10px] text-slate-400">Vibrate on tap</p>
                     </div>
                     <label class="relative inline-flex items-center cursor-pointer">
                       <input type="checkbox" id="chkHaptics" checked onchange="toggleHapticsSetting(this.checked)" class="sr-only peer">
@@ -630,7 +558,7 @@ html_content = r'''<!DOCTYPE html>
                 <!-- Multiple Tasbeeh Sounds Selector (Instant Acoustic Preview on Click) -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
                   <div class="flex items-center justify-between">
-                    <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <span id="lblSettingTasbeehSoundHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
                       <i data-lucide="music" class="w-3.5 h-3.5 text-emerald-600"></i> Tasbeeh Tap Sound
                     </span>
                     <span id="currentSoundLabelBadge" class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 border border-emerald-300/40">Wood Bead</span>
@@ -653,14 +581,14 @@ html_content = r'''<!DOCTYPE html>
 
                 <!-- Theme Selection -->
                 <div class="p-3 rounded-xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 space-y-2 mb-6">
-                  <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
-                    <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i> Theme
+                  <span id="lblSettingThemeHeader" class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
+                    <i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i> <span id="lblSettingThemeText">Theme</span>
                   </span>
                   <div class="grid grid-cols-2 gap-2 pt-1">
-                    <button onclick="setThemeMode('light')" class="py-2 rounded-lg border border-slate-200 bg-white text-slate-800 text-xs font-bold hover:bg-slate-50 transition">
+                    <button id="btnThemeLight" onclick="setThemeMode('light')" class="py-2 rounded-lg border border-slate-200 bg-white text-slate-800 text-xs font-bold hover:bg-slate-50 transition">
                       ☀️ Light Parchment
                     </button>
-                    <button onclick="setThemeMode('dark')" class="py-2 rounded-lg border border-slate-700 bg-slate-900 text-gold-300 text-xs font-bold hover:bg-slate-800 transition">
+                    <button id="btnThemeDark" onclick="setThemeMode('dark')" class="py-2 rounded-lg border border-slate-700 bg-slate-900 text-gold-300 text-xs font-bold hover:bg-slate-800 transition">
                       🌙 Emerald Dark
                     </button>
                   </div>
@@ -678,7 +606,7 @@ html_content = r'''<!DOCTYPE html>
                   <i data-lucide="calendar" class="w-4 h-4"></i>
                 </div>
                 <div>
-                  <h3 class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                  <h3 id="calModalTitle" class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
                     Hijri Calendar <span class="font-arabic text-xs text-gold-500 font-normal">التقويم الهجري</span>
                   </h3>
                 </div>
@@ -710,7 +638,7 @@ html_content = r'''<!DOCTYPE html>
                 </div>
 
                 <!-- 7 Weekday Headers -->
-                <div class="grid grid-cols-7 gap-1 text-center py-1 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
+                <div id="calWeekdayHeadersRow" class="grid grid-cols-7 gap-1 text-center py-1 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                   <span>Sun</span>
                   <span>Mon</span>
                   <span>Tue</span>
@@ -726,7 +654,7 @@ html_content = r'''<!DOCTYPE html>
                 </div>
 
                 <!-- Calendar Legend -->
-                <div class="flex items-center justify-center gap-3 pt-2 text-[9px] text-slate-400 border-t border-slate-100 dark:border-slate-750 mt-2.5">
+                <div id="calLegendRow" class="flex items-center justify-center gap-3 pt-2 text-[9px] text-slate-400 border-t border-slate-100 dark:border-slate-750 mt-2.5">
                   <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-700"></span> Today</span>
                   <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Mon/Thu Fast</span>
                   <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> White Days</span>
@@ -755,14 +683,14 @@ html_content = r'''<!DOCTYPE html>
                 <div class="grid grid-cols-2 gap-2 pt-0.5">
                   <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between">
                     <div>
-                      <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Suhoor</p>
+                      <p id="calSuhoorLabel" class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Suhoor</p>
                       <p id="calSuhoorTime" class="text-xs font-extrabold text-emerald-700 dark:text-emerald-400 mt-0.5">05:22 AM</p>
                     </div>
                     <i data-lucide="sunrise" class="w-4 h-4 text-emerald-600/70"></i>
                   </div>
                   <div class="p-2 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between">
                     <div>
-                      <p class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Iftar</p>
+                      <p id="calIftarLabel" class="text-[9px] text-slate-400 font-semibold uppercase tracking-wider">Iftar</p>
                       <p id="calIftarTime" class="text-xs font-extrabold text-amber-600 dark:text-amber-400 mt-0.5">05:49 PM</p>
                     </div>
                     <i data-lucide="sunset" class="w-4 h-4 text-amber-500/80"></i>
@@ -774,9 +702,9 @@ html_content = r'''<!DOCTYPE html>
               <div class="p-3 rounded-2xl bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-2">
                 <div class="flex items-center justify-between">
                   <span class="text-xs font-bold text-slate-800 dark:text-white flex items-center gap-1.5">
-                    <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-emerald-600"></i> Islamic Events
+                    <i data-lucide="calendar-days" class="w-3.5 h-3.5 text-emerald-600"></i> <span id="lblCalEventsHeader">Islamic Events</span>
                   </span>
-                  <span class="text-[9px] font-bold text-slate-400">1447–1448 AH</span>
+                  <span id="lblCalEventsYear" class="text-[9px] font-bold text-slate-400">1447–1448 AH</span>
                 </div>
                 <div class="space-y-1.5 text-xs pt-0.5" id="islamicEventsContainer">
                   <!-- Rendered dynamically -->
@@ -790,8 +718,8 @@ html_content = r'''<!DOCTYPE html>
                     <i data-lucide="bell" class="w-3.5 h-3.5"></i>
                   </div>
                   <div>
-                    <h5 class="text-xs font-bold text-slate-800 dark:text-slate-100">Event Notifications</h5>
-                    <p class="text-[9px] text-slate-400">Reminders for Sunnah fasts and major dates</p>
+                    <h5 id="lblCalEventNotifTitle" class="text-xs font-bold text-slate-800 dark:text-slate-100">Event Notifications</h5>
+                    <p id="lblCalEventNotifSub" class="text-[9px] text-slate-400">Reminders for Sunnah fasts and major dates</p>
                   </div>
                 </div>
                 <label class="relative inline-flex items-center cursor-pointer">
@@ -984,13 +912,13 @@ html_content = r'''<!DOCTYPE html>
                   </span>
                   <div class="flex items-center gap-1.5">
                     <button onclick="copyCurrentHadith()" title="Copy Hadith" class="text-slate-400 hover:text-emerald-700 text-[10px] font-semibold flex items-center gap-0.5 px-1.5 py-0.5 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                      <i data-lucide="copy" class="w-3 h-3"></i> Copy
+                      <i data-lucide="copy" class="w-3 h-3"></i> <span id="lblHadithCopyText">Copy</span>
                     </button>
                     <button onclick="shareCurrentHadith()" title="Share Hadith to WhatsApp" class="text-emerald-700 dark:text-emerald-400 hover:underline text-[10px] font-bold flex items-center gap-0.5 px-1.5 py-0.5 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                      <i data-lucide="share-2" class="w-3 h-3"></i> Share
+                      <i data-lucide="share-2" class="w-3 h-3"></i> <span id="lblHadithShareText">Share</span>
                     </button>
                     <button onclick="cycleNextHadith()" title="Next Hadith" class="text-emerald-700 dark:text-emerald-400 hover:underline text-[10px] font-bold flex items-center gap-0.5 px-1.5 py-0.5 rounded hover:bg-slate-100 dark:hover:bg-slate-700 transition">
-                      <i data-lucide="refresh-cw" class="w-3 h-3"></i> Next
+                      <i data-lucide="refresh-cw" class="w-3 h-3"></i> <span id="lblHadithNextText">Next</span>
                     </button>
                   </div>
                 </div>
@@ -1011,7 +939,7 @@ html_content = r'''<!DOCTYPE html>
                 <div class="flex items-center justify-between pb-0.5">
                   <div class="flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-gold-500"></span>
-                    <h4 class="text-xs font-bold text-slate-900 dark:text-white">99 Divine & Noble Names</h4>
+                    <h4 id="lbl99NamesHeaderTitle" class="text-xs font-bold text-slate-900 dark:text-white">99 Divine & Noble Names</h4>
                   </div>
                   <span class="text-[10px] text-slate-400 font-arabic">الأسماء الحسنى الشريفة</span>
                 </div>
@@ -1022,7 +950,7 @@ html_content = r'''<!DOCTYPE html>
                       الله
                     </div>
                     <div class="min-w-0 flex-1">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white truncate">Allah (99)</p>
+                      <p id="lbl99NamesAllahTitle" class="text-xs font-bold text-slate-900 dark:text-white truncate">Allah (99)</p>
                       <p class="text-[9px] text-gold-600 dark:text-gold-400 font-arabic truncate whitespace-nowrap">أسماء الله الحسنى</p>
                     </div>
                   </div>
@@ -1032,7 +960,7 @@ html_content = r'''<!DOCTYPE html>
                       محمد
                     </div>
                     <div class="min-w-0 flex-1">
-                      <p class="text-xs font-bold text-slate-900 dark:text-white truncate">Prophet ﷺ (99)</p>
+                      <p id="lbl99NamesProphetTitle" class="text-xs font-bold text-slate-900 dark:text-white truncate">Prophet ﷺ (99)</p>
                       <p class="text-[9px] text-emerald-600 dark:text-emerald-400 font-arabic truncate whitespace-nowrap">أسماء النبي</p>
                     </div>
                   </div>
@@ -1059,10 +987,10 @@ html_content = r'''<!DOCTYPE html>
                   <!-- Rotating Compass Dial -->
                   <div id="compassDial" class="w-52 h-52 rounded-full border border-dashed border-slate-300 dark:border-slate-600 relative transition-transform duration-150 ease-out flex items-center justify-center">
                     
-                    <span class="absolute top-2 text-xs font-bold text-red-500">N</span>
-                    <span class="absolute bottom-2 text-xs font-bold text-slate-400">S</span>
-                    <span class="absolute right-2 text-xs font-bold text-slate-400">E</span>
-                    <span class="absolute left-2 text-xs font-bold text-slate-400">W</span>
+                    <span id="compassN" class="absolute top-2 text-xs font-bold text-red-500">N</span>
+                    <span id="compassS" class="absolute bottom-2 text-xs font-bold text-slate-400">S</span>
+                    <span id="compassE" class="absolute right-2 text-xs font-bold text-slate-400">E</span>
+                    <span id="compassW" class="absolute left-2 text-xs font-bold text-slate-400">W</span>
 
                     <!-- Kaaba Target Needle -->
                     <div id="kaabaNeedleContainer" class="absolute inset-0 flex flex-col items-center pointer-events-none transition-transform duration-200">
@@ -1070,7 +998,7 @@ html_content = r'''<!DOCTYPE html>
                         <div class="w-7 h-7 rounded-full bg-emerald-900 text-gold-400 flex items-center justify-center shadow-md border border-gold-500/70">
                           <i data-lucide="navigation" class="w-3.5 h-3.5 fill-current"></i>
                         </div>
-                        <span class="text-[8px] font-extrabold text-gold-500 uppercase mt-0.5">Kaaba</span>
+                        <span id="compassKaabaText" class="text-[8px] font-extrabold text-gold-500 uppercase mt-0.5">Kaaba</span>
                       </div>
                     </div>
                   </div>
@@ -1090,21 +1018,21 @@ html_content = r'''<!DOCTYPE html>
                     <i data-lucide="compass" class="w-3.5 h-3.5 text-emerald-600"></i>
                     <span id="phoneCompassBtnText">Live Compass Sensor</span>
                   </button>
-                  <button onclick="detectLocationGPS()" class="px-2.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center gap-1 border border-emerald-300/50">
-                    <i data-lucide="map-pin" class="w-3 h-3"></i> GPS
+                  <button onclick="detectLocationGPS()" id="btnQiblaGps" class="px-2.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold flex items-center gap-1 border border-emerald-300/50">
+                    <i data-lucide="map-pin" class="w-3 h-3"></i> <span id="lblQiblaGps">GPS</span>
                   </button>
                 </div>
 
                 <div class="space-y-1">
                   <div class="flex items-center justify-between text-[11px] font-semibold text-slate-400">
-                    <span>Manual Rotation Slider</span>
+                    <span id="lblManualSlider">Manual Rotation Slider</span>
                     <span id="qiblaTargetLabel" class="text-emerald-600 dark:text-emerald-400 font-bold">Align at 265°</span>
                   </div>
                   <input id="headingSlider" type="range" min="0" max="360" value="0" oninput="updateCompass(this.value, true)" class="w-full accent-emerald-700 cursor-pointer">
                   <div class="flex justify-between text-[10px] text-slate-400">
-                    <span>0° (North)</span>
-                    <span>180° (South)</span>
-                    <span>360°</span>
+                    <span id="lblCompass0">0° (North)</span>
+                    <span id="lblCompass180">180° (South)</span>
+                    <span id="lblCompass360">360°</span>
                   </div>
                 </div>
               </div>
@@ -1143,7 +1071,7 @@ html_content = r'''<!DOCTYPE html>
               <!-- Sleek Top Search Bar (Spacious, Clean & Responsive) -->
               <div onclick="openSurahIndexModal()" class="cursor-pointer relative flex items-center bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80 rounded-xl px-3 py-2 text-xs hover:border-gold-500/60 transition shadow-xs group">
                 <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 group-hover:text-gold-500 mr-2 flex-shrink-0 transition"></i>
-                <span class="text-slate-400 dark:text-slate-400 text-xs truncate">Search Surahs, Duas & Verses...</span>
+                <span id="quranSearchPlaceholder" class="text-slate-400 dark:text-slate-400 text-xs truncate">Search Surahs, Duas & Verses...</span>
               </div>
 
               <!-- Quick Horizontal Surahs Scroll Bar -->
@@ -1178,7 +1106,7 @@ html_content = r'''<!DOCTYPE html>
               <div class="flex items-center justify-between">
                 <div>
                   <h2 id="lblAdhkarTitle" class="text-base font-bold text-slate-900 dark:text-white">Adhkar</h2>
-                  <p class="text-[10px] text-slate-400">Hisn al-Muslim</p>
+                  <p id="lblAdhkarSubtitle" class="text-[10px] text-slate-400">Hisn al-Muslim</p>
                 </div>
               </div>
 
@@ -1284,10 +1212,10 @@ html_content = r'''<!DOCTYPE html>
                   <button onclick="setTasbeehTarget(99)" id="target-btn-99" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">99</button>
                   <button onclick="setTasbeehTarget(100)" id="target-btn-100" class="px-3 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">100</button>
                   <button onclick="setTasbeehTarget(0)" id="target-btn-0" class="px-2.5 py-1 text-xs font-bold rounded-lg border border-slate-300 dark:border-slate-700">∞</button>
-                  <button onclick="resetTasbeeh()" class="px-3 py-1 text-xs font-bold rounded-lg bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Reset</button>
+                  <button onclick="resetTasbeeh()" id="btnResetTasbeehBottom" class="px-3 py-1 text-xs font-bold rounded-lg bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300">Reset</button>
                 </div>
                 <p class="text-[11px] text-slate-400">
-                  Total beads counted today: <span id="tasbeehTotalDaily" class="font-bold text-emerald-700 dark:text-emerald-400">0</span>
+                  <span id="lblTasbeehTotalDailyTitle">Total beads counted today:</span> <span id="tasbeehTotalDaily" class="font-bold text-emerald-700 dark:text-emerald-400">0</span>
                 </p>
               </div>
             </div>
@@ -1383,6 +1311,328 @@ html_content = r'''<!DOCTYPE html>
 
   </div>
 
+  <!-- ========================================================================= -->
+  <!-- SECTION 2 & 3: APP CAPABILITIES & 10-SCREEN SHOWCASE VIEWER              -->
+  <!-- ========================================================================= -->
+  <div class="w-full max-w-5xl mt-10 mb-16 space-y-16 border-t border-slate-800/80 pt-14">
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 2: APP CAPABILITIES OVERVIEW (Clean 6-Card Grid)              -->
+    <!-- ===================================================================== -->
+    <div class="space-y-6">
+      <div class="text-left space-y-1">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/40 text-emerald-300 text-[10px] font-bold uppercase tracking-widest">
+          Core Capabilities
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+          Complete Mobile Islamic Companion
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Everything built natively for spiritual focus, authentic texts, and zero bloat.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
+        <!-- 1. Prayer -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold">
+            <i data-lucide="clock" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Prayer Times & Countdown</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Astronomical solar timetable with upcoming prayer countdown, elapsed interval bar, and 1-tap Salah completion log.
+          </p>
+        </div>
+
+        <!-- 2. Quran -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-gold-950/50 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="book-open" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Holy Quran (114 Surahs)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Authentic Uthmani Mushaf, verse audio recitation by Sheikh Mishary Alafasy, translation, and saved bookmarks.
+          </p>
+        </div>
+
+        <!-- 3. Duas & Adhkar -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold">
+            <i data-lucide="heart" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Hisn al-Muslim (Duas & Adhkar)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Categorized daily supplications: Morning, Evening, After Salah, Daily Duas, Quranic Duas, and Sleep with citations.
+          </p>
+        </div>
+
+        <!-- 4. Hijri Calendar & Fasting -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-gold-950/50 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Hijri Calendar & Sunnah Fasts</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Full 12-month monthly lunar grid, Monday/Thursday fast checklist, White Days (13-15), and Suhoor/Iftar window.
+          </p>
+        </div>
+
+        <!-- 5. Qibla Compass -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center font-bold">
+            <i data-lucide="compass" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Live Qibla Compass</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Real-time Kaaba direction and compass bearing calibrated to your exact location, paired with great-circle distance.
+          </p>
+        </div>
+
+        <!-- 6. Tactile Tasbeeh -->
+        <div class="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-600/40 transition space-y-2">
+          <div class="w-8 h-8 rounded-xl bg-gold-950/50 text-gold-400 flex items-center justify-center font-bold">
+            <i data-lucide="circle-dot" class="w-4 h-4"></i>
+          </div>
+          <h3 class="text-sm font-bold text-white">Tactile Digital Tasbeeh</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            4 Acoustic bead sound profiles (Wood, Click, Water, Digital) with haptics, target lap counter, and Dhikr presets.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 3: SIGNATURE 10-SCREEN SHOWCASE VIEWER (MATCHING ATTACHMENT) -->
+    <!-- ===================================================================== -->
+    <div id="screensShowcaseSection" class="space-y-6 pt-4">
+      
+      <!-- Top Title & Quick Category Switcher -->
+      <div class="space-y-3">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/40 text-emerald-300 text-[10px] font-bold uppercase tracking-widest mb-1">
+              Screen Showcase Gallery
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              All App Screens & UI Flows
+            </h2>
+          </div>
+          <!-- Quick Slide Counter Tag & Dual Language Switcher! -->
+          <div class="flex flex-wrap items-center gap-2 self-start sm:self-auto">
+            <!-- Language Switcher Pill for Showcase -->
+            <div class="inline-flex items-center p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold shadow-inner">
+              <button id="showcaseLangArBtn" onclick="setShowcaseLanguage('ar')" class="px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 bg-emerald-800 text-white shadow-xs">
+                <span>🇸🇦 العربية</span>
+              </button>
+              <button id="showcaseLangEnBtn" onclick="setShowcaseLanguage('en')" class="px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 text-slate-400 hover:text-white">
+                <span>🇬🇧 English</span>
+              </button>
+            </div>
+            <span id="showcaseCounterText" class="text-xs font-mono font-bold text-emerald-400 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800">
+              ١ / ١٠ • مواقيت الصلاة
+            </span>
+          </div>
+        </div>
+
+        <!-- 10 Quick Direct Jump Pills -->
+        <div class="flex gap-1.5 overflow-x-auto pb-1 text-xs no-scrollbar" id="showcasePillsContainer">
+          <!-- Rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- THE LIGHTBOX / COVERFLOW SHOWCASE STAGE (Exact visual style as user attachment) -->
+      <div class="relative w-full rounded-3xl bg-slate-950/90 border border-slate-800/90 p-4 sm:p-8 flex flex-col items-center justify-center overflow-hidden shadow-2xl min-h-[640px]">
+        
+        <!-- Subtle Ambient Radial Glow -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(11,62,47,0.22),transparent_70%)] pointer-events-none"></div>
+
+        <!-- Left Navigation Arrow Button -->
+        <button onclick="prevShowcaseSlide()" title="Previous Screen" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 text-white flex items-center justify-center transition active:scale-90 shadow-2xl backdrop-blur-md">
+          <i data-lucide="chevron-left" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Right Navigation Arrow Button -->
+        <button onclick="nextShowcaseSlide()" title="Next Screen" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700 hover:border-emerald-500 text-white flex items-center justify-center transition active:scale-90 shadow-2xl backdrop-blur-md">
+          <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </button>
+
+        <!-- SCREEN VIEWER CAROUSEL ROW -->
+        <div class="w-full flex items-center justify-center relative py-4">
+          
+          <!-- LEFT PEEK SCREEN (Subtle 3D Depth Backdrop) -->
+          <div id="showcaseLeftPeek" class="hidden md:block absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 w-[200px] lg:w-[225px] aspect-[664/1364] bg-slate-900 rounded-[32px] p-1.5 border border-slate-800/60 opacity-30 blur-[1.2px] pointer-events-none transform -rotate-3 scale-90 transition-all duration-300 overflow-hidden shadow-2xl">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- CENTER PHONE MOCKUP (High-Fidelity Real Screen UI) -->
+          <div id="showcaseCenterPhone" class="relative z-20 w-[285px] sm:w-[320px] aspect-[664/1364] bg-black rounded-[42px] p-2 border-[3.5px] border-slate-700 shadow-2xl overflow-hidden transition-all duration-300">
+            <!-- iOS Dynamic Island -->
+            <div class="absolute top-3.5 left-1/2 -translate-x-1/2 w-24 h-4 bg-black rounded-full z-30 flex items-center justify-center pointer-events-none">
+              <div class="w-1.5 h-1.5 rounded-full bg-slate-800"></div>
+            </div>
+            <!-- Screen Content Frame -->
+            <div id="showcaseScreenContent" class="w-full h-full rounded-[34px] overflow-hidden bg-slate-950 flex items-center justify-center">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- RIGHT PEEK SCREEN (Subtle 3D Depth Backdrop) -->
+          <div id="showcaseRightPeek" class="hidden md:block absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 w-[200px] lg:w-[225px] aspect-[664/1364] bg-slate-900 rounded-[32px] p-1.5 border border-slate-800/60 opacity-30 blur-[1.2px] pointer-events-none transform rotate-3 scale-90 transition-all duration-300 overflow-hidden shadow-2xl">
+            <!-- Rendered dynamically -->
+          </div>
+
+        </div>
+
+        <!-- BOTTOM SCREEN TITLE, SUBTITLE & LIVE SIMULATOR JUMP ACTION -->
+        <div class="w-full max-w-lg text-center mt-5 space-y-1.5 z-20">
+          <h3 id="showcaseTitleText" class="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+            Prayer Timetable & Hero Countdown
+          </h3>
+          <p id="showcaseDescText" class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+            Astronomical solar timetable with upcoming Fajr countdown, elapsed interval bar, and 1-tap Salah log.
+          </p>
+          <div class="pt-2 flex items-center justify-center gap-2">
+            <button id="showcaseJumpBtn" onclick="jumpToShowcaseSimulator()" class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-md active:scale-95">
+              <span>Open Screen in Live Simulator</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 4: TYPOGRAPHY, AUDIO ENGINE & CLIENT DELIVERABLES             -->
+    <!-- ===================================================================== -->
+    <div class="space-y-12">
+      
+      <!-- Typography & Audio Specimen Card -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/80 border border-slate-800 space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800/80 pb-4">
+          <div>
+            <span class="text-[10px] font-bold text-gold-400 uppercase tracking-widest block">Design System</span>
+            <h3 class="text-xl font-bold text-white tracking-tight mt-0.5">Authentic Calligraphy Meets Modern Interface UI</h3>
+          </div>
+          <button onclick="openSettingsModal(); switchSettingsTab('display'); window.scrollTo({ top: 0, behavior: 'smooth' });" class="self-start sm:self-auto px-3.5 py-1.5 rounded-xl bg-emerald-850 hover:bg-emerald-800 text-white text-xs font-bold transition flex items-center gap-1.5 border border-emerald-700/60 active:scale-95 shadow-xs">
+            <i data-lucide="type" class="w-3.5 h-3.5"></i>
+            <span>Customize Fonts in Settings</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Arabic Typefaces -->
+          <div class="space-y-3">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Arabic Quranic Typefaces (5 Presets)</p>
+            <div class="space-y-2">
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white">Scheherazade New</p>
+                  <p class="text-[10px] text-slate-400">Traditional Quranic Naskh (Default)</p>
+                </div>
+                <span class="font-scheherazade text-base text-gold-400 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white">Amiri Quran</p>
+                  <p class="text-[10px] text-slate-400">Authentic 1924 Cairo Bulaq Mushaf</p>
+                </div>
+                <span class="font-amiri-quran text-base text-gold-400 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white">Noto Naskh Arabic</p>
+                  <p class="text-[10px] text-slate-400">Madinah Standard Typography</p>
+                </div>
+                <span class="font-noto-naskh text-base text-gold-400 font-bold" dir="rtl">ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- UI Typefaces -->
+          <div class="space-y-3">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">App Interface Typefaces (4 Presets)</p>
+            <div class="space-y-2">
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white font-plus-jakarta">Plus Jakarta Sans</p>
+                  <p class="text-[10px] text-slate-400">Modern Geometric Neo-Grotesque</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400 font-plus-jakarta">Aa Bb 123</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white font-inter">Inter</p>
+                  <p class="text-[10px] text-slate-400">Global Interface Legibility Standard</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400 font-inter">Aa Bb 123</span>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center justify-between">
+                <div>
+                  <p class="text-xs font-bold text-white font-outfit">Outfit & Lexend</p>
+                  <p class="text-[10px] text-slate-400">Luxury Display & Reading Fluency</p>
+                </div>
+                <span class="text-xs font-bold text-emerald-400 font-outfit">Aa Bb 123</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Highlights Overview -->
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900/90 border border-emerald-700/40 relative overflow-hidden shadow-xl">
+        <div class="space-y-4">
+          <div>
+            <span class="text-[10px] font-bold text-gold-400 uppercase tracking-widest block">Core Highlights</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mt-0.5">Crafted for Daily Spiritual Devotion</h3>
+            <p class="text-xs text-slate-300 mt-1">Thoughtfully engineered with authentic verified sources, elegant typography, and intuitive interaction.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs">
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Complete 114 Surahs with Uthmani script and verse-by-verse audio</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Precise prayer timetable with upcoming countdown and Salah log</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Real-time gyro Qibla compass with Kaaba heading & distance</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Authentic Hisn al-Muslim Adhkar with verified Hadith citations</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>Interactive 12-month Hijri calendar & Sunnah fast logging</span>
+            </div>
+            <div class="flex items-center gap-2 text-slate-200">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+              <span>100% Bilingual Arabic & English with native RTL/LTR typography</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minimalist Clean Footer -->
+      <div class="pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span class="text-slate-300 font-semibold">Muslim Companion (رفيق المسلم)</span>
+          <span>• Daily Spiritual Companion</span>
+        </div>
+        <p class="text-slate-400 text-[11px]">
+          Designed for iOS & Android • Crafted with reverence and precision
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
   <script>
     // State Architecture
     let currentOS = 'ios';
@@ -1427,17 +1677,20 @@ html_content = r'''<!DOCTYPE html>
 
     function renderTasbeehSoundSelectors() {
       const sounds = ['wood', 'click', 'water', 'digital'];
-      const soundLabels = { wood: 'Wood Bead', click: 'Soft Click', water: 'Water Drop', digital: 'Digital' };
+      const soundLabelsEn = { wood: 'Wood Bead', click: 'Soft Click', water: 'Water Drop', digital: 'Digital' };
+      const soundLabelsAr = { wood: 'خرز خشبي', click: 'نقرة خفيفة', water: 'قطرة ماء', digital: 'رقمي' };
       const badge = document.getElementById("currentSoundLabelBadge");
-      if (badge) badge.innerText = soundLabels[currentTasbeehSound] || 'Wood Bead';
+      if (badge) badge.innerText = isArabic ? (soundLabelsAr[currentTasbeehSound] || 'خرز خشبي') : (soundLabelsEn[currentTasbeehSound] || 'Wood Bead');
       
-      const soundEmojis = { wood: '🪵 Wood', click: '🔘 Click', water: '💧 Water', digital: '📟 Digital' };
+      const soundEmojisEn = { wood: '🪵 Wood', click: '🔘 Click', water: '💧 Water', digital: '📟 Digital' };
+      const soundEmojisAr = { wood: '🪵 خشبي', click: '🔘 نقرة', water: '💧 قطرة', digital: '📟 رقمي' };
       const profName = document.getElementById("soundProfileName");
-      if (profName) profName.innerText = soundEmojis[currentTasbeehSound] || '🪵 Wood';
+      if (profName) profName.innerText = isArabic ? (soundEmojisAr[currentTasbeehSound] || '🪵 خشبي') : (soundEmojisEn[currentTasbeehSound] || '🪵 Wood');
 
       sounds.forEach(s => {
         const btn = document.getElementById(`sndBtn-${s}`);
         if (btn) {
+          btn.innerText = isArabic ? soundEmojisAr[s] : soundEmojisEn[s];
           if (s === currentTasbeehSound) {
             btn.className = "p-1.5 rounded-lg border text-center transition active:scale-95 bg-emerald-50 dark:bg-emerald-950 border-emerald-500 text-emerald-800 dark:text-emerald-300 font-bold text-[10px]";
           } else {
@@ -1567,16 +1820,16 @@ html_content = r'''<!DOCTYPE html>
 
     // Comprehensive World Cities with Coordinates & Real Timetable Data
     const cities = [
-      { name: "Makkah", country: "Saudi Arabia", lat: 21.4225, lng: 39.8262, method: "Auto (Umm al-Qura)", fajr: "04:58", sunrise: "06:18", dhuhr: "12:21", asr: "15:43", maghrib: "18:24", isha: "19:54" },
-      { name: "Madinah", country: "Saudi Arabia", lat: 24.4672, lng: 39.6111, method: "Auto (Umm al-Qura)", fajr: "05:02", sunrise: "06:22", dhuhr: "12:22", asr: "15:44", maghrib: "18:22", isha: "19:52" },
-      { name: "Jerusalem", country: "Palestine", lat: 31.7683, lng: 35.2137, method: "Muslim World League", fajr: "04:42", sunrise: "06:05", dhuhr: "11:38", asr: "14:48", maghrib: "17:11", isha: "18:35" },
-      { name: "Cairo", country: "Egypt", lat: 30.0444, lng: 31.2357, method: "Egyptian General Auth.", fajr: "04:48", sunrise: "06:14", dhuhr: "11:43", asr: "14:46", maghrib: "17:12", isha: "18:32" },
-      { name: "Istanbul", country: "Turkey", lat: 41.0082, lng: 28.9784, method: "Diyanet İşleri", fajr: "05:58", sunrise: "07:29", dhuhr: "12:56", asr: "15:47", maghrib: "18:13", isha: "19:38" },
-      { name: "Dubai", country: "UAE", lat: 25.2048, lng: 55.2708, method: "Gulf / Dubai Method", fajr: "05:08", sunrise: "06:26", dhuhr: "12:12", asr: "15:31", maghrib: "17:58", isha: "19:28" },
-      { name: "Karachi", country: "Pakistan", lat: 24.8607, lng: 67.0011, method: "Univ. Islamic Sciences", fajr: "05:22", sunrise: "06:40", dhuhr: "12:15", asr: "15:28", maghrib: "17:49", isha: "19:07" },
-      { name: "London", country: "United Kingdom", lat: 51.5074, lng: -0.1278, method: "Unified UK Timetable", fajr: "05:12", sunrise: "07:05", dhuhr: "11:58", asr: "14:14", maghrib: "16:48", isha: "18:32" },
-      { name: "New York", country: "USA", lat: 40.7128, lng: -74.0060, method: "ISNA Method", fajr: "05:35", sunrise: "06:44", dhuhr: "11:47", asr: "14:32", maghrib: "16:51", isha: "18:01" },
-      { name: "Toronto", country: "Canada", lat: 43.6532, lng: -79.3832, method: "ISNA Method", fajr: "05:46", sunrise: "07:01", dhuhr: "12:12", asr: "14:52", maghrib: "17:23", isha: "18:38" }
+      { name: "Makkah", nameAr: "مكة المكرمة", country: "Saudi Arabia", countryAr: "المملكة العربية السعودية", lat: 21.4225, lng: 39.8262, method: "Auto (Umm al-Qura)", fajr: "04:58", sunrise: "06:18", dhuhr: "12:21", asr: "15:43", maghrib: "18:24", isha: "19:54" },
+      { name: "Madinah", nameAr: "المدينة المنورة", country: "Saudi Arabia", countryAr: "المملكة العربية السعودية", lat: 24.4672, lng: 39.6111, method: "Auto (Umm al-Qura)", fajr: "05:02", sunrise: "06:22", dhuhr: "12:22", asr: "15:44", maghrib: "18:22", isha: "19:52" },
+      { name: "Jerusalem", nameAr: "القدس الشريف", country: "Palestine", countryAr: "فلسطين", lat: 31.7683, lng: 35.2137, method: "Muslim World League", fajr: "04:42", sunrise: "06:05", dhuhr: "11:38", asr: "14:48", maghrib: "17:11", isha: "18:35" },
+      { name: "Cairo", nameAr: "القاهرة", country: "Egypt", countryAr: "مصر", lat: 30.0444, lng: 31.2357, method: "Egyptian General Auth.", fajr: "04:48", sunrise: "06:14", dhuhr: "11:43", asr: "14:46", maghrib: "17:12", isha: "18:32" },
+      { name: "Istanbul", nameAr: "إسطنبول", country: "Turkey", countryAr: "تركيا", lat: 41.0082, lng: 28.9784, method: "Diyanet İşleri", fajr: "05:58", sunrise: "07:29", dhuhr: "12:56", asr: "15:47", maghrib: "18:13", isha: "19:38" },
+      { name: "Dubai", nameAr: "دبي", country: "UAE", countryAr: "الإمارات العربية المتحدة", lat: 25.2048, lng: 55.2708, method: "Gulf / Dubai Method", fajr: "05:08", sunrise: "06:26", dhuhr: "12:12", asr: "15:31", maghrib: "17:58", isha: "19:28" },
+      { name: "Karachi", nameAr: "كراتشي", country: "Pakistan", countryAr: "باكستان", lat: 24.8607, lng: 67.0011, method: "Univ. Islamic Sciences", fajr: "05:22", sunrise: "06:40", dhuhr: "12:15", asr: "15:28", maghrib: "17:49", isha: "19:07" },
+      { name: "London", nameAr: "لندن", country: "United Kingdom", countryAr: "المملكة المتحدة", lat: 51.5074, lng: -0.1278, method: "Unified UK Timetable", fajr: "05:12", sunrise: "07:05", dhuhr: "11:58", asr: "14:14", maghrib: "16:48", isha: "18:32" },
+      { name: "New York", nameAr: "نيويورك", country: "USA", countryAr: "الولايات المتحدة", lat: 40.7128, lng: -74.0060, method: "ISNA Method", fajr: "05:35", sunrise: "06:44", dhuhr: "11:47", asr: "14:32", maghrib: "16:51", isha: "18:01" },
+      { name: "Toronto", nameAr: "تورونتو", country: "Canada", countryAr: "كندا", lat: 43.6532, lng: -79.3832, method: "ISNA Method", fajr: "05:46", sunrise: "07:01", dhuhr: "12:12", asr: "14:52", maghrib: "17:23", isha: "18:38" }
     ];
 
     const prayerNames = [
@@ -1619,6 +1872,12 @@ html_content = r'''<!DOCTYPE html>
       return dirs[idx];
     }
 
+    function getBearingDirectionAbbrAr(deg) {
+      const dirsAr = ['شمالاً', 'شمال-شمال-شرق', 'شمال-شرق', 'شرق-شمال-شرق', 'شرقاً', 'شرق-جنوب-شرق', 'جنوب-شرق', 'جنوب-جنوب-شرق', 'جنوباً', 'جنوب-جنوب-غرب', 'جنوب-غرب', 'غرب-جنوب-غرب', 'غرباً', 'غرب-شمال-غرب', 'شمال-غرب', 'شمال-شمال-غرب'];
+      const idx = Math.round((deg % 360) / 22.5) % 16;
+      return dirsAr[idx];
+    }
+
     // Modal City Selector Controls
     function openCityModal() {
       playClickSound();
@@ -1652,15 +1911,26 @@ html_content = r'''<!DOCTYPE html>
             : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60 hover:bg-slate-50'
         }`;
 
+        const cityName = isArabic ? (c.nameAr || c.name) : c.name;
+        const countryName = isArabic ? (c.countryAr || c.country) : c.country;
+        const dirAbbr = isArabic ? getBearingDirectionAbbrAr(bearing) : getBearingDirectionAbbr(bearing);
+        const bearingDisplay = isArabic ? toArabicDigits(bearing) : bearing;
+        const distDisplay = isArabic ? toArabicDigits(dist.toLocaleString('ar-EG')) : dist.toLocaleString();
+        const subtitleText = isArabic 
+          ? `اتجاه القبلة: ${bearingDisplay}° ${dirAbbr} • ${distDisplay} كم إلى الكعبة` 
+          : `Qibla: ${bearing}° ${getBearingDirectionAbbr(bearing)} • ${dist.toLocaleString()} km`;
+        const selectedBadge = isArabic ? "✓ الحالي" : "✓ Selected";
+        const unselectedBadge = isArabic ? "اختيار" : "Select";
+
         item.innerHTML = `
           <div>
             <p class="text-xs text-slate-900 dark:text-white font-bold flex items-center gap-1.5">
-              <span>${c.name}</span>
-              <span class="text-[10px] text-slate-400 font-normal">(${c.country})</span>
+              <span>${cityName}</span>
+              <span class="text-[10px] text-slate-400 font-normal">(${countryName})</span>
             </p>
-            <p class="text-[10px] text-slate-500 mt-0.5">Qibla: ${bearing}° ${getBearingDirectionAbbr(bearing)} • ${dist.toLocaleString()} km</p>
+            <p class="text-[10px] text-slate-500 mt-0.5">${subtitleText}</p>
           </div>
-          ${isSelected ? '<span class="text-xs text-emerald-600 font-bold">✓ Selected</span>' : '<span class="text-xs text-slate-400">Select</span>'}
+          ${isSelected ? `<span class="text-xs text-emerald-600 font-bold">${selectedBadge}</span>` : `<span class="text-xs text-slate-400">${unselectedBadge}</span>`}
         `;
         container.appendChild(item);
       });
@@ -1824,15 +2094,22 @@ html_content = r'''<!DOCTYPE html>
 
     function applyActiveCity() {
       const city = cities[currentCityIndex];
-      document.getElementById("cityNameLabel").innerText = city.name;
+      const cityLbl = document.getElementById("cityNameLabel");
+      if (cityLbl) cityLbl.innerText = isArabic ? (city.nameAr || city.name) : city.name;
+      const dateLbl = document.getElementById("hijriDateLabel");
+      if (dateLbl) dateLbl.innerText = isArabic ? "١٨ شوال" : "18 Shawwal";
       const methodEl = document.getElementById("cityCalcMethodLabel"); if (methodEl) methodEl.innerText = city.method;
 
       // Update Qibla math
       const bearing = calculateQiblaBearing(city.lat, city.lng);
       const dist = calculateKaabaDistance(city.lat, city.lng);
-      document.getElementById("qiblaBearingValueText").innerText = `${bearing}° ${getBearingDirectionAbbr(bearing)}`;
-      document.getElementById("qiblaDistanceValueText").innerText = dist === 0 ? "At Kaaba" : `${dist.toLocaleString()} km to Kaaba`;
-      document.getElementById("qiblaTargetLabel").innerText = `Align at ${bearing}°`;
+      const abbr = isArabic ? getBearingDirectionAbbrAr(bearing) : getBearingDirectionAbbr(bearing);
+      const bearingEl = document.getElementById("qiblaBearingValueText");
+      if (bearingEl) bearingEl.innerText = isArabic ? `${toArabicDigits(bearing)}° ${abbr}` : `${bearing}° ${abbr}`;
+      const distEl = document.getElementById("qiblaDistanceValueText");
+      if (distEl) distEl.innerText = isArabic ? (dist === 0 ? "عند الكعبة المشرفة" : `${toArabicDigits(dist.toLocaleString())} كم إلى الكعبة`) : (dist === 0 ? "At Kaaba" : `${dist.toLocaleString()} km to Kaaba`);
+      const targetEl = document.getElementById("qiblaTargetLabel");
+      if (targetEl) targetEl.innerText = isArabic ? `وجّه نحو ${toArabicDigits(bearing)}°` : `Align at ${bearing}°`;
 
       // Update Kaaba needle target orientation on the dial
       const needle = document.getElementById("kaabaNeedleContainer");
@@ -1895,7 +2172,7 @@ html_content = r'''<!DOCTYPE html>
           </div>
           <div class="flex items-center gap-3">
             <span class="text-xs font-mono font-bold ${isNext ? 'text-emerald-800 dark:text-emerald-400' : 'text-slate-500'}" dir="ltr">
-              ${time}
+              ${isArabic ? toArabicDigits(time) : time}
             </span>
             <button onclick="togglePrayerAlert('${p.id}')" title="Toggle Alert" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-xs transition">
               <i data-lucide="${isAlertOn ? 'bell' : 'bell-off'}" class="w-3.5 h-3.5 ${isAlertOn ? 'text-gold-500' : 'text-slate-400'}"></i>
@@ -1950,9 +2227,11 @@ html_content = r'''<!DOCTYPE html>
       currentActivePrayerId = nextName;
       document.getElementById("heroPrayerName").innerText = isArabic ? (prayerNameAr[nextName] || nextName) : nextName;
       const [h, m] = nextTimeStr.split(':').map(Number);
-      const ampm = h >= 12 ? 'PM' : 'AM';
+      const ampm = isArabic ? (h >= 12 ? 'م' : 'ص') : (h >= 12 ? 'PM' : 'AM');
       const h12 = h % 12 || 12;
-      document.getElementById("heroPrayerTime").innerHTML = `<span dir="ltr">${h12}:${String(m).padStart(2, '0')} ${ampm}</span>`;
+      const formattedTime = `${h12}:${String(m).padStart(2, '0')}`;
+      const timeDisplay = isArabic ? `${toArabicDigits(formattedTime)} ${ampm}` : `${formattedTime} ${ampm}`;
+      document.getElementById("heroPrayerTime").innerHTML = `<span dir="ltr">${timeDisplay}</span>`;
       
       currentRemainingSeconds = diffSeconds;
       totalPrayerWindowSeconds = Math.max(diffSeconds, 10800); // approx 3h window
@@ -1977,8 +2256,10 @@ html_content = r'''<!DOCTYPE html>
         const h = String(Math.floor(currentRemainingSeconds / 3600)).padStart(2, '0');
         const m = String(Math.floor((currentRemainingSeconds % 3600) / 60)).padStart(2, '0');
         const s = String(currentRemainingSeconds % 60).padStart(2, '0');
+        const rawTime = `${h}:${m}:${s}`;
+        const displayTime = isArabic ? toArabicDigits(rawTime) : rawTime;
         const el = document.getElementById("countdownTimer");
-        if (el) el.innerHTML = `<span dir="ltr" class="inline-block font-mono">${h}:${m}:${s}</span>`;
+        if (el) el.innerHTML = `<span dir="ltr" class="inline-block font-mono">${displayTime}</span>`;
       }, 1000);
     }
 
@@ -1988,42 +2269,54 @@ html_content = r'''<!DOCTYPE html>
         matnAr: "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
         matnEn: "Actions are judged by intentions, and every person will be rewarded according to their intention.",
         narrator: "Umar ibn Al-Khattab (RA)",
+        narratorAr: "عمر بن الخطاب رضي الله عنه",
         source: "Sahih al-Bukhari 1",
+        sourceAr: "صحيح البخاري ١",
         topic: "Sincerity"
       },
       {
         matnAr: "الطُّهُورُ شَطْرُ الإِيمَانِ",
         matnEn: "Purity is half of faith, and Alhamdulillah fills the scale.",
         narrator: "Abu Malik Al-Ash'ari (RA)",
+        narratorAr: "أبو مالك الأشعري رضي الله عنه",
         source: "Sahih Muslim 223",
+        sourceAr: "صحيح مسلم ٢٢٣",
         topic: "Purity"
       },
       {
         matnAr: "لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ",
         matnEn: "None of you truly believes until he loves for his brother what he loves for himself.",
         narrator: "Anas ibn Malik (RA)",
+        narratorAr: "أنس بن مالك رضي الله عنه",
         source: "Sahih al-Bukhari 13",
+        sourceAr: "صحيح البخاري ١٣",
         topic: "Brotherhood"
       },
       {
         matnAr: "خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ",
         matnEn: "The best among you are those who learn the Quran and teach it to others.",
         narrator: "Uthman ibn Affan (RA)",
+        narratorAr: "عثمان بن عفان رضي الله عنه",
         source: "Sahih al-Bukhari 5027",
+        sourceAr: "صحيح البخاري ٥٠٢٧",
         topic: "Quran"
       },
       {
         matnAr: "مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ",
         matnEn: "Whoever travels a path in search of knowledge, Allah will make easy for him a path to Paradise.",
         narrator: "Abu Hurairah (RA)",
+        narratorAr: "أبو هريرة رضي الله عنه",
         source: "Sahih Muslim 2699",
+        sourceAr: "صحيح مسلم ٢٦٩٩",
         topic: "Knowledge"
       },
       {
         matnAr: "تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ لَكَ صَدَقَةٌ",
         matnEn: "Your smiling in the face of your brother is charity for you.",
         narrator: "Abu Dharr (RA)",
+        narratorAr: "أبو ذر الغفاري رضي الله عنه",
         source: "Jami` at-Tirmidhi 1956",
+        sourceAr: "جامع الترمذي ١٩٥٦",
         topic: "Kindness"
       }
     ];
@@ -2033,8 +2326,8 @@ html_content = r'''<!DOCTYPE html>
       const h = hadithCollection[currentHadithIdx];
       document.getElementById("hadithMatnAr").innerText = h.matnAr;
       document.getElementById("hadithMatnEn").innerText = `"${h.matnEn}"`;
-      document.getElementById("hadithNarratorText").innerText = h.narrator;
-      document.getElementById("hadithSourceText").innerText = h.source;
+      document.getElementById("hadithNarratorText").innerText = isArabic ? (h.narratorAr || h.narrator) : h.narrator;
+      document.getElementById("hadithSourceText").innerText = isArabic ? (h.sourceAr || h.source) : h.source;
     }
 
     function cycleNextHadith() {
@@ -2070,8 +2363,15 @@ html_content = r'''<!DOCTYPE html>
       const outerRing = document.getElementById("compassOuterRing");
       const banner = document.getElementById("alignmentBanner");
       const bannerCard = document.getElementById("alignmentBannerCard");
+      const qiblaTargetLabel = document.getElementById("qiblaTargetLabel");
 
-      degText.innerText = `${userHeading}°`;
+      if (qiblaTargetLabel) {
+        qiblaTargetLabel.innerText = isArabic 
+          ? `وجه نحو ${toArabicDigits(qiblaTarget)}°` 
+          : `Align at ${qiblaTarget}°`;
+      }
+
+      degText.innerText = isArabic ? `${toArabicDigits(userHeading)}°` : `${userHeading}°`;
       dial.style.transform = `rotate(${-userHeading}deg)`;
 
       // Shortest circular difference (0° to 180°)
@@ -2081,11 +2381,13 @@ html_content = r'''<!DOCTYPE html>
 
       if (isAligned) {
         statusText.innerText = isArabic ? "متطابق" : "ALIGNED";
-        statusText.className = "text-[8px] font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase mt-0.5 animate-pulse";
+        statusText.className = isArabic 
+          ? "text-[9px] font-bold text-emerald-600 dark:text-emerald-400 mt-0.5 animate-pulse" 
+          : "text-[8px] font-black tracking-widest text-emerald-600 dark:text-emerald-400 uppercase mt-0.5 animate-pulse";
         outerRing.classList.add("ring-4", "ring-gold-400", "border-gold-500");
         bannerCard.className = "p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-400 text-xs font-bold text-emerald-800 dark:text-emerald-300";
         banner.innerHTML = isArabic 
-          ? `✓ متجه نحو الكعبة المشرفة تماماً (${qiblaTarget}°)` 
+          ? `✓ باتجاه الكعبة المشرفة تماماً (${toArabicDigits(qiblaTarget)}°)` 
           : `✓ Perfectly Aligned with Kaaba (${qiblaTarget}°)`;
         
         // Single debounced haptic trigger when entering alignment
@@ -2101,11 +2403,13 @@ html_content = r'''<!DOCTYPE html>
           hasTriggeredAlignmentHaptic = false; // Reset trigger when moving out of alignment
         }
         statusText.innerText = diff < 20 ? (isArabic ? "قريب" : "CLOSE") : (isArabic ? "استدر" : "TURN");
-        statusText.className = "text-[8px] font-black tracking-widest text-slate-400 uppercase mt-0.5";
+        statusText.className = isArabic 
+          ? "text-[9px] font-bold text-slate-400 mt-0.5" 
+          : "text-[8px] font-black tracking-widest text-slate-400 uppercase mt-0.5";
         outerRing.classList.remove("ring-4", "ring-gold-400", "border-gold-500");
         bannerCard.className = "p-2 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-500";
         banner.innerText = isArabic 
-          ? `قم بتدوير الهاتف إلى ${qiblaTarget}° للمحاذاة (${diff}° متبقي)` 
+          ? `قم بتدوير الهاتف إلى ${toArabicDigits(qiblaTarget)}° للمحاذاة (${toArabicDigits(diff)}° متبقية)` 
           : `Rotate phone to ${qiblaTarget}° to align (${diff}° off)`;
       }
     }
@@ -2336,7 +2640,7 @@ html_content = r'''<!DOCTYPE html>
           <i data-lucide="book-open" class="w-3 h-3 fill-current"></i> ${isArabic ? "الكل" : "All"}
         </button>
         <button onclick="openBookmarksModal()" title="Saved Bookmarks" class="px-2.5 py-1 rounded-full font-bold bg-gold-500/15 border border-gold-500/30 text-gold-700 dark:text-gold-400 flex items-center gap-1 shadow-xs flex-shrink-0 active:scale-95 transition">
-          <i data-lucide="bookmark" class="w-3 h-3 fill-current"></i> <span id="pillBookmarksCount">${savedCount}</span>
+          <i data-lucide="bookmark" class="w-3 h-3 fill-current"></i> <span id="pillBookmarksCount">${isArabic ? toArabicDigits(savedCount) : savedCount}</span>
         </button>
       `;
 
@@ -2357,7 +2661,8 @@ html_content = r'''<!DOCTYPE html>
           ? "font-bold bg-emerald-800 text-white shadow-xs" 
           : "bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700";
         
-        html += `<button onclick="${clickFn}" id="${pillId}" class="px-3 py-1 rounded-full font-medium flex-shrink-0 transition ${cls}">${s.number}. ${s.titleEn}</button>`;
+        const pillLabel = isArabic ? `${s.titleAr} ${toArabicDigits(s.number)}` : `${s.number}. ${s.titleEn}`;
+        html += `<button onclick="${clickFn}" id="${pillId}" class="px-3 py-1 rounded-full font-medium flex-shrink-0 transition ${cls}">${pillLabel}</button>`;
       });
 
       container.innerHTML = html;
@@ -2383,12 +2688,22 @@ html_content = r'''<!DOCTYPE html>
       const titleArEl = document.getElementById("surahHeaderTitleAr");
       const titleEnEl = document.getElementById("surahHeaderTitleEn");
 
-      if (typeEl) typeEl.innerText = s.type.toUpperCase();
-      if (versesEl) versesEl.innerText = `${s.versesCount} VERSES`;
+      if (typeEl) {
+        if (isArabic) {
+          typeEl.innerText = (s.type.toLowerCase() === 'meccan' || s.type === 'Meccan') ? 'مكية' : 'مدنية';
+        } else {
+          typeEl.innerText = s.type.toUpperCase();
+        }
+      }
+      if (versesEl) {
+        versesEl.innerText = isArabic ? `${toArabicDigits(s.versesCount)} آيات` : `${s.versesCount} VERSES`;
+      }
       if (titleArEl) titleArEl.innerText = s.titleAr;
 
       if (titleEnEl) {
-        if (s.name && s.translation) {
+        if (isArabic) {
+          titleEnEl.innerHTML = `سورة ${s.titleAr ? s.titleAr.replace('سُورَةُ ', '').replace('سورة ', '') : ''} <span class="text-emerald-200/80 font-normal">• ${toArabicDigits(s.versesCount)} آيات • ترتيبها: ${toArabicDigits(s.number || 1)}</span>`;
+        } else if (s.name && s.translation) {
           titleEnEl.innerHTML = `${s.number ? s.number + '. ' : ''}${s.name} <span class="text-emerald-200/80 font-normal">• ${s.translation}</span>`;
         } else if (s.titleEn && s.titleEn.includes(' • ')) {
           const parts = s.titleEn.split(' • ');
@@ -2417,7 +2732,7 @@ html_content = r'''<!DOCTYPE html>
         card.innerHTML = `
           <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-700/60">
             <span class="w-5 h-5 rounded-full bg-gold-500/15 text-gold-600 dark:text-gold-400 text-[10px] font-bold flex items-center justify-center font-sans border border-gold-500/30">
-              ${v.id}
+              ${isArabic ? toArabicDigits(v.id) : v.id}
             </span>
             <div class="flex items-center gap-1.5">
               <button onclick="copySingleAyah('${currentSurahKey}', ${v.id}, ${index})" title="Copy & Share Ayah" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-emerald-600 transition">
@@ -2434,8 +2749,8 @@ html_content = r'''<!DOCTYPE html>
           <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-normal select-text" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px; line-height: 2.35;">
             ${v.ar} <span class="ayah-marker notranslate" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
           </p>
-          ${showTransliteration && v.tr ? `<p class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-1 select-text">${v.tr}</p>` : ''}
-          ${showEnglishTranslation && v.en ? `<p class="text-left text-[14px] text-slate-700 dark:text-slate-200 font-sans leading-relaxed pt-1 select-text font-normal">${v.en}</p>` : ''}
+          ${showTransliteration && v.tr ? `<p dir="ltr" class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-1 select-text">${v.tr}</p>` : ''}
+          ${showEnglishTranslation && v.en ? `<p dir="ltr" class="text-left text-[14px] text-slate-700 dark:text-slate-200 font-sans leading-relaxed pt-1 select-text font-normal">${v.en}</p>` : ''}
         `;
         container.appendChild(card);
       });
@@ -2456,21 +2771,21 @@ html_content = r'''<!DOCTYPE html>
           <div class="h-px w-10 bg-gold-500/30"></div>
         </div>
         <div>
-          <p class="text-xs font-bold text-slate-800 dark:text-white">End of ${s.titleEn}</p>
-          <p class="text-[10px] text-slate-400">${s.versesCount} Verses • Completed</p>
+          <p class="text-xs font-bold text-slate-800 dark:text-white">${isArabic ? `تمت بعون الله سورة ${s.titleAr}` : `End of ${s.titleEn}`}</p>
+          <p class="text-[10px] text-slate-400">${isArabic ? `${toArabicDigits(s.versesCount)} آيات • تمت القراءة` : `${s.versesCount} Verses • Completed`}</p>
         </div>
         <div class="flex items-center justify-center gap-2 pt-1 text-xs">
           ${prevSurah ? `
             <button onclick="goToSurahByNum(${prevSurah.number})" class="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-600 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 transition">
-              <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> ${prevSurah.titleEn}
+              <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> ${isArabic ? prevSurah.titleAr : prevSurah.titleEn}
             </button>
           ` : ''}
           <button onclick="scrollAppBodyToTop()" class="px-2.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-500 text-slate-400 text-[11px] font-semibold flex items-center gap-1 active:scale-95 transition" title="Scroll to Top">
-            <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i> Top
+            <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i> ${isArabic ? 'للأعلى' : 'Top'}
           </button>
           ${nextSurah ? `
             <button onclick="goToSurahByNum(${nextSurah.number})" class="px-3.5 py-1.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-[11px] font-bold flex items-center gap-1 active:scale-95 transition shadow-xs">
-              ${nextSurah.titleEn} <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+              ${isArabic ? nextSurah.titleAr : nextSurah.titleEn} <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
             </button>
           ` : `
             <button onclick="goToSurahByNum(1)" class="px-3.5 py-1.5 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white text-[11px] font-bold flex items-center gap-1 active:scale-95 transition shadow-xs">
@@ -2497,8 +2812,26 @@ html_content = r'''<!DOCTYPE html>
     }
 
     function toArabicDigits(num) {
+      if (num === null || num === undefined) return '';
       const arabicNumerals = ['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
-      return String(num).split('').map(d => arabicNumerals[parseInt(d)] || d).join('');
+      return String(num).replace(/[0-9]/g, d => arabicNumerals[parseInt(d, 10)]);
+    }
+
+    function formatAdhkarRef(ref, isAr) {
+      if (!isAr || !ref) return ref;
+      let r = ref
+        .replace(/Sahih al-Bukhari|Sahih Bukhari/gi, 'صحيح البخاري')
+        .replace(/Sahih Muslim/gi, 'صحيح مسلم')
+        .replace(/Sunan Abu Dawud/gi, 'سنن أبي داود')
+        .replace(/Sunan Ibn Majah/gi, 'سنن ابن ماجه')
+        .replace(/Jami`? at-Tirmidhi|At-Tirmidhi/gi, 'جامع الترمذي')
+        .replace(/Sunan an-Nasa'i|An-Nasa'i/gi, 'سنن النسائي')
+        .replace(/Hisn al-Muslim/gi, 'حصن المسلم')
+        .replace(/Surah Al-Baqarah/gi, 'سورة البقرة')
+        .replace(/Surah Al-Ikhlas/gi, 'سورة الإخلاص')
+        .replace(/Surah Al-Falaq/gi, 'سورة الفلق')
+        .replace(/Surah An-Nas/gi, 'سورة الناس');
+      return toArabicDigits(r);
     }
 
     function changeFontSize(delta) {
@@ -2524,13 +2857,13 @@ html_content = r'''<!DOCTYPE html>
     function updateBookmarksCountBadges() {
       const count = Object.keys(bookmarkedVerses).filter(k => bookmarkedVerses[k]).length;
       const topBadge = document.getElementById("topBookmarksCount");
-      if (topBadge) topBadge.innerText = count;
+      if (topBadge) topBadge.innerText = isArabic ? toArabicDigits(count) : count;
       const searchBadge = document.getElementById("searchBarBookmarksCount");
-      if (searchBadge) searchBadge.innerText = `Saved (${count})`;
+      if (searchBadge) searchBadge.innerText = isArabic ? `المحفوظات (${toArabicDigits(count)})` : `Saved (${count})`;
       const pillBadge = document.getElementById("pillBookmarksCount");
-      if (pillBadge) pillBadge.innerText = count;
+      if (pillBadge) pillBadge.innerText = isArabic ? toArabicDigits(count) : count;
       const modalSub = document.getElementById("bookmarksCountSub");
-      if (modalSub) modalSub.innerText = `${count} verses bookmarked`;
+      if (modalSub) modalSub.innerText = isArabic ? `تم حفظ ${toArabicDigits(count)} آيات` : `${count} verses bookmarked`;
     }
 
     function toggleBookmark(surahKey, verseId) {
@@ -2577,49 +2910,55 @@ html_content = r'''<!DOCTYPE html>
       alafasy: {
         id: 'alafasy',
         name: 'Mishary Alafasy',
-        nameAr: 'مشاري العفاسي',
+        nameAr: 'الشيخ مشاري راشد العفاسي',
         folder: 'Alafasy_128kbps',
         badge: 'Default',
+        badgeAr: 'الافتراضي',
         country: 'Kuwait'
       },
       sudais: {
         id: 'sudais',
         name: 'Abdul Rahman Al-Sudais',
-        nameAr: 'عبد الرحمن السديس',
+        nameAr: 'الشيخ عبد الرحمن السديس',
         folder: 'Abdurrahmaan_As-Sudais_192kbps',
         badge: 'Makkah',
+        badgeAr: 'إمام الحرم المكي',
         country: 'Makkah'
       },
       ghamdi: {
         id: 'ghamdi',
         name: 'Saad Al-Ghamdi',
-        nameAr: 'سعد الغامدي',
+        nameAr: 'الشيخ سعد الغامدي',
         folder: 'Ghamadi_40kbps',
         badge: 'Murattal',
+        badgeAr: 'تلاوة مرتلة عذبة',
         country: 'Saudi Arabia'
       },
       maher: {
         id: 'maher',
         name: 'Maher Al-Muaiqly',
-        nameAr: 'ماهر المعيقلي',
+        nameAr: 'الشيخ ماهر المعيقلي',
         folder: 'Maher_AlMuaiqly_64kbps',
         badge: 'Makkah',
+        badgeAr: 'إمام المسجد الحرام',
         country: 'Makkah'
       },
       shatri: {
         id: 'shatri',
         name: 'Abu Bakr Al-Shatri',
-        nameAr: 'أبو بكر الشاطري',
+        nameAr: 'الشيخ أبو بكر الشاطري',
         folder: 'Abu_Bakr_Ash-Shaatree_128kbps',
         badge: 'Tajweed',
+        badgeAr: 'تجويد متقن',
         country: 'Yemen'
       },
       abdulbasit: {
         id: 'abdulbasit',
         name: 'Abdul Basit Samad',
-        nameAr: 'عبد الباسط',
+        nameAr: 'الشيخ عبد الباسط عبد الصمد',
         folder: 'Abdul_Basit_Murattal_192kbps',
         badge: 'Classic',
+        badgeAr: 'المصحف المرتل الخالد',
         country: 'Egypt'
       }
     };
@@ -2634,58 +2973,72 @@ html_content = r'''<!DOCTYPE html>
       makkah: {
         id: 'makkah',
         title: 'Makkah',
-        titleAr: 'الحرم المكي',
+        titleAr: 'أذان الحرم المكي الشريف',
         muezzin: 'Ali Mulla',
+        muezzinAr: 'الشيخ علي ملا',
         file: 'Ali_Ibn_Ahmad_Mala_1_-_Al_Haram_Al_Maki_(علي_بن_أحمد_ملا_-_الحرم_المكي).mp3',
-        tag: 'Kaaba'
+        tag: 'Kaaba',
+        tagAr: 'الحرم المكي'
       },
       madinah: {
         id: 'madinah',
         title: 'Madinah',
-        titleAr: 'الحرم المدني',
+        titleAr: 'أذان المسجد النبوي الشريف',
         muezzin: 'Al-Haram',
+        muezzinAr: 'مؤذنو الحرم النبوي',
         file: 'Adhan_Al_Haram_Al_Madani_-_Al_Madinah_1_(أذان_الحرم_المدني_-_المدينة_المنورة).mp3',
-        tag: "Prophet's Mosque"
+        tag: "Prophet's Mosque",
+        tagAr: 'المدينة المنورة'
       },
       madinah_fajr: {
         id: 'madinah_fajr',
         title: 'Madinah Fajr',
-        titleAr: 'فجر المدينة',
+        titleAr: 'أذان فجر المدينة المنورة',
         muezzin: 'Al-Haram',
+        muezzinAr: 'مؤذنو الحرم النبوي',
         file: 'Adhan_Fajr_Al_Haram_Al_Madani_(أذان_الفجر_الحرم_المدني).mp3',
-        tag: 'Fajr'
+        tag: 'Fajr',
+        tagAr: 'صلاة الفجر'
       },
       alafasy: {
         id: 'alafasy',
         title: 'Mishary Alafasy',
-        titleAr: 'مشاري العفاسي',
+        titleAr: 'أذان الشيخ مشاري العفاسي',
         muezzin: 'Alafasy',
+        muezzinAr: 'مشاري راشد العفاسي',
         file: 'Mishary_Al_Afasy_-_HQ_(مشاري_العفاسي).mp3',
-        tag: 'Studio'
+        tag: 'Studio',
+        tagAr: 'استوديو نقي'
       },
       alaqsa: {
         id: 'alaqsa',
         title: 'Al-Aqsa',
-        titleAr: 'المسجد الأقصى',
+        titleAr: 'أذان المسجد الأقصى المبارك',
         muezzin: 'Jerusalem',
+        muezzinAr: 'مؤذنو الأقصى',
         file: 'Adhan_Al_Aqsa_-_Jerusalem_(أذان_المسجد_الأقصى_-_القدس).mp3',
-        tag: 'Al-Quds'
+        tag: 'Al-Quds',
+        tagAr: 'القدس الشريف'
       },
       abdulbasit: {
         id: 'abdulbasit',
         title: 'Cairo',
-        titleAr: 'مصر',
+        titleAr: 'أذان مصر التاريخي الخالد',
         muezzin: 'Abdul Basit',
+        muezzinAr: 'الشيخ عبد الباسط',
         file: 'Abdulbasit_Abdusamad_1_-_Egypt_(عبد_الباسط_عبد_الصمد_-_مصر).mp3',
-        tag: 'Classic'
+        tag: 'Classic',
+        tagAr: 'تراث أصيل'
       },
       soft_chime: {
         id: 'soft_chime',
         title: 'Soft Chime',
-        titleAr: 'تنبيه هادئ',
-        muezzin: 'Gentle Tone',
-        file: '',
-        tag: 'Quiet'
+        titleAr: 'تنبيه هادئ (نغمة لطيفة)',
+        muezzin: 'Gentle Bell',
+        muezzinAr: 'رنين لطيف',
+        file: 'synth_soft_adhan.mp3',
+        tag: 'Quiet',
+        tagAr: 'هادئ'
       }
     };
 
@@ -2705,9 +3058,19 @@ html_content = r'''<!DOCTYPE html>
       const modal = document.getElementById("settingsModal");
       if (!modal) return;
       modal.classList.remove("hidden");
+      
+      const setModalTitle = document.getElementById("settingsModalTitle");
+      if (setModalTitle) setModalTitle.innerText = isArabic ? "الإعدادات" : "Settings";
+      const lblRecText = document.getElementById("lblSettingsReciterText");
+      if (lblRecText) lblRecText.innerText = isArabic ? "القارئ المختار" : "Reciter";
+      const lblAdhText = document.getElementById("lblSettingsAdhanText");
+      if (lblAdhText) lblAdhText.innerText = isArabic ? "نغمة الأذان والتنبيه" : "Adhan Tone";
+
       switchSettingsTab(defaultTab);
       renderRecitersSettings();
       renderAdhansSettings();
+      renderArabicFontCards();
+      renderUIFontCards();
       updateSettingsUIFromState();
       lucide.createIcons();
     }
@@ -2760,6 +3123,11 @@ html_content = r'''<!DOCTYPE html>
           selectReciter(r.id);
         };
 
+        const mainTitle = isArabic ? r.nameAr : r.name;
+        const subtitle = isArabic 
+          ? `<span class="text-emerald-700 dark:text-emerald-400 font-semibold">${r.badgeAr || r.badge}</span> • <span class="font-sans text-slate-400">${r.name}</span>`
+          : `${r.badge} • <span class="font-arabic font-normal text-gold-500">${r.nameAr}</span>`;
+
         card.innerHTML = `
           <div class="flex items-center gap-2.5 min-w-0">
             <div class="w-8 h-8 rounded-full ${isSelected ? 'bg-gold-500 text-slate-950 font-bold' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'} flex items-center justify-center flex-shrink-0 text-xs">
@@ -2767,12 +3135,12 @@ html_content = r'''<!DOCTYPE html>
             </div>
             <div class="min-w-0">
               <h5 class="text-xs font-bold text-slate-900 dark:text-white truncate">
-                ${r.name}
+                ${mainTitle}
               </h5>
-              <p class="text-[10px] text-slate-400 truncate">${r.badge} • <span class="font-arabic font-normal text-gold-500">${r.nameAr}</span></p>
+              <p class="text-[10px] text-slate-400 truncate">${subtitle}</p>
             </div>
           </div>
-          <button onclick="toggleReciterSample('${r.id}')" title="Preview Voice" class="sample-btn p-1.5 rounded-lg border flex-shrink-0 transition active:scale-90 ${
+          <button onclick="toggleReciterSample('${r.id}')" title="${isArabic ? 'استماع إلى نموذج التلاوة' : 'Preview Voice'}" class="sample-btn p-1.5 rounded-lg border flex-shrink-0 transition active:scale-90 ${
             isPlayingSample 
               ? 'bg-gold-500 border-gold-500 text-slate-950 shadow-xs' 
               : 'border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300'
@@ -2783,20 +3151,7 @@ html_content = r'''<!DOCTYPE html>
         container.appendChild(card);
       });
 
-
       lucide.createIcons();
-    }
-
-    function scrollAppBodyToTop() {
-      playClickSound();
-      const appBody = document.getElementById("appBody");
-      if (appBody) appBody.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function goToSurahByNum(num) {
-      playClickSound();
-      selectSurahFromIndex(num);
-      scrollAppBodyToTop();
     }
 
     function selectReciter(reciterId) {
@@ -2808,7 +3163,7 @@ html_content = r'''<!DOCTYPE html>
       } catch (e) {}
 
       const badge = document.getElementById("activeReciterBadge");
-      if (badge) badge.innerText = recitersList[reciterId].name.replace('Sheikh ', '');
+      if (badge) badge.innerText = isArabic ? recitersList[reciterId].nameAr : recitersList[reciterId].name.replace('Sheikh ', '');
 
       renderRecitersSettings();
       showToast("Reciter Updated", `Set to ${recitersList[reciterId].name}`);
@@ -2880,6 +3235,11 @@ html_content = r'''<!DOCTYPE html>
           selectAdhanTone(a.id);
         };
 
+        const mainTitle = isArabic ? a.titleAr : a.title;
+        const subtitle = isArabic 
+          ? `<span class="text-emerald-700 dark:text-emerald-400 font-semibold">${a.tagAr || a.tag}</span> • <span class="font-sans text-slate-400">${a.muezzinAr || a.muezzin}</span>`
+          : `${a.muezzin} • <span class="font-arabic font-normal text-gold-500">${a.titleAr}</span>`;
+
         card.innerHTML = `
           <div class="flex items-center gap-2.5 min-w-0">
             <div class="w-8 h-8 rounded-full ${isSelected ? 'bg-gold-500 text-slate-950 font-bold' : 'bg-slate-100 dark:bg-slate-700 text-slate-500'} flex items-center justify-center flex-shrink-0 text-xs">
@@ -2887,12 +3247,12 @@ html_content = r'''<!DOCTYPE html>
             </div>
             <div class="min-w-0">
               <h5 class="text-xs font-bold text-slate-900 dark:text-white truncate flex items-center gap-1.5">
-                ${a.title}
+                ${mainTitle}
               </h5>
-              <p class="text-[10px] text-slate-400 truncate">${a.muezzin} • <span class="font-arabic font-normal text-gold-500">${a.titleAr}</span></p>
+              <p class="text-[10px] text-slate-400 truncate">${subtitle}</p>
             </div>
           </div>
-          <button onclick="toggleAdhanTonePreview('${a.id}')" title="Preview Adhan" class="sample-btn p-1.5 rounded-lg border flex-shrink-0 transition active:scale-90 ${
+          <button onclick="toggleAdhanTonePreview('${a.id}')" title="${isArabic ? 'سماع الأذان' : 'Preview Adhan'}" class="sample-btn p-1.5 rounded-lg border flex-shrink-0 transition active:scale-90 ${
             isPlayingThis 
               ? 'bg-gold-500 border-gold-500 text-slate-950 shadow-xs' 
               : 'border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300'
@@ -2902,7 +3262,6 @@ html_content = r'''<!DOCTYPE html>
         `;
         container.appendChild(card);
       });
-
 
       lucide.createIcons();
     }
@@ -2928,7 +3287,7 @@ html_content = r'''<!DOCTYPE html>
       } catch (e) {}
 
       const badge = document.getElementById("activeAdhanBadge");
-      if (badge) badge.innerText = adhanTonesList[toneId].title.split(' ')[0];
+      if (badge) badge.innerText = isArabic ? adhanTonesList[toneId].titleAr : adhanTonesList[toneId].title.split(' ')[0];
 
       renderAdhansSettings();
       showToast("Adhan Tone Saved", `Default tone set to ${adhanTonesList[toneId].title}`);
@@ -3096,27 +3455,62 @@ html_content = r'''<!DOCTYPE html>
         // Premium Typography Engine (Arabic & English Font Pickers)
     const arabicFontsMap = {
       'scheherazade': {
-        name: 'Scheherazade',
+        name: 'Scheherazade New',
+        nameAr: 'مصحف شهرزاد الجديد',
+        badge: 'Recommended',
+        badgeAr: 'مُوصى به',
+        desc: 'Traditional Quranic Naskh',
+        descAr: 'خط نسخ قرآني أصيل ومضبوط',
+        previewText: 'ٱلْحَمْدُ لِلَّهِ',
+        fontClass: 'font-scheherazade',
         quranFamily: "'Scheherazade New', 'Amiri Quran', 'Amiri', serif",
         generalFamily: "'Scheherazade New', 'Amiri', serif"
       },
       'amiri-quran': {
         name: 'Amiri Quran',
+        nameAr: 'المصحف الأميري',
+        badge: 'Bulaq',
+        badgeAr: 'طبعة بولاق',
+        desc: 'Authentic 1924 Cairo Mushaf',
+        descAr: 'المصحف الأميري المعتمد لعام ١٩٢٤',
+        previewText: 'ٱلْحَمْدُ لِلَّهِ',
+        fontClass: 'font-amiri-quran',
         quranFamily: "'Amiri Quran', 'Amiri', serif",
         generalFamily: "'Amiri', serif"
       },
       'noto-naskh': {
-        name: 'Noto Naskh',
+        name: 'Noto Naskh Arabic',
+        nameAr: 'نوتو نسخ العربي',
+        badge: 'Madinah',
+        badgeAr: 'مصحف المدينة',
+        desc: 'Madinah Standard Typography',
+        descAr: 'طباعة مجمع الملك فهد لطباعة المصحف',
+        previewText: 'ٱلْحَمْدُ لِلَّهِ',
+        fontClass: 'font-noto-naskh',
         quranFamily: "'Noto Naskh Arabic', 'Amiri', serif",
         generalFamily: "'Noto Naskh Arabic', serif"
       },
       'cairo': {
-        name: 'Cairo',
+        name: 'Cairo Kufi',
+        nameAr: 'خط القاهرة الكوفي',
+        badge: 'Geometric',
+        badgeAr: 'هندسي',
+        desc: 'Modern Geometric Kufi',
+        descAr: 'خط كوفي حديث للشاشات',
+        previewText: 'ٱلْحَمْدُ لِلَّهِ',
+        fontClass: 'font-cairo',
         quranFamily: "'Cairo', sans-serif",
         generalFamily: "'Cairo', sans-serif"
       },
       'almarai': {
-        name: 'Almarai',
+        name: 'Almarai Clean',
+        nameAr: 'خط المراعي المعاصر',
+        badge: 'Contemporary',
+        badgeAr: 'عصري نقي',
+        desc: 'Contemporary Clean Sans',
+        descAr: 'خط نقي وواضح عالي الانسيابية',
+        previewText: 'ٱلْحَمْدُ لِلَّهِ',
+        fontClass: 'font-almarai',
         quranFamily: "'Almarai', sans-serif",
         generalFamily: "'Almarai', sans-serif"
       }
@@ -3125,24 +3519,102 @@ html_content = r'''<!DOCTYPE html>
     const uiFontsMap = {
       'plus-jakarta': {
         name: 'Plus Jakarta',
+        nameAr: 'بلس جاكرتا',
+        desc: 'Modern Geometric',
+        descAr: 'هندسي عصري',
         family: "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
       },
       'inter': {
         name: 'Inter',
+        nameAr: 'إنتر القياسي',
+        desc: 'Interface Standard',
+        descAr: 'الواجهات العالمية',
         family: "'Inter', system-ui, -apple-system, sans-serif"
       },
       'outfit': {
         name: 'Outfit',
+        nameAr: 'أوتفيت الفاخر',
+        desc: 'Luxury Display',
+        descAr: 'تصميم فاخر',
         family: "'Outfit', system-ui, -apple-system, sans-serif"
       },
       'lexend': {
         name: 'Lexend',
+        nameAr: 'ليكسند السلس',
+        desc: 'Reading Fluency',
+        descAr: 'سهل القراءة والتركيز',
         family: "'Lexend', system-ui, -apple-system, sans-serif"
       }
     };
 
     let activeArabicFontKey = localStorage.getItem("muslim_comp_arabic_font") || "scheherazade";
     let activeUIFontKey = localStorage.getItem("muslim_comp_ui_font") || "plus-jakarta";
+
+    function renderArabicFontCards() {
+      const container = document.getElementById("arabicFontOptionsContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      Object.keys(arabicFontsMap).forEach(key => {
+        const f = arabicFontsMap[key];
+        const isSelected = key === activeArabicFontKey;
+
+        const btn = document.createElement("button");
+        btn.id = `fontBtn-${key}`;
+        btn.onclick = () => setArabicFont(key);
+        btn.className = `w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 ${
+          isSelected 
+            ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs' 
+            : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
+        }`;
+
+        const title = isArabic ? f.nameAr : f.name;
+        const badge = isArabic ? f.badgeAr : f.badge;
+        const desc = isArabic ? f.descAr : f.desc;
+
+        btn.innerHTML = `
+          <div>
+            <p class="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+              <span>${title}</span>
+              ${badge ? `<span class="text-[9px] px-1.5 py-0.2 rounded ${isSelected ? 'bg-gold-500/20 text-gold-700 dark:text-gold-400' : 'bg-slate-200 dark:bg-slate-750 text-slate-600 dark:text-slate-300'} font-semibold">${badge}</span>` : ''}
+            </p>
+            <p class="text-[10px] text-slate-400">${desc}</p>
+          </div>
+          <span class="${f.fontClass} text-base text-emerald-950 dark:text-emerald-200 font-bold" dir="rtl">${f.previewText}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function renderUIFontCards() {
+      const container = document.getElementById("uiFontOptionsContainer");
+      if (!container) return;
+      container.innerHTML = "";
+
+      Object.keys(uiFontsMap).forEach(key => {
+        const f = uiFontsMap[key];
+        const isSelected = key === activeUIFontKey;
+
+        const btn = document.createElement("button");
+        btn.id = `uiFontBtn-${key}`;
+        btn.onclick = () => setUIFont(key);
+        btn.className = `p-2.5 rounded-xl border text-left transition active:scale-95 ${
+          isSelected 
+            ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs' 
+            : 'bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700'
+        }`;
+
+        const title = isArabic ? f.nameAr : f.name;
+        const desc = isArabic ? f.descAr : f.desc;
+
+        btn.innerHTML = `
+          <p class="text-xs font-bold text-slate-900 dark:text-white font-${key}">${title}</p>
+          <p class="text-[9px] text-slate-400">${desc}</p>
+          <p class="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 mt-1 font-${key}">${isArabic ? "أبج ١٢٣" : "Aa 123"}</p>
+        `;
+        container.appendChild(btn);
+      });
+    }
 
     function applyTypographySettings() {
       const arConf = arabicFontsMap[activeArabicFontKey] || arabicFontsMap['scheherazade'];
@@ -3154,33 +3626,12 @@ html_content = r'''<!DOCTYPE html>
 
       // Update badges in Settings
       const arBadge = document.getElementById("activeArabicFontBadge");
-      if (arBadge) arBadge.innerText = arConf.name;
+      if (arBadge) arBadge.innerText = isArabic ? (arConf.nameAr || arConf.name) : arConf.name;
       const uiBadge = document.getElementById("activeUIFontBadge");
-      if (uiBadge) uiBadge.innerText = uiConf.name;
+      if (uiBadge) uiBadge.innerText = isArabic ? (uiConf.nameAr || uiConf.name) : uiConf.name;
 
-      // Update Arabic Font Buttons styling
-      Object.keys(arabicFontsMap).forEach(k => {
-        const btn = document.getElementById(`fontBtn-${k}`);
-        if (btn) {
-          if (k === activeArabicFontKey) {
-            btn.className = "w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs";
-          } else {
-            btn.className = "w-full p-2 rounded-xl border text-left flex items-center justify-between transition active:scale-98 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600";
-          }
-        }
-      });
-
-      // Update UI Font Buttons styling
-      Object.keys(uiFontsMap).forEach(k => {
-        const btn = document.getElementById(`uiFontBtn-${k}`);
-        if (btn) {
-          if (k === activeUIFontKey) {
-            btn.className = "p-2.5 rounded-xl border text-left transition active:scale-95 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 shadow-2xs";
-          } else {
-            btn.className = "p-2.5 rounded-xl border text-left transition active:scale-95 bg-slate-50 dark:bg-slate-900/60 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600";
-          }
-        }
-      });
+      renderArabicFontCards();
+      renderUIFontCards();
     }
 
     function setArabicFont(key) {
@@ -3192,7 +3643,7 @@ html_content = r'''<!DOCTYPE html>
       } catch(e) {}
       applyTypographySettings();
       renderQuranVerses();
-      showToast("Arabic Font", `${arabicFontsMap[key].name} applied`);
+      showToast(isArabic ? "خط المصحف الشريف" : "Arabic Font", isArabic ? `تم تفعيل ${arabicFontsMap[key].nameAr}` : `${arabicFontsMap[key].name} applied`);
     }
 
     function setUIFont(key) {
@@ -3203,7 +3654,7 @@ html_content = r'''<!DOCTYPE html>
         localStorage.setItem("muslim_comp_ui_font", key);
       } catch(e) {}
       applyTypographySettings();
-      showToast("UI Font", `${uiFontsMap[key].name} applied`);
+      showToast(isArabic ? "خط واجهة التطبيق" : "UI Font", isArabic ? `تم تفعيل ${uiFontsMap[key].nameAr}` : `${uiFontsMap[key].name} applied`);
     }
 
     function updateSettingsUIFromState() {
@@ -3211,20 +3662,24 @@ html_content = r'''<!DOCTYPE html>
       // Reciter badge
       const rBadge = document.getElementById("activeReciterBadge");
       if (rBadge && recitersList[currentReciterKey]) {
-        rBadge.innerText = recitersList[currentReciterKey].name.replace('Sheikh ', '');
+        rBadge.innerText = isArabic ? recitersList[currentReciterKey].nameAr : recitersList[currentReciterKey].name.replace('Sheikh ', '');
       }
 
       // Adhan badge
       const aBadge = document.getElementById("activeAdhanBadge");
       if (aBadge && adhanTonesList[currentAdhanKey]) {
-        aBadge.innerText = adhanTonesList[currentAdhanKey].title.split(' ')[0];
+        aBadge.innerText = isArabic ? adhanTonesList[currentAdhanKey].titleAr : adhanTonesList[currentAdhanKey].title.split(' ')[0];
       }
 
-      // Madhab buttons
+      // Madhab buttons & label
       const bH = document.getElementById("btnMadhabHanafi");
       const bS = document.getElementById("btnMadhabStandard");
       const lblM = document.getElementById("currentMadhabLabel");
-      if (lblM) lblM.innerText = currentJuristicMethod === 'hanafi' ? 'Hanafi' : 'Standard';
+      if (lblM) {
+        lblM.innerText = currentJuristicMethod === 'hanafi' 
+          ? (isArabic ? 'المذهب الحنفي' : 'Hanafi') 
+          : (isArabic ? 'مذهب الجمهور (الشافعي)' : 'Standard');
+      }
       if (bH && bS) {
         if (currentJuristicMethod === 'hanafi') {
           bH.className = "py-2 px-2.5 rounded-lg border text-xs font-bold flex items-center justify-center gap-1.5 transition active:scale-95 bg-emerald-50 dark:bg-emerald-950/40 border-emerald-500 text-emerald-900 dark:text-emerald-200";
@@ -3235,12 +3690,17 @@ html_content = r'''<!DOCTYPE html>
         }
       }
 
-      // Hijri offset buttons
+      // Hijri offset buttons & label
       const hOffsets = [-2, -1, 0, 1, 2];
       const hIds = ['btnHijriM2', 'btnHijriM1', 'btnHijri0', 'btnHijriP1', 'btnHijriP2'];
       hOffsets.forEach((val, idx) => {
         const btn = document.getElementById(hIds[idx]);
         if (btn) {
+          if (isArabic) {
+            btn.innerText = val === 0 ? "٠" : (val > 0 ? `+${toArabicDigits(val)}` : `-${toArabicDigits(Math.abs(val))}`);
+          } else {
+            btn.innerText = val === 0 ? "0" : (val > 0 ? `+${val}` : `${val}`);
+          }
           if (val === currentHijriOffset) {
             btn.className = "flex-1 py-1.5 rounded-lg border border-emerald-500 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-bold";
           } else {
@@ -3248,14 +3708,23 @@ html_content = r'''<!DOCTYPE html>
           }
         }
       });
-      const lblH = document.getElementById("currentHijriOffsetLabel");
-      if (lblH) lblH.innerText = currentHijriOffset === 0 ? "0 Days" : `${currentHijriOffset > 0 ? '+' : ''}${currentHijriOffset} Days`;
+
+      const hLbl = document.getElementById("currentHijriOffsetLabel");
+      if (hLbl) {
+        if (isArabic) {
+          hLbl.innerText = currentHijriOffset === 0 ? "٠ يوم" : `${currentHijriOffset > 0 ? '+' : ''}${toArabicDigits(currentHijriOffset)} يوم`;
+        } else {
+          hLbl.innerText = `${currentHijriOffset > 0 ? '+' : ''}${currentHijriOffset} Days`;
+        }
+      }
 
       // Font size slider & label
       const slider = document.getElementById("settingsFontSizeSlider");
       if (slider) slider.value = quranFontSize;
       const lblF = document.getElementById("lblSettingsFontSize");
-      if (lblF) lblF.innerText = `${quranFontSize}px`;
+      if (lblF) {
+        lblF.innerText = isArabic ? `${toArabicDigits(quranFontSize)} بكسل` : `${quranFontSize}px`;
+      }
       const sample = document.getElementById("fontPreviewSample");
       if (sample) sample.style.fontSize = `${quranFontSize}px`;
 
@@ -3523,7 +3992,7 @@ html_content = r'''<!DOCTYPE html>
         stopFullSurahRecitation();
       } else {
         isRecitingFullSurah = true;
-        btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 animate-pulse"></i> Pause`;
+        btn.innerHTML = `<i data-lucide="pause" class="w-3 h-3 animate-pulse"></i> ${isArabic ? 'إيقاف' : 'Pause'}`;
         btn.classList.add("bg-gold-600");
         playNextSequentialVerse(0);
       }
@@ -3549,7 +4018,7 @@ html_content = r'''<!DOCTYPE html>
       stopAyahAudio();
       const btn = document.getElementById("reciteAudioBtn");
       if (btn) {
-        btn.innerHTML = `<i data-lucide="volume-2" class="w-3 h-3"></i> Recite`;
+        btn.innerHTML = `<i data-lucide="volume-2" class="w-3 h-3"></i> ${isArabic ? 'تلاوة' : 'Recite'}`;
         btn.classList.remove("bg-gold-600");
       }
       document.querySelectorAll('.ayah-card').forEach(c => {
@@ -3660,17 +4129,21 @@ html_content = r'''<!DOCTYPE html>
         const card = document.createElement("div");
         card.id = `adhkar-card-${item.id}`;
         card.className = `p-3 rounded-xl border transition-all ${item.done ? 'bg-emerald-50/60 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-700/60' : 'bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60'}`;
+        const btnCountLabel = item.done 
+          ? (isArabic ? '✓ تم' : '✓ Completed') 
+          : (isArabic ? `${toArabicDigits(item.current)}×` : `${item.current}x`);
+
         card.innerHTML = `
           <div class="space-y-1.5">
             <div class="flex items-start justify-between gap-2.5">
-              <span class="text-[10px] font-semibold text-slate-400">${item.ref}</span>
+              <span class="text-[10px] font-semibold text-slate-400">${isArabic ? formatAdhkarRef(item.ref, true) : item.ref}</span>
               <button onclick="decrementAdhkar(${index})" class="px-2.5 py-1 rounded-lg flex-shrink-0 flex items-center gap-1 font-bold text-xs transition active:scale-90 border ${item.done ? 'bg-emerald-700 border-emerald-700 text-white shadow-xs' : 'bg-gold-500/10 border-gold-500/30 text-gold-600 dark:text-gold-400'}">
-                ${item.done ? '✓ Completed' : `${item.current}x`}
+                ${btnCountLabel}
               </button>
             </div>
             <p class="notranslate font-arabic text-right text-[19px] font-bold text-emerald-950 dark:text-emerald-100 leading-[2.2]" translate="no" lang="ar" dir="rtl">${item.ar}</p>
-            ${showTransliteration && item.tr ? `<p class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-0.5">${item.tr}</p>` : ''}
-            <p class="text-left text-[14px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal pt-0.5">${item.en}</p>
+            ${showTransliteration && item.tr ? `<p dir="ltr" class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-0.5">${item.tr}</p>` : ''}
+            <p dir="ltr" class="text-left text-[14px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal pt-0.5">${item.en}</p>
           </div>
         `;
         container.appendChild(card);
@@ -3680,7 +4153,11 @@ html_content = r'''<!DOCTYPE html>
       const pct = Math.round((completedCount / total) * 100);
       const textEl = document.getElementById("adhkarProgressText");
       const barEl = document.getElementById("adhkarProgressBar");
-      if (textEl) textEl.innerText = `${completedCount} of ${total} (${pct}%)`;
+      if (textEl) {
+        textEl.innerText = isArabic 
+          ? `${toArabicDigits(completedCount)} من ${toArabicDigits(total)} (${toArabicDigits(pct)}٪)` 
+          : `${completedCount} of ${total} (${pct}%)`;
+      }
       if (barEl) barEl.style.width = `${pct}%`;
 
       if (completedCount === total && total > 0) {
@@ -3749,9 +4226,9 @@ html_content = r'''<!DOCTYPE html>
         if (navigator.vibrate) navigator.vibrate([40, 60, 40]);
       }
       
-      document.getElementById("tasbeehCount").innerText = tasbeehCount;
-      document.getElementById("tasbeehLapsLabel").innerText = `Lap ${tasbeehLaps}`;
-      document.getElementById("tasbeehTotalDaily").innerText = tasbeehDailyTotal;
+      document.getElementById("tasbeehCount").innerText = isArabic ? toArabicDigits(tasbeehCount) : tasbeehCount;
+      document.getElementById("tasbeehLapsLabel").innerText = isArabic ? `الدورة ${toArabicDigits(tasbeehLaps)}` : `Lap ${tasbeehLaps}`;
+      document.getElementById("tasbeehTotalDaily").innerText = isArabic ? toArabicDigits(tasbeehDailyTotal) : tasbeehDailyTotal;
       updateTasbeehRing();
       saveState();
     }
@@ -3760,8 +4237,8 @@ html_content = r'''<!DOCTYPE html>
       playClickSound();
       tasbeehCount = 0;
       tasbeehLaps = 1;
-      document.getElementById("tasbeehCount").innerText = 0;
-      document.getElementById("tasbeehLapsLabel").innerText = "Lap 1";
+      document.getElementById("tasbeehCount").innerText = isArabic ? "٠" : 0;
+      document.getElementById("tasbeehLapsLabel").innerText = isArabic ? "الدورة ١" : "Lap 1";
       updateTasbeehRing();
       saveState();
     }
@@ -3770,12 +4247,15 @@ html_content = r'''<!DOCTYPE html>
       playClickSound();
       tasbeehTarget = val;
       tasbeehCount = 0;
-      document.getElementById("tasbeehCount").innerText = 0;
-      document.getElementById("tasbeehTargetLabel").innerText = val === 0 ? "Continuous ∞" : `Target ${val}`;
+      document.getElementById("tasbeehCount").innerText = isArabic ? "٠" : 0;
+      document.getElementById("tasbeehTargetLabel").innerText = isArabic 
+        ? (val === 0 ? "مستمر ∞" : `الهدف ${toArabicDigits(val)}`) 
+        : (val === 0 ? "Continuous ∞" : `Target ${val}`);
       
       [33, 99, 100, 0].forEach(t => {
         const btn = document.getElementById(`target-btn-${t}`);
         if (!btn) return;
+        btn.innerText = isArabic ? (t === 0 ? "∞" : toArabicDigits(t)) : (t === 0 ? "∞" : t);
         if (t === val) {
           btn.className = "px-3 py-1 text-xs font-bold rounded-lg border border-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300";
         } else {
@@ -3913,6 +4393,98 @@ html_content = r'''<!DOCTYPE html>
       document.getElementById("lblTasbeehTitle").innerText = dict.tasbeehTitle;
       document.getElementById("lblTasbeehSub").innerText = dict.tasbeehSub;
 
+      // Settings Modal Top Header & Navigation Pills
+      const setModalTitle = document.getElementById("settingsModalTitle");
+      if (setModalTitle) setModalTitle.innerText = isArabic ? "الإعدادات" : "Settings";
+
+      const setTabRec = document.getElementById("tabBtnSettingsReciters");
+      if (setTabRec) setTabRec.innerHTML = isArabic ? '<i data-lucide="headphones" class="w-3 h-3"></i> القراء' : '<i data-lucide="headphones" class="w-3 h-3"></i> Reciters';
+      const setTabAdh = document.getElementById("tabBtnSettingsAdhans");
+      if (setTabAdh) setTabAdh.innerHTML = isArabic ? '<i data-lucide="bell" class="w-3 h-3"></i> الأذان' : '<i data-lucide="bell" class="w-3 h-3"></i> Adhans';
+      const setTabFiqh = document.getElementById("tabBtnSettingsCalculation");
+      if (setTabFiqh) setTabFiqh.innerHTML = isArabic ? '<i data-lucide="compass" class="w-3 h-3"></i> الفقه' : '<i data-lucide="compass" class="w-3 h-3"></i> Fiqh';
+      const setTabDisp = document.getElementById("tabBtnSettingsDisplay");
+      if (setTabDisp) setTabDisp.innerHTML = isArabic ? '<i data-lucide="type" class="w-3 h-3"></i> المظهر' : '<i data-lucide="type" class="w-3 h-3"></i> Display';
+
+      // Settings Section 1 (Reciter)
+      const lblRecText = document.getElementById("lblSettingsReciterText");
+      if (lblRecText) lblRecText.innerText = isArabic ? "القارئ المختار" : "Reciter";
+
+      // Settings Section 2 (Adhans)
+      const lblAdhText = document.getElementById("lblSettingsAdhanText");
+      if (lblAdhText) lblAdhText.innerText = isArabic ? "نغمة الأذان والتنبيه" : "Adhan Tone";
+
+      // Settings Section 3 (Fiqh)
+      const lblAsrTitle = document.getElementById("lblAsrMethodTitle");
+      if (lblAsrTitle) lblAsrTitle.innerHTML = isArabic ? '<i data-lucide="sun" class="w-3.5 h-3.5 text-gold-500"></i> مذهب صلاة العصر' : '<i data-lucide="sun" class="w-3.5 h-3.5 text-gold-500"></i> Asr Method';
+      const lblAsrSub = document.getElementById("lblAsrMethodSub");
+      if (lblAsrSub) lblAsrSub.innerText = isArabic ? "الحنفي (العصر المتأخر) أو الجمهور (الشافعي والمالكي والحنبلي)" : "Hanafi (later Asr) or Standard (Shafi'i, Maliki, Hanbali)";
+      const txtHanafi = document.getElementById("txtMadhabHanafi");
+      if (txtHanafi) txtHanafi.innerText = isArabic ? "المذهب الحنفي" : "Hanafi";
+      const txtStandard = document.getElementById("txtMadhabStandard");
+      if (txtStandard) txtStandard.innerText = isArabic ? "مذهب الجمهور" : "Standard";
+
+      const lblHijriTitle = document.getElementById("lblHijriAdjTitle");
+      if (lblHijriTitle) lblHijriTitle.innerHTML = isArabic ? '<i data-lucide="moon" class="w-3.5 h-3.5 text-gold-500"></i> تعديل التاريخ الهجري' : '<i data-lucide="moon" class="w-3.5 h-3.5 text-gold-500"></i> Hijri Date Adjustment';
+      const lblHijriSub = document.getElementById("lblHijriAdjSub");
+      if (lblHijriSub) lblHijriSub.innerText = isArabic ? "تعديل بمقدار ±١ أو ٢ يوم بحسب رؤية الهلال الإقليمية" : "Adjust ±1 or 2 days for local moon sighting";
+
+      const lblAuthTitle = document.getElementById("lblAuthorityTitle");
+      if (lblAuthTitle) lblAuthTitle.innerHTML = isArabic ? '<i data-lucide="book" class="w-3.5 h-3.5 text-gold-500"></i> الهيئة الفلكية المعتمدة للحساب' : '<i data-lucide="book" class="w-3.5 h-3.5 text-gold-500"></i> Calculation Authority';
+      const lblAuthName = document.getElementById("lblAuthorityName");
+      if (lblAuthName) lblAuthName.innerText = isArabic ? "جامعة العلوم الإسلامية بكراتشي (معتمد الخليج وباكستان)" : "Univ. of Islamic Sciences, Karachi";
+      const lblAuthStd = document.getElementById("lblAuthorityStandard");
+      if (lblAuthStd) lblAuthStd.innerText = isArabic ? "معتمد رسمياً" : "Auto";
+
+      // Settings Section 4 (Display)
+      const lblFSizeTitle = document.getElementById("lblSettingsFontSizeTitle");
+      if (lblFSizeTitle) lblFSizeTitle.innerHTML = isArabic ? '<i data-lucide="type" class="w-3.5 h-3.5 text-gold-500"></i> حجم خط المصحف الشريف' : '<i data-lucide="type" class="w-3.5 h-3.5 text-gold-500"></i> Arabic Font Size';
+      const btnResetF = document.getElementById("btnResetFontSize");
+      if (btnResetF) btnResetF.innerText = isArabic ? "إعادة ضبط" : "Reset";
+
+      const lblArScript = document.getElementById("lblSettingsArabicScriptHeader");
+      if (lblArScript) lblArScript.innerHTML = isArabic ? '<i data-lucide="feather" class="w-3.5 h-3.5 text-gold-500"></i> خط المصحف الشريف' : '<i data-lucide="feather" class="w-3.5 h-3.5 text-gold-500"></i> Arabic Script <span class="font-arabic text-gold-600 dark:text-gold-400 font-normal text-xs">خط المصحف</span>';
+
+      const lblUIFont = document.getElementById("lblSettingsUIFontHeader");
+      if (lblUIFont) lblUIFont.innerHTML = isArabic ? '<i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i> خط واجهة التطبيق' : '<i data-lucide="palette" class="w-3.5 h-3.5 text-gold-500"></i> App Interface Font';
+
+      const lblTransTitle = document.getElementById("lblSettingTranslationTitle");
+      if (lblTransTitle) lblTransTitle.innerText = isArabic ? "ترجمة معاني الآيات (الإنجليزية)" : "English Translation";
+      const lblTransSub = document.getElementById("lblSettingTranslationSub");
+      if (lblTransSub) lblTransSub.innerText = isArabic ? "ترجمة صحيح إنترناشونال المعتمدة" : "Sahih International";
+
+      const lblTrlTitle = document.getElementById("lblSettingTranslitTitle");
+      if (lblTrlTitle) lblTrlTitle.innerText = isArabic ? "النقحرة الصوتية (اللفظ اللاتيني)" : "Roman Transliteration";
+      const lblTrlSub = document.getElementById("lblSettingTranslitSub");
+      if (lblTrlSub) lblTrlSub.innerText = isArabic ? "لفظ الآيات بالحروف اللاتينية" : "Phonetic reading";
+
+      const lblHapTitle = document.getElementById("lblSettingHapticTitle");
+      if (lblHapTitle) lblHapTitle.innerText = isArabic ? "الاهتزاز اللمسي التفاعلي" : "Haptic Vibration";
+      const lblHapSub = document.getElementById("lblSettingHapticSub");
+      if (lblHapSub) lblHapSub.innerText = isArabic ? "اهتزاز خفيف عند لمس الأزرار والتسبيح" : "Vibrate on tap";
+
+      const lblTasSoundHead = document.getElementById("lblSettingTasbeehSoundHeader");
+      if (lblTasSoundHead) lblTasSoundHead.innerHTML = isArabic ? '<i data-lucide="music" class="w-3.5 h-3.5 text-emerald-600"></i> صوت نقرات المسبحة' : '<i data-lucide="music" class="w-3.5 h-3.5 text-emerald-600"></i> Tasbeeh Tap Sound';
+
+      const lblThemeText = document.getElementById("lblSettingThemeText");
+      if (lblThemeText) lblThemeText.innerText = isArabic ? "المظهر والألوان" : "Theme";
+      const btnThemeL = document.getElementById("btnThemeLight");
+      if (btnThemeL) btnThemeL.innerText = isArabic ? "☀️ النهاري الفاتح" : "☀️ Light Parchment";
+      const btnThemeD = document.getElementById("btnThemeDark");
+      if (btnThemeD) btnThemeD.innerText = isArabic ? "🌙 الليلي الداكن" : "🌙 Emerald Dark";
+
+      // Top Header Island Location & Date
+      const cityLbl = document.getElementById("cityNameLabel");
+      if (cityLbl) cityLbl.innerText = isArabic ? (cities[currentCityIndex].nameAr || cities[currentCityIndex].name) : cities[currentCityIndex].name;
+      const dateLbl = document.getElementById("hijriDateLabel");
+      if (dateLbl) dateLbl.innerText = isArabic ? "١٨ شوال" : "18 Shawwal";
+
+      // Quran Top Controls & Search Bar
+      const reciteBtn = document.getElementById("reciteAudioBtn");
+      if (reciteBtn) reciteBtn.innerHTML = isArabic ? '<i data-lucide="volume-2" class="w-3 h-3"></i> تلاوة' : '<i data-lucide="volume-2" class="w-3 h-3"></i> Recite';
+      const qSearchPlaceholder = document.getElementById("quranSearchPlaceholder");
+      if (qSearchPlaceholder) qSearchPlaceholder.innerText = isArabic ? "ابحث في السور والأدعية والآيات..." : "Search Surahs, Duas & Verses...";
+
       // Translate Hero Next Prayer
       const heroEl = document.getElementById("heroPrayerName");
       if (heroEl) heroEl.innerText = isArabic ? (prayerNameAr[currentActivePrayerId] || currentActivePrayerId) : currentActivePrayerId;
@@ -3920,9 +4492,15 @@ html_content = r'''<!DOCTYPE html>
       // Translate Daily Salah Log Header
       const salahTitle = document.getElementById("lblDailySalahTitle");
       if (salahTitle) salahTitle.innerText = isArabic ? "متابعة الصلوات" : "Salah Log";
-      // Streak badge removed for minimal clean UI
       const markAllEl = document.getElementById("btnMarkAllSalah");
-      if (markAllEl) markAllEl.innerText = isArabic ? "تحديد الكل" : "Mark All";
+      if (markAllEl) markAllEl.innerText = isArabic ? "الكل" : "Mark All";
+
+      // Hadith Card Actions
+      const hadithQuote = document.getElementById("hadithMatnEn");
+      if (hadithQuote) {
+        hadithQuote.setAttribute("dir", isArabic ? "ltr" : "ltr");
+        hadithQuote.className = isArabic ? "text-[13px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal text-left" : "text-[14px] text-slate-700 dark:text-slate-200 leading-relaxed font-normal text-left";
+      }
 
       // Translate Adhkar Chips
       const mChip = document.getElementById("adhkarMornBtn"); if (mChip) mChip.innerText = isArabic ? "أذكار الصباح" : "Morning";
@@ -3931,8 +4509,10 @@ html_content = r'''<!DOCTYPE html>
       const dChip = document.getElementById("adhkarDailyBtn"); if (dChip) dChip.innerText = isArabic ? "أدعية يومية" : "Daily Duas";
       const qChip = document.getElementById("adhkarQuranicBtn"); if (qChip) qChip.innerText = isArabic ? "أدعية قرآنية" : "Quranic Duas";
       const sChip = document.getElementById("adhkarSleepBtn"); if (sChip) sChip.innerText = isArabic ? "أذكار النوم" : "Sleep";
+      const adhkarSearchInput = document.getElementById("adhkarSearchInput");
+      if (adhkarSearchInput) adhkarSearchInput.placeholder = isArabic ? "ابحث في الأذكار والأدعية..." : "Search adhkar & duas...";
 
-      // Translate Tasbeeh Counters
+      // Translate Tasbeeh Counters & Presets
       const tgtLabel = document.getElementById("tasbeehTargetLabel");
       if (tgtLabel) tgtLabel.innerText = isArabic ? "الهدف ٣٣" : "Target 33";
       const lapsLabel = document.getElementById("tasbeehLapsLabel");
@@ -3940,19 +4520,161 @@ html_content = r'''<!DOCTYPE html>
       const rstBtn = document.getElementById("btnResetTasbeeh");
       if (rstBtn) rstBtn.innerText = isArabic ? "إعادة ضبط" : "Reset";
 
-      // Quran Header Title
-      const qTitle = document.getElementById("lblQuranTitle");
-      if (qTitle) qTitle.innerText = isArabic ? "القرآن الكريم" : "Quran";
+      const dhikrPillsAr = ["سُبْحَانَ اللَّهِ", "الْحَمْدُ لِلَّهِ", "اللَّهُ أَكْبَرُ", "أَسْتَغْفِرُ اللَّهَ", "لَا إِلٰهَ إِلَّا اللّٰهُ", "الصَّلَاةُ عَلَى النَّبِيِّ"];
+      const dhikrPillsEn = ["SubhanAllah", "Alhamdulillah", "Allahu Akbar", "Astaghfirullah", "La ilaha illallah", "Salawat"];
+      for (let i = 0; i < 6; i++) {
+        const pill = document.getElementById(`dhikr-pill-${i}`);
+        if (pill) pill.innerText = isArabic ? dhikrPillsAr[i] : dhikrPillsEn[i];
+      }
 
+      // Compass Controls & Cardinal Labels
+      const phoneSensorBtnText = document.getElementById("phoneCompassBtnText");
+      if (phoneSensorBtnText) {
+        if (isPhoneSensorActive) {
+          phoneSensorBtnText.innerText = isArabic ? "المستشعر نشط 🧭 (دوّر الهاتف)" : "Sensor Active 🧭 (Rotate Phone)";
+        } else {
+          phoneSensorBtnText.innerText = isArabic ? "تفعيل مستشعر البوصلة" : "Live Compass Sensor";
+        }
+      }
+      const qiblaGpsLbl = document.getElementById("lblQiblaGps");
+      if (qiblaGpsLbl) qiblaGpsLbl.innerText = isArabic ? "موقع GPS" : "GPS";
+      const manualSliderLbl = document.getElementById("lblManualSlider");
+      if (manualSliderLbl) manualSliderLbl.innerText = isArabic ? "شريط التدوير اليدوي" : "Manual Rotation Slider";
+      const c0 = document.getElementById("lblCompass0");
+      if (c0) c0.innerText = isArabic ? "٠° (شمال)" : "0° (North)";
+      const c180 = document.getElementById("lblCompass180");
+      if (c180) c180.innerText = isArabic ? "١٨٠° (جنوب)" : "180° (South)";
+      const c360 = document.getElementById("lblCompass360");
+      if (c360) c360.innerText = isArabic ? "٣٦٠°" : "360°";
+
+      const nEl = document.getElementById("compassN"); if (nEl) nEl.innerText = isArabic ? "ش" : "N";
+      const sEl = document.getElementById("compassS"); if (sEl) sEl.innerText = isArabic ? "ج" : "S";
+      const eEl = document.getElementById("compassE"); if (eEl) eEl.innerText = isArabic ? "ق" : "E";
+      const wEl = document.getElementById("compassW"); if (wEl) wEl.innerText = isArabic ? "غ" : "W";
+      const kaabaEl = document.getElementById("compassKaabaText"); if (kaabaEl) kaabaEl.innerText = isArabic ? "الكعبة" : "Kaaba";
+
+      // 114 Directory Tabs
+      const dirTabSur = document.getElementById("dirTab-surahs");
+      if (dirTabSur) dirTabSur.innerHTML = isArabic ? '<i data-lucide="book" class="w-3 h-3"></i> السور (١١٤)' : '<i data-lucide="book" class="w-3 h-3"></i> Surahs (114)';
+      const dirTabDua = document.getElementById("dirTab-duas");
+      if (dirTabDua) dirTabDua.innerHTML = isArabic ? '<i data-lucide="heart" class="w-3 h-3"></i> الأدعية والأذكار' : '<i data-lucide="heart" class="w-3 h-3"></i> Duas & Adhkar';
+      const dirTabSpec = document.getElementById("dirTab-special");
+      if (dirTabSpec) dirTabSpec.innerHTML = isArabic ? '<i data-lucide="book-marked" class="w-3 h-3"></i> آيات مختارة' : '<i data-lucide="book-marked" class="w-3 h-3"></i> Special Verses';
+
+      // Re-render core views & modals
+      applyActiveCity();
       renderPrayerCards();
       renderSalahTracker();
       renderSurahPills();
+      loadSurah(currentSurahKey);
+      renderQuranVerses();
+      renderAdhkar();
+      renderCalendarData();
+      renderRecitersSettings();
+      renderAdhansSettings();
+      renderArabicFontCards();
+      renderUIFontCards();
+      renderTasbeehSoundSelectors();
+      updateSettingsUIFromState();
       updateCompass(document.getElementById("headingSlider") ? document.getElementById("headingSlider").value : 0);
+
+      // Update Status Bar Clock
+      const sClock = document.getElementById("statusBarClock");
+      if (sClock) {
+        if (currentOS === 'ios') {
+          sClock.innerText = isArabic ? "٠٩:٤١" : "09:41";
+        } else {
+          sClock.innerText = isArabic ? "٠٩:٤١ ص" : "9:41 AM";
+        }
+      }
+
+      // Update Adhkar Subtitle & Progress Word
+      const adhkarSub = document.getElementById("lblAdhkarSubtitle");
+      if (adhkarSub) adhkarSub.innerText = isArabic ? "حصن المسلم" : "Hisn al-Muslim";
+      const pWord = document.getElementById("lblProgressWord");
+      if (pWord) pWord.innerText = isArabic ? "المكتمل:" : "Completed:";
+
+      // Update Calendar Modal Title
+      const calTitle = document.getElementById("calModalTitle");
+      if (calTitle) calTitle.innerText = isArabic ? "التقويم الهجري ومتابعة الصيام" : "Hijri Calendar";
+
+      // Update Directory Modal Title & Subtitle & Filters
+      const dirTitle = document.getElementById("dirModalTitle");
+      if (dirTitle) dirTitle.innerText = isArabic ? "فهرس القرآن الكريم والأدعية" : "Quran & Duas Directory";
+      const dirSub = document.getElementById("dirModalSub");
+      if (dirSub) dirSub.innerText = isArabic ? "١١٤ سورة، أدعية مأثورة وآيات مختارة" : "114 Surahs, Daily Duas & Special Verses";
+
+      const fAll = document.getElementById("surahFilterAll");
+      if (fAll) fAll.innerText = isArabic ? `الكل (${toArabicDigits(114)})` : "All (114)";
+      const fMec = document.getElementById("surahFilterMeccan");
+      if (fMec) fMec.innerText = isArabic ? `مكية (${toArabicDigits(86)})` : "Meccan (86)";
+      const fMed = document.getElementById("surahFilterMedinan");
+      if (fMed) fMed.innerText = isArabic ? `مدنية (${toArabicDigits(28)})` : "Medinan (28)";
+
+      // Update Bookmarks Modal Title
+      const bmTitle = document.getElementById("bmModalTitle");
+      if (bmTitle) bmTitle.innerText = isArabic ? "الآيات المحفوظة" : "Saved Ayahs";
+
+      // Update City Modal Title & GPS Text
+      const cTitle = document.getElementById("cityModalTitle");
+      if (cTitle) cTitle.innerText = isArabic ? "تحديد المدينة والموقع" : "Select Location";
+      const gText = document.getElementById("btnGpsText");
+      if (gText) gText.innerText = isArabic ? "تحديد الموقع الجغرافي تلقائياً" : "Detect GPS Location";
+
+      // Update Tasbeeh Target Buttons & Laps
+      [33, 99, 100, 0].forEach(t => {
+        const b = document.getElementById(`target-btn-${t}`);
+        if (b) b.innerText = isArabic ? (t === 0 ? "∞" : toArabicDigits(t)) : (t === 0 ? "∞" : t);
+      });
+      const tDailyLbl = document.getElementById("lblTasbeehTotalDailyTitle");
+      if (tDailyLbl) tDailyLbl.innerText = isArabic ? "إجمالي اليوم:" : "Today's Total:";
+      const tDailyCount = document.getElementById("tasbeehTotalDaily");
+      if (tDailyCount) tDailyCount.innerText = isArabic ? toArabicDigits(tasbeehDailyTotal) : tasbeehDailyTotal;
+      const tCount = document.getElementById("tasbeehCount");
+      if (tCount) tCount.innerText = isArabic ? toArabicDigits(tasbeehCount) : tasbeehCount;
+      const tLaps = document.getElementById("tasbeehLapsLabel");
+      if (tLaps) tLaps.innerText = isArabic ? `الدورة ${toArabicDigits(tasbeehLaps)}` : `Lap ${tasbeehLaps}`;
+
+      // Update Active Badges in Settings
+      const rBadge = document.getElementById("activeReciterBadge");
+      if (rBadge && recitersList[currentReciterKey]) {
+        rBadge.innerText = isArabic ? recitersList[currentReciterKey].nameAr : recitersList[currentReciterKey].name.replace('Sheikh ', '');
+      }
+      const aBadge = document.getElementById("activeAdhanBadge");
+      if (aBadge && adhanTonesList[currentAdhanKey]) {
+        aBadge.innerText = isArabic ? adhanTonesList[currentAdhanKey].titleAr : adhanTonesList[currentAdhanKey].title.split(' ')[0];
+      }
+      const fSizeLbl = document.getElementById("lblSettingsFontSize");
+      if (fSizeLbl) {
+        fSizeLbl.innerText = isArabic ? `${toArabicDigits(quranFontSize)} بكسل` : `${quranFontSize}px`;
+      }
+
+      // Hadith Action Buttons
+      const hCopy = document.getElementById("lblHadithCopyText"); if (hCopy) hCopy.innerText = isArabic ? "نسخ" : "Copy";
+      const hShare = document.getElementById("lblHadithShareText"); if (hShare) hShare.innerText = isArabic ? "مشاركة" : "Share";
+      const hNext = document.getElementById("lblHadithNextText"); if (hNext) hNext.innerText = isArabic ? "التالي" : "Next";
+
+      // 99 Names Quick Access Cards
+      const nHead = document.getElementById("lbl99NamesHeaderTitle"); if (nHead) nHead.innerText = isArabic ? "أسماء الله الحسنى وأسماء النبي ﷺ" : "99 Divine & Noble Names";
+      const nAllah = document.getElementById("lbl99NamesAllahTitle"); if (nAllah) nAllah.innerText = isArabic ? "أسماء الله الحسنى (٩٩)" : "Allah (99)";
+      const nProph = document.getElementById("lbl99NamesProphetTitle"); if (nProph) nProph.innerText = isArabic ? "أسماء النبي ﷺ (٩٩)" : "Prophet ﷺ (99)";
+
+      // Qibla GPS label
+      const qGps = document.getElementById("lblQiblaGps"); if (qGps) qGps.innerText = isArabic ? "تحديد الموقع" : "GPS";
+
+      // Tasbeeh Bottom Reset & Total Title
+      const bRst = document.getElementById("btnResetTasbeehBottom"); if (bRst) bRst.innerText = isArabic ? "إعادة ضبط" : "Reset";
+      const bTot = document.getElementById("lblTasbeehTotalDailyTitle"); if (bTot) bTot.innerText = isArabic ? "إجمالي التسبيحات اليوم:" : "Total beads counted today:";
+
+      // Calendar Modal Events & Notification Labels
+      const calEvH = document.getElementById("lblCalEventsHeader"); if (calEvH) calEvH.innerText = isArabic ? "المناسبات والشهور الإسلامية" : "Islamic Events";
+      const calEvY = document.getElementById("lblCalEventsYear"); if (calEvY) calEvY.innerText = isArabic ? "١٤٤٧–١٤٤٨ هـ" : "1447–1448 AH";
+      const calNotifT = document.getElementById("lblCalEventNotifTitle"); if (calNotifT) calNotifT.innerText = isArabic ? "تنبيهات المناسبات والصيام" : "Event Notifications";
+      const calNotifS = document.getElementById("lblCalEventNotifSub"); if (calNotifS) calNotifS.innerText = isArabic ? "تذكير بأيام البيض وصيام الإثنين والخميس والمناسبات" : "Reminders for Sunnah fasts and major dates";
       saveState();
       lucide.createIcons();
     }
 
-    // Theme toggle
     function toggleTheme() {
       isDark = !isDark;
       const screen = document.getElementById("deviceScreen");
@@ -3993,7 +4715,7 @@ html_content = r'''<!DOCTYPE html>
         
         iosIcons.classList.remove("hidden");
         androidIcons.classList.add("hidden");
-        clock.innerText = "09:41";
+        clock.innerText = isArabic ? "٠٩:٤١" : "09:41";
 
         iosBar.classList.remove("hidden");
         androidBar.classList.add("hidden");
@@ -4009,7 +4731,7 @@ html_content = r'''<!DOCTYPE html>
         
         iosIcons.classList.add("hidden");
         androidIcons.classList.remove("hidden");
-        clock.innerText = "9:41 AM";
+        clock.innerText = isArabic ? "٠٩:٤١ ص" : "9:41 AM";
 
         iosBar.classList.add("hidden");
         androidBar.classList.remove("hidden");
@@ -4222,10 +4944,10 @@ html_content = r'''<!DOCTYPE html>
       if (currentDirectoryTab === 'duas') {
         const allDuas = [];
         if (typeof adhkarData !== 'undefined') {
-          if (adhkarData.daily) adhkarData.daily.forEach(d => allDuas.push({ ...d, mode: 'daily', typeBadge: 'Daily Sunnah' }));
-          if (adhkarData.quranic) adhkarData.quranic.forEach(d => allDuas.push({ ...d, mode: 'quranic', typeBadge: 'Quranic Rabbana' }));
-          if (adhkarData.morning) adhkarData.morning.forEach(d => allDuas.push({ ...d, mode: 'morning', typeBadge: 'Morning Adhkar' }));
-          if (adhkarData.evening) adhkarData.evening.forEach(d => allDuas.push({ ...d, mode: 'evening', typeBadge: 'Evening Adhkar' }));
+          if (adhkarData.daily) adhkarData.daily.forEach(d => allDuas.push({ ...d, mode: 'daily', typeBadge: isArabic ? 'سنة يومية' : 'Daily Sunnah' }));
+          if (adhkarData.quranic) adhkarData.quranic.forEach(d => allDuas.push({ ...d, mode: 'quranic', typeBadge: isArabic ? 'دعاء قرآني' : 'Quranic Rabbana' }));
+          if (adhkarData.morning) adhkarData.morning.forEach(d => allDuas.push({ ...d, mode: 'morning', typeBadge: isArabic ? 'أذكار الصباح' : 'Morning Adhkar' }));
+          if (adhkarData.evening) adhkarData.evening.forEach(d => allDuas.push({ ...d, mode: 'evening', typeBadge: isArabic ? 'أذكار المساء' : 'Evening Adhkar' }));
         }
 
         const filteredDuas = allDuas.filter(d => {
@@ -4275,14 +4997,14 @@ html_content = r'''<!DOCTYPE html>
 
       if (currentDirectoryTab === 'special') {
         const specialVerses = [
-          { key: 'kursi', title: 'Ayat al-Kursi (آية الكرسي)', ref: 'Surah 2:255', desc: 'The Throne Verse • Greatest verse in the Quran for protection', tag: 'Protection' },
-          { key: 'fatihah', title: 'Surah Al-Faatiha (الفاتحة)', ref: 'Surah 1:1-7', desc: 'The Opening • Mother of the Book • Read in every Salah', tag: 'Daily Salah' },
-          { key: 'ikhlas', title: 'Surah Al-Ikhlas (الإخلاص)', ref: 'Surah 112:1-4', desc: 'The Sincerity • Equals one-third of the Holy Quran', tag: 'Tawheed' },
-          { key: 'falaq', title: 'Surah Al-Falaq (الفلق)', ref: 'Surah 113:1-5', desc: 'The Daybreak • Protection from envy and evil', tag: 'Mu’awwidhat' },
-          { key: 'nas', title: 'Surah An-Naas (الناس)', ref: 'Surah 114:1-6', desc: 'Mankind • Refuge from whispers of Shaytan', tag: 'Mu’awwidhat' },
-          { key: 'kahf', title: 'Surah Al-Kahf (الكهف)', ref: 'Surah 18', desc: 'The Cave • Sunnah reading every Friday for luminous light', tag: 'Friday Sunnah' },
-          { key: 'yasin', title: 'Surah Yasin (يس)', ref: 'Surah 36', desc: 'The Heart of the Quran', tag: 'Virtue' },
-          { key: 'mulk', title: 'Surah Al-Mulk (الملك)', ref: 'Surah 67', desc: 'The Sovereignty • Intercedes in the grave for its reader', tag: 'Nightly Protection' }
+          { key: 'kursi', title: 'Ayat al-Kursi (آية الكرسي)', titleAr: 'آية الكرسي', ref: 'Surah 2:255', refAr: 'سورة البقرة: ٢٥٥', desc: 'The Throne Verse • Greatest verse in the Quran for protection', descAr: 'أعظم آية في كتاب الله تعالى للحفظ والسكينة', tag: 'Protection', tagAr: 'حفظ وأمان' },
+          { key: 'fatihah', title: 'Surah Al-Faatiha (الفاتحة)', titleAr: 'سورة الفاتحة', ref: 'Surah 1:1-7', refAr: 'السبع المثاني: ١–٧', desc: 'The Opening • Mother of the Book • Read in every Salah', descAr: 'أم الكتاب والشفاء التام وتقرأ في كل صلاة', tag: 'Daily Salah', tagAr: 'الصلاة اليومية' },
+          { key: 'ikhlas', title: 'Surah Al-Ikhlas (الإخلاص)', titleAr: 'سورة الإخلاص', ref: 'Surah 112:1-4', refAr: 'سورة ١١٢: ١–٤', desc: 'The Sincerity • Equals one-third of the Holy Quran', descAr: 'تعدل ثلث القرآن الكريم في أجر التوحيد', tag: 'Tawheed', tagAr: 'التوحيد الخالص' },
+          { key: 'falaq', title: 'Surah Al-Falaq (الفلق)', titleAr: 'سورة الفلق', ref: 'Surah 113:1-5', refAr: 'سورة ١١٣: ١–٥', desc: 'The Daybreak • Protection from envy and evil', descAr: 'المعوذتان للوقاية من الحسد وشر ما خلق', tag: 'Mu’awwidhat', tagAr: 'المعوذات' },
+          { key: 'nas', title: 'Surah An-Naas (الناس)', titleAr: 'سورة الناس', ref: 'Surah 114:1-6', refAr: 'سورة ١١٤: ١–٦', desc: 'Mankind • Refuge from whispers of Shaytan', descAr: 'الاستعاذة برب الناس من الوسواس الخناس', tag: 'Mu’awwidhat', tagAr: 'المعوذات' },
+          { key: 'kahf', title: 'Surah Al-Kahf (الكهف)', titleAr: 'سورة الكهف', ref: 'Surah 18', refAr: 'سورة ١٨', desc: 'The Cave • Sunnah reading every Friday for luminous light', descAr: 'نور ما بين الجمعتين وسنة يوم الجمعة المباركة', tag: 'Friday Sunnah', tagAr: 'سنة الجمعة' },
+          { key: 'yasin', title: 'Surah Yasin (يس)', titleAr: 'سورة يس', ref: 'Surah 36', refAr: 'سورة ٣٦', desc: 'The Heart of the Quran', descAr: 'قلب القرآن الكريم ولها فضل عظيم', tag: 'Virtue', tagAr: 'فضائل السور' },
+          { key: 'mulk', title: 'Surah Al-Mulk (الملك)', titleAr: 'سورة الملك (تبارك)', ref: 'Surah 67', refAr: 'سورة ٦٧', desc: 'The Sovereignty • Intercedes in the grave for its reader', descAr: 'المانعة المنجية من عذاب القبر لمن قرأها ليلاً', tag: 'Nightly Protection', tagAr: 'حفظ ليلي' }
         ];
 
         const filteredSpecial = specialVerses.filter(v => {
@@ -4302,17 +5024,22 @@ html_content = r'''<!DOCTYPE html>
             }
           };
 
+          const vTitle = isArabic ? (v.titleAr || v.title) : v.title;
+          const vDesc = isArabic ? (v.descAr || v.desc) : v.desc;
+          const vRef = isArabic ? (v.refAr || toArabicDigits(v.ref)) : v.ref;
+          const vTag = isArabic ? (v.tagAr || v.tag) : v.tag;
+
           card.innerHTML = `
             <div class="min-w-0 flex-1 pr-2">
               <div class="flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
-                <h4 class="text-xs font-bold text-slate-900 dark:text-white truncate">${v.title}</h4>
+                <h4 class="text-xs font-bold text-slate-900 dark:text-white truncate">${vTitle}</h4>
               </div>
-              <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">${v.desc}</p>
-              <p class="text-[9px] text-gold-600 dark:text-gold-400 font-semibold mt-0.5">${v.ref}</p>
+              <p class="text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">${vDesc}</p>
+              <p class="text-[9px] text-gold-600 dark:text-gold-400 font-semibold mt-0.5">${vRef}</p>
             </div>
             <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-gold-50 dark:bg-amber-950/60 text-gold-700 dark:text-gold-400 border border-gold-300/40 flex-shrink-0">
-              ${v.tag}
+              ${vTag}
             </span>
           `;
           container.appendChild(card);
@@ -4374,25 +5101,31 @@ html_content = r'''<!DOCTYPE html>
         }`;
         card.onclick = () => selectSurahFromIndex(s.number);
 
+        const surahNumDisplay = isArabic ? toArabicDigits(s.number) : s.number;
+        const surahTitleDisplay = isArabic ? s.titleAr : s.titleEn;
+        const surahTypeDisplay = isArabic ? (s.type.toLowerCase() === 'meccan' ? 'مكية' : 'مدنية') : s.type;
+        const surahVersesDisplay = isArabic ? `${toArabicDigits(s.versesCount)} آيات` : `${s.meaningEn} • ${s.versesCount} Verses`;
+        const rightDisplay = isArabic 
+          ? `<p class="notranslate font-arabic text-xs font-bold text-emerald-700 dark:text-emerald-300" dir="rtl">ترتيبها ${toArabicDigits(s.number)}</p>` 
+          : `<p class="notranslate font-arabic text-base font-bold text-emerald-950 dark:text-emerald-200" translate="no" lang="ar" dir="rtl">${s.titleAr}</p>`;
+
         card.innerHTML = `
           <div class="flex items-center gap-2.5 min-w-0">
             <div class="w-7 h-7 rounded-lg bg-gold-500/15 border border-gold-500/30 text-gold-600 dark:text-gold-400 font-bold text-xs flex items-center justify-center font-sans flex-shrink-0">
-              ${s.number}
+              ${surahNumDisplay}
             </div>
             <div class="min-w-0">
               <h4 class="text-xs font-bold text-slate-800 dark:text-white truncate flex items-center gap-1.5">
-                ${s.titleEn}
+                ${surahTitleDisplay}
                 <span class="text-[9px] font-normal px-1.5 py-0.2 rounded ${s.type === 'Meccan' ? 'bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300' : 'bg-blue-100 dark:bg-blue-900/60 text-blue-800 dark:text-blue-300'}">
-                  ${s.type}
+                  ${surahTypeDisplay}
                 </span>
               </h4>
-              <p class="text-[10px] text-slate-400 truncate">${s.meaningEn} • ${s.versesCount} Verses</p>
+              <p class="text-[10px] text-slate-400 truncate">${surahVersesDisplay}</p>
             </div>
           </div>
           <div class="text-right flex-shrink-0 pl-2">
-            <p class="notranslate font-arabic text-base font-bold text-emerald-950 dark:text-emerald-200" translate="no" lang="ar" dir="rtl">
-              ${s.titleAr}
-            </p>
+            ${rightDisplay}
           </div>
         `;
         container.appendChild(card);
@@ -4460,10 +5193,10 @@ html_content = r'''<!DOCTYPE html>
       // Show sleek loading state
       const sInfo = all114Surahs.find(x => x.number === surahNum);
       if (sInfo) {
-        document.getElementById("surahMetaType").innerText = sInfo.type;
-        document.getElementById("surahMetaVerses").innerText = `${sInfo.versesCount} Verses`;
+        document.getElementById("surahMetaType").innerText = isArabic ? ((sInfo.type.toLowerCase() === 'meccan' || sInfo.type === 'Meccan') ? 'مكية' : 'مدنية') : sInfo.type;
+        document.getElementById("surahMetaVerses").innerText = isArabic ? `${toArabicDigits(sInfo.versesCount)} آيات` : `${sInfo.versesCount} Verses`;
         document.getElementById("surahHeaderTitleAr").innerText = sInfo.titleAr;
-        document.getElementById("surahHeaderTitleEn").innerText = sInfo.titleEn;
+        document.getElementById("surahHeaderTitleEn").innerText = isArabic ? `سورة ${sInfo.titleAr} • ${toArabicDigits(sInfo.versesCount)} آيات • ترتيبها: ${toArabicDigits(sInfo.number)}` : sInfo.titleEn;
       }
       const container = document.getElementById("quranVersesList");
       container.innerHTML = `
@@ -4532,11 +5265,11 @@ html_content = r'''<!DOCTYPE html>
       container.innerHTML = "";
 
       const prayers = [
-        { id: 'Fajr', name: 'Fajr', ar: 'فجر' },
-        { id: 'Dhuhr', name: 'Dhuhr', ar: 'ظهر' },
-        { id: 'Asr', name: 'Asr', ar: 'عصر' },
-        { id: 'Maghrib', name: 'Maghrib', ar: 'مغرب' },
-        { id: 'Isha', name: 'Isha', ar: 'عشاء' }
+        { id: 'Fajr', name: 'Fajr', ar: 'فجر', icon: 'sunrise' },
+        { id: 'Dhuhr', name: 'Dhuhr', ar: 'ظهر', icon: 'sun' },
+        { id: 'Asr', name: 'Asr', ar: 'عصر', icon: 'cloud-sun' },
+        { id: 'Maghrib', name: 'Maghrib', ar: 'مغرب', icon: 'sunset' },
+        { id: 'Isha', name: 'Isha', ar: 'عشاء', icon: 'moon' }
       ];
 
       let completedCount = 0;
@@ -4546,17 +5279,19 @@ html_content = r'''<!DOCTYPE html>
 
         const btn = document.createElement("button");
         btn.onclick = () => toggleSalahOffered(p.id);
-        btn.className = `p-1.5 rounded-xl border flex flex-col items-center justify-center gap-1 transition active:scale-95 ${
+        btn.className = `p-2 rounded-xl border flex flex-col items-center justify-center gap-1.5 transition active:scale-95 group flex-1 ${
           isOffered 
-            ? 'bg-emerald-700 border-emerald-700 text-white shadow-xs' 
-            : 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+            ? 'bg-emerald-800 border-emerald-700 text-white shadow-xs' 
+            : 'bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 hover:bg-emerald-50/20'
         }`;
 
         btn.innerHTML = `
-          <div class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-            isOffered ? 'bg-white text-emerald-800 font-extrabold' : 'bg-slate-200 dark:bg-slate-700 text-slate-500'
+          <div class="w-6 h-6 rounded-full flex items-center justify-center transition-all ${
+            isOffered 
+              ? 'bg-white text-emerald-800 shadow-2xs font-extrabold' 
+              : 'bg-slate-100 dark:bg-slate-750 text-slate-400 group-hover:text-emerald-600 border border-slate-200/90 dark:border-slate-700'
           }">
-            ${isOffered ? '✓' : ''}
+            <i data-lucide="${isOffered ? 'check' : p.icon}" class="w-3.5 h-3.5 ${isOffered ? 'stroke-[3]' : 'stroke-[1.8]'}"></i>
           </div>
           <span class="text-[10px] font-bold truncate">${isArabic ? p.ar : p.name}</span>
         `;
@@ -4566,10 +5301,14 @@ html_content = r'''<!DOCTYPE html>
       const pct = Math.round((completedCount / 5) * 100);
       const progEl = document.getElementById("salahTrackerProgressText");
       if (progEl) {
-        progEl.innerText = `${completedCount}/5`;
+        progEl.innerText = isArabic ? `${toArabicDigits(completedCount)} / ٥` : `${completedCount}/5`;
         progEl.className = completedCount === 5 
           ? "text-[10px] font-bold text-gold-500 animate-pulse" 
           : "text-[10px] font-bold text-emerald-700 dark:text-emerald-400";
+      }
+
+      if (window.lucide) {
+        lucide.createIcons();
       }
     }
 
@@ -4698,7 +5437,7 @@ html_content = r'''<!DOCTYPE html>
 
       const keys = Object.keys(bookmarkedVerses).filter(k => bookmarkedVerses[k]);
       const sub = document.getElementById("bookmarksCountSub");
-      if (sub) sub.innerText = `${keys.length} verses saved`;
+      if (sub) sub.innerText = isArabic ? `تم حفظ ${toArabicDigits(keys.length)} آيات` : `${keys.length} verses saved`;
 
       if (keys.length === 0) {
         container.innerHTML = `
@@ -4730,7 +5469,7 @@ html_content = r'''<!DOCTYPE html>
         card.innerHTML = `
           <div class="flex items-center justify-between pb-1 border-b border-slate-100 dark:border-slate-700/60">
             <span class="text-xs font-bold text-emerald-800 dark:text-emerald-400 flex items-center gap-1">
-              Surah ${s.titleEn} (${s.number}:${v.id})
+              ${isArabic ? `سورة ${s.titleAr} (الآية ${toArabicDigits(v.id)})` : `Surah ${s.titleEn} (${s.number}:${v.id})`}
             </span>
             <button onclick="event.stopPropagation(); removeBookmark('${bmKey}')" title="Remove Bookmark" class="p-1 rounded text-slate-400 hover:text-red-500 transition">
               <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
@@ -5899,10 +6638,11 @@ html_content = r'''<!DOCTYPE html>
       const parts = timeStr.split(':');
       let h = parseInt(parts[0], 10);
       const m = parts[1] || '00';
-      const ampm = h >= 12 ? 'PM' : 'AM';
+      const ampm = isArabic ? (h >= 12 ? 'م' : 'ص') : (h >= 12 ? 'PM' : 'AM');
       h = h % 12;
       if (h === 0) h = 12;
-      return `${h.toString().padStart(2, '0')}:${m} ${ampm}`;
+      const formatted = `${h.toString().padStart(2, '0')}:${m}`;
+      return isArabic ? `${toArabicDigits(formatted)} ${ampm}` : `${formatted} ${ampm}`;
     }
 
     function getGregorianDateForDay(month, day) {
@@ -5915,15 +6655,43 @@ html_content = r'''<!DOCTYPE html>
       const month = hijriMonthsData[currentHijriMonthIdx];
       if (!month) return;
 
-      // 1. Month Header Titles
+      // 1. Month Header Titles & Weekdays
       const monthTitleEl = document.getElementById("calMonthTitle");
       const monthSubEl = document.getElementById("calMonthSubtitle");
       if (monthTitleEl) {
-        monthTitleEl.innerHTML = `${month.name} <span class="font-arabic text-emerald-600 dark:text-emerald-400 font-normal text-xs">${month.nameAr}</span>`;
+        monthTitleEl.innerHTML = isArabic 
+          ? `${month.nameAr} <span class="font-normal text-xs text-emerald-600 dark:text-emerald-400">${toArabicDigits(1447)} هـ</span>` 
+          : `${month.name} 1447 <span class="font-arabic text-emerald-600 dark:text-emerald-400 font-normal text-xs">${month.nameAr}</span>`;
       }
       if (monthSubEl) {
-        monthSubEl.innerText = month.gregorianSubtitle;
+        monthSubEl.innerText = isArabic ? (month.id === "shawwal1447" ? "٢٠ مارس – ١٨ أبريل ٢٠٢٦" : month.gregorianSubtitle) : month.gregorianSubtitle;
       }
+
+      // Update Weekdays Row
+      const weekdaysRow = document.getElementById("calWeekdayHeadersRow");
+      if (weekdaysRow) {
+        const arr = isArabic ? ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"] : ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        weekdaysRow.innerHTML = arr.map(w => `<span>${w}</span>`).join('');
+      }
+
+      // Update Legend Row
+      const legendRow = document.getElementById("calLegendRow");
+      if (legendRow) {
+        legendRow.innerHTML = isArabic ? `
+          <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-700"></span> اليوم</span>
+          <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> صيام الإثنين/الخميس</span>
+          <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> الأيام البيض</span>
+        ` : `
+          <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-700"></span> Today</span>
+          <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Mon/Thu Fast</span>
+          <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> White Days</span>
+        `;
+      }
+
+      const suhoorLbl = document.getElementById("calSuhoorLabel");
+      const iftarLbl = document.getElementById("calIftarLabel");
+      if (suhoorLbl) suhoorLbl.innerText = isArabic ? "السحور" : "Suhoor";
+      if (iftarLbl) iftarLbl.innerText = isArabic ? "الإفطار" : "Iftar";
 
       // 2. Render 7-column Calendar Grid
       const gridEl = document.getElementById("hijriMonthGrid");
@@ -5976,8 +6744,8 @@ html_content = r'''<!DOCTYPE html>
           }
 
           cell.innerHTML = `
-            <span class="text-xs leading-none ${isToday ? 'font-extrabold text-white' : 'font-semibold'}">${d}</span>
-            <span class="text-[8px] leading-tight ${isToday ? 'text-emerald-200' : 'text-slate-400 dark:text-slate-500'} mt-0.5">${gregDayNum}</span>
+            <span class="text-xs leading-none ${isToday ? 'font-extrabold text-white' : 'font-semibold'}">${isArabic ? toArabicDigits(d) : d}</span>
+            <span class="text-[8px] leading-tight ${isToday ? 'text-emerald-200' : 'text-slate-400 dark:text-slate-500'} mt-0.5">${isArabic ? toArabicDigits(gregDayNum) : gregDayNum}</span>
             <div class="h-1 flex items-center justify-center mt-0.5">${dotHtml}</div>
           `;
           gridEl.appendChild(cell);
@@ -5992,44 +6760,48 @@ html_content = r'''<!DOCTYPE html>
 
       if (selHijriEl && selTagsEl) {
         const gregDate = getGregorianDateForDay(month, selectedHijriDay);
-        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-        const dateStr = `${dayNames[gregDate.getDay()]}, ${monthNames[gregDate.getMonth()]} ${gregDate.getDate()}`;
-
-        selHijriEl.innerHTML = `${selectedHijriDay} ${month.name} <span class="text-[10px] font-normal text-slate-400">• ${dateStr}</span>`;
-
-        // Tags
-        let tagsHtml = "";
         const weekday = (month.startDayOfWeek + (selectedHijriDay - 1)) % 7;
         const isToday = (month.id === "shawwal1447" && selectedHijriDay === 18);
         const isWhiteDay = (selectedHijriDay === 13 || selectedHijriDay === 14 || selectedHijriDay === 15);
         const special = month.specialDays ? month.specialDays[selectedHijriDay] : null;
 
-        if (isToday) {
-          tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Today</span>`;
-        }
-        if (weekday === 1) {
-          tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Monday Sunnah Fast</span>`;
-        } else if (weekday === 4) {
-          tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Thursday Sunnah Fast</span>`;
-        }
-        if (special) {
-          tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">${special.name}</span>`;
-        } else if (isWhiteDay) {
-          tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">Ayyam al-Beed (White Day)</span>`;
-        }
+        if (isArabic) {
+          const daysAr = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت"];
+          const monthsAr = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+          const dateStrAr = `${daysAr[gregDate.getDay()]}، ${toArabicDigits(gregDate.getDate())} ${monthsAr[gregDate.getMonth()]}`;
+          selHijriEl.innerHTML = `${toArabicDigits(selectedHijriDay)} ${month.nameAr} <span class="text-[10px] font-normal text-slate-400">• ${dateStrAr}</span>`;
 
-        selTagsEl.innerHTML = tagsHtml || `<span class="text-[9px] text-slate-400">Regular Islamic Day</span>`;
+          let tagsHtml = "";
+          if (isToday) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">اليوم</span> `;
+          if (weekday === 1) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">صيام الإثنين (سنة)</span> `;
+          else if (weekday === 4) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">صيام الخميس (سنة)</span> `;
+          if (special) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">${special.nameAr || special.name}</span> `;
+          else if (isWhiteDay) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">صيام الأيام البيض</span> `;
+          selTagsEl.innerHTML = tagsHtml || `<span class="text-[9px] text-slate-400">يوم اعتيادي</span>`;
+        } else {
+          const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+          const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          const dateStr = `${dayNames[gregDate.getDay()]}, ${monthNames[gregDate.getMonth()]} ${gregDate.getDate()}`;
+          selHijriEl.innerHTML = `${selectedHijriDay} ${month.name} <span class="text-[10px] font-normal text-slate-400">• ${dateStr}</span>`;
+
+          let tagsHtml = "";
+          if (isToday) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Today</span> `;
+          if (weekday === 1) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Monday Sunnah Fast</span> `;
+          else if (weekday === 4) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300">Thursday Sunnah Fast</span> `;
+          if (special) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">${special.name}</span> `;
+          else if (isWhiteDay) tagsHtml += `<span class="px-1.5 py-0.5 rounded text-[9px] font-bold bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300">Ayyam al-Beed (White Day)</span> `;
+          selTagsEl.innerHTML = tagsHtml || `<span class="text-[9px] text-slate-400">Regular Islamic Day</span>`;
+        }
 
         // Fasting Log Button
         const isFastLogged = !!userFastingLog[`${month.id}-${selectedHijriDay}`];
         if (btnFastEl) {
           if (isFastLogged) {
             btnFastEl.className = "px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-[10px] font-bold flex items-center gap-1 shadow-xs transition active:scale-95 flex-shrink-0";
-            btnFastEl.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> Fast Logged`;
+            btnFastEl.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i> ${isArabic ? "تم الصيام ✓" : "Fast Logged"}`;
           } else {
             btnFastEl.className = "px-2.5 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-750 text-slate-700 dark:text-slate-300 hover:bg-emerald-50 dark:hover:bg-emerald-950 text-[10px] font-bold flex items-center gap-1 border border-slate-200 dark:border-slate-700 active:scale-95 transition flex-shrink-0";
-            btnFastEl.innerHTML = `<i data-lucide="plus" class="w-3.5 h-3.5"></i> Log Fast`;
+            btnFastEl.innerHTML = `<i data-lucide="plus" class="w-3.5 h-3.5"></i> ${isArabic ? "تسجيل الصيام" : "Log Fast"}`;
           }
         }
       }
@@ -6061,15 +6833,22 @@ html_content = r'''<!DOCTYPE html>
             statusBadgeClass = "bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-300/60";
           }
 
+          const evTitle = isArabic ? ev.arTitle : `${ev.title} <span class="font-arabic font-normal text-slate-400 text-[10px]">(${ev.arTitle})</span>`;
+          const evDate = isArabic ? ev.dateAr : `${ev.dateEn} • <span class="font-arabic">${ev.dateAr}</span>`;
+          let evStatus = ev.status;
+          if (isArabic) {
+            evStatus = ev.status === "Celebrated" ? "مضى" : (ev.status === "Active" ? "نشط حالياً" : "قادم");
+          }
+
           card.innerHTML = `
             <div>
               <p class="font-bold text-slate-800 dark:text-white text-xs flex items-center gap-1">
-                ${ev.title} <span class="font-arabic font-normal text-slate-400 text-[10px]">(${ev.arTitle})</span>
+                ${evTitle}
               </p>
-              <p class="text-[9px] text-slate-400 mt-0.5">${ev.dateEn} • <span class="font-arabic">${ev.dateAr}</span></p>
+              <p class="text-[9px] text-slate-400 mt-0.5">${evDate}</p>
             </div>
             <span class="whitespace-nowrap px-2 py-0.5 rounded-full text-[9px] font-bold flex-shrink-0 ${statusBadgeClass}">
-              ${ev.status}
+              ${evStatus}
             </span>
           `;
           eventsContainer.appendChild(card);
@@ -6522,7 +7301,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         card.innerHTML = `
           <div class="space-y-1.5">
             <div class="flex items-start justify-between gap-2.5">
-              <span class="text-[10px] font-semibold text-slate-400">${item.ref}</span>
+              <span class="text-[10px] font-semibold text-slate-400">${isArabic ? formatAdhkarRef(item.ref, true) : item.ref}</span>
               <button onclick="decrementAdhkar(${index})" class="px-2.5 py-1 rounded-lg flex-shrink-0 flex items-center gap-1 font-bold text-xs transition active:scale-90 border ${item.done ? 'bg-emerald-700 border-emerald-700 text-white shadow-xs' : 'bg-gold-500/10 border-gold-500/30 text-gold-600 dark:text-gold-400'}">
                 ${item.done ? '✓ Completed' : `${item.current}x`}
               </button>
@@ -6583,43 +7362,382 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         window.removeEventListener('deviceorientation', handlePhoneOrientation);
         window.removeEventListener('deviceorientationabsolute', handlePhoneOrientation);
         isPhoneSensorActive = false;
-        if (btnText) btnText.innerText = "Enable Phone Compass Sensor";
-        showToast("Compass Sensor", "Switched back to manual simulation mode.");
+        if (btnText) btnText.innerText = isArabic ? "تفعيل مستشعر البوصلة" : "Live Compass Sensor";
+        showToast(isArabic ? "مستشعر البوصلة" : "Compass Sensor", isArabic ? "تم العودة إلى نمط المحاكاة اليدوي" : "Switched back to manual simulation mode.");
         return;
       }
+
+      const setSensorActiveUI = () => {
+        isPhoneSensorActive = true;
+        if (btnText) btnText.innerText = isArabic ? "المستشعر نشط 🧭 (دوّر الهاتف)" : "Sensor Active 🧭 (Rotate Phone)";
+        showToast(isArabic ? "المستشعر نشط" : "Sensor Active", isArabic ? "دوّر هاتفك للتوجه نحو الكعبة المشرفة" : "Rotate your phone physically to find Kaaba!");
+      };
 
       // Check for iOS 13+ permission request
       if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
         DeviceOrientationEvent.requestPermission().then(permissionState => {
           if (permissionState === 'granted') {
             window.addEventListener('deviceorientation', handlePhoneOrientation, true);
-            isPhoneSensorActive = true;
-            if (btnText) btnText.innerText = "Sensor Active 🧭 (Rotate Phone)";
-            showToast("Sensor Active", "Rotate your phone physically to find Kaaba!");
+            setSensorActiveUI();
           } else {
-            showToast("Permission Denied", "Compass sensor access was not allowed.");
+            showToast(isArabic ? "تم رفض الإذن" : "Permission Denied", isArabic ? "لم يتم منح إذن الوصول إلى المستشعر" : "Compass sensor access was not allowed.");
           }
         }).catch(err => {
-          showToast("Sensor Error", "Unable to access orientation sensor.");
+          showToast(isArabic ? "خطأ في المستشعر" : "Sensor Error", isArabic ? "تعذر تشغيل مستشعر الاتجاه" : "Unable to access orientation sensor.");
         });
       } else if ('ondeviceorientationabsolute' in window) {
         window.addEventListener('deviceorientationabsolute', handlePhoneOrientation, true);
-        isPhoneSensorActive = true;
-        if (btnText) btnText.innerText = "Sensor Active 🧭 (Rotate Phone)";
-        showToast("Sensor Active", "Rotate your phone physically to find Kaaba!");
+        setSensorActiveUI();
       } else if ('ondeviceorientation' in window) {
         window.addEventListener('deviceorientation', handlePhoneOrientation, true);
-        isPhoneSensorActive = true;
-        if (btnText) btnText.innerText = "Sensor Active 🧭 (Rotate Phone)";
-        showToast("Sensor Active", "Rotate your phone physically to find Kaaba!");
+        setSensorActiveUI();
       } else {
-        showToast("No Sensor Detected", "Using manual desktop simulation slider.");
+        showToast(isArabic ? "لم يتم العثور على مستشعر" : "No Sensor Detected", isArabic ? "استخدم شريط التدوير اليدوي" : "Using manual desktop simulation slider.");
       }
+    }
+
+    function jumpToTab(tabName) {
+      playClickSound();
+      switchTab(tabName);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // -------------------------------------------------------------
+    // 10 REAL HIGH-RES APP SCREENS SHOWCASE VIEWER CONTROLLER
+    // Captured directly from active running mobile application
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+    // 10 REAL HIGH-RES APP SCREENS SHOWCASE VIEWER CONTROLLER
+    // Dual Language Support: 10 Authentic Arabic + 10 English Screens
+    // -------------------------------------------------------------
+    let showcaseLang = 'ar';
+
+    const showcaseScreensData = {
+      ar: [
+        {
+          id: "prayers",
+          pillLabel: "🕌 الصلاة والمواقيت",
+          counter: "١ / ١٠ • مواقيت الصلاة",
+          title: "مواقيت الصلاة والعد التنازلي التفاعلي",
+          desc: "حساب فلكي دقيق لمواقيت الصلاة مع عد تنازلي لصلاة الفجر ومتابعة يومية للصلوات الخمس بأيقونات فلكية راقية.",
+          actionFn: "jumpToTab('prayers')",
+          imageSrc: "assets/screens/screen_prayers_ar.png"
+        },
+        {
+          id: "quran",
+          pillLabel: "📖 القرآن الكريم",
+          counter: "٢ / ١٠ • القرآن الكريم",
+          title: "المصحف الشريف بالرسم العثماني",
+          desc: "تلاوة كاملة لـ ١١٤ سورة بالخط العثماني المعتمد مع تلاوة صوتية عطرة بصوت الشيخ مشاري العفاسي وحفظ الآيات.",
+          actionFn: "jumpToTab('quran')",
+          imageSrc: "assets/screens/screen_quran_ar.png"
+        },
+        {
+          id: "directory",
+          pillLabel: "📑 فهرس السور والأدعية",
+          counter: "٣ / ١٠ • الدليل والأدعية",
+          title: "فهرس ١١٤ سورة والأدعية المأثورة",
+          desc: "دليل شامل للبحث في السور، آية الكرسي، دعاء القنوت، أذكار الصباح والمساء، وأدعية الأنبياء الأربعين (ربنا).",
+          actionFn: "openQuranDirectoryModal()",
+          imageSrc: "assets/screens/screen_directory_ar.png"
+        },
+        {
+          id: "adhkar",
+          pillLabel: "🤲 حصن المسلم",
+          counter: "٤ / ١٠ • أذكار المسلم",
+          title: "أذكار حصن المسلم الموثقة",
+          desc: "أذكار الصباح والمساء، أذكار بعد الصلاة، وأذكار النوم مع عدادات تفاعلية وتشكيل كامل ودقيق.",
+          actionFn: "jumpToTab('adhkar')",
+          imageSrc: "assets/screens/screen_adhkar_ar.png"
+        },
+        {
+          id: "calendar",
+          pillLabel: "📅 التقويم الهجري",
+          counter: "٥ / ١٠ • التقويم الهجري",
+          title: "التقويم الهجري ومتابعة الصيام",
+          desc: "تقويم أم القرى الشهري مع تبيين الأيام البيض، مواقيت السحور والإفطار، والمناسبات الإسلامية الكبرى.",
+          actionFn: "openCalendarModal()",
+          imageSrc: "assets/screens/screen_calendar_ar.png"
+        },
+        {
+          id: "qibla",
+          pillLabel: "🧭 بوصلة القبلة",
+          counter: "٦ / ١٠ • اتجاه الكعبة",
+          title: "بوصلة القبلة الدقيقة ثلاثية الأبعاد",
+          desc: "تحديد دقيق لاتجاه الكعبة المشرفة وحساب المسافة المباشرة بالكيلومترات مع مؤشر محاذاة اهتزازي.",
+          actionFn: "jumpToTab('qibla')",
+          imageSrc: "assets/screens/screen_qibla_ar.png"
+        },
+        {
+          id: "tasbeeh",
+          pillLabel: "📿 المسبحة الإلكترونية",
+          counter: "٧ / ١٠ • عداد الأذكار",
+          title: "المسبحة الإلكترونية ذات الأصوات الواقعية",
+          desc: "عداد تسبيح رقمي بملمس واقعي و٤ خيارات صوتية (خشب، نقر، ماء، رقمي) مع اهتزازات حسية عند إتمام الأدوار.",
+          actionFn: "jumpToTab('tasbeeh')",
+          imageSrc: "assets/screens/screen_tasbeeh_ar.png"
+        },
+        {
+          id: "names",
+          pillLabel: "✨ أسماء الله الحسنى",
+          counter: "٨ / ١٠ • الأسماء الحسنى",
+          title: "أسماء الله الحسنى وأسماء النبي ﷺ",
+          desc: "دليل موثق لأسماء الله الحسنى التسعة والتسعين وأسماء النبي ﷺ مع الشرح والفضائل والمعاني الجليلة.",
+          actionFn: "openNamesModal('allah')",
+          imageSrc: "assets/screens/screen_names_ar.png"
+        },
+        {
+          id: "settings_audio",
+          pillLabel: "🎙️ كبار القراء",
+          counter: "٩ / ١٠ • التلاوات والأذان",
+          title: "نخبة من أشهر القراء وأصوات الأذان",
+          desc: "استمع إلى الشيخ مشاري راشد، عبد الباسط عبد الصمد، عبد الرحمن السديس، وأصوات الأذان من الحرمين الشريفين.",
+          actionFn: "openSettingsModal('reciters')",
+          imageSrc: "assets/screens/screen_settings_audio_ar.png"
+        },
+        {
+          id: "settings_fonts",
+          pillLabel: "🔤 خطوط المصحف",
+          counter: "١٠ / ١٠ • الخطوط والمظهر",
+          title: "٥ خطوط عثمانية ومصحفية راقية",
+          desc: "تخصيص خط القراءة وحجم النص بأشهر الخطوط المصحفية: مصحف المدينة، الأميري، شهرزاد الجديد، والقاهرة.",
+          actionFn: "openSettingsModal('display')",
+          imageSrc: "assets/screens/screen_settings_fonts_ar.png"
+        }
+      ],
+      en: [
+        {
+          id: "prayers",
+          pillLabel: "🕌 Prayers",
+          counter: "1 / 10 • Daily Prayers",
+          title: "Prayer Timetable & Hero Countdown",
+          desc: "Solar-calculated timetable with upcoming Fajr countdown, elapsed interval bar, and celestial 1-tap Salah log.",
+          actionFn: "jumpToTab('prayers')",
+          imageSrc: "assets/screens/screen_prayers_en.png"
+        },
+        {
+          id: "quran",
+          pillLabel: "📖 Quran Reader",
+          counter: "2 / 10 • Holy Quran",
+          title: "Holy Quran Uthmani Reader",
+          desc: "Complete 114 Surahs with authentic Uthmani calligraphy, verse bookmarks, and audio recitation by Sheikh Mishary Alafasy.",
+          actionFn: "jumpToTab('quran')",
+          imageSrc: "assets/screens/screen_quran_en.png"
+        },
+        {
+          id: "directory",
+          pillLabel: "📑 114 Directory",
+          counter: "3 / 10 • Directory & Duas",
+          title: "All 114 Surahs & Masnoon Duas Directory",
+          desc: "Searchable directory of all 114 Surahs, Ayat al-Kursi, Dua Qunoot, Morning/Evening Hisn al-Muslim, and 40 Rabbana.",
+          actionFn: "openQuranDirectoryModal()",
+          imageSrc: "assets/screens/screen_directory_en.png"
+        },
+        {
+          id: "adhkar",
+          pillLabel: "🤲 Hisn Adhkar",
+          counter: "4 / 10 • Fortress of the Muslim",
+          title: "Authentic Hisn al-Muslim Adhkar",
+          desc: "Categorized morning, evening, after-salah, and sleep supplications with tap-to-complete checklists and Arabic diacritics.",
+          actionFn: "jumpToTab('adhkar')",
+          imageSrc: "assets/screens/screen_adhkar_en.png"
+        },
+        {
+          id: "calendar",
+          pillLabel: "📅 Hijri Calendar",
+          counter: "5 / 10 • Islamic Calendar",
+          title: "Interactive Hijri Calendar & Fasting Guide",
+          desc: "Monthly Umm al-Qura calendar grid with White Days (Ayyam al-Beed), Suhoor/Iftar timings, and regional moon adjustment.",
+          actionFn: "openCalendarModal()",
+          imageSrc: "assets/screens/screen_calendar_en.png"
+        },
+        {
+          id: "qibla",
+          pillLabel: "🧭 Qibla Compass",
+          counter: "6 / 10 • Kaaba Direction",
+          title: "Live Gyro Qibla Compass",
+          desc: "Smooth Kaaba compass bearing calibrated with great-circle distance and haptic alignment indicator.",
+          actionFn: "jumpToTab('qibla')",
+          imageSrc: "assets/screens/screen_qibla_en.png"
+        },
+        {
+          id: "tasbeeh",
+          pillLabel: "📿 Tactile Tasbeeh",
+          counter: "7 / 10 • Dhikr Counter",
+          title: "Tactile Tasbeeh & Bead Sound Engine",
+          desc: "Realistic digital rosary counter with tactile bead audio (Wood, Click, Water, Digital) and lap vibration.",
+          actionFn: "jumpToTab('tasbeeh')",
+          imageSrc: "assets/screens/screen_tasbeeh_en.png"
+        },
+        {
+          id: "names",
+          pillLabel: "✨ 99 Divine Names",
+          counter: "8 / 10 • Asma ul-Husna",
+          title: "99 Names of Allah & Prophet ﷺ",
+          desc: "Reverent directory of Asma ul-Husna and prophetic titles with English meanings and virtues.",
+          actionFn: "openNamesModal('allah')",
+          imageSrc: "assets/screens/screen_names_en.png"
+        },
+        {
+          id: "settings_audio",
+          pillLabel: "🎙️ Audio Reciters",
+          counter: "9 / 10 • Audio & Adhan",
+          title: "World-Renowned Audio Reciters & Adhans",
+          desc: "Listen to Sheikh Mishary Rashid, Abdul Basit, Al-Sudais, and authentic Makkah & Madinah adhan calls.",
+          actionFn: "openSettingsModal('reciters')",
+          imageSrc: "assets/screens/screen_settings_audio_en.png"
+        },
+        {
+          id: "settings_fonts",
+          pillLabel: "🔤 Arabic Fonts",
+          counter: "10 / 10 • Typography & Display",
+          title: "5 Authentic Mushaf Calligraphy Styles",
+          desc: "Customize your reading with KFGQPC Hafs, Amiri Quran, Scheherazade New, Lateef, or Noto Naskh with custom sizing.",
+          actionFn: "openSettingsModal('display')",
+          imageSrc: "assets/screens/screen_settings_fonts_en.png"
+        }
+      ]
+    };
+
+    let currentShowcaseIndex = 0;
+
+    function setShowcaseLanguage(lang) {
+      playClickSound();
+      showcaseLang = lang;
+      
+      const btnAr = document.getElementById("showcaseLangArBtn");
+      const btnEn = document.getElementById("showcaseLangEnBtn");
+      if (btnAr && btnEn) {
+        if (lang === 'ar') {
+          btnAr.className = "px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 bg-emerald-800 text-white shadow-xs";
+          btnEn.className = "px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 text-slate-400 hover:text-white";
+        } else {
+          btnEn.className = "px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 bg-emerald-800 text-white shadow-xs";
+          btnAr.className = "px-3 py-1.5 rounded-lg transition text-xs font-bold flex items-center gap-1.5 text-slate-400 hover:text-white";
+        }
+      }
+
+      const jumpBtn = document.getElementById("showcaseJumpBtn");
+      if (jumpBtn) {
+        jumpBtn.innerHTML = lang === 'ar'
+          ? `<span>فتح الشاشة في المحاكي المباشر</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>`
+          : `<span>Open Screen in Live Simulator</span> <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>`;
+      }
+
+      renderShowcaseViewer();
+    }
+
+    function renderShowcaseViewer() {
+      const screens = showcaseScreensData[showcaseLang] || showcaseScreensData.ar;
+      const s = screens[currentShowcaseIndex];
+      const prevIdx = (currentShowcaseIndex - 1 + screens.length) % screens.length;
+      const nextIdx = (currentShowcaseIndex + 1) % screens.length;
+      const prevS = screens[prevIdx];
+      const nextS = screens[nextIdx];
+
+      // Update counter and titles
+      const counterEl = document.getElementById("showcaseCounterText");
+      const titleEl = document.getElementById("showcaseTitleText");
+      const descEl = document.getElementById("showcaseDescText");
+
+      if (counterEl) counterEl.innerText = s.counter;
+      if (titleEl) {
+        titleEl.innerText = s.title;
+        if (showcaseLang === 'ar') titleEl.classList.add("font-arabic-ui");
+        else titleEl.classList.remove("font-arabic-ui");
+      }
+      if (descEl) {
+        descEl.innerText = s.desc;
+        if (showcaseLang === 'ar') descEl.classList.add("font-arabic-ui");
+        else descEl.classList.remove("font-arabic-ui");
+      }
+
+      // Render category jump pills
+      const pillsContainer = document.getElementById("showcasePillsContainer");
+      if (pillsContainer) {
+        pillsContainer.innerHTML = screens.map((item, idx) => `
+          <button onclick="jumpToShowcaseSlide(${idx})" class="px-3 py-1.5 rounded-full font-bold flex-shrink-0 transition active:scale-95 text-[11px] ${idx === currentShowcaseIndex ? 'bg-emerald-700 text-white shadow-md border border-emerald-500' : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'} ${showcaseLang === 'ar' ? 'font-arabic-ui' : ''}">
+            ${item.pillLabel}
+          </button>
+        `).join('');
+      }
+
+      // Render center phone with real app screenshot
+      const centerScreen = document.getElementById("showcaseScreenContent");
+      if (centerScreen) {
+        centerScreen.innerHTML = `
+          <img src="${s.imageSrc}" class="w-full h-full object-cover select-none pointer-events-none rounded-[34px] transition-all duration-200" alt="${s.title}" loading="eager">
+        `;
+      }
+
+      // Render left peek with real previous app screenshot
+      const leftPeek = document.getElementById("showcaseLeftPeek");
+      if (leftPeek) {
+        leftPeek.innerHTML = `
+          <img src="${prevS.imageSrc}" class="w-full h-full object-cover select-none pointer-events-none rounded-[30px]" alt="${prevS.title}">
+        `;
+      }
+
+      // Render right peek with real next app screenshot
+      const rightPeek = document.getElementById("showcaseRightPeek");
+      if (rightPeek) {
+        rightPeek.innerHTML = `
+          <img src="${nextS.imageSrc}" class="w-full h-full object-cover select-none pointer-events-none rounded-[30px]" alt="${nextS.title}">
+        `;
+      }
+
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    }
+
+    function nextShowcaseSlide() {
+      playClickSound();
+      const screens = showcaseScreensData[showcaseLang] || showcaseScreensData.ar;
+      currentShowcaseIndex = (currentShowcaseIndex + 1) % screens.length;
+      renderShowcaseViewer();
+    }
+
+    function prevShowcaseSlide() {
+      playClickSound();
+      const screens = showcaseScreensData[showcaseLang] || showcaseScreensData.ar;
+      currentShowcaseIndex = (currentShowcaseIndex - 1 + screens.length) % screens.length;
+      renderShowcaseViewer();
+    }
+
+    function jumpToShowcaseSlide(idx) {
+      playClickSound();
+      currentShowcaseIndex = idx;
+      renderShowcaseViewer();
+    }
+
+    function jumpToShowcaseSimulator() {
+      const screens = showcaseScreensData[showcaseLang] || showcaseScreensData.ar;
+      const s = screens[currentShowcaseIndex];
+      const sim = document.getElementById("phoneChassis");
+      if (sim) {
+        sim.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      setTimeout(() => {
+        if (showcaseLang === 'ar' && !isArabic) {
+          toggleLang();
+        } else if (showcaseLang === 'en' && isArabic) {
+          toggleLang();
+        }
+        if (s && s.actionFn) {
+          eval(s.actionFn);
+        }
+      }, 350);
     }
 
     function init() {
 
       applyTypographySettings();
+      renderArabicFontCards();
+      renderUIFontCards();
+      renderRecitersSettings();
+      renderAdhansSettings();
+      renderShowcaseViewer();
       autoDetectUserTimezone();
       loadSavedState();
       loadSavedSalahTracker();
@@ -6660,4 +7778,10 @@ with open(index_path, "w", encoding="utf-8") as f:
 
 os.makedirs(os.path.dirname(preview_path), exist_ok=True)
 shutil.copy2(index_path, preview_path)
-print("Successfully updated index.html and preview/index.html!")
+
+# Also sync assets directory to preview/assets
+preview_assets_dir = os.path.join(base_dir, "preview", "assets")
+if os.path.exists(os.path.join(base_dir, "assets")):
+    shutil.copytree(os.path.join(base_dir, "assets"), preview_assets_dir, dirs_exist_ok=True)
+
+print("Successfully updated index.html and preview/index.html with assets!")
