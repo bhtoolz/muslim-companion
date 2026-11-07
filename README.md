@@ -24,6 +24,7 @@ Muslim Companion provides the essential daily spiritual tools a Muslim needs in 
 
 - **Holy Quran Reader**
   - Authentic Uthmani calligraphy with verse-by-verse audio recitation by Sheikh Mishary Rashid Alafasy.
+  - Real-time word-by-word recitation highlighting with clean amber gold markers and synchronized playback.
   - Searchable 114 Surah directory and quick access to essential verses (Ayat al-Kursi, Dua Qunoot, 40 Rabbana).
   - Dynamic font selector (Amiri Quran, Scheherazade New, Noto Naskh) and fluid text sizing slider.
 
@@ -42,6 +43,11 @@ Muslim Companion provides the essential daily spiritual tools a Muslim needs in 
 - **99 Names of Allah & Daily Sahih Hadith**
   - Reverent catalog of Asma ul-Husna and prophetic titles with classical meanings.
   - Daily rotating authentic narrations from Sahih al-Bukhari and Sahih Muslim.
+
+- **Royal Identity & Smart Localization**
+  - Signature 24K gold Rub el Hizb medallion and celestial crescent with Solfeggio acoustic soundscape.
+  - Automatic locale and timezone detection defaulting to Arabic (RTL) for Arab countries and English (LTR) for international visitors.
+  - Modern Android adaptive launcher icons (round, squircle, and square compatible) and crisp circular web favicons.
 
 ---
 

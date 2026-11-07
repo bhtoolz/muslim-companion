@@ -4,5 +4,17 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Android build artifacts & cache
+.gradle/
+build/
+temp_test_android/.gradle/
+temp_test_android/build/
+temp_test_android/app/build/
+temp_test_android/local.properties
+
+# Binaries & packages
 *.apk
 
+# Python cache
+__pycache__/
+*.pyc

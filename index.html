@@ -6,6 +6,12 @@
   <meta name="google" content="notranslate">
   <title>Muslim Companion (Rafiq Al-Muslim) — Islamic Mobile App</title>
   
+  <!-- High-Res Circular Brand Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/app_icon_round.png?v=4">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/app_icon_round.png?v=4">
+  <link rel="shortcut icon" type="image/png" href="assets/app_icon_round.png?v=4">
+  <link rel="apple-touch-icon" href="assets/app_icon_round.png?v=4">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -118,7 +124,36 @@
       margin: 0 4px;
       user-select: none;
     }
-  </style>
+  
+    /* Elegant Quran Word-by-Word Highlighting (Minimal, Calm & Clear) */
+    .quran-word-token {
+      display: inline;
+      padding: 2px 4px;
+      margin: 0 1px;
+      border-radius: 4px;
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+    }
+    .quran-word-token:hover {
+      background-color: rgba(212, 175, 55, 0.15);
+    }
+    .quran-word-active {
+      background-color: rgba(234, 179, 8, 0.22) !important;
+      border-radius: 4px !important;
+      color: inherit !important;
+    }
+    .dark .quran-word-active {
+      background-color: rgba(234, 179, 8, 0.28) !important;
+      border-radius: 4px !important;
+      color: #FFFBEB !important;
+    }
+    .ayah-card-active {
+      border-color: rgba(212, 175, 55, 0.45) !important;
+    }
+    .dark .ayah-card-active {
+      border-color: rgba(212, 175, 55, 0.45) !important;
+    }
+</style>
 </head>
 <body class="min-h-screen bg-[#030806] text-slate-200 antialiased selection:bg-emerald-800 selection:text-white flex flex-col items-center justify-start py-6 px-3 sm:px-6 overflow-x-hidden">
 
@@ -127,11 +162,49 @@
     
     <!-- LEFT COLUMN: Content (Vertically Centered With Phone) -->
     <div class="flex-1 max-w-md w-full space-y-4 text-left my-auto self-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/80 border border-emerald-700/50 text-xs font-medium tracking-wide shadow-xs">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-emerald-300 font-semibold">Islamic Daily Companion</span>
-        <span class="text-emerald-600/80">•</span>
-        <span class="text-slate-300 font-normal">Crafted for iOS & Android</span>
+      
+      <!-- Brand Icon Header & Mobile Badge -->
+      <div class="flex items-center gap-3.5 mb-1">
+        <div class="relative w-14 h-14 rounded-full bg-gradient-to-br from-[#0c3325] via-[#072419] to-[#02130c] p-[2px] shadow-[0_10px_24px_rgba(0,0,0,0.6),0_0_25px_rgba(212,175,55,0.4)] border border-amber-300/60 flex items-center justify-center flex-shrink-0 group hover:scale-105 transition-transform duration-300">
+          <div class="w-full h-full rounded-full bg-gradient-to-b from-[#09291e] to-[#03150e] flex items-center justify-center relative overflow-hidden">
+            <!-- Specular Light Sweep Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-amber-200/20 to-transparent pointer-events-none"></div>
+            <!-- Handcrafted Gold Islamic Insignia (Rub el Hizb + Crescent + Star) -->
+            <svg class="w-8 h-8 drop-shadow-[0_2px_8px_rgba(212,175,55,0.75)]" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <linearGradient id="lpGoldPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#FFF8D6"/>
+                  <stop offset="35%" stop-color="#E5C158"/>
+                  <stop offset="70%" stop-color="#C59E37"/>
+                  <stop offset="100%" stop-color="#7A560D"/>
+                </linearGradient>
+                <linearGradient id="lpGoldAccent" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#D4AF37"/>
+                  <stop offset="50%" stop-color="#FFFBE6"/>
+                  <stop offset="100%" stop-color="#996D14"/>
+                </linearGradient>
+              </defs>
+              <rect x="22" y="22" width="56" height="56" rx="8" fill="none" stroke="url(#lpGoldPlate)" stroke-width="2" opacity="0.95"/>
+              <rect x="22" y="22" width="56" height="56" rx="8" fill="none" stroke="url(#lpGoldPlate)" stroke-width="2" opacity="0.95" transform="rotate(45 50 50)"/>
+              <circle cx="50" cy="50" r="23" fill="none" stroke="url(#lpGoldAccent)" stroke-width="1.2" stroke-dasharray="2, 3" opacity="0.7"/>
+              <path d="M 58 34 C 44 34 33 45 33 59 C 33 66 36 72 41 76 C 34 72 29 64 29 55 C 29 41 40 30 54 30 C 56 30 58 30.3 60 31 C 59.2 32 58.5 33 58 34 Z" fill="url(#lpGoldPlate)"/>
+              <path d="M 54 44 L 55.5 48.5 L 60 47 L 58.5 51.5 L 63 53 L 58.5 54.5 L 60 59 L 55.5 57.5 L 54 62 L 52.5 57.5 L 48 59 L 49.5 54.5 L 45 53 L 49.5 51.5 L 48 47 L 52.5 48.5 Z" fill="url(#lpGoldAccent)" filter="drop-shadow(0 0 3px rgba(255,245,194,0.95))"/>
+            </svg>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-700/50 text-xs font-medium tracking-wide shadow-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-emerald-300 font-semibold">Islamic Daily Companion</span>
+            <span class="text-emerald-600/80">•</span>
+            <span class="text-slate-300 font-normal">Crafted for iOS & Android</span>
+          </div>
+          <div class="text-[11px] text-gold-400 font-arabic tracking-wide flex items-center gap-1.5">
+            <span>النسخة الملكية المعتمدة</span>
+            <span class="text-slate-600">•</span>
+            <span class="text-slate-400 text-[10px]">Official Mobile Companion</span>
+          </div>
+        </div>
       </div>
       <h1 class="text-2xl sm:text-3xl lg:text-[34px] font-extrabold tracking-tight text-white flex flex-wrap items-center gap-3 leading-tight">
         <span>Muslim Companion</span>
@@ -170,6 +243,7 @@
           <i data-lucide="moon" class="w-3.5 h-3.5"></i> <span id="themeBtnText">Dark / Light</span>
         </button>
 
+
       </div>
     </div>
 
@@ -204,6 +278,83 @@
 
         <!-- Phone Screen Frame -->
         <div id="deviceScreen" class="w-full h-full bg-[#FAF8F5] text-slate-800 rounded-[38px] overflow-hidden flex flex-col relative transition-all duration-200">
+          
+          <!-- ========================================================= -->
+          <!-- ROYAL ISLAMIC ANIMATED SPLASH SCREEN (LUXURY EDITION)      -->
+          <!-- ========================================================= -->
+          <div id="appSplashScreen" class="absolute inset-0 z-[60] bg-gradient-to-b from-[#02100A] via-[#052218] to-[#010906] flex flex-col items-center justify-center select-none overflow-hidden transition-all duration-700">
+            
+            <!-- Soft Ambient Center Radiance Bloom -->
+            <div id="splashAmbientBloom" class="absolute inset-0 bg-[radial-gradient(circle_at_50%_48%,rgba(212,175,55,0.18),rgba(6,78,59,0.22)_45%,transparent_75%)] pointer-events-none transition-all duration-1000"></div>
+
+            <!-- Central Content Container -->
+            <div id="splashCenterBrand" class="relative z-10 flex flex-col items-center justify-center">
+              
+              <!-- Pristine Handcrafted Gold Medallion -->
+              <div id="splashEmblemWrap" class="relative w-28 h-28 flex items-center justify-center mb-6 transition-all duration-700">
+                <!-- Ambient Radiance Aura Behind Emblem -->
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-amber-400/30 via-emerald-400/20 to-amber-200/25 blur-2xl pointer-events-none animate-pulse"></div>
+
+                <!-- Pure Sculptural Gold Emblem -->
+                <div id="splashEmblemCard" class="relative w-24 h-24 rounded-[30px] bg-gradient-to-br from-[#0c3325] via-[#072419] to-[#02130c] p-[2px] shadow-[0_16px_40px_rgba(0,0,0,0.7),0_0_45px_rgba(212,175,55,0.38)] border border-amber-300/40 flex items-center justify-center overflow-hidden">
+                  
+                  <!-- Subtle Inner Bevel Container -->
+                  <div class="w-full h-full rounded-[28px] bg-gradient-to-b from-[#09291e] to-[#03150e] flex items-center justify-center relative overflow-hidden">
+                    
+                    <!-- Specular Light Beam Shimmer (Sweeps across on enter) -->
+                    <div id="splashShimmerBeam" class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/35 to-transparent pointer-events-none -translate-x-full transition-transform duration-1000 ease-out"></div>
+                    
+                    <!-- Handcrafted Gold Islamic Insignia (Rub el Hizb + Crescent + Star) -->
+                    <svg id="splashEmblemSvg" class="w-14 h-14 drop-shadow-[0_4px_14px_rgba(212,175,55,0.65)]" viewBox="0 0 100 100" fill="none">
+                      <defs>
+                        <linearGradient id="goldPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stop-color="#FFF8D6"/>
+                          <stop offset="35%" stop-color="#E5C158"/>
+                          <stop offset="70%" stop-color="#C59E37"/>
+                          <stop offset="100%" stop-color="#7A560D"/>
+                        </linearGradient>
+                        <linearGradient id="goldAccent" x1="0%" y1="100%" x2="100%" y2="0%">
+                          <stop offset="0%" stop-color="#D4AF37"/>
+                          <stop offset="50%" stop-color="#FFFBE6"/>
+                          <stop offset="100%" stop-color="#996D14"/>
+                        </linearGradient>
+                      </defs>
+
+                      <!-- Outer Octagram Sacred Geometry Contour -->
+                      <rect id="splashOcta1" class="transition-transform duration-1000" x="22" y="22" width="56" height="56" rx="8" fill="none" stroke="url(#goldPlate)" stroke-width="1.8" opacity="0.9"/>
+                      <rect id="splashOcta2" class="transition-transform duration-1000" x="22" y="22" width="56" height="56" rx="8" fill="none" stroke="url(#goldPlate)" stroke-width="1.8" opacity="0.9" transform="rotate(45 50 50)"/>
+                      
+                      <!-- Inner Sanctuary Ring -->
+                      <circle cx="50" cy="50" r="23" fill="none" stroke="url(#goldAccent)" stroke-width="1" stroke-dasharray="2, 3" opacity="0.65"/>
+
+                      <!-- Sacred Celestial Crescent -->
+                      <path d="M 58 34 C 44 34 33 45 33 59 C 33 66 36 72 41 76 C 34 72 29 64 29 55 C 29 41 40 30 54 30 C 56 30 58 30.3 60 31 C 59.2 32 58.5 33 58 34 Z" fill="url(#goldPlate)"/>
+                      
+                      <!-- Radiant 8-point Core Star -->
+                      <path id="splashStarCore" d="M 54 44 L 55.5 48.5 L 60 47 L 58.5 51.5 L 63 53 L 58.5 54.5 L 60 59 L 55.5 57.5 L 54 62 L 52.5 57.5 L 48 59 L 49.5 54.5 L 45 53 L 49.5 51.5 L 48 47 L 52.5 48.5 Z" fill="url(#goldAccent)" filter="drop-shadow(0 0 6px rgba(255,245,194,0.95))"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Brand Title & Calligraphy (Pure Luxury & Staggered Motion) -->
+              <div class="text-center space-y-1">
+                <h1 id="splashTitleEn" class="text-white text-base tracking-[0.26em] font-bold uppercase font-sans select-none transition-all duration-700">
+                  Muslim Companion
+                </h1>
+                <div id="splashTitleAr" class="text-[#D4AF37] font-arabic text-lg font-medium tracking-wide select-none transition-all duration-700">
+                  رفيق المسلم
+                </div>
+              </div>
+
+              <!-- Ultra-Fine Minimalist Whisper Loader -->
+              <div class="mt-8 w-14 h-[2px] bg-emerald-950/80 rounded-full overflow-hidden relative border border-emerald-800/40">
+                <div id="splashProgressBar" class="h-full bg-gradient-to-r from-amber-500 via-amber-200 to-amber-500 rounded-full transition-all ease-out" style="width: 0%; transition-duration: 1600ms;"></div>
+              </div>
+
+            </div>
+
+          </div>
           
           <!-- Native Status Bar -->
           <div id="statusBarContainer" class="pt-3 px-5 pb-1 flex items-center justify-between text-[11px] font-bold text-slate-600 dark:text-slate-400 z-40 select-none">
@@ -2148,30 +2299,37 @@
         const time = city[p.id.toLowerCase()];
         const isNext = p.id === currentActivePrayerId;
         const isAlertOn = prayerAlerts[p.id] !== false;
+        const isSunrise = p.id === 'Sunrise';
 
         const card = document.createElement("div");
         card.className = `flex items-center justify-between p-2.5 rounded-xl border transition ${
           isNext 
             ? "bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700/60 font-bold" 
-            : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60"
+            : isSunrise
+              ? "bg-amber-50/50 dark:bg-amber-950/20 border-amber-200/50 dark:border-amber-900/30 text-amber-900 dark:text-amber-200"
+              : "bg-white dark:bg-slate-800 border-slate-100 dark:border-slate-700/60"
         }`;
 
         card.innerHTML = `
           <div class="flex items-center gap-2.5">
-            <span class="w-2 h-2 rounded-full ${isNext ? 'bg-emerald-600 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}"></span>
-            <div>
-              <span class="text-xs ${isNext ? 'text-emerald-900 dark:text-emerald-300 font-extrabold' : 'text-slate-700 dark:text-slate-300 font-semibold'}">
+            ${isSunrise 
+              ? '<i data-lucide="sun" class="w-3.5 h-3.5 text-amber-500 shrink-0"></i>' 
+              : `<span class="w-2 h-2 rounded-full shrink-0 ${isNext ? 'bg-emerald-600 animate-ping' : 'bg-slate-300 dark:bg-slate-600'}"></span>`
+            }
+            <div class="flex items-center flex-wrap gap-1">
+              <span class="text-xs ${isNext ? 'text-emerald-900 dark:text-emerald-300 font-extrabold' : (isSunrise ? 'text-amber-900 dark:text-amber-300 font-semibold' : 'text-slate-700 dark:text-slate-300 font-semibold')}">
                 ${isArabic ? p.ar : p.name}
               </span>
-              ${isNext ? `<span class="ml-1 rtl:mr-1 text-[8px] uppercase px-1.5 py-0.2 rounded bg-emerald-600 text-white font-bold">${isArabic ? 'القادمة' : 'Upcoming'}</span>` : ''}
+              ${isSunrise ? `<span class="text-[8px] font-bold px-1.5 py-0.2 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300">${isArabic ? 'الشروق • وقت كراهة' : 'Sunrise • Non-Prayer'}</span>` : ''}
+              ${isNext ? `<span class="text-[8px] uppercase px-1.5 py-0.2 rounded bg-emerald-600 text-white font-bold">${isArabic ? 'القادمة' : 'Upcoming'}</span>` : ''}
             </div>
           </div>
           <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold ${isNext ? 'text-emerald-800 dark:text-emerald-400' : 'text-slate-500'}" dir="ltr">
+            <span class="text-xs font-mono font-bold ${isNext ? 'text-emerald-800 dark:text-emerald-400' : (isSunrise ? 'text-amber-700 dark:text-amber-400' : 'text-slate-500')}" dir="ltr">
               ${isArabic ? toArabicDigits(time) : time}
             </span>
-            <button onclick="togglePrayerAlert('${p.id}')" title="Toggle Alert" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-xs transition">
-              <i data-lucide="${isAlertOn ? 'bell' : 'bell-off'}" class="w-3.5 h-3.5 ${isAlertOn ? 'text-gold-500' : 'text-slate-400'}"></i>
+            <button onclick="togglePrayerAlert('${p.id}')" title="${isSunrise ? 'Sunrise Reminder' : 'Adhan Alert'}" class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-xs transition">
+              <i data-lucide="${isAlertOn ? (isSunrise ? 'bell-ring' : 'bell') : 'bell-off'}" class="w-3.5 h-3.5 ${isAlertOn ? (isSunrise ? 'text-amber-500' : 'text-gold-500') : 'text-slate-400'}"></i>
             </button>
           </div>
         `;
@@ -2742,8 +2900,8 @@
               </button>
             </div>
           </div>
-          <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-normal select-text" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px; line-height: 2.35;">
-            ${v.ar} <span class="ayah-marker notranslate" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
+          <p class="notranslate font-quran-text text-right text-emerald-950 dark:text-white font-normal select-text leading-relaxed" translate="no" lang="ar" dir="rtl" style="font-size: ${quranFontSize}px; line-height: 2.45;">
+            ${v.ar.trim().split(/\s+/).map((w, wIdx) => `<span class="quran-word-token" id="word-${index}-${wIdx}" data-ayah="${index}" data-word="${wIdx}" onclick="playClickSound()">${w}</span>`).join(' ')} <span class="ayah-marker notranslate inline-block text-gold-600 dark:text-gold-400 font-bold px-1 select-none" translate="no">﴿${toArabicDigits(v.id)}﴾</span>
           </p>
           ${showTransliteration && v.tr ? `<p dir="ltr" class="text-left text-[13px] text-emerald-800/90 dark:text-emerald-400/90 font-sans italic leading-normal pt-1 select-text">${v.tr}</p>` : ''}
           ${showEnglishTranslation && v.en ? `<p dir="ltr" class="text-left text-[14px] text-slate-700 dark:text-slate-200 font-sans leading-relaxed pt-1 select-text font-normal">${v.en}</p>` : ''}
@@ -3769,6 +3927,7 @@
       updatePlayIcons(index, true);
 
       const s = surahsData[currentSurahKey];
+      const v = (s && s.verses && s.verses[index]) ? s.verses[index] : null;
       const sStr = String(surahNum).padStart(3, '0');
       const aStr = String(verseId).padStart(3, '0');
       const reciter = recitersList[currentReciterKey] || recitersList['alafasy'];
@@ -3776,12 +3935,34 @@
 
       currentAyahAudio = new Audio(audioUrl);
 
-      // Track progress & notify Android system lockscreen & in-app mini player
+      const words = (v && v.ar) ? v.ar.trim().split(/\s+/) : [];
+      const cleanLen = (str) => Math.max(1, str.replace(/[\u064B-\u065F\u0670\u06D6-\u06ED]/g, '').length);
+      const wordWeights = words.map(w => cleanLen(w));
+      const totalWeight = wordWeights.reduce((a, b) => a + b, 0);
+
+      // Track progress & Real-Time Professional 24K Gold Word-by-Word Highlighting
       currentAyahAudio.ontimeupdate = () => {
         if (currentAyahAudio && currentAyahAudio.duration && !isNaN(currentAyahAudio.duration)) {
-          const pct = Math.min(100, Math.max(0, (currentAyahAudio.currentTime / currentAyahAudio.duration) * 100));
+          const duration = currentAyahAudio.duration;
+          const curTime = currentAyahAudio.currentTime;
+          const pct = Math.min(100, Math.max(0, (curTime / duration) * 100));
           const prog = document.getElementById("miniPlayerProgress");
           if (prog) prog.style.width = pct + "%";
+
+          // Calculate active word index in real time
+          let accumulatedTime = 0;
+          let activeWordIdx = 0;
+          for (let i = 0; i < words.length; i++) {
+            const wordDuration = (wordWeights[i] / totalWeight) * duration;
+            if (curTime >= accumulatedTime && curTime < accumulatedTime + wordDuration) {
+              activeWordIdx = i;
+              break;
+            }
+            accumulatedTime += wordDuration;
+            if (i === words.length - 1) activeWordIdx = i;
+          }
+
+          highlightRecitingWord(index, activeWordIdx);
 
           // YouTube Music style live scrub position in Android notification drawer
           if ('mediaSession' in navigator && 'setPositionState' in navigator.mediaSession) {
@@ -3861,6 +4042,7 @@
       });
 
       currentAyahAudio.onended = () => {
+        highlightRecitingWord(null, null);
         updatePlayIcons(index, false);
         activePlayingIndex = null;
         if (onComplete) {
@@ -3967,6 +4149,7 @@
     }
 
     function stopAyahAudio() {
+      highlightRecitingWord(null, null);
       if (currentAyahAudio) {
         currentAyahAudio.pause();
         currentAyahAudio = null;
@@ -4026,13 +4209,38 @@
       lucide.createIcons();
     }
 
+    let lastActiveWordId = null;
+    function highlightRecitingWord(ayahIdx, wordIdx) {
+      if (ayahIdx === null || wordIdx === null) {
+        if (lastActiveWordId) {
+          const prev = document.getElementById(lastActiveWordId);
+          if (prev) prev.classList.remove("quran-word-active");
+          lastActiveWordId = null;
+        }
+        return;
+      }
+      const newId = `word-${ayahIdx}-${wordIdx}`;
+      if (newId === lastActiveWordId) return;
+
+      if (lastActiveWordId) {
+        const prev = document.getElementById(lastActiveWordId);
+        if (prev) prev.classList.remove("quran-word-active");
+      }
+
+      const targetEl = document.getElementById(newId);
+      if (targetEl) {
+        targetEl.classList.add("quran-word-active");
+        lastActiveWordId = newId;
+      }
+    }
+
     function highlightActiveAyah(idx) {
       document.querySelectorAll('.ayah-card').forEach((c, i) => {
         if (i === idx) {
-          c.classList.add("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
+          c.classList.add("ayah-card-active", "ring-2", "ring-gold-500");
           c.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-          c.classList.remove("ring-2", "ring-gold-500", "bg-gold-500/10", "dark:bg-gold-500/15");
+          c.classList.remove("ayah-card-active", "ring-2", "ring-gold-500");
         }
       });
     }
@@ -5246,7 +5454,7 @@
     // DAILY SALAH TRACKER ENGINE
     // -------------------------------------------------------------
     const defaultSalahLog = {
-      Fajr: false,
+      Fajr: true, // Fajr has passed by 09:41 AM, marked as completed for realistic flow
       Dhuhr: false,
       Asr: false,
       Maghrib: false,
@@ -5281,15 +5489,17 @@
             : 'bg-white dark:bg-slate-800/90 border-slate-200/80 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 hover:border-emerald-500/50 hover:bg-emerald-50/20'
         }`;
 
+        btn.type = "button";
+        btn.style.touchAction = "manipulation";
         btn.innerHTML = `
-          <div class="w-6 h-6 rounded-full flex items-center justify-center transition-all ${
+          <div class="w-6 h-6 rounded-full flex items-center justify-center transition-all pointer-events-none ${
             isOffered 
-              ? 'bg-white text-emerald-800 shadow-2xs font-extrabold' 
-              : 'bg-slate-100 dark:bg-slate-750 text-slate-400 group-hover:text-emerald-600 border border-slate-200/90 dark:border-slate-700'
+              ? 'bg-white text-emerald-800 shadow-2xs font-extrabold ring-2 ring-emerald-400/50' 
+              : 'bg-slate-100 dark:bg-slate-750 text-slate-400 group-hover:text-emerald-600 border border-slate-300 dark:border-slate-600'
           }">
-            <i data-lucide="${isOffered ? 'check' : p.icon}" class="w-3.5 h-3.5 ${isOffered ? 'stroke-[3]' : 'stroke-[1.8]'}"></i>
+            <i data-lucide="${isOffered ? 'check' : p.icon}" class="w-3.5 h-3.5 ${isOffered ? 'stroke-[3.5] text-emerald-800' : 'stroke-[1.8]'}"></i>
           </div>
-          <span class="text-[10px] font-bold truncate">${isArabic ? p.ar : p.name}</span>
+          <span class="text-[10px] font-bold truncate pointer-events-none">${isArabic ? p.ar : p.name}</span>
         `;
         container.appendChild(btn);
       });
@@ -7411,9 +7621,18 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
     const showcaseScreensData = {
       ar: [
         {
+          id: "splash",
+          pillLabel: "✨ شاشة البداية",
+          counter: "١ / ١١ • شاشة البداية الملكية",
+          title: "شاشة البداية الملكية الفاخرة (Splash Screen)",
+          desc: "شعار رفيق المسلم المذهب عيار ٢٤ قيراط مع نجمة الربع الحزب والهلال الإسلامي، مع شعاع ضوئي سينمائي ونغمة التبت النقية ٥٢٨ هرتز وتلاشي سلس نحو الواجهة.",
+          actionFn: "triggerSplashScreen(true)",
+          imageSrc: "assets/screens/screen_splash.png"
+        },
+        {
           id: "prayers",
           pillLabel: "🕌 الصلاة والمواقيت",
-          counter: "١ / ١٠ • مواقيت الصلاة",
+          counter: "٢ / ١١ • مواقيت الصلاة",
           title: "مواقيت الصلاة والعد التنازلي التفاعلي",
           desc: "حساب فلكي دقيق لمواقيت الصلاة مع عد تنازلي لصلاة الفجر ومتابعة يومية للصلوات الخمس بأيقونات فلكية راقية.",
           actionFn: "jumpToTab('prayers')",
@@ -7422,7 +7641,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "quran",
           pillLabel: "📖 القرآن الكريم",
-          counter: "٢ / ١٠ • القرآن الكريم",
+          counter: "٣ / ١١ • القرآن الكريم",
           title: "المصحف الشريف بالرسم العثماني",
           desc: "تلاوة كاملة لـ ١١٤ سورة بالخط العثماني المعتمد مع تلاوة صوتية عطرة بصوت الشيخ مشاري العفاسي وحفظ الآيات.",
           actionFn: "jumpToTab('quran')",
@@ -7431,7 +7650,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "directory",
           pillLabel: "📑 فهرس السور والأدعية",
-          counter: "٣ / ١٠ • الدليل والأدعية",
+          counter: "٤ / ١١ • الدليل والأدعية",
           title: "فهرس ١١٤ سورة والأدعية المأثورة",
           desc: "دليل شامل للبحث في السور، آية الكرسي، دعاء القنوت، أذكار الصباح والمساء، وأدعية الأنبياء الأربعين (ربنا).",
           actionFn: "openQuranDirectoryModal()",
@@ -7440,7 +7659,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "adhkar",
           pillLabel: "🤲 حصن المسلم",
-          counter: "٤ / ١٠ • أذكار المسلم",
+          counter: "٥ / ١١ • أذكار المسلم",
           title: "أذكار حصن المسلم الموثقة",
           desc: "أذكار الصباح والمساء، أذكار بعد الصلاة، وأذكار النوم مع عدادات تفاعلية وتشكيل كامل ودقيق.",
           actionFn: "jumpToTab('adhkar')",
@@ -7449,7 +7668,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "calendar",
           pillLabel: "📅 التقويم الهجري",
-          counter: "٥ / ١٠ • التقويم الهجري",
+          counter: "٦ / ١١ • التقويم الهجري",
           title: "التقويم الهجري ومتابعة الصيام",
           desc: "تقويم أم القرى الشهري مع تبيين الأيام البيض، مواقيت السحور والإفطار، والمناسبات الإسلامية الكبرى.",
           actionFn: "openCalendarModal()",
@@ -7503,9 +7722,18 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
       ],
       en: [
         {
+          id: "splash",
+          pillLabel: "✨ Splash Screen",
+          counter: "1 / 11 • Royal Splash Screen",
+          title: "Royal Luxury Splash Screen",
+          desc: "Signature 24K gold Rub el Hizb medallion and celestial crescent with specular light beam, sacred 528 Hz Solfeggio soundscape, and fluid reveal.",
+          actionFn: "triggerSplashScreen(true)",
+          imageSrc: "assets/screens/screen_splash.png"
+        },
+        {
           id: "prayers",
           pillLabel: "🕌 Prayers",
-          counter: "1 / 10 • Daily Prayers",
+          counter: "2 / 11 • Daily Prayers",
           title: "Prayer Timetable & Hero Countdown",
           desc: "Solar-calculated timetable with upcoming Fajr countdown, elapsed interval bar, and celestial 1-tap Salah log.",
           actionFn: "jumpToTab('prayers')",
@@ -7514,7 +7742,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "quran",
           pillLabel: "📖 Quran Reader",
-          counter: "2 / 10 • Holy Quran",
+          counter: "3 / 11 • Holy Quran",
           title: "Holy Quran Uthmani Reader",
           desc: "Complete 114 Surahs with authentic Uthmani calligraphy, verse bookmarks, and audio recitation by Sheikh Mishary Alafasy.",
           actionFn: "jumpToTab('quran')",
@@ -7523,7 +7751,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "directory",
           pillLabel: "📑 114 Directory",
-          counter: "3 / 10 • Directory & Duas",
+          counter: "4 / 11 • Directory & Duas",
           title: "All 114 Surahs & Masnoon Duas Directory",
           desc: "Searchable directory of all 114 Surahs, Ayat al-Kursi, Dua Qunoot, Morning/Evening Hisn al-Muslim, and 40 Rabbana.",
           actionFn: "openQuranDirectoryModal()",
@@ -7532,7 +7760,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
         {
           id: "adhkar",
           pillLabel: "🤲 Hisn Adhkar",
-          counter: "4 / 10 • Fortress of the Muslim",
+          counter: "5 / 11 • Fortress of the Muslim",
           title: "Authentic Hisn al-Muslim Adhkar",
           desc: "Categorized morning, evening, after-salah, and sleep supplications with tap-to-complete checklists and Arabic diacritics.",
           actionFn: "jumpToTab('adhkar')",
@@ -7597,8 +7825,13 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
 
     let currentShowcaseIndex = 0;
 
-    function setShowcaseLanguage(lang) {
-      playClickSound();
+    function setShowcaseLanguage(lang, isAuto = false) {
+      if (!isAuto) {
+        playClickSound();
+        try {
+          localStorage.setItem("muslim_showcase_lang", lang);
+        } catch (e) {}
+      }
       showcaseLang = lang;
       
       const btnAr = document.getElementById("showcaseLangArBtn");
@@ -7726,6 +7959,255 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
       }, 350);
     }
 
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+    // TIER-1 LUXURY MINIMALIST SPLASH SCREEN CONTROLLER
+    // Inspired by Pillars & Apple Design Award apps
+    // -------------------------------------------------------------
+    let splashTimeout = null;
+    let dismissTimer = null;
+
+    function playSplashChime() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        if (ctx.state === 'suspended') {
+          ctx.resume();
+        }
+        const now = ctx.currentTime;
+
+        // Warm Root Fundamental Drone (264 Hz)
+        const oscSub = ctx.createOscillator();
+        const gainSub = ctx.createGain();
+        oscSub.type = "sine";
+        oscSub.frequency.setValueAtTime(264, now);
+        gainSub.gain.setValueAtTime(0.001, now);
+        gainSub.gain.linearRampToValueAtTime(0.06, now + 0.12);
+        gainSub.gain.exponentialRampToValueAtTime(0.0001, now + 1.8);
+        oscSub.connect(gainSub);
+        gainSub.connect(ctx.destination);
+        oscSub.start(now);
+        oscSub.stop(now + 1.9);
+
+        // Sacred Solfeggio 528 Hz (Tibetan Singing Bowl Bell)
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(528, now);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.12, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.0);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 2.1);
+
+        // Shimmering High Harmonic (1056 Hz)
+        const oscHarmonic = ctx.createOscillator();
+        const gainHarmonic = ctx.createGain();
+        oscHarmonic.type = "sine";
+        oscHarmonic.frequency.setValueAtTime(1056, now);
+        gainHarmonic.gain.setValueAtTime(0.001, now);
+        gainHarmonic.gain.linearRampToValueAtTime(0.04, now + 0.09);
+        gainHarmonic.gain.exponentialRampToValueAtTime(0.0001, now + 1.6);
+        oscHarmonic.connect(gainHarmonic);
+        gainHarmonic.connect(ctx.destination);
+        oscHarmonic.start(now);
+        oscHarmonic.stop(now + 1.7);
+      } catch (e) {}
+    }
+
+    function triggerSplashScreen(isManual = false) {
+      if (splashTimeout) clearTimeout(splashTimeout);
+      if (dismissTimer) clearTimeout(dismissTimer);
+
+      const splash = document.getElementById("appSplashScreen");
+      const emblem = document.getElementById("splashEmblemWrap");
+      const beam = document.getElementById("splashShimmerBeam");
+      const titleEn = document.getElementById("splashTitleEn");
+      const titleAr = document.getElementById("splashTitleAr");
+      const bar = document.getElementById("splashProgressBar");
+      const bloom = document.getElementById("splashAmbientBloom");
+      if (!splash) return;
+
+      // 1. Initial State: Prepare for Cinematic Entrance
+      splash.style.transition = "none";
+      splash.style.opacity = "1";
+      splash.style.transform = "scale(1)";
+      splash.style.filter = "none";
+      splash.classList.remove("hidden");
+
+      if (bloom) {
+        bloom.style.transition = "none";
+        bloom.style.opacity = "0.2";
+        bloom.style.transform = "scale(0.85)";
+      }
+
+      if (emblem) {
+        emblem.style.transition = "none";
+        emblem.style.transform = "scale(0.70) translateY(8px)";
+        emblem.style.opacity = "0";
+        emblem.style.filter = "blur(6px)";
+      }
+
+      if (beam) {
+        beam.style.transition = "none";
+        beam.style.transform = "translateX(-150%) rotate(25deg)";
+      }
+
+      if (titleEn) {
+        titleEn.style.transition = "none";
+        titleEn.style.opacity = "0";
+        titleEn.style.transform = "translateY(10px)";
+        titleEn.style.letterSpacing = "0.15em";
+      }
+
+      if (titleAr) {
+        titleAr.style.transition = "none";
+        titleAr.style.opacity = "0";
+        titleAr.style.transform = "translateY(8px)";
+      }
+
+      if (bar) {
+        bar.style.transition = "none";
+        bar.style.width = "0%";
+      }
+
+      void splash.offsetWidth; // Force Reflow
+
+      if (isManual) {
+        playSplashChime();
+        const chassis = document.getElementById("deviceContainer");
+        if (chassis) chassis.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      // 2. Stage 1 (0ms - 800ms): Emblem Silky Spring Float & Ambient Bloom
+      if (bloom) {
+        bloom.style.transition = "all 1.2s cubic-bezier(0.16, 1, 0.3, 1)";
+        bloom.style.opacity = "1";
+        bloom.style.transform = "scale(1)";
+      }
+
+      if (emblem) {
+        emblem.style.transition = "all 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
+        emblem.style.transform = "scale(1) translateY(0)";
+        emblem.style.opacity = "1";
+        emblem.style.filter = "blur(0px)";
+      }
+
+      // 3. Stage 2 (200ms - 950ms): Specular Light Sweep Gleam across 24k Gold
+      setTimeout(() => {
+        if (beam) {
+          beam.style.transition = "transform 0.95s cubic-bezier(0.2, 0.8, 0.2, 1)";
+          beam.style.transform = "translateX(200%) rotate(25deg)";
+        }
+      }, 200);
+
+      // 4. Stage 3 (320ms): Staggered English Title Float & Letter Spacing Expansion
+      setTimeout(() => {
+        if (titleEn) {
+          titleEn.style.transition = "all 0.65s cubic-bezier(0.16, 1, 0.3, 1)";
+          titleEn.style.opacity = "1";
+          titleEn.style.transform = "translateY(0)";
+          titleEn.style.letterSpacing = "0.26em";
+        }
+      }, 320);
+
+      // 5. Stage 4 (480ms): Classical Amiri Arabic Calligraphy Glides In
+      setTimeout(() => {
+        if (titleAr) {
+          titleAr.style.transition = "all 0.65s cubic-bezier(0.16, 1, 0.3, 1)";
+          titleAr.style.opacity = "1";
+          titleAr.style.transform = "translateY(0)";
+        }
+      }, 480);
+
+      // 6. Stage 5: Fluid Silk Progress Filament
+      setTimeout(() => {
+        if (bar) {
+          bar.style.transition = "width 1.5s cubic-bezier(0.22, 1, 0.36, 1)";
+          bar.style.width = "100%";
+        }
+      }, 100);
+
+      // 7. Stage 6 (1.9s): Cinematic Reveal Dissolve
+      splashTimeout = setTimeout(() => {
+        dismissSplashScreen();
+      }, 1900);
+    }
+
+    function dismissSplashScreen() {
+      const splash = document.getElementById("appSplashScreen");
+      const emblem = document.getElementById("splashEmblemWrap");
+      if (!splash) return;
+      
+      if (emblem) {
+        emblem.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+        emblem.style.transform = "scale(1.08)";
+        emblem.style.filter = "blur(4px)";
+      }
+
+      splash.style.transition = "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+      splash.style.transform = "scale(1.04)";
+      splash.style.opacity = "0";
+      splash.style.filter = "blur(6px)";
+      dismissTimer = setTimeout(() => {
+        splash.classList.add("hidden");
+      }, 600);
+    }
+
+    // Smart Auto Language Detection for Arabic Countries vs Non-Arabic Countries (App + Landing Page Showcase)
+    function autoDetectUserLanguage() {
+      try {
+        // 1. Check device system locale
+        const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ""];
+        const isArabicSys = navLangs.some(l => l && l.toLowerCase().startsWith("ar"));
+
+        // 2. Check timezone without network overhead
+        const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "").toLowerCase();
+        const arabicRegions = [
+          "riyadh", "makkah", "medina", "saudi", 
+          "dubai", "abu_dhabi", "muscat", "kuwait", 
+          "doha", "qatar", "bahrain", "cairo", "egypt", 
+          "amman", "jordan", "beirut", "baghdad", "iraq",
+          "damascus", "tripoli", "tunis", "algiers", "khartoum", "casablanca"
+        ];
+        const isArabicTz = arabicRegions.some(reg => tz.includes(reg));
+        const isArabicUser = isArabicSys || isArabicTz;
+
+        // --- PART A: Simulator App Auto-Language ---
+        const raw = localStorage.getItem("muslim_companion_v2_state");
+        let hasSavedAppState = false;
+        if (raw) {
+          const s = JSON.parse(raw);
+          if (s.isArabic !== undefined) hasSavedAppState = true;
+        }
+
+        if (!hasSavedAppState) {
+          if (isArabicUser && !isArabic) {
+            toggleLang(); // Automatically activate Arabic (RTL) for Saudi & Arab nations!
+          } else if (!isArabicUser && isArabic) {
+            toggleLang(); // Automatically activate English (LTR) for Non-Arabic regions!
+          }
+        }
+
+        // --- PART B: Landing Page Showcase Gallery Auto-Language ---
+        const savedShowcaseLang = localStorage.getItem("muslim_showcase_lang");
+        if (savedShowcaseLang) {
+          setShowcaseLanguage(savedShowcaseLang, true);
+        } else {
+          // If no manual preference saved, automatically switch based on country/language!
+          if (isArabicUser) {
+            setShowcaseLanguage('ar', true);
+          } else {
+            // For Pakistan, USA, UK, Canada, India, etc. -> Auto English!
+            setShowcaseLanguage('en', true);
+          }
+        }
+      } catch (e) {}
+    }
+
     function init() {
 
       applyTypographySettings();
@@ -7735,6 +8217,7 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
       renderAdhansSettings();
       renderShowcaseViewer();
       autoDetectUserTimezone();
+      autoDetectUserLanguage();
       loadSavedState();
       loadSavedSalahTracker();
       renderSalahTracker();
@@ -7756,6 +8239,9 @@ class _QiblaCompassWidgetState extends State<QiblaCompassWidget> {
           }
         }).catch(() => {});
       }
+      setTimeout(() => {
+        triggerSplashScreen(false);
+      }, 200);
     }
 
     window.onload = init;
